@@ -1,7 +1,11 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
 import types.*;
 
+@Getter
+@Setter
 public class FormularioBusqueda {
     private Float remuneracionMinima;
     private Float remuneracionMaxima;
