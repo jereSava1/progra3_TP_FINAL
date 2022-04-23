@@ -55,7 +55,7 @@
           <contained xmi:type='DI:GraphNode' xmi:id='ide453b4c4-f80e-4c1d-87ae-f61c73d9de52'>
             <contained xmi:type='DI:GraphNode' xmi:id='id2e34b240-e1ea-4e07-ab4d-6876058b7542'>
               <property xmi:type='DI:Property' key='id' value='classifierSingleCell'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='0.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='1112.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -260,7 +260,7 @@
           <contained xmi:type='DI:GraphNode' xmi:id='id1e681ba2-bf0e-4de6-b889-ccfe7daa0ca0'>
             <contained xmi:type='DI:GraphNode' xmi:id='id2f05d5b7-d309-4b77-9956-fad8d16a5e12'>
               <property xmi:type='DI:Property' key='id' value='classifierSingleCell'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='259.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='1112.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -444,7 +444,7 @@
           <contained xmi:type='DI:GraphNode' xmi:id='id2551d171-a769-4248-ba97-b1ca55c2a255'>
             <contained xmi:type='DI:GraphNode' xmi:id='id1ba66b08-9400-45b2-9a32-75a3a6752b8a'>
               <property xmi:type='DI:Property' key='id' value='classifierSingleCell'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='87.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='127.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -476,7 +476,7 @@
           <contained xmi:type='DI:GraphNode' xmi:id='id8ca7530a-420a-4873-9d6e-6feb3f0aa0b1'>
             <contained xmi:type='DI:GraphNode' xmi:id='id6d999185-61b1-4da8-a83b-a552efc4367d'>
               <property xmi:type='DI:Property' key='id' value='classifierSingleCell'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='263.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='1112.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -657,6 +657,9 @@
     <property xmi:type='DI:Property' key='PrintAreaY' value='0.0'/>
     <property xmi:type='DI:Property' key='PrintAreaWidth' value='0.0'/>
     <property xmi:type='DI:Property' key='PrintAreaHeight' value='0.0'/>
+    <property xmi:type='DI:Property' key='showNavIconWhenBothEnds' value='false'/>
+    <property xmi:type='DI:Property' key='showClassifierOwnedEnds' value='false'/>
+    <property xmi:type='DI:Property' key='showNonNavigable' value='false'/>
     <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='java_diagram'/>
   </DI:Diagram>
 </xmi:XMI>
