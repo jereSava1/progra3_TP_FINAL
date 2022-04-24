@@ -39,7 +39,7 @@ public class Agencia {
 
     public void mostrarEmpleados(){
         for (Empleado empleado : this.empleados) {
-            System.out.println(empleado.toString());
+            System.out.println(empleado);
         }
     }
 
