@@ -1,44 +1,24 @@
-import model.Agencia;
-import model.ticket.FormularioBusqueda;
-import model.ticket.Ticket;
-import model.usuario.Empleado;
-import model.usuario.Empleador;
-import types.*;
+import factory.EstudiosFactory;
+import model.estudios.Estudios;
 
 public class main {
 
   public static void main(String[] args){
 
-    Agencia agencia = Agencia.getAgencia();
-    Empleado jere = new Empleado("jere", "pepe123", "Jeremias Savarino", 21, "jere@gmail.com", "22392391");
+    EstudiosFactory estudiosFactory = new EstudiosFactory();
 
+    try {
+      Estudios primario = estudiosFactory.getEstudios("primario");
+      Estudios secundario = estudiosFactory.getEstudios("Secundario");
+      System.out.println("PRIMARIO ==> SECUNDARIO\n");
+      System.out.println(primario.calculaPuntaje(secundario, 0));
+      System.out.println("SECUNDARIO ==> PRIMARIO\n");
+      System.out.println(secundario.calculaPuntaje(primario, 10));
 
-    agencia.getEmpleados().add(jere);
-    /*Ticket ticket = empleado.altaTicket(new FormularioBusqueda(
-            100F,
-            200F,
-            RangoEtario.ENTRE_40_50,
-            Locacion.HOMEOFFICE,
-            ExperienciaPrevia.MUCHA,
-            CargaHoraria.EXTENDIDA,
-            TipoDePuesto.SR,
-            Estudios.TERCIARIO
-    ));*/
-    agencia.getEmpleadores().add(new Empleador("facu", "puto123"));
-    /*Ticket ticket1 = empleador.altaTicket(
-              new FormularioBusqueda(
-                100F,
-                200F,
-                RangoEtario.ENTRE_40_50,
-                Locacion.HOMEOFFICE,
-                ExperienciaPrevia.MUCHA,
-                CargaHoraria.EXTENDIDA,
-                TipoDePuesto.SR,
-                Estudios.TERCIARIO
-              ),
-              4
-    );*/
-    agencia.mostrarEmpleados();
+    } catch (Exception ignored) {
+
+    }
+
 
   }
 }

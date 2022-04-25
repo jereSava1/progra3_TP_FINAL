@@ -2,6 +2,7 @@ package model.ticket;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.estudios.Estudios;
 import types.*;
 @Getter
 @Setter
