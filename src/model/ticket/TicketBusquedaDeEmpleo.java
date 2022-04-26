@@ -10,12 +10,13 @@ public class TicketBusquedaDeEmpleo extends Ticket {
     
     public TicketBusquedaDeEmpleo(FormularioBusqueda formularioBusqueda, Empleado empleado) {
         super(formularioBusqueda, empleado);
+        this.resultado = Resultado.INCONCLUSO;
     }
 
+    //TODO: completar to string con todos los atributos del form
     @Override
     public String toString(){
-        return "Remuneración minima: " + this.getFormularioDeBusqueda().getRemuneracionMinima() + "\n" +
-                "Remuneracion maxima: " + this.getFormularioDeBusqueda().getRemuneracionMaxima() + "\n" +
-                "Resltado " + (this.resultado != null ? this.resultado.toString() : "inconcluso") + "\n";
+        return "Remuneración pretendida: " + this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" +
+                "Resultado " + (this.resultado != null ? this.resultado.toString() : "inconcluso") + "\n";
     }
 }
