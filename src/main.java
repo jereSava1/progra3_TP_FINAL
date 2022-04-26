@@ -1,5 +1,5 @@
 import factory.EstudiosFactory;
-import model.estudios.Estudios;
+import model.ticket.estudios.Estudios;
 
 public class main {
 

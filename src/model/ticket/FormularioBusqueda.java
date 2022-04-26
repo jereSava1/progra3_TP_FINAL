@@ -2,13 +2,20 @@ package model.ticket;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.estudios.Estudios;
-import types.*;
+import model.ticket.Locacion.Locacion;
+import model.ticket.cargaHoraria.CargaHoraria;
+import model.ticket.estudios.Estudios;
+import model.ticket.experiencia.ExperienciaPrevia;
+import model.ticket.pretensionSalarial.PretensionSalarial;
+import model.ticket.rangoEtario.RangoEtario;
+import model.ticket.tipoDePuesto.TipoDePuesto;
+
 @Getter
 @Setter
 public class FormularioBusqueda {
-    private Float remuneracionMinima; 
-    private Float remuneracionMaxima; 
+
+    private PretensionSalarial pretensionSalarial;
+    private float remuneracionPretendida;
     private RangoEtario rangoEtario;
     private Locacion locacion;
     private ExperienciaPrevia experienciaPrevia;
@@ -17,17 +24,15 @@ public class FormularioBusqueda {
     private Estudios estudios;
 
 
-    public FormularioBusqueda(Float remuneracionMinima, Float remuneracionMaxima, RangoEtario rangoEtario,
-                              Locacion locacion, ExperienciaPrevia experienciaPrevia, CargaHoraria cargaHoraria,
-                              TipoDePuesto tipoDePuesto, Estudios estudios) {
-        this.remuneracionMinima = remuneracionMinima;
-        this.remuneracionMaxima = remuneracionMaxima;
+    public FormularioBusqueda(RangoEtario rangoEtario, Locacion locacion, ExperienciaPrevia experienciaPrevia, CargaHoraria cargaHoraria,
+                              TipoDePuesto tipoDePuesto, Estudios estudios, float remuneracionPretendida) {
         this.rangoEtario = rangoEtario;
         this.locacion = locacion;
         this.experienciaPrevia = experienciaPrevia;
         this.cargaHoraria = cargaHoraria;
         this.tipoDePuesto = tipoDePuesto;
         this.estudios = estudios;
+        this.remuneracionPretendida = remuneracionPretendida;
     }
 
 }

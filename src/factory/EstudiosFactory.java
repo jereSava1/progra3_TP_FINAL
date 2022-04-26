@@ -1,11 +1,10 @@
 package factory;
 
 import exception.ConstructorInvalidoException;
-import interfaces.Puntajes;
-import model.estudios.Estudios;
-import model.estudios.Primario;
-import model.estudios.Secundario;
-import model.estudios.Terciario;
+import model.ticket.estudios.Estudios;
+import model.ticket.estudios.Primario;
+import model.ticket.estudios.Secundario;
+import model.ticket.estudios.Terciario;
 
 public class EstudiosFactory {
 

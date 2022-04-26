@@ -19,6 +19,9 @@ public class Agencia {
     private List<Empleador> empleadores;
     private List<TicketBusquedaDeEmpleo> busquedas;
     private List<TicketBusquedaDeEmpleado> solicitudes;
+    private Float remuneracionV1;
+    private Float remuneracionV2;
+
     static private Agencia singleton = null;
     
     private Agencia(){

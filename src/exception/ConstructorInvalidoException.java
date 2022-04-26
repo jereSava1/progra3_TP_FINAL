@@ -3,7 +3,7 @@ package exception;
 import lombok.Getter;
 
 @Getter
-public class ConstructorInvalidoException extends Exception{
+public class ConstructorInvalidoException extends Exception {
   private String dato;
 
   public ConstructorInvalidoException(String dato){
