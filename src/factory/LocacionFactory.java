@@ -8,14 +8,14 @@ import model.ticket.Locacion.Presencial;
 
 public class LocacionFactory {
 
-  public Locacion getLocacion(String tipo,int peso) throws ConstructorInvalidoException {
+  public Locacion getLocacion(String tipo, int peso) throws ConstructorInvalidoException {
 
     if (tipo == null) {
       return null;
     }
 
     if (tipo.equalsIgnoreCase("HOMEOFFICE")) {
-      return new HomeOffice(peso);
+      return new HomeOfiice(peso);
     }
 
     if (tipo.equalsIgnoreCase("PRESENCIAL")) {

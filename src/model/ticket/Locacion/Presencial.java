@@ -1,8 +1,8 @@
 package model.ticket.Locacion;
 
 public class Presencial extends Locacion{
-  public Presencial() {
-    super("PRESENCIAL");
+  public Presencial(int peso) {
+    super("PRESENCIAL", peso);
   }
 
   @Override

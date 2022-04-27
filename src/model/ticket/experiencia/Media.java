@@ -1,8 +1,8 @@
 package model.ticket.experiencia;
 
 public class Media extends ExperienciaPrevia{
-  public Media() {
-    super("MEDIA");
+  public Media(int peso) {
+    super("MEDIA", peso);
   }
 
   public float match1() {

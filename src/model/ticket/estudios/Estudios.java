@@ -2,7 +2,7 @@ package model.ticket.estudios;
 
 import interfaces.Puntajes;
 import lombok.Getter;
-import types.Atributo;
+
 @Getter
 public abstract class Estudios implements Puntajes {
   private final String valor;

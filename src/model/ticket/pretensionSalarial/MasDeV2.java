@@ -2,8 +2,8 @@ package model.ticket.pretensionSalarial;
 
 public class MasDeV2 extends PretensionSalarial{
 
-  public MasDeV2() {
-    super("MAS_DE_V2");
+  public MasDeV2(int peso) {
+    super("MAS_DE_V2", peso);
   }
 
   @Override

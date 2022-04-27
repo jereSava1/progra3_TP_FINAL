@@ -2,8 +2,8 @@ package model.ticket.estudios;
 
 
 public class Secundario extends Estudios {
-  public Secundario(){
-    super("SECUNDARIO");
+  public Secundario(int peso){
+    super("SECUNDARIO", peso);
   }
 
   public float match1(){

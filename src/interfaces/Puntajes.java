@@ -1,6 +1,5 @@
 package interfaces;
 
-import types.Atributo;
 
 public interface Puntajes {
   float match1();

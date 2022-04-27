@@ -1,7 +1,7 @@
 package model.ticket.pretensionSalarial;
 
 public class MenosV1 extends PretensionSalarial {
-  public MenosV1(){ super("MENOS_V1"); }
+  public MenosV1(int peso){ super("MENOS_V1", peso); }
 
   @Override
   public float match1() {

@@ -1,8 +1,8 @@
 package model.ticket.rangoEtario;
 
 public class Menos40 extends RangoEtario{
-  public Menos40(){
-    super("MENOS_40");
+  public Menos40(int peso){
+    super("MENOS_40", peso);
   }
 
   public float match1() {

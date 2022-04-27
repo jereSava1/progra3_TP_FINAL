@@ -1,8 +1,8 @@
 package model.ticket.Locacion;
 
 public class HomeOfiice extends Locacion{
-  public HomeOfiice() {
-    super("HOME_OFFICE");
+  public HomeOfiice(int peso) {
+    super("HOME_OFFICE", peso);
   }
 
   public float match1() {

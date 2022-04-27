@@ -1,8 +1,8 @@
 package model.ticket.experiencia;
 
 public class Nada extends ExperienciaPrevia{
-  public Nada() {
-    super("NADA");
+  public Nada(int peso) {
+    super("NADA", peso);
   }
 
   public float match1() {

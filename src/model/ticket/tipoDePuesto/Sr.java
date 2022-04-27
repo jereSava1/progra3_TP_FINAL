@@ -1,8 +1,8 @@
 package model.ticket.tipoDePuesto;
 
 public class Sr extends TipoDePuesto{
-  public Sr() {
-    super("SR");
+  public Sr(int peso) {
+    super("SR", peso);
   }
 
   public float match1() {

@@ -1,8 +1,8 @@
 package model.ticket.cargaHoraria;
 
 public class Extendida extends CargaHoraria{
-  public Extendida() {
-    super("EXTENDIDA");
+  public Extendida(int peso) {
+    super("EXTENDIDA", peso);
   }
 
   public float match1() {

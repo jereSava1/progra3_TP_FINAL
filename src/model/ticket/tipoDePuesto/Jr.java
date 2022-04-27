@@ -1,8 +1,8 @@
 package model.ticket.tipoDePuesto;
 
 public class Jr extends TipoDePuesto{
-  public Jr() {
-    super("JR");
+  public Jr(int peso) {
+    super("JR", peso);
   }
 
   public float match1() {

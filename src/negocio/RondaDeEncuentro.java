@@ -18,13 +18,13 @@ public class RondaDeEncuentro {
       FormularioBusqueda formulario = busqueda.getFormularioDeBusqueda();
       float puntaje = 0F;
 
-      puntaje += formulario.getPretensionSalarial().calculaPuntaje(solicitudForm.getPretensionSalarial(), solicitudForm.getPretensionSalarial().getPeso());
-      puntaje += formulario.getEstudios().calculaPuntaje(solicitudForm.getEstudios(), solicitudForm.getEstudios().getPeso());
-      puntaje += formulario.getRangoEtario().calculaPuntaje(solicitudForm.getRangoEtario(), solicitudForm.getRangoEtario().getPeso());
-      puntaje += formulario.getTipoDePuesto().calculaPuntaje(solicitudForm.getTipoDePuesto(), solicitudForm.getTipoDePuesto().getPeso());
-      puntaje += formulario.getCargaHoraria().calculaPuntaje(solicitudForm.getCargaHoraria(), solicitudForm.getCargaHoraria().getPeso());
-      puntaje += formulario.getLocacion().calculaPuntaje(solicitudForm.getLocacion(), solicitudForm.getLocacion().getPeso());
-      puntaje += formulario.getExperienciaPrevia().calculaPuntaje(solicitudForm.getExperienciaPrevia(), solicitudForm.getExperienciaPrevia().getPeso());
+      puntaje += formulario.getPretensionSalarial().calculaPuntaje(solicitudForm.getPretensionSalarial());
+      puntaje += formulario.getEstudios().calculaPuntaje(solicitudForm.getEstudios());
+      puntaje += formulario.getRangoEtario().calculaPuntaje(solicitudForm.getRangoEtario());
+      puntaje += formulario.getTipoDePuesto().calculaPuntaje(solicitudForm.getTipoDePuesto());
+      puntaje += formulario.getCargaHoraria().calculaPuntaje(solicitudForm.getCargaHoraria());
+      puntaje += formulario.getLocacion().calculaPuntaje(solicitudForm.getLocacion());
+      puntaje += formulario.getExperienciaPrevia().calculaPuntaje(solicitudForm.getExperienciaPrevia());
 
       ranking.add(new RankingUsuario( busqueda.getDueno(), puntaje));
     }

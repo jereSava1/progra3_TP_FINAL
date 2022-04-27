@@ -1,8 +1,8 @@
 package model.ticket.Locacion;
 
 public class Indistinto extends Locacion{
-  public Indistinto() {
-    super("INDISTINTO");
+  public Indistinto(int peso) {
+    super("INDISTINTO", peso);
   }
 
   @Override

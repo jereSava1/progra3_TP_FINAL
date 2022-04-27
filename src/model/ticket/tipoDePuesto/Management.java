@@ -1,8 +1,8 @@
 package model.ticket.tipoDePuesto;
 
 public class Management extends TipoDePuesto{
-  public Management() {
-    super("MANAGEMENT");
+  public Management(int peso) {
+    super("MANAGEMENT", peso);
   }
 
   public float match1() {
