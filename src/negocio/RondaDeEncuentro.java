@@ -1,16 +1,18 @@
 package negocio;
 
+import model.Agencia;
 import model.ticket.FormularioBusqueda;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import model.ticket.Ticket;
 import model.usuario.RankingUsuario;
+import sun.java2d.pipe.AATileGenerator;
 
 
 public class RondaDeEncuentro {
 
-  public void ejecutarRondaDeEncuentrosParaTicket(List<Ticket> busquedas, Ticket solicitud){
+  private void ejecutarRondaDeEncuentrosParaTicket(List<? extends Ticket> busquedas, Ticket solicitud){
     List<RankingUsuario> ranking = new ArrayList<>();
     FormularioBusqueda solicitudForm = solicitud.getFormularioDeBusqueda();
 
@@ -30,5 +32,15 @@ public class RondaDeEncuentro {
     }
     Collections.sort(ranking);
     solicitud.setRanking(ranking);
+  }
+
+  private void ejecutarRondaDeEncuentros(Agencia agencia) {
+    for(Ticket busqueda : agencia.getBusquedas()) { //TICKETS DE EMPLEADOS
+      this.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
+    }
+
+    for(Ticket solicitud : agencia.getSolicitudes()) { //TICKETS DE EMPLEADORES
+      this.ejecutarRondaDeEncuentrosParaTicket(agencia.getBusquedas(), solicitud);
+    }
   }
 }
