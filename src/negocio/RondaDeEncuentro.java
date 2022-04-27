@@ -1,39 +1,34 @@
 package negocio;
 
 import model.ticket.FormularioBusqueda;
-import model.ticket.TicketBusquedaDeEmpleado;
-import model.ticket.TicketBusquedaDeEmpleo;
-import model.usuario.Empleado;
-import model.usuario.RankingEmpleado;
-
 import java.util.Collections;
 import java.util.List;
-
 import java.util.ArrayList;
+import model.ticket.Ticket;
+import model.usuario.RankingUsuario;
 
 
 public class RondaDeEncuentro {
 
-  public List<RankingEmpleado> ejecutarRondaDeEncuentrosParaEmpleador(List<TicketBusquedaDeEmpleo> busquedas, TicketBusquedaDeEmpleado solicitud){
-    List<RankingEmpleado> rankingEmpleados = new ArrayList<>();
+  public void ejecutarRondaDeEncuentrosParaTicket(List<Ticket> busquedas, Ticket solicitud){
+    List<RankingUsuario> ranking = new ArrayList<>();
     FormularioBusqueda solicitudForm = solicitud.getFormularioDeBusqueda();
 
-    for (TicketBusquedaDeEmpleo busqueda : busquedas){
+    for (Ticket busqueda : busquedas){
       FormularioBusqueda formulario = busqueda.getFormularioDeBusqueda();
       float puntaje = 0F;
 
-      //TODO: pasar pesos por parametro
-      puntaje += formulario.getPretensionSalarial().calculaPuntaje(solicitudForm.getPretensionSalarial(), 10);
-      puntaje += formulario.getEstudios().calculaPuntaje(solicitudForm.getEstudios(), 20);
-      puntaje += formulario.getRangoEtario().calculaPuntaje(solicitudForm.getRangoEtario(), 30);
-      puntaje += formulario.getTipoDePuesto().calculaPuntaje(solicitudForm.getTipoDePuesto(), 40);
-      puntaje += formulario.getCargaHoraria().calculaPuntaje(solicitudForm.getCargaHoraria(), 10);
-      puntaje += formulario.getLocacion().calculaPuntaje(solicitudForm.getLocacion(), 0);
-      puntaje += formulario.getExperienciaPrevia().calculaPuntaje(solicitudForm.getExperienciaPrevia(), 100);
+      puntaje += formulario.getPretensionSalarial().calculaPuntaje(solicitudForm.getPretensionSalarial(), solicitudForm.getPretensionSalarial().getPeso());
+      puntaje += formulario.getEstudios().calculaPuntaje(solicitudForm.getEstudios(), solicitudForm.getEstudios().getPeso());
+      puntaje += formulario.getRangoEtario().calculaPuntaje(solicitudForm.getRangoEtario(), solicitudForm.getRangoEtario().getPeso());
+      puntaje += formulario.getTipoDePuesto().calculaPuntaje(solicitudForm.getTipoDePuesto(), solicitudForm.getTipoDePuesto().getPeso());
+      puntaje += formulario.getCargaHoraria().calculaPuntaje(solicitudForm.getCargaHoraria(), solicitudForm.getCargaHoraria().getPeso());
+      puntaje += formulario.getLocacion().calculaPuntaje(solicitudForm.getLocacion(), solicitudForm.getLocacion().getPeso());
+      puntaje += formulario.getExperienciaPrevia().calculaPuntaje(solicitudForm.getExperienciaPrevia(), solicitudForm.getExperienciaPrevia().getPeso());
 
-      rankingEmpleados.add(new RankingEmpleado((Empleado) busqueda.getDueno(), puntaje));
+      ranking.add(new RankingUsuario( busqueda.getDueno(), puntaje));
     }
-    Collections.sort(rankingEmpleados);
-    return  rankingEmpleados;
+    Collections.sort(ranking);
+    solicitud.setRanking(ranking);
   }
 }

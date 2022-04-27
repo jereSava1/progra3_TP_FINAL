@@ -19,7 +19,7 @@ public class Secundario extends Estudios {
   }
 
 
-  public float calculaPuntaje(Estudios estudios, int peso){
-    return estudios.match2() * peso;
+  public float calculaPuntaje(Estudios estudios){
+    return estudios.match2() * this.getPeso();
   }
 }

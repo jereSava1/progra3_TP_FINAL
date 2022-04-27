@@ -8,22 +8,22 @@ import model.ticket.Locacion.Presencial;
 
 public class LocacionFactory {
 
-  public Locacion getLocacion(String tipo) throws ConstructorInvalidoException {
+  public Locacion getLocacion(String tipo,int peso) throws ConstructorInvalidoException {
 
     if (tipo == null) {
       return null;
     }
 
-    if (tipo.equalsIgnoreCase("HOME_OFFICE")) {
-      return new HomeOfiice();
+    if (tipo.equalsIgnoreCase("HOMEOFFICE")) {
+      return new HomeOffice(peso);
     }
 
     if (tipo.equalsIgnoreCase("PRESENCIAL")) {
-      return new Presencial();
+      return new Presencial(peso);
     }
 
     if (tipo.equalsIgnoreCase("INDISTINTO")) {
-      return new Indistinto();
+      return new Indistinto(peso);
     }
 
     throw new ConstructorInvalidoException(tipo);

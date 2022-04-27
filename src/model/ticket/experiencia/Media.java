@@ -17,7 +17,7 @@ public class Media extends ExperienciaPrevia{
     return 1.5F;
   }
 
-  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia, int peso) {
-    return experienciaPrevia.match2() * peso;
+  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia) {
+    return experienciaPrevia.match2() * this.getPeso();
   }
 }

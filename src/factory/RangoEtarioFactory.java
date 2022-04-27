@@ -9,22 +9,22 @@ import model.ticket.rangoEtario.RangoEtario;
 
 public class RangoEtarioFactory {
 
-  public RangoEtario getRangoEtario(String tipo) throws ConstructorInvalidoException {
+  public RangoEtario getRangoEtario(String tipo,int peso) throws ConstructorInvalidoException {
 
     if (tipo == null) {
       return null;
     }
 
     if (tipo.equalsIgnoreCase("MENOR_40")){
-      return new Menos40();
+      return new Menos40(peso);
     }
 
     if (tipo.equalsIgnoreCase("ENTRE_40_50")){
-      return new Entre40Y50();
+      return new Entre40Y50(peso);
     }
 
     if (tipo.equalsIgnoreCase("MAS_50")){
-      return new Mas50();
+      return new Mas50(peso);
     }
 
     throw new ConstructorInvalidoException(tipo);

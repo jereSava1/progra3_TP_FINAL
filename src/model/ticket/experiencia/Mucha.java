@@ -17,7 +17,7 @@ public class Mucha extends ExperienciaPrevia{
     return 1F;
   }
 
-  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia, int peso) {
-    return experienciaPrevia.match3() * peso;
+  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia) {
+    return experienciaPrevia.match3() * this.getPeso();
   }
 }

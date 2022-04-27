@@ -17,7 +17,7 @@ public class Terciario extends Estudios {
     return 1F;
   }
 
-  public float calculaPuntaje(Estudios estudios, int peso) {
-    return estudios.match3() * peso;
+  public float calculaPuntaje(Estudios estudios) {
+    return estudios.match3() * this.getPeso();
   }
 }

@@ -17,7 +17,7 @@ public class Completa extends CargaHoraria{
     return -0.5F;
   }
 
-  public float calculaPuntaje(CargaHoraria cargaHoraria, int peso) {
-    return cargaHoraria.match2() * peso;
+  public float calculaPuntaje(CargaHoraria cargaHoraria) {
+    return cargaHoraria.match2() * this.getPeso();
   }
 }

@@ -21,7 +21,7 @@ public class Indistinto extends Locacion{
   }
 
   @Override
-  public float calculaPuntaje(Locacion locacion, int peso) {
-    return locacion.match3() * peso;
+  public float calculaPuntaje(Locacion locacion) {
+    return locacion.match3() * this.getPeso();
   }
 }

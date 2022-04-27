@@ -19,7 +19,7 @@ public class Management extends TipoDePuesto{
 
 
   @Override
-  public float calculaPuntaje(TipoDePuesto puesto, int valor) {
-    return puesto.match3() * valor;
+  public float calculaPuntaje(TipoDePuesto puesto) {
+    return puesto.match3() * this.getPeso();
   }
 }

@@ -22,6 +22,6 @@ public class EntreV1YV2 extends PretensionSalarial{
 
   @Override
   public float calculaPuntaje(PretensionSalarial pretencionSalarial, int peso) {
-    return pretencionSalarial.match2() * peso;
+    return pretencionSalarial.match2() *this.getPeso();
   }
 }

@@ -18,7 +18,7 @@ public class Sr extends TipoDePuesto{
   }
 
   @Override
-  public float calculaPuntaje(TipoDePuesto puesto, int valor) {
-    return puesto.match2() * valor;
+  public float calculaPuntaje(TipoDePuesto puesto) {
+    return puesto.match2() * this.getPeso();
   }
 }
