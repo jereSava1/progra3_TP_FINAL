@@ -17,7 +17,7 @@ public class Nada extends ExperienciaPrevia{
     return 2F;
   }
 
-  float calculaPuntaje(ExperienciaPrevia experienciaPrevia, int peso) {
+  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia, int peso) {
     return experienciaPrevia.match1() * peso;
   }
 }

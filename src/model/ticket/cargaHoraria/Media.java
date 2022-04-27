@@ -17,7 +17,7 @@ public class Media extends CargaHoraria{
     return -1F;
   }
 
-  float calculaPuntaje(CargaHoraria cargaHoraria, int peso) {
+  public float calculaPuntaje(CargaHoraria cargaHoraria, int peso) {
     return cargaHoraria.match1() * peso;
   }
 }

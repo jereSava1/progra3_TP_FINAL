@@ -21,7 +21,7 @@ public class Presencial extends Locacion{
   }
 
   @Override
-  float calculaPuntaje(Locacion locacion, int peso) {
+  public float calculaPuntaje(Locacion locacion, int peso) {
     return locacion.match2() * peso;
   }
 }

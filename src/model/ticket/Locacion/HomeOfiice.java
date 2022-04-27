@@ -17,7 +17,7 @@ public class HomeOfiice extends Locacion{
     return 1F;
   }
 
-  float calculaPuntaje(Locacion locacion, int peso) {
+  public float calculaPuntaje(Locacion locacion, int peso) {
     return locacion.match1() * peso;
   }
 }

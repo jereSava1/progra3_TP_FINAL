@@ -7,7 +7,7 @@ import lombok.Getter;
 public abstract class ExperienciaPrevia implements Puntajes {
   private final String valor;
 
-  abstract float calculaPuntaje(ExperienciaPrevia experienciaPrevia, int peso);
+  public abstract float calculaPuntaje(ExperienciaPrevia experienciaPrevia, int peso);
 
   public ExperienciaPrevia(String valor) {
     this.valor = valor;

@@ -17,11 +17,10 @@ public class TicketBusquedaDeEmpleado extends Ticket {
         this.empleadosNecesitados = empleadosNecesitados;
     }
 
+    //TODO: completar
     @Override
     public String toString(){
-        return "Remuneración minima: " + this.getFormularioDeBusqueda().getRemuneracionMinima() + "\n" +
-                "Remuneracion maxima: " + this.getFormularioDeBusqueda().getRemuneracionMaxima() + "\n" +
-                "Cantidad de empleados: " + this.empleadosNecesitados + "\n" +
+        return "Cantidad de empleados: " + this.empleadosNecesitados + "\n" +
                 "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
     }
 

@@ -3,12 +3,21 @@ package model.usuario;
 import lombok.Getter;
 
 @Getter
-public class RankingEmpleado {
+public class RankingEmpleado implements Comparable {
   Empleado empleado;
-  int puntaje;
+  Float puntaje;
 
-  public RankingEmpleado(Empleado empleado, int puntaje){
+
+
+  public RankingEmpleado(Empleado empleado, float puntaje){
     this.empleado = empleado;
     this.puntaje = puntaje;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    RankingEmpleado item = (RankingEmpleado) o;
+
+    return this.getPuntaje().compareTo(item.getPuntaje());
   }
 }

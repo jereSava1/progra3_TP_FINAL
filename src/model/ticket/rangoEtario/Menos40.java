@@ -17,7 +17,7 @@ public class Menos40 extends RangoEtario{
     return -1F;
   }
 
-  float calculaPuntaje(RangoEtario rango, int peso) {
+  public float calculaPuntaje(RangoEtario rango, int peso) {
     return rango.match1() * peso;
   }
 }

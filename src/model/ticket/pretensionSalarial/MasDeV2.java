@@ -22,7 +22,7 @@ public class MasDeV2 extends PretensionSalarial{
   }
 
   @Override
-  float calculaPuntaje(PretensionSalarial pretencionSalarial, int peso) {
+  public float calculaPuntaje(PretensionSalarial pretencionSalarial, int peso) {
     return pretencionSalarial.match3() * peso;
   }
 }
