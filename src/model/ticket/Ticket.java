@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import model.Usuario;
-import model.usuario.RankingUsuario;
+import model.usuario.ListaDeAsignaciones;
 import types.EstadoTicket;
 
 @Getter
@@ -18,7 +18,7 @@ public class Ticket {
     private FormularioBusqueda formularioDeBusqueda;
     private LocalDate fechaDeAlta; //LocalDate -> Represents a date (year, month, day (yyyy-MM-dd))  
     private EstadoTicket estadoTicket;
-    private List<RankingUsuario> ranking;
+    private List<ListaDeAsignaciones> listaDeAsignaciones;
 
 
     public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {

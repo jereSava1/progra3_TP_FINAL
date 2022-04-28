@@ -63,6 +63,14 @@ public abstract class Usuario {
        //TODO tirar excepcion
      }
    }
+
+   public void aumentarPuntaje(int puntaje) {
+     this.puntaje += puntaje;
+   }
+
+   public void bajarPuntaje(int puntaje) {
+     this.puntaje -= puntaje;
+   }
    
    public void consultaTicket(Ticket ticket) {
      System.out.println(ticket.toString());

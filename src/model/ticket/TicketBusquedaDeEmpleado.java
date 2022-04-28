@@ -24,4 +24,10 @@ public class TicketBusquedaDeEmpleado extends Ticket {
                 "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
     }
 
+    public void aumentarEmpleadosObtenidos(){
+        if (empleadosObtenidos < empleadosNecesitados) {
+            this.empleadosObtenidos++;
+        }
+    }
+
 }
