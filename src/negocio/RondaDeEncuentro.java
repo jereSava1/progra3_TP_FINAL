@@ -43,7 +43,7 @@ public class RondaDeEncuentro {
 
     for(Ticket solicitud : agencia.getSolicitudes()) { //TICKETS DE EMPLEADORES
       RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getBusquedas(), solicitud);
-    }
+    } 
   }
 
   public static void actualizarPuntajesParaEmpleado(List<TicketBusquedaDeEmpleado> solicitudes){

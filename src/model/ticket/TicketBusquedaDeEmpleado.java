@@ -5,10 +5,10 @@ import lombok.Setter;
 import model.usuario.Empleador;
 
 @Getter
-@Setter
+
 public class TicketBusquedaDeEmpleado extends Ticket {
      
-    private int empleadosNecesitados;
+	@Setter private int empleadosNecesitados;
     private int empleadosObtenidos = 0;
 
     

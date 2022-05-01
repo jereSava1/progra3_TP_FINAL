@@ -1,9 +1,9 @@
 package model.usuario;
 
+import exception.NoDuenoDeTicketException;
 import lombok.Getter;
 import lombok.Setter;
 import model.ticket.FormularioBusqueda;
-import model.Usuario;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
@@ -33,17 +33,19 @@ public class Empleado extends Usuario {
         return new TicketBusquedaDeEmpleo(formulario, this);
     }
     
-    @Override
-    public void bajaTicket(Ticket ticket){
-        if (ticket.getDueno().equals(this)) {
-            ticket.setEstadoTicket(EstadoTicket.CANCELADO);
-            this.puntaje--;
-        } else {
-            //TODO excepcion
-        }
-    }
+   
 
     @Override
+    public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException{
+		if (ticket.getDueno().equals(this)) {
+			ticket.setEstadoTicket(EstadoTicket.CANCELADO);
+			this.bajarPuntaje(1);
+		} else {
+			throw new NoDuenoDeTicketException(ticket,"ticket "+ticket.getDueno()+" no es dueno de este ticket");
+		}
+	}
+
+	@Override
     public String toString(){
         return "Nombre: " + this.getNombre() + "\n" +
                 "Telefono: " + this.getTelefono() + "\n" +

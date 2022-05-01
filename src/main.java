@@ -1,5 +1,6 @@
 import factory.EstudiosFactory;
 import model.Agencia;
+import model.ticket.Ticket;
 import model.ticket.estudios.Estudios;
 import negocio.RondaDeEncuentro;
 
@@ -12,7 +13,6 @@ public class main {
 
       Agencia agencia = Agencia.getAgencia();
       RondaDeEncuentro.ejecutarRondaDeEncuentros(agencia);
-
     } catch (Exception ignored) {
 
     }

@@ -1,7 +1,7 @@
 package model.ticket;
 
-import model.Usuario;
 import model.usuario.Empleado;
+import model.usuario.Usuario;
 import types.Resultado;
 
 public class TicketBusquedaDeEmpleo extends Ticket {
@@ -16,7 +16,7 @@ public class TicketBusquedaDeEmpleo extends Ticket {
     //TODO: completar to string con todos los atributos del form
     @Override
     public String toString(){
-        return "Remuneración pretendida: " + this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" +
+        return "Remuneracion pretendida: " + this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" +
                 "Resultado " + (this.resultado != null ? this.resultado.toString() : "inconcluso") + "\n";
     }
 }
