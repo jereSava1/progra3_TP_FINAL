@@ -1,8 +1,8 @@
 package model.ticket.pretensionSalarial;
 
 public class EntreV1YV2 extends PretensionSalarial{
-  public EntreV1YV2(int peso){
-    super("ENTRE_V1_Y_V2", peso);
+  public EntreV1YV2(int peso,float remuneracionPretendida){
+    super("ENTRE_V1_Y_V2", peso,remuneracionPretendida);
   }
 
   @Override

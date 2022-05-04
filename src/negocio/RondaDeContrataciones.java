@@ -3,7 +3,7 @@ import model.Agencia;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
-import model.usuario.ListaDeAsignaciones;
+import model.usuario.UsuarioPuntuado;
 import types.EstadoTicket;
 
 import java.util.List;
@@ -16,17 +16,18 @@ public class RondaDeContrataciones {
    * @param solicitudes
    * @param busquedas
    */
-  public static void ejecutarRondaDeContrataciones(List<TicketBusquedaDeEmpleado> solicitudes, List<TicketBusquedaDeEmpleo> busquedas) {
-      Agencia agencia=Agencia.getAgencia(); 
+  public static void ejecutarRondaDeContrataciones(Agencia agencia) {
+      
 	  float comisiones=0;
-      for (TicketBusquedaDeEmpleado solicitud : solicitudes) { //TICKETS DE EMPLEADORES
+      agencia.empleadorNoElegido();//actualiza los puntajes en caso de que el empleador no haya sido elegido por ningun empleado
+	  for (TicketBusquedaDeEmpleado solicitud : agencia.getSolicitudes()) { //TICKETS DE EMPLEADORES
 
-      List<ListaDeAsignaciones> candidatosSeleccionados = solicitud.getListaDeAsignaciones()
+      List<UsuarioPuntuado> candidatosSeleccionados = solicitud.getListaDeAsignaciones()
               .stream()
-              .filter(ListaDeAsignaciones::isSeleccionado)
+              .filter(UsuarioPuntuado::isSeleccionado)
               .collect(Collectors.toList()); //filtro los candidatos seleccionados por los empleadores de la lista de asignaciones
 
-      for (TicketBusquedaDeEmpleo busqueda : busquedas) { //TICKETS DE EMPLEADOS
+      for (TicketBusquedaDeEmpleo busqueda : agencia.getBusquedas()) { //TICKETS DE EMPLEADOS
         if (solicitud.getEstadoTicket() == EstadoTicket.FINALIZADO) { //Si el ticket se cerró durante la ejecucion, la corto
           break;
         }
@@ -36,14 +37,14 @@ public class RondaDeContrataciones {
                 c -> c.getUsuario().equals(busqueda.getDueno()))
         ) { //validamos que el ticket este activo y que el dueño de la solicitud
 
-          List<ListaDeAsignaciones> empleadoresSeleccionados = busqueda.getListaDeAsignaciones()
+          List<UsuarioPuntuado> empleadoresSeleccionados = busqueda.getListaDeAsignaciones()
                   .stream()
-                  .filter(ListaDeAsignaciones::isSeleccionado)
+                  .filter(UsuarioPuntuado::isSeleccionado)
                   .collect(Collectors.toList());
 
           if (empleadoresSeleccionados.stream().anyMatch(c -> c.getUsuario().equals(solicitud.getDueno()))) { // si el empleado tambien seleccionó al empleador HAY MATCH
         	/*Agrego comisiones a la agencia*/
-        	comisiones=agencia.calculaComisionesEmpleado(busqueda)+ agencia.calculaComisionesEmpleador(solicitud);
+        	comisiones=agencia.calculaComisionesEmpleado(busqueda) + agencia.calculaComisionesEmpleador(solicitud);
         	agencia.setComisiones(agencia.getComisiones()+comisiones);
         	/* Actualizamos los atributos del ticket de empleado*/
             busqueda.setEstadoTicket(EstadoTicket.FINALIZADO); //Si se contrata, finalizamos el ticket

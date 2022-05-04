@@ -16,7 +16,7 @@ public class TicketBusquedaDeEmpleo extends Ticket {
     //TODO: completar to string con todos los atributos del form
     @Override
     public String toString(){
-        return "Remuneracion pretendida: " + this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" +
+        return super.toString()+ "Remuneracion pretendida: " + this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" +
                 "Resultado " + (this.resultado != null ? this.resultado.toString() : "inconcluso") + "\n";
     }
 }

@@ -2,22 +2,18 @@ package model.ticket;
 
 import java.time.LocalDate;
 import java.util.List;
-
-import lombok.Getter;
-
-import lombok.Setter;
-import model.usuario.ListaDeAsignaciones;
+import model.usuario.UsuarioPuntuado;
 import model.usuario.Usuario;
 import types.EstadoTicket;
 
 
-@Getter
+
 public class Ticket {
-	 private Usuario dueno;
-	 @Setter private FormularioBusqueda formularioDeBusqueda;
-	 private LocalDate fechaDeAlta; //LocalDate -> Represents a date (year, month, day (yyyy-MM-dd))  
-	 @Setter private EstadoTicket estadoTicket;
-	 @Setter private List<ListaDeAsignaciones> listaDeAsignaciones;
+	  private Usuario dueno;
+	  private FormularioBusqueda formularioDeBusqueda;
+	  private LocalDate fechaDeAlta; //LocalDate -> Represents a date (year, month, day (yyyy-MM-dd))  
+	  private EstadoTicket estadoTicket;
+	  private List<UsuarioPuntuado> listaDeAsignaciones;
 
 
     public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {
@@ -27,6 +23,55 @@ public class Ticket {
         this.dueno = usuario;
         
     }
+
+    
+@Override
+	public String toString() {
+		return "Ticket [dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString() + ", fechaDeAlta="
+				+ fechaDeAlta.toString() + ", estadoTicket= " + estadoTicket +"]";
+	}
+
+
+	//GETTERS Y SETTERS
+	public void setFormularioDeBusqueda(FormularioBusqueda formularioDeBusqueda) {
+		this.formularioDeBusqueda = formularioDeBusqueda;
+	}
+
+
+	public void setEstadoTicket(EstadoTicket estadoTicket) {
+		this.estadoTicket = estadoTicket;
+	}
+
+
+	public void setListaDeAsignaciones(List<UsuarioPuntuado> listaDeAsignaciones) {
+		this.listaDeAsignaciones = listaDeAsignaciones;
+	}
+
+
+	public Usuario getDueno() {
+		return dueno;
+	}
+
+
+	public FormularioBusqueda getFormularioDeBusqueda() {
+		return formularioDeBusqueda;
+	}
+
+
+	public LocalDate getFechaDeAlta() {
+		return fechaDeAlta;
+	}
+
+
+	public EstadoTicket getEstadoTicket() {
+		return estadoTicket;
+	}
+
+
+	public List<UsuarioPuntuado> getListaDeAsignaciones() {
+		return listaDeAsignaciones;
+	}
+    
     
     
 

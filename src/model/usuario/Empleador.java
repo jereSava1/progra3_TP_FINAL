@@ -27,4 +27,15 @@ public class Empleador extends Usuario {
 			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");
 		}
 	}
+	
+	
+    //GETTERS Y SETTERS
+	public TipoPersona getTipoPersona() {
+		return tipoPersona;
+	}
+
+	public Rubro getRubro() {
+		return rubro;
+	}
+	
 }

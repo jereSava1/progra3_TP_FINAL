@@ -1,14 +1,13 @@
 package model.ticket;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import model.usuario.Empleador;
 
-@Getter
+
 
 public class TicketBusquedaDeEmpleado extends Ticket {
      
-	@Setter private int empleadosNecesitados;
+    private int empleadosNecesitados;
     private int empleadosObtenidos = 0;
 
     
@@ -20,7 +19,7 @@ public class TicketBusquedaDeEmpleado extends Ticket {
     //TODO: completar
     @Override
     public String toString(){
-        return "Cantidad de empleados: " + this.empleadosNecesitados + "\n" +
+        return super.toString()+" \nCantidad de empleados: " + this.empleadosNecesitados + "\n" +
                 "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
     }
 
@@ -30,4 +29,18 @@ public class TicketBusquedaDeEmpleado extends Ticket {
         }
     }
 
+    //GETTERS Y SETTERS
+	public int getEmpleadosNecesitados() {
+		return empleadosNecesitados;
+	}
+
+	public void setEmpleadosNecesitados(int empleadosNecesitados) {
+		this.empleadosNecesitados = empleadosNecesitados;
+	}
+
+	public int getEmpleadosObtenidos() {
+		return empleadosObtenidos;
+	}
+
 }
+

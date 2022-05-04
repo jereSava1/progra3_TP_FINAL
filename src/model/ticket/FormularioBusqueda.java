@@ -1,7 +1,6 @@
 package model.ticket;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import model.ticket.Locacion.Locacion;
 import model.ticket.cargaHoraria.CargaHoraria;
 import model.ticket.estudios.Estudios;
@@ -10,8 +9,6 @@ import model.ticket.pretensionSalarial.PretensionSalarial;
 import model.ticket.rangoEtario.RangoEtario;
 import model.ticket.tipoDePuesto.TipoDePuesto;
 
-@Getter
-@Setter
 public class FormularioBusqueda {
 
     private PretensionSalarial pretensionSalarial;
@@ -35,4 +32,54 @@ public class FormularioBusqueda {
         this.remuneracionPretendida = remuneracionPretendida;
     }
 
+    @Override
+	public String toString() {
+		return "FormularioBusqueda "+" remuneracionPretendida="
+				+ remuneracionPretendida + ", rangoEtario=" + rangoEtario.getValor() + ", locacion=" + locacion.getValor()
+				+ ", experienciaPrevia=" + experienciaPrevia.getValor() + ", cargaHoraria=" + cargaHoraria.getValor() + ", tipoDePuesto="
+				+ tipoDePuesto.getValor() + ", estudios=" + estudios.getValor() + "]";
+	}
+
+
+   //GETTERS
+	public PretensionSalarial getPretensionSalarial() {
+		return pretensionSalarial;
+	}
+
+
+	public float getRemuneracionPretendida() {
+		return remuneracionPretendida;
+	}
+
+
+	public RangoEtario getRangoEtario() {
+		return rangoEtario;
+	}
+
+
+	public Locacion getLocacion() {
+		return locacion;
+	}
+
+
+	public ExperienciaPrevia getExperienciaPrevia() {
+		return experienciaPrevia;
+	}
+
+
+	public CargaHoraria getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+
+	public TipoDePuesto getTipoDePuesto() {
+		return tipoDePuesto;
+	}
+
+
+	public Estudios getEstudios() {
+		return estudios;
+	}
+
+    
 }

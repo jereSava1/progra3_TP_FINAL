@@ -4,8 +4,7 @@ import interfaces.Puntajes;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public abstract class RangoEtario implements Puntajes {
   private final String valor;
   private int peso;
@@ -15,4 +14,16 @@ public abstract class RangoEtario implements Puntajes {
     this.valor = dato;
     this.peso=peso;
   }
+
+  //GETTERS Y SETTERS
+public String getValor() {
+	return valor;
+}
+
+public int getPeso() {
+	return peso;
+}
+  
+ 
+  
 }
