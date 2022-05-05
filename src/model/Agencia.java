@@ -2,7 +2,7 @@ package model;
 
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
-import model.ticket.tipoDePuesto.TipoDePuesto;
+import model.ticket.DatosDeEmpleo;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
 import model.usuario.UsuarioPuntuado;

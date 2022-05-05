@@ -1,6 +1,8 @@
 package model.ticket.rangoEtario;
 
-public class Menos40 extends RangoEtario{
+import model.ticket.DatosDeEmpleo;
+
+public class Menos40 extends DatosDeEmpleo{
   public Menos40(int peso){
     super("MENOS_40", peso);
   }
@@ -17,7 +19,7 @@ public class Menos40 extends RangoEtario{
     return -1F;
   }
 
-  public float calculaPuntaje(RangoEtario rango) {
+  public float calculaPuntaje(DatosDeEmpleo rango) {
     return rango.match1() * this.getPeso();
   }
 }

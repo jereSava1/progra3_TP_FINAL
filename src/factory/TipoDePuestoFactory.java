@@ -4,11 +4,11 @@ import exception.ConstructorInvalidoException;
 import model.ticket.tipoDePuesto.Jr;
 import model.ticket.tipoDePuesto.Management;
 import model.ticket.tipoDePuesto.Sr;
-import model.ticket.tipoDePuesto.TipoDePuesto;
+import model.ticket.DatosDeEmpleo;
 
 public class TipoDePuestoFactory {
 
-  public TipoDePuesto getTipoDePuesto(String tipo,int peso) throws ConstructorInvalidoException {
+  public DatosDeEmpleo getTipoDePuesto(String tipo,int peso) throws ConstructorInvalidoException {
     if (tipo == null) {
       return null;
     }

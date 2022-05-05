@@ -1,5 +1,7 @@
 package model.ticket.pretensionSalarial;
 
+import model.ticket.DatosDeEmpleo;
+
 public class MenosV1 extends PretensionSalarial {
   
 	public MenosV1(int peso,float remuneracionPretendida){ 
@@ -22,7 +24,7 @@ public class MenosV1 extends PretensionSalarial {
   }
 
   @Override
-  public float calculaPuntaje(PretensionSalarial pretencionSalarial) {
-    return pretencionSalarial.match1() * this.getPeso();
+  public float calculaPuntaje(PretensionSalarial pretensionSalarial) {
+    return pretensionSalarial.match1() * this.getPeso();
   }
 }

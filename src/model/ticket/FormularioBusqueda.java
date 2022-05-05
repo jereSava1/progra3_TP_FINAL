@@ -1,28 +1,23 @@
 package model.ticket;
 
 
-import model.ticket.Locacion.Locacion;
-import model.ticket.cargaHoraria.CargaHoraria;
-import model.ticket.estudios.Estudios;
-import model.ticket.experiencia.ExperienciaPrevia;
+import model.ticket.DatosDeEmpleo;
 import model.ticket.pretensionSalarial.PretensionSalarial;
-import model.ticket.rangoEtario.RangoEtario;
-import model.ticket.tipoDePuesto.TipoDePuesto;
 
 public class FormularioBusqueda {
 
     private PretensionSalarial pretensionSalarial;
     private float remuneracionPretendida;
-    private RangoEtario rangoEtario;
-    private Locacion locacion;
-    private ExperienciaPrevia experienciaPrevia;
-    private CargaHoraria cargaHoraria;
-    private TipoDePuesto tipoDePuesto;
-    private Estudios estudios;
+    private DatosDeEmpleo rangoEtario;
+    private DatosDeEmpleo locacion;
+    private DatosDeEmpleo experienciaPrevia;
+    private DatosDeEmpleo cargaHoraria;
+    private DatosDeEmpleo tipoDePuesto;
+    private DatosDeEmpleo estudios;
 
 
-    public FormularioBusqueda(RangoEtario rangoEtario, Locacion locacion, ExperienciaPrevia experienciaPrevia, CargaHoraria cargaHoraria,
-                              TipoDePuesto tipoDePuesto, Estudios estudios, float remuneracionPretendida) {
+    public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia, DatosDeEmpleo cargaHoraria,
+                              DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios, float remuneracionPretendida) {
         this.rangoEtario = rangoEtario;
         this.locacion = locacion;
         this.experienciaPrevia = experienciaPrevia;
@@ -52,32 +47,32 @@ public class FormularioBusqueda {
 	}
 
 
-	public RangoEtario getRangoEtario() {
+	public DatosDeEmpleo getRangoEtario() {
 		return rangoEtario;
 	}
 
 
-	public Locacion getLocacion() {
+	public DatosDeEmpleo getLocacion() {
 		return locacion;
 	}
 
 
-	public ExperienciaPrevia getExperienciaPrevia() {
+	public DatosDeEmpleo getExperienciaPrevia() {
 		return experienciaPrevia;
 	}
 
 
-	public CargaHoraria getCargaHoraria() {
+	public DatosDeEmpleo getCargaHoraria() {
 		return cargaHoraria;
 	}
 
 
-	public TipoDePuesto getTipoDePuesto() {
+	public DatosDeEmpleo getTipoDePuesto() {
 		return tipoDePuesto;
 	}
 
 
-	public Estudios getEstudios() {
+	public DatosDeEmpleo getEstudios() {
 		return estudios;
 	}
 

@@ -1,6 +1,8 @@
 package model.ticket.cargaHoraria;
 
-public class Completa extends CargaHoraria{
+import model.ticket.DatosDeEmpleo;
+
+public class Completa extends DatosDeEmpleo{
   public Completa(int peso) {
     super("COMPLETA", peso);
   }
@@ -17,7 +19,7 @@ public class Completa extends CargaHoraria{
     return -0.5F;
   }
 
-  public float calculaPuntaje(CargaHoraria cargaHoraria) {
+  public float calculaPuntaje(DatosDeEmpleo cargaHoraria) {
     return cargaHoraria.match2() * this.getPeso();
   }
 }

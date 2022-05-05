@@ -1,6 +1,8 @@
 package model.ticket.Locacion;
 
-public class HomeOfiice extends Locacion{
+import model.ticket.DatosDeEmpleo;
+
+public class HomeOfiice extends DatosDeEmpleo{
   public HomeOfiice(int peso) {
     super("HOME_OFFICE", peso);
   }
@@ -17,7 +19,7 @@ public class HomeOfiice extends Locacion{
     return 1F;
   }
 
-  public float calculaPuntaje(Locacion locacion) {
+  public float calculaPuntaje(DatosDeEmpleo locacion) {
     return locacion.match1() * this.getPeso();
   }
 }

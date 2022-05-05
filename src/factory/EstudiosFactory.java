@@ -1,14 +1,14 @@
 package factory;
 
 import exception.ConstructorInvalidoException;
-import model.ticket.estudios.Estudios;
+import model.ticket.DatosDeEmpleo;
 import model.ticket.estudios.Primario;
 import model.ticket.estudios.Secundario;
 import model.ticket.estudios.Terciario;
 
-public class EstudiosFactory {
+public class EstudiosFactory{
 
-  public Estudios getEstudios(String tipo,int peso) throws ConstructorInvalidoException {
+  public DatosDeEmpleo getEstudios(String tipo,int peso) throws ConstructorInvalidoException {
     if (tipo == null) {
       return null;
     }

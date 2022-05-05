@@ -19,14 +19,14 @@ public class PretensionSalarialFactory {
 
 		if (remuneracionPretendida > 0) {
 			if (remuneracionPretendida < v1) {
-				return new MenosV1(peso, remuneracionPretendida);
+				return new MenosV1(peso,remuneracionPretendida);
 			}
 
 			if (remuneracionPretendida >= v1 && remuneracionPretendida <= v2) {
-				return new EntreV1YV2(peso, remuneracionPretendida);
+				return new EntreV1YV2(peso,remuneracionPretendida);
 			}
 			if (remuneracionPretendida > v2) {
-				return new MasDeV2(peso, remuneracionPretendida);
+				return new MasDeV2(peso,remuneracionPretendida);
 			}
 		}
 		throw new ConstructorInvalidoException("Sueldo Pretendido menor a 0");

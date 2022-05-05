@@ -1,6 +1,8 @@
 package model.ticket.Locacion;
 
-public class Indistinto extends Locacion{
+import model.ticket.DatosDeEmpleo;
+
+public class Indistinto extends DatosDeEmpleo{
   public Indistinto(int peso) {
     super("INDISTINTO", peso);
   }
@@ -21,7 +23,7 @@ public class Indistinto extends Locacion{
   }
 
   @Override
-  public float calculaPuntaje(Locacion locacion) {
+  public float calculaPuntaje(DatosDeEmpleo locacion) {
     return locacion.match3() * this.getPeso();
   }
 }

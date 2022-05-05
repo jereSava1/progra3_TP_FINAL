@@ -1,6 +1,8 @@
 package model.ticket.experiencia;
 
-public class Media extends ExperienciaPrevia{
+import model.ticket.DatosDeEmpleo;
+
+public class Media extends DatosDeEmpleo{
   public Media(int peso) {
     super("MEDIA", peso);
   }
@@ -17,7 +19,7 @@ public class Media extends ExperienciaPrevia{
     return 1.5F;
   }
 
-  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia) {
+  public float calculaPuntaje(DatosDeEmpleo experienciaPrevia) {
     return experienciaPrevia.match2() * this.getPeso();
   }
 }

@@ -1,6 +1,8 @@
 package model.ticket.experiencia;
 
-public class Mucha extends ExperienciaPrevia{
+import model.ticket.DatosDeEmpleo;
+
+public class Mucha extends DatosDeEmpleo{
   public Mucha(int peso) {
     super("MUCHA", peso);
   }
@@ -17,7 +19,7 @@ public class Mucha extends ExperienciaPrevia{
     return 1F;
   }
 
-  public float calculaPuntaje(ExperienciaPrevia experienciaPrevia) {
+  public float calculaPuntaje(DatosDeEmpleo experienciaPrevia) {
     return experienciaPrevia.match3() * this.getPeso();
   }
 }
