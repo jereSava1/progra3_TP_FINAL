@@ -75,6 +75,10 @@ public class Agencia {
 
 	/**
 	 * Agrega un nuevo empleado a la coleccion de empleados
+	 *
+	 * pre: nuevoEmpleado != null
+	 * pos: un nuevo empleado es añadido a la lista de empleados de la agencia
+	 *
 	 * @param nuevoEmpleado
 	 */
 	public void registraEmpleado(Empleado nuevoEmpleado) {
@@ -83,6 +87,10 @@ public class Agencia {
 
 	/**
 	 *Agrega un nuevo empleador a la coleccion de empleadores
+	 *
+	 * pre: nuevoEmpleado != null
+	 * pos: un nuevo empleador es añadido a la lista de empleadores de la agencia
+	 *
 	 * @param nuevoEmpleador
 	 */
 	public void registraEmpleador(Empleador nuevoEmpleador) {
@@ -93,6 +101,11 @@ public class Agencia {
 	/**
 	 * Permite el ingreso del empleado a la plataforma con un Nombre de usuario y una contraseña.
 	 * Realiza la validacion de los datos, aceptando o no el ingreso.
+	 *
+	 * pre: nombreUsuario sin caracteres especiales, contrasena alfanumerica con mas 5+ caracteres
+	 * pos: el empleado podra ingresar luego de una validacion de nombre de usuario y contrasena
+	 * a la plataforma unicamente si se encuentra registrado en el sistema
+	 *
 	 * @param nombreUsuario
 	 * @param contrasena
 	 * @throws UsuarioIncorrectoException el empleado no se encuentra en la lista de empleados
@@ -113,6 +126,11 @@ public class Agencia {
 	/**
 	 * Permite el ingreso del empleador a la plataforma con un Nombre de usuario y una contraseña.
 	 * Realiza la validacion de los datos, aceptando o no el ingreso.
+	 *
+	 * pre: nombreUsuario sin caracteres especiales, contrasena alfanumerica con mas 5+ caracteres
+	 * pos: el empleador podra ingresar luego de una validacion de nombre de usuario y contrasena
+	 * a la plataforma unicamente si se encuentra registrado en el sistema
+	 *
 	 * @param nombreUsuario
 	 * @param contrasena
 	 * @throws UsuarioIncorrectoException el empleador no se encuentra en la lista de empleadores
@@ -156,9 +174,6 @@ public class Agencia {
 	}
 
 	/**
-	 * PRECOND:
-	 *   - El empleador debe haber conseguido un empleado
-	 *
 	 * Calcula las comisiones que obtendra del empleador segun el sueldo con el que el empleador remunerará al empleado
 	 * El porcentaje de comision varia segun el tipo de persona que sea la empresa y segun el rubro que esta misma desarrolle
 	 *
@@ -166,11 +181,19 @@ public class Agencia {
 	 *
 	 * Si el puntaje del empleador supera el porcentaje de comision, la comision final quedara en cero.
 	 *
+	 * pre: el empleador debe haber conseguido un empleado
+	 *      ticket != null
+	 *      ticket debe tener un dueñom,un rubro y un tipo de persona != null
+	 *      puntaje del empleador >= 0
+	 *      remuneracion dada por el empleado >= 0
+	 *
+	 * pos: calculara con exito la comision final para el empleador
+	 *
 	 * @param ticket
 	 * @return comision final para el empleador
 	 */
-	public float calculaComisionesEmpleador(TicketBusquedaDeEmpleado ticket) {// si el puntaje supera a la comision-->
-																				// devuelvo 0
+	public float calculaComisionesEmpleador(TicketBusquedaDeEmpleado ticket) {
+
 		float comision = 0;
 		Empleador empleador = (Empleador) ticket.getDueno();
 		float sueldo = ticket.getFormularioDeBusqueda().getPretensionSalarial().getRemuneracion();
@@ -207,6 +230,12 @@ public class Agencia {
 	 * Por cada punto que tenga el empleado se restara un 1% a la comision final
 	 *
 	 * Si el puntaje del empleado supera el porcentaje de comision, la comision final quedara en cero.
+	 *
+	 * pre: el empleado debe haber conseguido trabajo
+	 *      ticket != null
+	 *      ticket debe tener un dueño y un tipo de puesto != null
+	 *      puntaje del empleado >= 0
+	 *      pretension salarial del empleado >= 0
 	 *
 	 * @param ticket
 	 * @return comision final para el empleado
@@ -268,6 +297,12 @@ public class Agencia {
 	 * Recorro cada empleador de la lista del empleado para ver si este fue seleccionado.
 	 *
 	 * Si verifico que el empleador jamas fue seleccionado en la ronda de eleccion, se le restara 20 puntos a su puntaje final.
+	 *
+	 * pre: coleccion de empleadores != null
+	 * 	    lista de tickets de busqueda de empleo != null
+	 * 	    lista de asignaciones del empleado != null
+	 *
+	 * pos: si algun empleador no fue elegido en alguna oportunidad de la ronda de encuentro se le restara 20 puntos a su puntaje final
 	 *
 	 */
 	public void empleadorNoElegido() {

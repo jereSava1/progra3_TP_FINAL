@@ -15,11 +15,14 @@ import java.util.stream.Collectors;
  */
 public class RondaDeElecciones {
 	/**
-	 * PRECONTRATO
+	 * Se seleccionara a un usuario en especifico de la lista de asignaciones del Ticket
 	 *
-	 * Busco el usuario a seleccionar
-	 * @param ticket
-	 * @param usuario No null, el usuario existe en el ranking
+	 * pre: ticket != null
+	 *
+	 * pos: Se selecciona el candidato con exito
+	 *
+	 * @param ticket Servira para ver si el Usuario se encuentra en la lista de asignaciones del ticket
+	 * @param usuario Es el candidato a seleccionar
 	 */
 	public static void seleccionaCandidato(Ticket ticket, Usuario usuario) {
 		UsuarioPuntuado seleccionado = ticket.getListaDeAsignaciones().stream()
@@ -32,12 +35,16 @@ public class RondaDeElecciones {
 	}
 
 	/**
-	 * Selecciona multiples usuarios
+	 * Se seleccionaran multiples usuarios(identificados en una lista) de la lista de asignaciones del Ticket
+	 *
+	 * pre: ticket != null
+	 * 		lista de usuarios elegidos != null
+	 *
+	 * pos: Se seleccionan los multiples candidatos
 	 * 
-	 * @param ticket           ticket de busqueda
-	 * @param usuariosElegidos lista de usuarios a seleccionar, no null
+	 * @param ticket Servira para ver si los Usuarios de la lista se encuentran en la lista de asignaciones del ticket
+	 * @param usuariosElegidos lista de usuarios a seleccionar
 	 */
-
 	public static void seleccionaMultiplesCandidatos(Ticket ticket, List<Usuario> usuariosElegidos) {
 		for (Usuario usuario : usuariosElegidos) {
 			RondaDeElecciones.seleccionaCandidato(ticket, usuario);

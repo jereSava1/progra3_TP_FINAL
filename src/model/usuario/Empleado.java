@@ -27,6 +27,10 @@ public class Empleado extends Usuario {
 
     /**
      * Se crea un nuevo ticket de busqueda para el empleado
+     *
+     * pre: formulario != null
+     * pos: se ha dado de alta un formulario para el empleado
+     *
      * @param formulario contiene las preferencias del empleado para la busqueda de empleo
      * @return TicketBusquedaDeEmpleo
      */
@@ -36,6 +40,8 @@ public class Empleado extends Usuario {
 
 
     /**
+     * pre: ticket != null
+     * pos: el estado de ticket pasa a finalizado y se resta 1 punto al puntaje final del empleado
      * Da de baja el ticket, pone "Finalizado" su estado.
      * El dar de baja el ticket, resta 1 punto del puntaje final.
      * @param ticket

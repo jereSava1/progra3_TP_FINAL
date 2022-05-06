@@ -42,6 +42,10 @@ public abstract class Usuario {
 
 	/**
 	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en el.
+	 *
+	 * pre: ticket != null; formulario != null
+	 * pos: se modifico el ticket reemplazando el formulario anterior, por uno nuevo
+	 *
 	 * @param ticket ticket al que se le desea aplicar la modificacion
 	 * @param formularioBusqueda nuevo formulario, reemplaza al anterior
 	 * @throws NoDuenoDeTicketException
@@ -67,8 +71,13 @@ public abstract class Usuario {
 	}
 
 	/**
+	 *
 	 * Baja un determinado puntaje al puntaje final del usuario.
 	 * El puntaje final no puede ser menor a 0
+	 *
+	 * pre: puntaje >= 0
+	 * pos: se actualiza el nuevo puntaje final, luego de la resta de puntaje
+	 *
 	 * @param puntaje se le resta al puntaje final
 	 */
 	public void bajarPuntaje(int puntaje) {

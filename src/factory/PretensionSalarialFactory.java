@@ -12,6 +12,14 @@ public class PretensionSalarialFactory {
 
 	private Agencia agencia = Agencia.getAgencia();
 
+	/**
+	 * pre: peso >= 0;
+	 * pos: Instanciar objeto de tipo Pretension salarial
+	 * @param peso
+	 * @param remuneracionPretendida remuneracion que pretende el usuario en su formulario de busqueda
+	 * @return instancia de tipo PretensionSalarial
+	 * @throws ConstructorInvalidoException
+	 */
 	public PretensionSalarial getPretensionSalarial(int peso, float remuneracionPretendida)
 			throws ConstructorInvalidoException {
 		float v1 = this.agencia.getRemuneracionV1();

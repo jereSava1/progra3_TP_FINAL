@@ -40,6 +40,7 @@ public String toString() {
 	/**
 	 * Se sobreescribe el compareTo con el objetivo de poder ordenar una lista de
 	 * UsuariosPuntuados por el campo puntaje.
+	 *
 	 * @param item se corresponde a un usuario dentro de la lista de asignacion (UsuarioPuntuado)
 	 * @return
 	 */
