@@ -9,13 +9,29 @@ import types.*;
 
 public class Empleador extends Usuario {
 
+	/**
+	 * - TipoPersona
+	 *   - Fisica
+	 *   - Juridica
+	 */
 	private TipoPersona tipoPersona;
+	/**
+	 * - Tipo De Rubro
+	 *    - Comercio Internacional
+	 *    - Comercio Local
+	 *    - Salud
+	 */
 	private Rubro rubro;
 
 	public Empleador(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
 	}
 
+	/**
+	 * Se crea un nuevo ticket de busqueda de empleador
+	 * @param formulario contiene las preferencias del empleador para la busqueda de empleados
+	 * @return TicketBusquedaDeEmpleo
+	 */
 	public TicketBusquedaDeEmpleado altaTicket(FormularioBusqueda formulario, int cantEmpleados) {
 		return new TicketBusquedaDeEmpleado(formulario, cantEmpleados, this);
 	}

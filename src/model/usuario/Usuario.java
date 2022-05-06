@@ -40,6 +40,12 @@ public abstract class Usuario {
 		}
 	}
 
+	/**
+	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en el.
+	 * @param ticket ticket al que se le desea aplicar la modificacion
+	 * @param formularioBusqueda nuevo formulario, reemplaza al anterior
+	 * @throws NoDuenoDeTicketException
+	 */
 	public void modificaTicket(Ticket ticket, FormularioBusqueda formularioBusqueda) throws NoDuenoDeTicketException {
 		if (ticket.getDueno().equals(this)) {
 			ticket.setFormularioDeBusqueda(formularioBusqueda);
@@ -60,6 +66,11 @@ public abstract class Usuario {
 		this.puntaje += puntaje;
 	}
 
+	/**
+	 * Baja un determinado puntaje al puntaje final del usuario.
+	 * El puntaje final no puede ser menor a 0
+	 * @param puntaje se le resta al puntaje final
+	 */
 	public void bajarPuntaje(int puntaje) {
 		if (this.puntaje - puntaje >= 0)
 			this.puntaje -= puntaje;

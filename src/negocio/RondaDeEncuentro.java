@@ -13,8 +13,25 @@ import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.UsuarioPuntuado;
 
+/**
+ * Se analizan los tickets y se determinan las coincidencias para elaborar las Listas de asignaciones
+ * para cada Usuario.
+ */
 public class RondaDeEncuentro {
 
+	/**
+	 *  PRECOND:
+	 *    busquedas != null
+	 *    solicitud != null
+	 *
+	 *  Al ticket unico (solicitud) se le asignara una lista de asignacion(ranking) dependiendo de las coincidencias entre
+	 *  los formularios de este ticket y la lista de tickets (busquedas).
+	 *
+	 *  Esta lista de asignacion tendra a los posibles candidatos del ticker "solicitud" ordenados en un ranking de mayor a menor.
+	 *
+	 * @param busquedas sera una lista de tickets
+	 * @param solicitud sera un ticket unico (saldra del metodo con la lista de asignacion seteada)
+	 */
 	private static void ejecutarRondaDeEncuentrosParaTicket(List<? extends Ticket> busquedas, Ticket solicitud) {
 		List<UsuarioPuntuado> ranking = new ArrayList<>();
 		FormularioBusqueda solicitudForm = solicitud.getFormularioDeBusqueda();
@@ -38,6 +55,13 @@ public class RondaDeEncuentro {
 		solicitud.setListaDeAsignaciones(ranking);
 	}
 
+	/**
+	 * Ejecucion de la ronda de encuentro:
+	 * Ticket de empleado:
+	 *   - A ticket de empleado se le asignara una lista de asignacion de empleadores  (Lista del empleado pretenso)
+	 *   - A ticket de empleadores se le asignara una lista de asignacion de empleados (Lista del empleador)
+	 * @param agencia
+	 */
 	public static void ejecutarRondaDeEncuentros(Agencia agencia) {
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
@@ -48,6 +72,15 @@ public class RondaDeEncuentro {
 		}
 	}
 
+	/**
+	 * PRECOND
+	 *   solicitudes != null
+	 *
+	 * - Se actualizaran el puntajes para un empleado luego de finalizada la ronda de encuentro en caso que:
+	 *     - Por cada lista de empleados pretensos dónde quede ultimo, resta 5 puntos
+	 *     - Por cada lista de empleados pretensos, sumará 5 puntos
+	 * @param solicitudes
+	 */
 	public static void actualizarPuntajesParaEmpleado(List<TicketBusquedaDeEmpleado> solicitudes) {
 		for (TicketBusquedaDeEmpleado solicitud : solicitudes) {
 			List<UsuarioPuntuado> listaDeAsignaciones = solicitud.getListaDeAsignaciones();
@@ -56,6 +89,14 @@ public class RondaDeEncuentro {
 		}
 	}
 
+	/**
+	 * PRECOND:
+	 *   busquedas != null
+	 *
+	 * - Se actualizaran el puntajes para un empleador luego de finalizada la ronda de encuentro en caso que:
+	 *   - Por ser primero en la lista de empleadores suma 10 por c/u
+	 * @param busquedas
+	 */
 	public static void actualizarPuntajesParaEmpleador(List<TicketBusquedaDeEmpleo> busquedas) {
 		for (TicketBusquedaDeEmpleo busqueda : busquedas) {
 			List<UsuarioPuntuado> listaDeAsignaciones = busqueda.getListaDeAsignaciones();

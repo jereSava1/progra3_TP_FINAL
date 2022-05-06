@@ -25,12 +25,22 @@ public class Empleado extends Usuario {
         this.telefono = telefono;
     }
 
+    /**
+     * Se crea un nuevo ticket de busqueda para el empleado
+     * @param formulario contiene las preferencias del empleado para la busqueda de empleo
+     * @return TicketBusquedaDeEmpleo
+     */
     public TicketBusquedaDeEmpleo altaTicket(FormularioBusqueda formulario){
         return new TicketBusquedaDeEmpleo(formulario, this);
     }
-    
-   
 
+
+    /**
+     * Da de baja el ticket, pone "Finalizado" su estado.
+     * El dar de baja el ticket, resta 1 punto del puntaje final.
+     * @param ticket
+     * @throws NoDuenoDeTicketException lanza excepcion si alguien que no es el dueño del ticket intenta dar de baja el ticket
+     */
     @Override
     public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException{
 		if (ticket.getDueno().equals(this)) {

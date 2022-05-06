@@ -4,10 +4,18 @@ package model.ticket;
 import model.usuario.Empleador;
 
 
-
+/**
+ * Ticket que deberan tener todos los empleadores que deseen realizar busquedas de empleado.
+ */
 public class TicketBusquedaDeEmpleado extends Ticket {
-     
+
+    /**
+     * Total de empleados que requiere la empresa para satisfacer su busqueda de empleados.
+     */
     private int empleadosNecesitados;
+    /**
+     * Empleados que se obtienen luego de las rondas de contrataciones.
+     */
     private int empleadosObtenidos = 0;
 
     
@@ -23,6 +31,10 @@ public class TicketBusquedaDeEmpleado extends Ticket {
                 "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
     }
 
+    /**
+     * Al producirse una contratacion, se incrementa en 1
+     * la cantidad de empleados obtenidos
+     */
     public void aumentarEmpleadosObtenidos(){
         if (empleadosObtenidos < empleadosNecesitados) {
             this.empleadosObtenidos++;
