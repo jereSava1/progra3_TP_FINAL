@@ -1,6 +1,8 @@
 package model.ticket.rangoEtario;
 
-public class Mas50 extends RangoEtario{
+import model.ticket.DatosDeEmpleo;
+
+public class Mas50 extends DatosDeEmpleo{
   public Mas50(int peso){
     super("MAS_50", peso);
   }
@@ -17,7 +19,7 @@ public class Mas50 extends RangoEtario{
     return 1F;
   }
 
-  public float calculaPuntaje(RangoEtario rango) {
+  public float calculaPuntaje(DatosDeEmpleo rango) {
     return rango.match3() * this.getPeso();
   }
 }

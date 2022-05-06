@@ -5,11 +5,11 @@ import model.ticket.experiencia.Media;
 import model.ticket.rangoEtario.Entre40Y50;
 import model.ticket.rangoEtario.Mas50;
 import model.ticket.rangoEtario.Menos40;
-import model.ticket.rangoEtario.RangoEtario;
+import model.ticket.DatosDeEmpleo;
 
 public class RangoEtarioFactory {
 
-  public RangoEtario getRangoEtario(String tipo,int peso) throws ConstructorInvalidoException {
+  public DatosDeEmpleo getRangoEtario(String tipo,int peso) throws ConstructorInvalidoException {
 
     if (tipo == null) {
       return null;

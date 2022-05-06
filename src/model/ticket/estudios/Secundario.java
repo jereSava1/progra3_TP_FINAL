@@ -1,7 +1,8 @@
 package model.ticket.estudios;
 
+import model.ticket.DatosDeEmpleo;
 
-public class Secundario extends Estudios {
+public class Secundario extends DatosDeEmpleo {
   public Secundario(int peso){
     super("SECUNDARIO", peso);
   }
@@ -19,7 +20,7 @@ public class Secundario extends Estudios {
   }
 
 
-  public float calculaPuntaje(Estudios estudios){
+  public float calculaPuntaje(DatosDeEmpleo estudios){
     return estudios.match2() * this.getPeso();
   }
 }

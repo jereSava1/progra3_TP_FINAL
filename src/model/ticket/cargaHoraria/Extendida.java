@@ -1,6 +1,8 @@
 package model.ticket.cargaHoraria;
 
-public class Extendida extends CargaHoraria{
+import model.ticket.DatosDeEmpleo;
+
+public class Extendida extends DatosDeEmpleo{
   public Extendida(int peso) {
     super("EXTENDIDA", peso);
   }
@@ -17,7 +19,7 @@ public class Extendida extends CargaHoraria{
     return 1F;
   }
 
-  public float calculaPuntaje(CargaHoraria cargaHoraria) {
+  public float calculaPuntaje(DatosDeEmpleo cargaHoraria) {
     return cargaHoraria.match3() * this.getPeso();
   }
 }

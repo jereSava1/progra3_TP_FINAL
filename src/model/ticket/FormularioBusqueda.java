@@ -1,31 +1,75 @@
 package model.ticket;
 
-import lombok.Getter;
-import lombok.Setter;
-import model.ticket.Locacion.Locacion;
-import model.ticket.cargaHoraria.CargaHoraria;
-import model.ticket.estudios.Estudios;
-import model.ticket.experiencia.ExperienciaPrevia;
-import model.ticket.pretensionSalarial.PretensionSalarial;
-import model.ticket.rangoEtario.RangoEtario;
-import model.ticket.tipoDePuesto.TipoDePuesto;
 
-@Getter
-@Setter
+import model.ticket.DatosDeEmpleo;
+import model.ticket.pretensionSalarial.PretensionSalarial;
+
+/**
+ * Define el formulario de busqueda que contendra los datos necesarios para generar
+ * tickets de busquedas para el usuario
+ */
 public class FormularioBusqueda {
 
-    private PretensionSalarial pretensionSalarial;
+	/**
+	 * - Pretension Salarial
+	 *     - R < V1
+	 *     - V1 < R < V2
+	 *     - R > V2
+	 *     -> V1, V2 Seran valores para establecer un rango, son establecidos arbitrariamente por la Agencia
+	 */
+	private PretensionSalarial pretensionSalarial;
+	/**
+	 * - Remuneracion Pretendida
+	 * 	   - El usuario ingresa la remuneracion que desea, a partir de esta pretension se establece
+	 * 	   el estado de Pretension salarial, que sera el rango en el que se encuentre la Remuneracion Pretendida
+	 */
     private float remuneracionPretendida;
-    private RangoEtario rangoEtario;
-    private Locacion locacion;
-    private ExperienciaPrevia experienciaPrevia;
-    private CargaHoraria cargaHoraria;
-    private TipoDePuesto tipoDePuesto;
-    private Estudios estudios;
+	/**
+	 * - Rango etario
+	 *     - E < 40
+	 *     - 40 < E < 50
+	 *     - E > 50
+	 */
+    private DatosDeEmpleo rangoEtario;
+	/**
+	 * - Locación
+	 *     - Remoto
+	 *     - Presencial
+	 *     - Cualquiera
+	 */
+    private DatosDeEmpleo locacion;
+	/**
+	 * - Experiencia previa
+	 *     - Nada
+	 *     - Media
+	 *     - Mucha
+	 */
+    private DatosDeEmpleo experienciaPrevia;
+	/**
+	 * - Carga horaria
+	 *     - Media
+	 *     - Completa
+	 *     - Extendida
+	 */
+    private DatosDeEmpleo cargaHoraria;
+	/**
+	 * - Tipo de puesto
+	 *     - Junior
+	 *     - Senior
+	 *     - etc.
+	 */
+    private DatosDeEmpleo tipoDePuesto;
+	/**
+	 * - Estudios
+	 *     - Primario
+	 *     - Secundario
+	 *     - Terciario
+	 */
+    private DatosDeEmpleo estudios;
 
 
-    public FormularioBusqueda(RangoEtario rangoEtario, Locacion locacion, ExperienciaPrevia experienciaPrevia, CargaHoraria cargaHoraria,
-                              TipoDePuesto tipoDePuesto, Estudios estudios, float remuneracionPretendida) {
+    public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia, DatosDeEmpleo cargaHoraria,
+                              DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios, float remuneracionPretendida) {
         this.rangoEtario = rangoEtario;
         this.locacion = locacion;
         this.experienciaPrevia = experienciaPrevia;
@@ -35,4 +79,54 @@ public class FormularioBusqueda {
         this.remuneracionPretendida = remuneracionPretendida;
     }
 
+    @Override
+	public String toString() {
+		return "FormularioBusqueda "+" remuneracionPretendida="
+				+ remuneracionPretendida + ", rangoEtario=" + rangoEtario.getValor() + ", locacion=" + locacion.getValor()
+				+ ", experienciaPrevia=" + experienciaPrevia.getValor() + ", cargaHoraria=" + cargaHoraria.getValor() + ", tipoDePuesto="
+				+ tipoDePuesto.getValor() + ", estudios=" + estudios.getValor() + "]";
+	}
+
+
+   //GETTERS
+	public PretensionSalarial getPretensionSalarial() {
+		return pretensionSalarial;
+	}
+
+
+	public float getRemuneracionPretendida() {
+		return remuneracionPretendida;
+	}
+
+
+	public DatosDeEmpleo getRangoEtario() {
+		return rangoEtario;
+	}
+
+
+	public DatosDeEmpleo getLocacion() {
+		return locacion;
+	}
+
+
+	public DatosDeEmpleo getExperienciaPrevia() {
+		return experienciaPrevia;
+	}
+
+
+	public DatosDeEmpleo getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+
+	public DatosDeEmpleo getTipoDePuesto() {
+		return tipoDePuesto;
+	}
+
+
+	public DatosDeEmpleo getEstudios() {
+		return estudios;
+	}
+
+    
 }

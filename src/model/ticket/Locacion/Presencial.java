@@ -1,6 +1,8 @@
 package model.ticket.Locacion;
 
-public class Presencial extends Locacion{
+import model.ticket.DatosDeEmpleo;
+
+public class Presencial extends DatosDeEmpleo{
   public Presencial(int peso) {
     super("PRESENCIAL", peso);
   }
@@ -21,7 +23,7 @@ public class Presencial extends Locacion{
   }
 
   @Override
-  public float calculaPuntaje(Locacion locacion) {
+  public float calculaPuntaje(DatosDeEmpleo locacion) {
     return locacion.match2() * this.getPeso();
   }
 }

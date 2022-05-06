@@ -1,6 +1,8 @@
 package model.ticket.tipoDePuesto;
 
-public class Sr extends TipoDePuesto{
+import model.ticket.DatosDeEmpleo;
+
+public class Sr extends DatosDeEmpleo{
   public Sr(int peso) {
     super("SR", peso);
   }
@@ -18,7 +20,7 @@ public class Sr extends TipoDePuesto{
   }
 
   @Override
-  public float calculaPuntaje(TipoDePuesto puesto) {
+  public float calculaPuntaje(DatosDeEmpleo puesto) {
     return puesto.match2() * this.getPeso();
   }
 }

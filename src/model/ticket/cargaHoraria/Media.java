@@ -1,6 +1,8 @@
 package model.ticket.cargaHoraria;
 
-public class Media extends CargaHoraria{
+import model.ticket.DatosDeEmpleo;
+
+public class Media extends DatosDeEmpleo{
   public Media(int peso) {
     super("MEDIA", peso);
   }
@@ -17,7 +19,7 @@ public class Media extends CargaHoraria{
     return -1F;
   }
 
-  public float calculaPuntaje(CargaHoraria cargaHoraria) {
+  public float calculaPuntaje(DatosDeEmpleo cargaHoraria) {
     return cargaHoraria.match1() * this.getPeso();
   }
 }
