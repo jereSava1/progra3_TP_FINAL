@@ -9,7 +9,9 @@ import types.EstadoTicket;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/**
+ *
+ */
 public class RondaDeContrataciones {
   /**
    * PRECONDICION: se debe ejecutar luego de la ronda de encuentro y de la ronda de elecciones

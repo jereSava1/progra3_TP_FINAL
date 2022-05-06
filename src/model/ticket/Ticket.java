@@ -7,13 +7,37 @@ import model.usuario.Usuario;
 import types.EstadoTicket;
 
 
-
+/**
+ * Cada ticket estara asignado para un Usuario que podra ser Empleado o Empleador
+ */
 public class Ticket {
 	  private Usuario dueno;
 	  private FormularioBusqueda formularioDeBusqueda;
-	  private LocalDate fechaDeAlta; //LocalDate -> Represents a date (year, month, day (yyyy-MM-dd))  
+	  private LocalDate fechaDeAlta; //LocalDate -> Represents a date (year, month, day
+
+	  /**
+	   * - Activo
+	   *     - Al momento del alta
+	   * - Suspendido
+	   *     - Se puede volver a reactivar
+	   * - Cancelado
+	   *     - El empleador lo cancela
+	   * - Finalizado
+	   *     - Alcanzo la cantidad de empleados solicitados
+	   */
 	  private EstadoTicket estadoTicket;
-	  private List<UsuarioPuntuado> listaDeAsignaciones;
+	/**
+	 * Lista compuesta por Usuarios puntuados segun el nivel de coincidencias entre el Empleado y Empleador
+	 *
+	 * Usuario = Empleado
+	 *   - Cada componente de la lista sera un Empleador rankeado, puntuado segun las coincidencias que se encuentren
+	 *   entre los datos del Empleado y del Empleador
+	 *
+	 * Usuario = Empleador
+	 *   - Cada componente de la lista sera un Empleado rankeado, puntuado segun las coincidencias que se encuentren
+	 * 	 entre los datos del Empleado y del Empleador
+	 */
+	private List<UsuarioPuntuado> listaDeAsignaciones;
 
 
     public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {

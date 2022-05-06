@@ -3,15 +3,24 @@ package model.usuario;
 import java.util.Date;
 
 /**
- *
+ * El usuario puntuado se encontrara dentro de la lista de asignaciones, tanto del empleador, como del empleado.
  */
-
 public class UsuarioPuntuado implements Comparable<UsuarioPuntuado> {
 	 private Date fechaDeGeneracion;
 	 private Usuario usuario;
+	 /**
+	 *  puntaje de coincidencias empleado-empleador
+	  * Determinara el orden en de los usuarios en las listas de asignaciones.
+	 */
 	 private Float puntaje;
-	 private boolean seleccionado;
-	 private boolean contratado;
+	/**
+	 * permite concocer cuandos se ha elegido a un usuario en la ronda de elecciones
+	 */
+	private boolean seleccionado;
+	/**
+	 * permite conocer cuando se ha contratado a un usuario en la ronda de contrataciones
+ 	 */
+	private boolean contratado;
 
 
   public UsuarioPuntuado(Usuario usuario, float puntaje){
@@ -22,16 +31,19 @@ public class UsuarioPuntuado implements Comparable<UsuarioPuntuado> {
     this.contratado = false;
   }
 
-  
-  
   @Override
 public String toString() {
 	return "usuario=" + usuario + ", puntaje=" + puntaje;
 }
 
 
-
-@Override
+	/**
+	 * Se sobreescribe el compareTo con el objetivo de poder ordenar una lista de
+	 * UsuariosPuntuados por el campo puntaje.
+	 * @param item se corresponde a un usuario dentro de la lista de asignacion (UsuarioPuntuado)
+	 * @return
+	 */
+	@Override
   public int compareTo(UsuarioPuntuado item) {
     return this.getPuntaje().compareTo(item.getPuntaje());
   }
