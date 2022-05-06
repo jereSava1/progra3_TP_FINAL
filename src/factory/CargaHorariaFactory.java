@@ -6,7 +6,6 @@ import model.ticket.cargaHoraria.Completa;
 import model.ticket.cargaHoraria.Extendida;
 import model.ticket.cargaHoraria.Media;
 
-
 public class CargaHorariaFactory{
 
   /**

@@ -4,11 +4,8 @@ import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
 import types.*;
 
-import java.util.Objects;
-
 import exception.ContrasenaIncorrectaException;
 import exception.NoDuenoDeTicketException;
-import exception.UsuarioIncorrectoException;
 
 public abstract class Usuario {
 	private String nombre;

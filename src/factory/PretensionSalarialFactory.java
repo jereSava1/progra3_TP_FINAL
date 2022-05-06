@@ -2,7 +2,6 @@ package factory;
 
 import exception.ConstructorInvalidoException;
 import model.Agencia;
-import model.ticket.experiencia.Media;
 import model.ticket.pretensionSalarial.EntreV1YV2;
 import model.ticket.pretensionSalarial.MasDeV2;
 import model.ticket.pretensionSalarial.MenosV1;

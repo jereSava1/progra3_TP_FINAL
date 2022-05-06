@@ -1,9 +1,6 @@
 package negocio;
 
-import exception.LimiteExcedidoException;
 import model.ticket.Ticket;
-import model.usuario.Empleado;
-import model.usuario.Empleador;
 import model.usuario.UsuarioPuntuado;
 import model.usuario.Usuario;
 import java.util.List;

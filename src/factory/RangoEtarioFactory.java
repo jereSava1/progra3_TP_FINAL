@@ -1,7 +1,6 @@
 package factory;
 
 import exception.ConstructorInvalidoException;
-import model.ticket.experiencia.Media;
 import model.ticket.rangoEtario.Entre40Y50;
 import model.ticket.rangoEtario.Mas50;
 import model.ticket.rangoEtario.Menos40;

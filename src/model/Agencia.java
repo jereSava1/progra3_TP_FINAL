@@ -2,7 +2,6 @@ package model;
 
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
-import model.ticket.DatosDeEmpleo;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
 import model.usuario.UsuarioPuntuado;
@@ -13,14 +12,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import exception.ContrasenaIncorrectaException;
 import exception.UsuarioIncorrectoException;
 
-/**
- *
- */
+
+
 public class Agencia {
 	/**
 	 *  coleccion que contiene a los empleados (sin repeticiones) que consumen la aplicacion
@@ -221,9 +218,6 @@ public class Agencia {
 	}
 
 	/**
-	 * PRECOND:
-	 *   - El empleado debe haber conseguido trabajo
-	 *
 	 * Calcula las comisiones que obtendra del empleado segun el sueldo pretendido
 	 * El porcentaje de comision varia segun el tipo de puesto
 	 *

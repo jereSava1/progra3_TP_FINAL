@@ -1,5 +1,8 @@
 package exception;
 
+/**
+ * Excepcion por validacion erronea del Usuario en el login
+ */
 public class UsuarioIncorrectoException extends Exception {
 	private String dato;
 

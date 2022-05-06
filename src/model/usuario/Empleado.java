@@ -3,7 +3,6 @@ package model.usuario;
 import exception.NoDuenoDeTicketException;
 import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
-import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import types.*;
 
