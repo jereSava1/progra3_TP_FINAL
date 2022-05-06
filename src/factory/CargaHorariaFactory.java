@@ -10,11 +10,13 @@ import model.ticket.cargaHoraria.Media;
 public class CargaHorariaFactory{
 
   /**
-   * PRECOND:
-   *   peso >= 0
    * Metodo Factory para generar un objeto del tipo DatoDeEmpleo para calcular el puntaje, recibira dos parametros,
    * un String "tipo" que especifique el requerimiento, y otro de tipo int "peso" que le da el valor que le presta el
    * usuario a este requerimento.
+   *
+   * pre: peso >= 0
+   * pos: Se genera una nueva instancia tipo DatosDeEmpleo segun el tipo ingresado
+   *
    * @param tipo Identificador para poder instanciar el requerimiento del usuario
    * @param peso Valor/importancia que le da el usuario al tipo de dato
    * @return Objetos de tipo clases extendidas de DatoDeEmpleo (especifica la cargaHoraria)

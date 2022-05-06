@@ -17,15 +17,20 @@ public abstract class DatosDeEmpleo implements Puntajes {
 	 * Metodo abstracto que define el calculo de puntaje segun el valor del match
 	 * de los datos de empleo del empleado y empleador, teniendo en cuenta sus correspondientes
 	 * pesos.
+	 *
+	 * pre: datoDeEmpleo != null
+	 * pos: se calcula el puntaje de manera correcta segun valor del match de los datos de empleo
+	 *
+	 *
 	 * @param datoDeEmpleo dato para provocar el matcheo
 	 * @return float, Valor del matcheo teniendo en cuenta el peso(importancia) tomada por el usuario
 	 */
 	public abstract float calculaPuntaje(DatosDeEmpleo datoDeEmpleo);
 
-	  protected DatosDeEmpleo(String valor,int peso) {
+	protected DatosDeEmpleo(String valor,int peso) {
 	    this.valor = valor;
 	    this.peso=peso;
-	  }
+	}
 
 	public String getValor() {
 		return valor;

@@ -34,6 +34,8 @@ public class TicketBusquedaDeEmpleado extends Ticket {
     /**
      * Al producirse una contratacion, se incrementa en 1
      * la cantidad de empleados obtenidos
+     *
+     * pos: se incrementa en 1 los empleados obtenidos, siempre y cuando obtenidos < necesitados
      */
     public void aumentarEmpleadosObtenidos(){
         if (empleadosObtenidos < empleadosNecesitados) {
