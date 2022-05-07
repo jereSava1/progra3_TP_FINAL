@@ -71,14 +71,15 @@ public class FormularioBusqueda {
 
 
     public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia, DatosDeEmpleo cargaHoraria,
-                              DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios, float remuneracionPretendida,int peso) throws ConstructorInvalidoException{
+                              DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios, PretensionSalarial pretensionSalarial) throws ConstructorInvalidoException{
         this.rangoEtario = rangoEtario;
         this.locacion = locacion;
         this.experienciaPrevia = experienciaPrevia;
         this.cargaHoraria = cargaHoraria;
         this.tipoDePuesto = tipoDePuesto;
         this.estudios = estudios;
-        pretensionSalarial= PretensionSalarialFactory.getPretensionSalarial(peso, remuneracionPretendida);
+				this.pretensionSalarial = pretensionSalarial;
+        this.remuneracionPretendida = pretensionSalarial.getRemuneracion();
     }
 
     @Override

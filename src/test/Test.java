@@ -3,12 +3,7 @@ package test;
 import java.util.Set;
 
 import exception.ConstructorInvalidoException;
-import factory.CargaHorariaFactory;
-import factory.EstudiosFactory;
-import factory.ExperienciaFactory;
-import factory.LocacionFactory;
-import factory.RangoEtarioFactory;
-import factory.TipoDePuestoFactory;
+import factory.*;
 import model.Agencia;
 import model.ticket.DatosDeEmpleo;
 import model.ticket.FormularioBusqueda;
@@ -54,13 +49,13 @@ public class Test {
 			TicketBusquedaDeEmpleado t5 = arcor.altaTicket(new FormularioBusqueda(
 					RangoEtarioFactory.getRangoEtario(30, 10), LocacionFactory.getLocacion("INDISTINTO", 5),
 					ExperienciaFactory.getExperiencia("MUCHA", 10), CargaHorariaFactory.getCargaHoraria("COMPLETA", 10),
-					TipoDePuestoFactory.getTipoDePuesto("SR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), 1500,5),
+					TipoDePuestoFactory.getTipoDePuesto("SR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), PretensionSalarialFactory.getPretensionSalarial(5,1000)),
 					1);
 
 			TicketBusquedaDeEmpleado t6 = medife.altaTicket(new FormularioBusqueda(
 					RangoEtarioFactory.getRangoEtario(50, 5), LocacionFactory.getLocacion("INDISTINTO", 15),
 					ExperienciaFactory.getExperiencia("MEDIA", 10), CargaHorariaFactory.getCargaHoraria("MEDIA", 10),
-					TipoDePuestoFactory.getTipoDePuesto("JR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), 1000,5),
+					TipoDePuestoFactory.getTipoDePuesto("JR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), PretensionSalarialFactory.getPretensionSalarial(5,1000)),
 					2);
 			agencia.addSolicitudes(t5);
 			agencia.addSolicitudes(t6);
@@ -70,23 +65,23 @@ public class Test {
 
 					RangoEtarioFactory.getRangoEtario(30, 10), LocacionFactory.getLocacion("INDISTINTO", 5),
 					ExperienciaFactory.getExperiencia("MUCHA", 10), CargaHorariaFactory.getCargaHoraria("COMPLETA", 10),
-					TipoDePuestoFactory.getTipoDePuesto("SR", 5), EstudiosFactory.getEstudios("SECUNDARIO", 10), 1500,5));
+					TipoDePuestoFactory.getTipoDePuesto("SR", 5), EstudiosFactory.getEstudios("SECUNDARIO", 10), PretensionSalarialFactory.getPretensionSalarial(5,1000)));
 
 			TicketBusquedaDeEmpleo t2 = facu.altaTicket(new FormularioBusqueda(
 
 					RangoEtarioFactory.getRangoEtario(30, 10), LocacionFactory.getLocacion("INDISTINTO", 5),
 					ExperienciaFactory.getExperiencia("MUCHA", 10), CargaHorariaFactory.getCargaHoraria("COMPLETA", 10),
-					TipoDePuestoFactory.getTipoDePuesto("SR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), 1500,5));
+					TipoDePuestoFactory.getTipoDePuesto("SR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), PretensionSalarialFactory.getPretensionSalarial(5,1000)));
 
 			TicketBusquedaDeEmpleo t3 = agus.altaTicket(new FormularioBusqueda(RangoEtarioFactory.getRangoEtario(50, 5),
 					LocacionFactory.getLocacion("INDISTINTO", 15), ExperienciaFactory.getExperiencia("MEDIA", 10),
 					CargaHorariaFactory.getCargaHoraria("MEDIA", 10), TipoDePuestoFactory.getTipoDePuesto("JR", 5),
-					EstudiosFactory.getEstudios("PRIMARIO", 10), 1000,5));
+					EstudiosFactory.getEstudios("PRIMARIO", 10), PretensionSalarialFactory.getPretensionSalarial(5,1000)));
 
 			TicketBusquedaDeEmpleo t4 = bauti.altaTicket(new FormularioBusqueda(
 					RangoEtarioFactory.getRangoEtario(50, 5), LocacionFactory.getLocacion("INDISTINTO", 15),
 					ExperienciaFactory.getExperiencia("MEDIA", 10), CargaHorariaFactory.getCargaHoraria("MEDIA", 10),
-					TipoDePuestoFactory.getTipoDePuesto("JR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), 1000,5));
+					TipoDePuestoFactory.getTipoDePuesto("JR", 5), EstudiosFactory.getEstudios("TERCIARIO", 10), PretensionSalarialFactory.getPretensionSalarial(5,1000)));
 
 			agencia.addBusquedas(t1);
 			agencia.addBusquedas(t2);

@@ -24,7 +24,7 @@ public class MenosV1 extends PretensionSalarial {
   }
 
   @Override
-  public float calculaPuntaje(PretensionSalarial pretensionSalarial) {
+  public float calculaPuntaje(DatosDeEmpleo pretensionSalarial) {
     return pretensionSalarial.match1() * this.getPeso();
   }
 }

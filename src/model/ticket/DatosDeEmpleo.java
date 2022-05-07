@@ -11,7 +11,7 @@ import interfaces.Puntajes;
  */
 public abstract class DatosDeEmpleo implements Puntajes {
 	  private final String valor;
-	  private int peso;
+	  protected int peso;
 
 	/**
 	 * Metodo abstracto que define el calculo de puntaje segun el valor del match
