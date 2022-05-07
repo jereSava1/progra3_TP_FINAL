@@ -1,6 +1,6 @@
 package factory;
 
-import exception.ConstructorInvalidoException;
+
 import model.ticket.rangoEtario.Entre40Y50;
 import model.ticket.rangoEtario.Mas50;
 import model.ticket.rangoEtario.Menos40;
@@ -8,24 +8,24 @@ import model.ticket.DatosDeEmpleo;
 
 public class RangoEtarioFactory {
 
-  public DatosDeEmpleo getRangoEtario(String tipo,int peso) throws ConstructorInvalidoException {
+  public static DatosDeEmpleo getRangoEtario(int edad,int peso) {
 
-    if (tipo == null) {
+    if (edad < 0) {
       return null;
     }
 
-    if (tipo.equalsIgnoreCase("MENOR_40")){
+    if (edad < 40){
       return new Menos40(peso);
     }
 
-    if (tipo.equalsIgnoreCase("ENTRE_40_50")){
+    if (edad >= 40 && edad <= 50){
       return new Entre40Y50(peso);
     }
 
-    if (tipo.equalsIgnoreCase("MAS_50")){
+    if (edad > 50){
       return new Mas50(peso);
     }
 
-    throw new ConstructorInvalidoException(tipo);
+      return null;
   }
 }

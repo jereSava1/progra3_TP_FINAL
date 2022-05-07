@@ -21,8 +21,11 @@ public class Empleador extends Usuario {
 	 */
 	private Rubro rubro;
 
-	public Empleador(String nombreUsuario, String contrasena) {
+	public Empleador(String nombre,String nombreUsuario, String contrasena,TipoPersona tipoPersona,Rubro rubro) {
 		super(nombreUsuario, contrasena);
+		this.setNombre(nombre);
+	    this.tipoPersona=tipoPersona;
+	    this.rubro=rubro;
 	}
 
 	/**
@@ -50,6 +53,13 @@ public class Empleador extends Usuario {
 
 	public Rubro getRubro() {
 		return rubro;
+	}
+
+	@Override
+	public String toString(){
+        return "\n" + "Nombre: " + this.getNombre() + "\n"+
+	"Tipo De Persona: "+ this.getTipoPersona() + "\n" +
+    "Rubro: "+ this.getRubro() + "\n" ;
 	}
 	
 }

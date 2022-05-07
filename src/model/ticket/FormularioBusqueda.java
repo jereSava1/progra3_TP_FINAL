@@ -1,6 +1,8 @@
 package model.ticket;
 
 
+import exception.ConstructorInvalidoException;
+import factory.PretensionSalarialFactory;
 import model.ticket.DatosDeEmpleo;
 import model.ticket.pretensionSalarial.PretensionSalarial;
 
@@ -32,7 +34,7 @@ public class FormularioBusqueda {
 	 */
     private DatosDeEmpleo rangoEtario;
 	/**
-	 * - Locación
+	 *     - Locacion
 	 *     - Remoto
 	 *     - Presencial
 	 *     - Cualquiera
@@ -69,14 +71,14 @@ public class FormularioBusqueda {
 
 
     public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia, DatosDeEmpleo cargaHoraria,
-                              DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios, float remuneracionPretendida) {
+                              DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios, float remuneracionPretendida,int peso) throws ConstructorInvalidoException{
         this.rangoEtario = rangoEtario;
         this.locacion = locacion;
         this.experienciaPrevia = experienciaPrevia;
         this.cargaHoraria = cargaHoraria;
         this.tipoDePuesto = tipoDePuesto;
         this.estudios = estudios;
-        this.remuneracionPretendida = remuneracionPretendida;
+        pretensionSalarial= PretensionSalarialFactory.getPretensionSalarial(peso, remuneracionPretendida);
     }
 
     @Override

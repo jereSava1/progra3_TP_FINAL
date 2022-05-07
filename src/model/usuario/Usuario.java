@@ -24,7 +24,7 @@ public abstract class Usuario {
 		if (contrasena.equals(this.contrasena))
 			ingreso = true;
 		else {
-			throw new ContrasenaIncorrectaException(contrasena, "contrasena incorrecta");
+			throw new ContrasenaIncorrectaException("contrasena incorrecta");
 		}
 		return ingreso;
 	}
@@ -109,4 +109,10 @@ public abstract class Usuario {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return " nombreUsuario = " + nombreUsuario + ", puntaje = " + puntaje+"\n";
+	}
+
+	
 }

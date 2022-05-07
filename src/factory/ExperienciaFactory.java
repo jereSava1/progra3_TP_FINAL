@@ -8,7 +8,7 @@ import model.ticket.experiencia.Nada;
 
 public class ExperienciaFactory {
 
-  public DatosDeEmpleo getExperiencia(String tipo,int peso) throws ConstructorInvalidoException {
+  public static DatosDeEmpleo getExperiencia(String tipo,int peso) throws ConstructorInvalidoException {
     if (tipo == null) {
       return null;
     }

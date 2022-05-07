@@ -107,17 +107,14 @@ public class Agencia {
 	 * @param contrasena
 	 * @throws UsuarioIncorrectoException el empleado no se encuentra en la lista de empleados
 	 */
-	public void loginEmpleado(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException {
+	public boolean loginEmpleado(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException,ContrasenaIncorrectaException {
 		for (Empleado empleado : this.empleados) {
 			if (empleado.getNombreUsuario().equals(nombreUsuario)) {
-				try {
-					empleado.validaContrasena(contrasena);
-				} catch (ContrasenaIncorrectaException e) {
-					System.out.println("Contrasena incorrecta");
-				}
-			} else
-				throw new UsuarioIncorrectoException(nombreUsuario, "nombre incorrecto");
+				return empleado.validaContrasena(contrasena);
+			} 
 		}
+		throw new UsuarioIncorrectoException(nombreUsuario, "nombre incorrecto");
+	
 	}
 
 	/**
@@ -197,21 +194,21 @@ public class Agencia {
 
 		if (empleador.getTipoPersona().equals(TipoPersona.FISICA)) {
 			if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
-				if (0.8 > empleador.getPuntaje() / 100)
+				if (0.8 > (float) empleador.getPuntaje() / 100)
 					comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
 			} else if (empleador.getRubro().equals(Rubro.COMERCIO_LOCAL)) {
-				if (0.7 > empleador.getPuntaje() / 100)
+				if (0.7 > (float) empleador.getPuntaje() / 100)
 					comision = (float) (sueldo * (0.7 - empleador.getPuntaje() / 100));
-			} else if (0.6 > empleador.getPuntaje() / 100)
+			} else if (0.6 > (float) empleador.getPuntaje() / 100)
 				comision = (float) (sueldo * (0.6 - empleador.getPuntaje() / 100));
 		} else {
 			if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
-				if (1 > empleador.getPuntaje() / 100)
+				if (1 > (float) empleador.getPuntaje() / 100)
 					comision = sueldo * (1 - empleador.getPuntaje() / 100);
 			} else if (empleador.getRubro().equals(Rubro.COMERCIO_LOCAL)) {
-				if (0.9 > empleador.getPuntaje() / 100)
+				if (0.9 > (float) empleador.getPuntaje() / 100)
 					comision = (float) (sueldo * (0.9 - empleador.getPuntaje() / 100));
-			} else if (0.8 > empleador.getPuntaje() / 100)
+			} else if (0.8 > (float) empleador.getPuntaje() / 100)
 				comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
 		}
 		return comision;
@@ -241,18 +238,27 @@ public class Agencia {
 		String tipoDePuesto = ticket.getFormularioDeBusqueda().getTipoDePuesto().getValor();
 
 		if (tipoDePuesto.equalsIgnoreCase("JR")) {
-			if (0.8 > empleado.getPuntaje() / 100)
+			if (0.8 > (float) empleado.getPuntaje() / 100)
 				comision = (float) (sueldo * (0.8 - empleado.getPuntaje() / 100));
 		} else if (tipoDePuesto.equalsIgnoreCase("SR")) {
-			if (0.9 > empleado.getPuntaje() / 100)
+			if (0.9 > (float) empleado.getPuntaje() / 100)
 				comision = (float) (sueldo * (0.9 - empleado.getPuntaje() / 100));
 		} else if (tipoDePuesto.equalsIgnoreCase("MANAGMENT")) {
-			if (1.0 > empleado.getPuntaje() / 100)
+			if (1.0 > (float) empleado.getPuntaje() / 100)
 				comision = (float) (sueldo * (1.0 - empleado.getPuntaje() / 100));
 		}
 		return comision;
 	}
-
+	
+	public void addSolicitudes(TicketBusquedaDeEmpleado t) {
+		
+		this.solicitudes.add(t);
+	}
+	
+public void addBusquedas(TicketBusquedaDeEmpleo t) {
+		
+		this.busquedas.add(t);
+	}
 	
 	// GETTERS Y SETTERS
 	public Set<Empleado> getEmpleados() {
@@ -277,6 +283,14 @@ public class Agencia {
 
 	public Float getRemuneracionV2() {
 		return remuneracionV2;
+	}
+
+	public void setRemuneracionV1(Float remuneracionV1) {
+		this.remuneracionV1 = remuneracionV1;
+	}
+
+	public void setRemuneracionV2(Float remuneracionV2) {
+		this.remuneracionV2 = remuneracionV2;
 	}
 
 	public Float getComisiones() {

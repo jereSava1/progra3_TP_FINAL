@@ -51,8 +51,8 @@ public class Ticket {
     
 @Override
 	public String toString() {
-		return "Ticket [dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString() + ", fechaDeAlta="
-				+ fechaDeAlta.toString() + ", estadoTicket= " + estadoTicket +"]";
+		return "Ticket dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString() + ", fechaDeAlta="
+				+ fechaDeAlta.toString() + ", estadoTicket= " + estadoTicket + "\n";
 	}
 
 

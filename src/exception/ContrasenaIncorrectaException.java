@@ -6,9 +6,8 @@ package exception;
 public class ContrasenaIncorrectaException extends Exception {
 	private String dato;
 
-	public ContrasenaIncorrectaException(String nombreUsuario,String message) {
+	public ContrasenaIncorrectaException(String message) {
 		super(message);
-		this.dato = nombreUsuario;
 	}
 
 }

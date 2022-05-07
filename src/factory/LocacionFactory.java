@@ -8,7 +8,7 @@ import model.ticket.Locacion.Presencial;
 
 public class LocacionFactory {
 
-  public DatosDeEmpleo getLocacion(String tipo, int peso) throws ConstructorInvalidoException {
+  public static DatosDeEmpleo getLocacion(String tipo, int peso) throws ConstructorInvalidoException {
 
     if (tipo == null) {
       return null;

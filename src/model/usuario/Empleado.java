@@ -82,7 +82,7 @@ public class Empleado extends Usuario {
     
     @Override
     public String toString(){
-        return "Nombre: " + this.getNombre() + "\n" +
+        return "\n" + "Nombre: " + this.getNombre() + "\n" +
                 "Telefono: " + this.getTelefono() + "\n" +
                 "email: " + this.getEmail() + "\n" +
                 "Edad: " + this.getEdad() + "\n";

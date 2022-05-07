@@ -8,7 +8,7 @@ import model.ticket.DatosDeEmpleo;
 
 public class TipoDePuestoFactory {
 
-  public DatosDeEmpleo getTipoDePuesto(String tipo,int peso) throws ConstructorInvalidoException {
+  public static DatosDeEmpleo getTipoDePuesto(String tipo,int peso) throws ConstructorInvalidoException {
     if (tipo == null) {
       return null;
     }
