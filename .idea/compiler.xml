@@ -7,9 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="progra3_TP_FINAL-master" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="progra3_TP_FINAL-master" target="1.8" />
       <module name="TpProgra3" target="8" />
     </bytecodeTargetLevel>
   </component>

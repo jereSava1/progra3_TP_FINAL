@@ -73,10 +73,12 @@ public class RondaDeEncuentro {
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
 		}
+		actualizarPuntajesParaEmpleador(agencia.getBusquedas()); //una vez que se generan las listas de asignacion, tenemos que actualzar puntajes
 
 		for (Ticket solicitud : agencia.getSolicitudes()) { // TICKETS DE EMPLEADORES
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getBusquedas(), solicitud);
 		}
+		actualizarPuntajesParaEmpleado(agencia.getSolicitudes());
 	}
 
 	/**
