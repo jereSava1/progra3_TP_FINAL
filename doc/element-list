@@ -1,0 +1,16 @@
+exception
+factory
+interfaces
+model
+model.ticket
+model.ticket.cargaHoraria
+model.ticket.estudios
+model.ticket.experiencia
+model.ticket.Locacion
+model.ticket.pretensionSalarial
+model.ticket.rangoEtario
+model.ticket.tipoDePuesto
+model.usuario
+negocio
+test
+types

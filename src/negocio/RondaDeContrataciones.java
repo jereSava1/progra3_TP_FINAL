@@ -3,8 +3,10 @@ import model.Agencia;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
+import model.usuario.Usuario;
 import model.usuario.UsuarioPuntuado;
 import types.EstadoTicket;
+import types.Resultado;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,7 +43,7 @@ public class RondaDeContrataciones {
               .collect(Collectors.toList()); //filtro los candidatos seleccionados por los empleadores de la lista de asignaciones
 
       for (TicketBusquedaDeEmpleo busqueda : agencia.getBusquedas()) { //TICKETS DE EMPLEADOS
-        if (solicitud.getEstadoTicket() == EstadoTicket.FINALIZADO) { //Si el ticket se cerró durante la ejecucion, la corto
+        if (solicitud.getEstadoTicket() == EstadoTicket.FINALIZADO) { //Si el ticket se cerro durante la ejecucion, la corto
           break;
         }
 
@@ -61,17 +63,29 @@ public class RondaDeContrataciones {
         	agencia.setComisiones(agencia.getComisiones()+comisiones);
         	/* Actualizamos los atributos del ticket de empleado*/
             busqueda.setEstadoTicket(EstadoTicket.FINALIZADO); //Si se contrata, finalizamos el ticket
+            busqueda.setResultado(Resultado.EXITO);
             busqueda.getDueno().aumentarPuntaje(10); //aumentamos el puntaje del usuario
-
+            UsuarioPuntuado empleadorSeleccionado = busqueda.getListaDeAsignaciones().stream().filter(r->r.getUsuario().equals(solicitud.getDueno())).findFirst().get();
+            empleadorSeleccionado.setContratado(true);
+            UsuarioPuntuado empleadoSeleccionado = solicitud.getListaDeAsignaciones().stream().filter(r->r.getUsuario().equals(busqueda.getDueno())).findFirst().get();
+            empleadoSeleccionado.setContratado(true);
             /*actualizamos los atributos del ticket de empleador*/
             solicitud.aumentarEmpleadosObtenidos();
             if (solicitud.getEmpleadosObtenidos() == solicitud.getEmpleadosNecesitados()) { //si alcanza el tope, cierro el ticket
               solicitud.setEstadoTicket(EstadoTicket.FINALIZADO);
               solicitud.getDueno().aumentarPuntaje(50);
+            
             }
           }
         }
       }
     } 
   }
+  public static void muestraCandidatosContratados(Ticket ticket) {
+		List<UsuarioPuntuado> contratados = ticket.getListaDeAsignaciones().stream().filter(r -> r.isContratado())
+				.collect(Collectors.toList()); //guarda los usuarios seleccionados por el creador del ticket
+		for (UsuarioPuntuado usuarioP : contratados) {
+			System.out.println(usuarioP.toString());
+		}
+	}
 }

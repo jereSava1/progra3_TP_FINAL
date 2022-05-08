@@ -1,5 +1,6 @@
 package model.usuario;
 
+import exception.EstadoInvalidoException;
 import exception.NoDuenoDeTicketException;
 import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
@@ -47,13 +48,9 @@ public class Empleado extends Usuario {
      * @throws NoDuenoDeTicketException lanza excepcion si alguien que no es el dueño del ticket intenta dar de baja el ticket
      */
     @Override
-    public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException{
-		if (ticket.getDueno().equals(this)) {
-			ticket.setEstadoTicket(EstadoTicket.CANCELADO);
-			this.bajarPuntaje(1);
-		} else {
-			throw new NoDuenoDeTicketException(ticket,"ticket "+ticket.getDueno()+" no es dueno de este ticket");
-		}
+    public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException, EstadoInvalidoException{
+		super.bajaTicket(ticket);
+		this.bajarPuntaje(1);
 	}
    //GETTERS Y SETTERS
     public String getTelefono() {

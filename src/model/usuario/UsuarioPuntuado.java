@@ -33,7 +33,7 @@ public class UsuarioPuntuado implements Comparable<UsuarioPuntuado> {
 
   @Override
 public String toString() {
-	return "usuario=" + usuario + ", puntaje=" + puntaje;
+	return " "+"usuario=" + usuario + ", puntaje=" + puntaje+" \n";
 }
 
 
@@ -80,6 +80,10 @@ public Date getFechaDeGeneracion() {
 
 public boolean isContratado() {
 	return contratado;
+}
+
+public void setContratado(boolean contratado) {
+	this.contratado = contratado;
 }
 
 

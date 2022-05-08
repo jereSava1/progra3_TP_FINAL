@@ -41,7 +41,7 @@ public class Empleador extends Usuario {
 		if (ticket.getDueno().equals(this)) {
 			ticket.setEmpleadosNecesitados(cantEmpleados);
 		} else {
-			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");
+			throw new NoDuenoDeTicketException( this.getNombre()+ " no es dueno de este ticket");
 		}
 	}
 	

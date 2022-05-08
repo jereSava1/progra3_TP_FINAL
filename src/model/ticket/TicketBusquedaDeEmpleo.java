@@ -28,4 +28,13 @@ public class TicketBusquedaDeEmpleo extends Ticket {
         return super.toString()+ "Remuneracion pretendida: " + this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" +
                 "Resultado " + (this.resultado != null ? this.resultado.toString() : "inconcluso") + "\n";
     }
+
+	public Resultado getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(Resultado resultado) {
+		this.resultado = resultado;
+	}
+    
 }

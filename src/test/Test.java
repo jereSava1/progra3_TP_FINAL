@@ -1,8 +1,14 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import exception.ConstructorInvalidoException;
+import exception.ContrasenaIncorrectaException;
+import exception.EstadoInvalidoException;
+import exception.NoDuenoDeTicketException;
+import exception.UsuarioIncorrectoException;
 import factory.*;
 import model.Agencia;
 import model.ticket.DatosDeEmpleo;
@@ -12,7 +18,11 @@ import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
+import model.usuario.Usuario;
+import negocio.RondaDeContrataciones;
+import negocio.RondaDeElecciones;
 import negocio.RondaDeEncuentro;
+import types.EstadoTicket;
 import types.Rubro;
 import types.TipoPersona;
 
@@ -37,15 +47,24 @@ public class Test {
 		agencia.setRemuneracionV1(500F);
 		agencia.setRemuneracionV2(3000F);
 		
-		Empleador arcor = new Empleador("Soy ARCORRRR", "Arcor", "caramelo.22", TipoPersona.FISICA,
+		Empleador arcor = new Empleador("ARCOR", "ArcorOficial", "caramelo.22", TipoPersona.FISICA,
 				Rubro.COMERCIO_INTERNACIONAL);
-		Empleador medife = new Empleador("Mauri", "Medife", "salud2022", TipoPersona.FISICA, Rubro.SALUD);
+		Empleador medife = new Empleador("Medife", "MedifeOficial", "salud2022", TipoPersona.FISICA, Rubro.SALUD);
 		agencia.registraEmpleador(arcor);
 		agencia.registraEmpleador(medife);
-
+		
+		
+		
+		System.out.println("------------------------------------------\n");
+		System.out.println("EMPLEADORES REGISTRADOS EN LA PLATAFORMA:  ");
 		agencia.mostrarEmpleador();
+		System.out.println("------------------------------------------\n");
+		System.out.println("EMPLEADOS REGISTRADOS EN LA PLATAFORMA:  ");
 		agencia.mostrarEmpleados();
+		System.out.println("------------------------------------------\n");
 		try {
+			agencia.loginEmpleado("jeresava1", "contrasena");
+			
 			TicketBusquedaDeEmpleado t5 = arcor.altaTicket(new FormularioBusqueda(
 					RangoEtarioFactory.getRangoEtario(30, 10), LocacionFactory.getLocacion("INDISTINTO", 5),
 					ExperienciaFactory.getExperiencia("MUCHA", 10), CargaHorariaFactory.getCargaHoraria("COMPLETA", 10),
@@ -59,6 +78,7 @@ public class Test {
 					2);
 			agencia.addSolicitudes(t5);
 			agencia.addSolicitudes(t6);
+			System.out.println("TICKETS DE BUSQUEDA DE EMPLEADOS : ");
 			agencia.mostrarTicketSolicitud();
 
 			TicketBusquedaDeEmpleo t1 = jere.altaTicket(new FormularioBusqueda(
@@ -88,14 +108,52 @@ public class Test {
 			agencia.addBusquedas(t3);
 			agencia.addBusquedas(t4);
 
+			System.out.println("------------------------------------------\n");
+			System.out.println("TICKETS DE BUSQUEDA DE EMPLEADOS:  \n");
 			agencia.mostrarTicketBusqueda();
+			System.out.println("------------------------------------------\n");
 			RondaDeEncuentro.ejecutarRondaDeEncuentros(agencia);
+			System.out.println("Lista de asignaciones de BAUTI:  \n");
 			System.out.println(t4.getListaDeAsignaciones());
-		
-		} 
-		catch (Exception e) {
+			System.out.println("------------------------------------------\n");
+			System.out.println("LISTA DE ASIGNACIONES DE MEDIFE:   \n");
+			System.out.println(t6.getListaDeAsignaciones());
+			RondaDeElecciones.seleccionaCandidato(t4, medife);
+			RondaDeElecciones.seleccionaCandidato(t3, medife);
+			System.out.println("------------------------------------------\n");
+			System.out.println("CANDIDATOS SELECCIONADOS POR BAUTI: ");
+			RondaDeElecciones.muestraCandidatosSeleccionados(t4);
+			System.out.println("------------------------------------------\n");
+			List<Usuario> listaUsuarios=new ArrayList<>();
+			listaUsuarios.add(t4.getDueno());
+			listaUsuarios.add(t3.getDueno());
+			RondaDeElecciones.seleccionaMultiplesCandidatos(t6, listaUsuarios);
+			System.out.println("CANDIDATOS SELECCIONADOS POR MEDIFE: ");
+			RondaDeElecciones.muestraCandidatosSeleccionados(t6);
+			System.out.println("------------------------------------------\n");
+			RondaDeContrataciones.ejecutarRondaDeContrataciones(agencia);
+			System.out.println("MUESTRA CANDIDATOS CONTRATADOS POR MEDIFE: ");
+			RondaDeContrataciones.muestraCandidatosContratados(t6);
+			agencia.calculaComisionesEmpleado(t4);
+			agencia.calculaComisionesEmpleador(t6);
+			System.out.println("------------------------------------------\n");
+			System.out.println("COMISION OBTENIDA: "+ agencia.getComisiones());
+			
+			agus.bajaTicket(t2);// se realiza una baja de un ticket que no pertenece al usuario para probar la excepcion
+			
+			} 
+		catch(ContrasenaIncorrectaException e){
+		    System.out.println(e.getMessage());	
+		}
+		catch(UsuarioIncorrectoException e) {
+			System.out.println(e.getDato()+e.getMessage());
+		}
+		catch (ConstructorInvalidoException e) {
+			System.out.println(e.getMessage());
+		} catch (NoDuenoDeTicketException e) {
+			System.out.println(e.getMessage());
+		} catch (EstadoInvalidoException e) {
 			System.out.println(e.getMessage());
 		}
-
 	}
 }

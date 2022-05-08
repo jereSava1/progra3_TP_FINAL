@@ -11,4 +11,8 @@ public class UsuarioIncorrectoException extends Exception {
 		this.dato = nombreUsuario;
 	}
 
+	public String getDato() {
+		return dato;
+	}
+
 }

@@ -84,10 +84,10 @@ public class FormularioBusqueda {
 
     @Override
 	public String toString() {
-		return "FormularioBusqueda "+" remuneracionPretendida="
+		return "FormularioBusqueda ("+" remuneracionPretendida="
 				+ remuneracionPretendida + ", rangoEtario=" + rangoEtario.getValor() + ", locacion=" + locacion.getValor()
 				+ ", experienciaPrevia=" + experienciaPrevia.getValor() + ", cargaHoraria=" + cargaHoraria.getValor() + ", tipoDePuesto="
-				+ tipoDePuesto.getValor() + ", estudios=" + estudios.getValor() + "]";
+				+ tipoDePuesto.getValor() + ", estudios=" + estudios.getValor() + ")";
 	}
 
 

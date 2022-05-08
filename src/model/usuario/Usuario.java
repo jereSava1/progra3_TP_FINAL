@@ -5,6 +5,7 @@ import model.ticket.Ticket;
 import types.*;
 
 import exception.ContrasenaIncorrectaException;
+import exception.EstadoInvalidoException;
 import exception.NoDuenoDeTicketException;
 
 public abstract class Usuario {
@@ -29,21 +30,24 @@ public abstract class Usuario {
 		return ingreso;
 	}
 
-	public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException {
+	public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException, EstadoInvalidoException {
 		if (ticket.getDueno().equals(this)) {
-			ticket.setEstadoTicket(EstadoTicket.CANCELADO);
+			if(ticket.getEstadoTicket().equals(EstadoTicket.FINALIZADO))
+				throw new EstadoInvalidoException("no se puede modificar el estado de un ticket ya finalizado");
+			else
+			   ticket.setEstadoTicket(EstadoTicket.CANCELADO);
 		} else {
-			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");// try
+			throw new NoDuenoDeTicketException(this.getNombre()+" no es dueno del ticket que desea dar de baja");// try
 		}
 	}
 
 	/**
 	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en el.
 	 *
-	 * pre: ticket != null; formulario != null
+	 * pre: ticket != null ; formulario != null
 	 * pos: se modifico el ticket reemplazando el formulario anterior, por uno nuevo
 	 *
-	 * @param ticket ticket al que se le desea aplicar la modificacion
+	 * @param ticket ticket al que se le desea aplicar la modificacion, con estadoTicket!=FINALIZADO y estadoTicket!=CANCELADO
 	 * @param formularioBusqueda nuevo formulario, reemplaza al anterior
 	 * @throws NoDuenoDeTicketException
 	 */
@@ -51,15 +55,30 @@ public abstract class Usuario {
 		if (ticket.getDueno().equals(this)) {
 			ticket.setFormularioDeBusqueda(formularioBusqueda);
 		} else {
-			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");
+			throw new NoDuenoDeTicketException(this.getNombre()+" no es dueno de este ticket");
 		}
 	}
 
-	public void cambiaEstadoTicket(Ticket ticket, EstadoTicket estado) throws NoDuenoDeTicketException {
+	/**
+	 * Cambia el estado  del ticket de un usurio, permite cancelar, suspender o activar el ticket
+	 *
+	 * pre: ticket != null
+	 * pos: se modifica el estado del ticket con exito
+	 *
+	 * @param ticket ticket al que se le desea aplicar la modificacion, con estadoTicket!=CANCELADO
+	 * @param estado, nuevo estado que se le quiere asignar al ticket
+	 * @throws NoDuenoDeTicketException EstadoInvalidoException
+	 */
+	
+	public void cambiaEstadoTicket(Ticket ticket, EstadoTicket estado) throws NoDuenoDeTicketException,EstadoInvalidoException {
 		if (ticket.getDueno().equals(this)) {
-			ticket.setEstadoTicket(estado);
+			if(ticket.getEstadoTicket().equals(EstadoTicket.FINALIZADO))
+				throw new EstadoInvalidoException("no se puede modificar el estado de un ticket ya finalizado");
+			else
+			  ticket.setEstadoTicket(estado);
+			
 		} else {
-			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");
+			throw new NoDuenoDeTicketException(this.getNombre()+ " no es dueno de este ticket");
 		}
 	}
 

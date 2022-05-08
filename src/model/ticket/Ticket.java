@@ -45,14 +45,13 @@ public class Ticket {
         this.fechaDeAlta = LocalDate.now();
         this.estadoTicket = EstadoTicket.ACTIVO;
         this.dueno = usuario;
-        
     }
 
     
 @Override
 	public String toString() {
-		return "Ticket dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString() + ", fechaDeAlta="
-				+ fechaDeAlta.toString() + ", estadoTicket= " + estadoTicket + "\n";
+		return "Ticket: [ dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString() + ", fechaDeAlta="
+				+ fechaDeAlta.toString() + ", estadoTicket= " + estadoTicket + " ]\n";
 	}
 
 
