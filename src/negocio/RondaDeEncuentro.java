@@ -5,8 +5,6 @@ import model.ticket.FormularioBusqueda;
 import java.util.Collections;
 import java.util.List;
 
-import exception.ListaVaciaException;
-
 import java.util.ArrayList;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
@@ -125,19 +123,18 @@ public class RondaDeEncuentro {
 	 * el ticket puede ver cuales son los candidatos a elegir( para ejecutar la ronda de elecciones)
 	 *
 	 * pre: ticket != null
+	 * 		lista de asignaciones del ticket no vacia
 	 *
 	 * pos: Muestra por pantalla la lista de asignaciones de un determinado ticket
 	 * 
 	 * @param ticket recibe un ticket generico de la clase abstracta.
 	 */
-	public static void muestraListaDeAsignaciones(Ticket ticket) throws ListaVaciaException {
+	public static void muestraListaDeAsignaciones(Ticket ticket) {
 		List<UsuarioPuntuado> lista = ticket.getListaDeAsignaciones();
 		if(lista.size()>0) {
 		   for (UsuarioPuntuado usuarioP : lista) {
 			   System.out.println(usuarioP.toString());
 		   }
 		}
-		else
-			throw new ListaVaciaException("lista de asignaciones vacia");
 	}
 }
