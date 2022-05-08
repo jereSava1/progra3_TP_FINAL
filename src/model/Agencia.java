@@ -292,10 +292,8 @@ public void empleadorNoElegido() {
 		}
 	}
 }
-}
 
-	
-	// GETTERS Y SETTERS
+// GETTERS Y SETTERS
 	public Set<Empleado> getEmpleados() {
 		return empleados;
 	}
