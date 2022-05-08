@@ -48,10 +48,6 @@ public class Agencia {
 	 */
 	private Float comisiones;
 
-	public void setComisiones(Float comisiones) {
-		this.comisiones = comisiones;
-	}
-
 	static private Agencia singleton = null;
 
 	private Agencia() {
@@ -99,7 +95,7 @@ public class Agencia {
 	 * Permite el ingreso del empleado a la plataforma con un Nombre de usuario y una contrasena.
 	 * Realiza la validacion de los datos, aceptando o no el ingreso.
 	 *
-	 * pre: nombreUsuario!= null , contrasena != null
+	 * pre: nombreUsuario!= null -, contrasena != null
 	 * pos: el empleado podra ingresar luego de una validacion de nombre de usuario y contrasena
 	 * a la plataforma unicamente si se encuentra registrado en el sistema
 	 *
@@ -259,6 +255,45 @@ public void addBusquedas(TicketBusquedaDeEmpleo t) {
 		
 		this.busquedas.add(t);
 	}
+
+
+/**
+ * Por cada empleador se verifica si este fue por lo menos elegido alguna vez por algun empleado en la ronda de eleccion.
+ *
+ * En cada ticket de busqueda de empleo encontraremos una lista de empleadores puntuados segun nuestro nivel de coincidencias con ellos.
+ *
+ * Recorro cada empleador de la lista del empleado para ver si este fue seleccionado.
+ *
+ * Si verifico que el empleador jamas fue seleccionado en la ronda de eleccion, se le restara 20 puntos a su puntaje final.
+ *
+ * pre: coleccion de empleadores != null
+ * 	    lista de tickets de busqueda de empleo != null
+ * 	    lista de asignaciones del empleado != null
+ *
+ * pos: si algun empleador no fue elegido en alguna oportunidad de la ronda de encuentro se le restara 20 puntos a su puntaje final
+ *
+ */
+public void empleadorNoElegido() {
+	for (Empleador empleador : this.empleadores) {
+		boolean elegido = false;
+		for (TicketBusquedaDeEmpleo ticket : this.busquedas) {
+			List<UsuarioPuntuado> lista = ticket.getListaDeAsignaciones();
+			for (UsuarioPuntuado usuarioP : lista) {
+				if (usuarioP.isSeleccionado() && usuarioP.getUsuario().equals(empleador)) {
+					elegido = true;
+					break;
+				}
+			}
+			if (elegido)
+				break;
+		}
+		if (!elegido) {
+			empleador.bajarPuntaje(20);
+		}
+	}
+}
+}
+
 	
 	// GETTERS Y SETTERS
 	public Set<Empleado> getEmpleados() {
@@ -296,40 +331,9 @@ public void addBusquedas(TicketBusquedaDeEmpleo t) {
 	public Float getComisiones() {
 		return comisiones;
 	}
-
-	/**
-	 * Por cada empleador se verifica si este fue por lo menos elegido alguna vez por algun empleado en la ronda de eleccion.
-	 *
-	 * En cada ticket de busqueda de empleo encontraremos una lista de empleadores puntuados segun nuestro nivel de coincidencias con ellos.
-	 *
-	 * Recorro cada empleador de la lista del empleado para ver si este fue seleccionado.
-	 *
-	 * Si verifico que el empleador jamas fue seleccionado en la ronda de eleccion, se le restara 20 puntos a su puntaje final.
-	 *
-	 * pre: coleccion de empleadores != null
-	 * 	    lista de tickets de busqueda de empleo != null
-	 * 	    lista de asignaciones del empleado != null
-	 *
-	 * pos: si algun empleador no fue elegido en alguna oportunidad de la ronda de encuentro se le restara 20 puntos a su puntaje final
-	 *
-	 */
-	public void empleadorNoElegido() {
-		for (Empleador empleador : this.empleadores) {
-			boolean elegido = false;
-			for (TicketBusquedaDeEmpleo ticket : this.busquedas) {
-				List<UsuarioPuntuado> lista = ticket.getListaDeAsignaciones();
-				for (UsuarioPuntuado usuarioP : lista) {
-					if (usuarioP.isSeleccionado() && usuarioP.getUsuario().equals(empleador)) {
-						elegido = true;
-						break;
-					}
-				}
-				if (elegido)
-					break;
-			}
-			if (!elegido) {
-				empleador.bajarPuntaje(20);
-			}
-		}
+	public void setComisiones(Float comisiones) {
+		this.comisiones = comisiones;
 	}
+
 }
+	
