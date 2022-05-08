@@ -91,7 +91,7 @@ public abstract class Usuario {
 	 * Baja un determinado puntaje al puntaje final del usuario.
 	 * El puntaje final no puede ser menor a 0
 	 *
-	 * pre: puntaje >= 0
+	 * pre: puntaje > 0
 	 * pos: se actualiza el nuevo puntaje final, luego de la resta de puntaje
 	 *
 	 * @param puntaje se le resta al puntaje final

@@ -86,7 +86,7 @@ public class Agencia {
 	 *Agrega un nuevo empleador a la coleccion de empleadores
 	 *
 	 * pre: nuevoEmpleado != null
-	 * pos: un nuevo empleador es añadido a la lista de empleadores de la agencia
+	 * pos: un nuevo empleador es anadido a la lista de empleadores de la agencia
 	 *
 	 * @param nuevoEmpleador
 	 */
@@ -96,10 +96,10 @@ public class Agencia {
 
 
 	/**
-	 * Permite el ingreso del empleado a la plataforma con un Nombre de usuario y una contraseña.
+	 * Permite el ingreso del empleado a la plataforma con un Nombre de usuario y una contrasena.
 	 * Realiza la validacion de los datos, aceptando o no el ingreso.
 	 *
-	 * pre: nombreUsuario sin caracteres especiales, contrasena alfanumerica con mas 5+ caracteres
+	 * pre: nombreUsuario!= null , contrasena != null
 	 * pos: el empleado podra ingresar luego de una validacion de nombre de usuario y contrasena
 	 * a la plataforma unicamente si se encuentra registrado en el sistema
 	 *
@@ -118,10 +118,10 @@ public class Agencia {
 	}
 
 	/**
-	 * Permite el ingreso del empleador a la plataforma con un Nombre de usuario y una contraseña.
+	 * Permite el ingreso del empleador a la plataforma con un Nombre de usuario y una contrasena.
 	 * Realiza la validacion de los datos, aceptando o no el ingreso.
 	 *
-	 * pre: nombreUsuario sin caracteres especiales, contrasena alfanumerica con mas 5+ caracteres
+	 * pre: nombreUsuario!= null , contrasena != null 
 	 * pos: el empleador podra ingresar luego de una validacion de nombre de usuario y contrasena
 	 * a la plataforma unicamente si se encuentra registrado en el sistema
 	 *
@@ -168,7 +168,7 @@ public class Agencia {
 	}
 
 	/**
-	 * Calcula las comisiones que obtendra del empleador segun el sueldo con el que el empleador remunerará al empleado
+	 * Calcula las comisiones que obtendra del empleador segun el sueldo con el que el empleador remunerara al empleado
 	 * El porcentaje de comision varia segun el tipo de persona que sea la empresa y segun el rubro que esta misma desarrolle
 	 *
 	 * Por cada punto que tenga el empleador se restara un 1% a la comision final
@@ -177,7 +177,7 @@ public class Agencia {
 	 *
 	 * pre: el empleador debe haber conseguido un empleado
 	 *      ticket != null
-	 *      ticket debe tener un dueñom,un rubro y un tipo de persona != null
+	 *      ticket debe tener un dueno,un rubro y un tipo de persona != null
 	 *      puntaje del empleador >= 0
 	 *      remuneracion dada por el empleado >= 0
 	 *
