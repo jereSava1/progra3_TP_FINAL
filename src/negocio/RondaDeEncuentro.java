@@ -91,7 +91,7 @@ public class RondaDeEncuentro {
 	 *
 	 * @param solicitudes
 	 */
-	public static void actualizarPuntajesParaEmpleado(List<TicketBusquedaDeEmpleado> solicitudes) {
+	private static void actualizarPuntajesParaEmpleado(List<TicketBusquedaDeEmpleado> solicitudes) {
 		for (TicketBusquedaDeEmpleado solicitud : solicitudes) {
 			List<UsuarioPuntuado> listaDeAsignaciones = solicitud.getListaDeAsignaciones();
 			listaDeAsignaciones.get(0).getUsuario().aumentarPuntaje(5);
@@ -110,7 +110,7 @@ public class RondaDeEncuentro {
 	 *
 	 * @param busquedas
 	 */
-	public static void actualizarPuntajesParaEmpleador(List<TicketBusquedaDeEmpleo> busquedas) {
+	private static void actualizarPuntajesParaEmpleador(List<TicketBusquedaDeEmpleo> busquedas) {
 		for (TicketBusquedaDeEmpleo busqueda : busquedas) {
 			List<UsuarioPuntuado> listaDeAsignaciones = busqueda.getListaDeAsignaciones();
 			listaDeAsignaciones.get(0).getUsuario().aumentarPuntaje(10);
