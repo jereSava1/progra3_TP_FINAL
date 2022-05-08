@@ -125,19 +125,15 @@ public class Agencia {
 	 * @param contrasena
 	 * @throws UsuarioIncorrectoException el empleador no se encuentra en la lista de empleadores
 	 */
-	public void loginEmpleador(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException {
+	
+	public boolean loginEmpleador(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException,ContrasenaIncorrectaException {
 		for (Empleador empleador : this.empleadores) {
 			if (empleador.getNombreUsuario().equals(nombreUsuario)) {
-				try {
-					empleador.validaContrasena(contrasena);
-				} catch (ContrasenaIncorrectaException e) {
-					System.out.println("Contrasena incorrecta");
-				}
-			} else
-				throw new UsuarioIncorrectoException(nombreUsuario, "nombre incorrecto");
+				return empleador.validaContrasena(contrasena);
+			} 
 		}
+		throw new UsuarioIncorrectoException(nombreUsuario, "nombre incorrecto");
 	}
-
 
 	public void mostrarEmpleados() {
 		for (Empleado empleado : this.empleados) {
