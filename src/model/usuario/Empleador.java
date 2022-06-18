@@ -23,6 +23,10 @@ public class Empleador extends Usuario {
 	 */
 	private Rubro rubro;
 
+	public Empleador() {
+		
+	}
+	
 	public Empleador(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
 	}
@@ -44,6 +48,10 @@ public class Empleador extends Usuario {
 		}
 	}
 	
+	@Override
+	public void run() {
+		
+	}
 	
     //GETTERS Y SETTERS
 	public TipoPersona getTipoPersona() {

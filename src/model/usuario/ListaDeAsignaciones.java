@@ -29,8 +29,67 @@ public class ListaDeAsignaciones implements Comparable<ListaDeAsignaciones> {
     this.contratado = false;
   }
 
-  @Override
+  
+  
+  
+  public ListaDeAsignaciones() {
+}
+
+ //Getters y Setters publicos 
+ 
+  public Date getFechaDeGeneracion() {
+	return fechaDeGeneracion;
+}
+
+
+public void setFechaDeGeneracion(Date fechaDeGeneracion) {
+	this.fechaDeGeneracion = fechaDeGeneracion;
+}
+
+
+public Usuario getUsuario() {
+	return usuario;
+}
+
+
+public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
+}
+
+
+public Float getPuntaje() {
+	return puntaje;
+}
+
+
+public void setPuntaje(Float puntaje) {
+	this.puntaje = puntaje;
+}
+
+
+public boolean isSeleccionado() {
+	return seleccionado;
+}
+
+
+public void setSeleccionado(boolean seleccionado) {
+	this.seleccionado = seleccionado;
+}
+
+
+public boolean isContratado() {
+	return contratado;
+}
+
+
+public void setContratado(boolean contratado) {
+	this.contratado = contratado;
+}
+
+
+@Override
   public int compareTo(ListaDeAsignaciones item) {
     return this.getPuntaje().compareTo(item.getPuntaje());
   }
 }
+

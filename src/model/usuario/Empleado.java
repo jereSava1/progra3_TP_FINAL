@@ -13,7 +13,11 @@ public class Empleado extends Usuario {
     private String email;
     private int edad;
   
-    public Empleado(String nombreUsuario,String contrasena){
+      public Empleado() {
+		
+	}
+
+	public Empleado(String nombreUsuario,String contrasena){
         super(nombreUsuario, contrasena);
     }
 
@@ -83,6 +87,13 @@ public class Empleado extends Usuario {
                 "Edad: " + this.getEdad() + "\n";
     }
 
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		super.run();
+	}
+
+    
 	
 	
 

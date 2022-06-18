@@ -10,12 +10,17 @@ import exception.ContrasenaIncorrectaException;
 import exception.NoDuenoDeTicketException;
 import exception.UsuarioIncorrectoException;
 
-public abstract class Usuario {
+public abstract class Usuario extends Thread{
 	private String nombre;
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;
 
+	public Usuario() {
+		
+	}
+	
+	
 	public Usuario(String nombreUsuario, String contrasena) {
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -83,6 +88,7 @@ public abstract class Usuario {
 	}
 
 	// GETTERS Y SETTERS
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -102,5 +108,22 @@ public abstract class Usuario {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
+	
+	
 
 }
