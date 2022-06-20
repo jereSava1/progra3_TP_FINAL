@@ -19,8 +19,6 @@ import negocio.RondaDeEncuentro;
 public class main {
 
   public static void main(String[] args){
-	    System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAA");
-
 
       Agencia agencia = Agencia.getAgencia();
       ArrayList<Empleado> empleados= new ArrayList<Empleado>();

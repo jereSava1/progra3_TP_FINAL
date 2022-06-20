@@ -2,6 +2,7 @@ package model;
 
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
+import model.ticket.TicketSimplificado;
 import model.ticket.DatosDeEmpleo;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
@@ -50,6 +51,7 @@ public class Agencia {
 	 * Suma total de comisiones adquirida por la Agencia
 	 */
 	private Float comisiones;
+	private final List<TicketSimplificado> bolsaDeTrabajo;
 
 	public void setComisiones(Float comisiones) {
 		this.comisiones = comisiones;
@@ -62,6 +64,7 @@ public class Agencia {
 		this.empleados = new HashSet<>();
 		this.busquedas = new ArrayList<>();
 		this.solicitudes = new ArrayList<>();
+		this.bolsaDeTrabajo = new ArrayList<>();
 		this.comisiones = 0f;
 	}
 
@@ -288,5 +291,9 @@ public class Agencia {
 				empleador.bajarPuntaje(20);
 			}
 		}
+	}
+
+	public List<TicketSimplificado> getBolsaDeTrabajo() {
+		return bolsaDeTrabajo;
 	}
 }

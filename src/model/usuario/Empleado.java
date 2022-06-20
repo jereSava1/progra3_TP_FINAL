@@ -12,8 +12,10 @@ public class Empleado extends Usuario {
     private String telefono;
     private String email;
     private int edad;
+    private int intentosBolsaDeTrabajo;
+    private boolean exitoBolsaDeTrabajo;
   
-      public Empleado() {
+    public Empleado() {
 		
 	}
 
@@ -27,6 +29,8 @@ public class Empleado extends Usuario {
         this.edad = edad;
         this.email = email;
         this.telefono = telefono;
+        this.setIntentosBolsaDeTrabajo(0);
+        this.setExitoBolsaDeTrabajo(false);
     }
 
     /**
@@ -91,6 +95,22 @@ public class Empleado extends Usuario {
 	public void run() {
 		// TODO Auto-generated method stub
 		super.run();
+	}
+
+	public int getIntentosBolsaDeTrabajo() {
+		return intentosBolsaDeTrabajo;
+	}
+
+	public void setIntentosBolsaDeTrabajo(int intentosBolsaDeTrabajo) {
+		this.intentosBolsaDeTrabajo = intentosBolsaDeTrabajo;
+	}
+
+	public boolean isExitoBolsaDeTrabajo() {
+		return exitoBolsaDeTrabajo;
+	}
+
+	public void setExitoBolsaDeTrabajo(boolean exitoBolsaDeTrabajo) {
+		this.exitoBolsaDeTrabajo = exitoBolsaDeTrabajo;
 	}
 
     

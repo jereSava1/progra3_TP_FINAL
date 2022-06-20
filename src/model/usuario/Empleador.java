@@ -22,6 +22,7 @@ public class Empleador extends Usuario {
 	 *    - Salud
 	 */
 	private Rubro rubro;
+	private int ticketsSimplificadosSinAsignar;
 
 	public Empleador() {
 		
@@ -29,6 +30,7 @@ public class Empleador extends Usuario {
 	
 	public Empleador(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
+		this.ticketsSimplificadosSinAsignar = 0;
 	}
 
 	/**
@@ -60,6 +62,14 @@ public class Empleador extends Usuario {
 
 	public Rubro getRubro() {
 		return rubro;
+	}
+
+	public int getTicketsSimplificadosSinAsignar() {
+		return ticketsSimplificadosSinAsignar;
+	}
+
+	public void setTicketsSimplificadosSinAsignar(int ticketsSimplificadosSinAsignar) {
+		this.ticketsSimplificadosSinAsignar = ticketsSimplificadosSinAsignar;
 	}
 	
 }

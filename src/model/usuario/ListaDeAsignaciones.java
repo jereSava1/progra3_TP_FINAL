@@ -2,10 +2,11 @@ package model.usuario;
 
 import java.util.Date;
 
+
 import lombok.Getter;
 
 import lombok.Setter;
-import model.Usuario;
+import model.usuario.Usuario;
 
 /**
  *

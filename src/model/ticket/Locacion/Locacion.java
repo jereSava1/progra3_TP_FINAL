@@ -13,6 +13,6 @@ public abstract class Locacion implements Puntajes {
 
   public Locacion(String valor,int peso){
     this.valor = valor;
-    this.peso=peso;
+    this.peso = peso;
   }
 }
