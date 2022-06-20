@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import exception.ContrasenaIncorrectaException;
 import exception.UsuarioIncorrectoException;
 import model.Agencia;
@@ -12,16 +14,13 @@ import vista.VistaLogin;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
-	
-	public ControladorLogin()
-	{
+
+	public ControladorLogin() {
 		this.vistaLogin = new VistaLogin();
 		this.agencia = Agencia.getAgencia();
 		this.vistaLogin.setActionListener(this);
 	}
-	
-	
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
@@ -29,20 +28,17 @@ public class ControladorLogin implements ActionListener {
 			try {
 				this.agencia.login(vistaLogin.getUsername(), vistaLogin.getContrasena());
 			} catch (UsuarioIncorrectoException err) {
-				System.out.println("Usuario no encontrado");
+				this.vistaLogin.usuarioNoEncontrado();
 			} catch (ContrasenaIncorrectaException err) {
-				System.out.println("Contraseña incorrecta");
+				this.vistaLogin.contrasenaIncorrecta();
 			}
 		}
-		
-	}
 
+	}
 
 	public ILogin getVistaLogin() {
 		return vistaLogin;
 	}
-
-
 
 	public void setVistaLogin(ILogin vistaLogin) {
 		this.vistaLogin = vistaLogin;

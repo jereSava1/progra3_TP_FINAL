@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.CompoundBorder;
@@ -142,6 +143,14 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 		this.actionListener = actionListener;
 	}
 
+	public void usuarioNoEncontrado() {
+		JOptionPane.showMessageDialog(this, "Usuario no encontrado");
+	}
+	public void  contrasenaIncorrecta() {
+		JOptionPane.showMessageDialog(this, "Contrasena incorrecta");
+	}
+	
+	
 	@Override
 	public void entrar() {
 		// TODO Auto-generated method stub
