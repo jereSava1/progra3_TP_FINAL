@@ -13,6 +13,7 @@ import types.TipoPersona;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -92,45 +93,32 @@ public class Agencia {
 		this.empleadores.add(nuevoEmpleador);
 	}
 
-
-	/**
-	 * Permite el ingreso del empleado a la plataforma con un Nombre de usuario y una contraseña.
-	 * Realiza la validacion de los datos, aceptando o no el ingreso.
-	 * @param nombreUsuario
-	 * @param contrasena
-	 * @throws UsuarioIncorrectoException el empleado no se encuentra en la lista de empleados
-	 */
-	public void loginEmpleado(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException {
-		for (Empleado empleado : this.empleados) {
-			if (empleado.getNombreUsuario().equals(nombreUsuario)) {
-				try {
-					empleado.validaContrasena(contrasena);
-				} catch (ContrasenaIncorrectaException e) {
-					System.out.println("Contrasena incorrecta");
-				}
-			} else
-				throw new UsuarioIncorrectoException(nombreUsuario, "nombre incorrecto");
+	
+	public void login(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
+		boolean logged = false;
+		Optional<Empleador> candidatoEmpleador = empleadores.stream()
+													.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
+		if (candidatoEmpleador.isPresent()) {
+			candidatoEmpleador.get().validaContrasena(contrasena);
+			logged = true;
 		}
-	}
-
-	/**
-	 * Permite el ingreso del empleador a la plataforma con un Nombre de usuario y una contraseña.
-	 * Realiza la validacion de los datos, aceptando o no el ingreso.
-	 * @param nombreUsuario
-	 * @param contrasena
-	 * @throws UsuarioIncorrectoException el empleador no se encuentra en la lista de empleadores
-	 */
-	public void loginEmpleador(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException {
-		for (Empleador empleador : this.empleadores) {
-			if (empleador.getNombreUsuario().equals(nombreUsuario)) {
-				try {
-					empleador.validaContrasena(contrasena);
-				} catch (ContrasenaIncorrectaException e) {
-					System.out.println("Contrasena incorrecta");
-				}
-			} else
-				throw new UsuarioIncorrectoException(nombreUsuario, "nombre incorrecto");
+		
+		if (!logged) {
+			Optional<Empleado> candidatoEmpleado = empleados.stream()
+					.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
+			
+			if (candidatoEmpleado.isPresent()) {
+				candidatoEmpleado.get().validaContrasena(contrasena);
+				logged = true;
+			}
+			
 		}
+		
+		
+		if (!logged) {
+			throw new UsuarioIncorrectoException("Usuario no encontrado", nombreUsuario);
+		}
+		//TODO: AGREGAR LOGUEO DE LA AGENCIA
 	}
 
 

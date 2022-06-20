@@ -1,6 +1,8 @@
 package negocio;
 
 import dto.TicketSimplificadoRequest;
+import exception.EmpleadoSinIntentosException;
+import exception.TicketFinalizadoException;
 import model.Agencia;
 import model.ticket.TicketSimplificado;
 import model.ticket.Locacion.Locacion;
@@ -27,7 +29,7 @@ public class BolsaDeTrabajoService {
 		notifyAll();
 	}
 	
-	public synchronized void verificaEmpleado(TicketSimplificado ticket, Empleado empleado, Locacion locacion, Agencia agencia) {
+	public synchronized void verificaEmpleado(TicketSimplificado ticket, Empleado empleado, Locacion locacion, Agencia agencia) throws TicketFinalizadoException, EmpleadoSinIntentosException {
 		
 		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) { //si el ticket está tomado, espero que se desocupe
 			try {
@@ -35,15 +37,21 @@ public class BolsaDeTrabajoService {
 			} catch (Exception cumpleContrato) {}
 		}
 		
-		if (!ticket.isEsPermanente()) { //si sali del wait porque se libero el ticket, intento, sino ignoro el intento porque el ticket se tomo mientras se esperaba
+		if (!ticket.isEsPermanente() && empleado.getIntentosBolsaDeTrabajo() < 10) { //si sali del wait porque se libero el ticket, intento, sino ignoro el intento porque el ticket se tomo mientras se esperaba
 			ticket.setAsignacion(empleado);
 			
 			if (locacion.calculaPuntaje(ticket.getLocacion()) != 1F) {
 				ticket.setAsignacion(null); //si no hay coincidencia, libero el ticket
+				empleado.setIntentosBolsaDeTrabajo(empleado.getIntentosBolsaDeTrabajo() + 1);
+			} else {
+				ticket.setEsPermanente(true); //confirmo que el empleado se queda el ticket
 			}
 			
 			notifyAll();
+		} else if (ticket.isEsPermanente()) {
+			throw new TicketFinalizadoException("El ticket finalizo mientras se realizaba la operacion", ticket.getDueno().toString());
+		} else {
+			throw new EmpleadoSinIntentosException("Este empleado no tiene mas intentos!", empleado.toString());
 		}
-		
 	}
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import controlador.ControladorLogin;
 import factory.CargaHorariaFactory;
 import factory.EstudiosFactory;
 import factory.ExperienciaFactory;
@@ -61,7 +62,9 @@ public class main {
       catch(Exception e){
     	  
       }
-      }
+      
+      ControladorLogin controlador = new ControladorLogin();
+  }
 
 
  }
