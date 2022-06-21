@@ -7,6 +7,6 @@ import dto.RegistroRequest;
 public interface IRegistro {
 	void mostrar();
 	void esconder();
-	RegistroRequest getFormulario();
+//	RegistroRequest getFormulario();
 	void setActionListener(ActionListener actionListener);
 }

@@ -28,12 +28,12 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import dto.RegistroRequest;
 import types.TipoUsuario;
+import java.awt.CardLayout;
+import javax.swing.BoxLayout;
 
 public class VistaRegistro extends JFrame implements IRegistro {
 
 	private JPanel contentPane;
-	private JTextField textFieldUsuario;
-	private JTextField textFieldContrasena;
 	private ButtonGroup G;
 	private ActionListener actionListener;
 
@@ -57,41 +57,61 @@ public class VistaRegistro extends JFrame implements IRegistro {
 	 * Create the frame.
 	 */
 	public VistaRegistro() {
+		setTitle("Tipo de Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 460, 199);
+		setBounds(100, 100, 516, 264);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JPanel panelNorte = new JPanel();
-		contentPane.add(panelNorte, BorderLayout.NORTH);
-		panelNorte.setLayout(new GridLayout(2, 3, 0, 0));
+		JPanel panelCentral = new JPanel();
+		contentPane.add(panelCentral, BorderLayout.CENTER);
+		panelCentral.setLayout(new BoxLayout(panelCentral, BoxLayout.X_AXIS));
 		
-		JLabel lblNewLabel = new JLabel("Tipo de usuario");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panelNorte.add(lblNewLabel);
+		JPanel panel = new JPanel();
+		panelCentral.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
 		
-		JRadioButton rdbtnEmpleado = new JRadioButton("Empleado");
-		rdbtnEmpleado.setActionCommand("EMPLEADO");
-		rdbtnEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panelNorte.add(rdbtnEmpleado);
-		
-		JRadioButton rdbtnAdministrador = new JRadioButton("Administrador");
-		rdbtnAdministrador.setActionCommand("ADMIN");
-		rdbtnAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panelNorte.add(rdbtnAdministrador);
+		JPanel panel_5 = new JPanel();
+		panel.add(panel_5);
+		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JRadioButton rdbtnEmpleador = new JRadioButton("Empleador");
+		rdbtnEmpleador.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_5.add(rdbtnEmpleador);
+		rdbtnEmpleador.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		rdbtnEmpleador.setActionCommand("EMPLEADOR");
-		rdbtnEmpleador.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panelNorte.add(rdbtnEmpleador);
+		
+		JPanel panel_1 = new JPanel();
+		panelCentral.add(panel_1);
+		panel_1.setLayout(new CardLayout(0, 0));
+		
+		JPanel panel_3 = new JPanel();
+		panel_1.add(panel_3, "name_9375483177500");
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		JRadioButton rdbtnAdministrador = new JRadioButton("Administrador");
+		rdbtnAdministrador.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(rdbtnAdministrador);
+		rdbtnAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnAdministrador.setActionCommand("ADMIN");
+		
+		JPanel panel_2 = new JPanel();
+		panelCentral.add(panel_2);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_4 = new JPanel();
+		panel_2.add(panel_4, BorderLayout.CENTER);
+		panel_4.setLayout(new BorderLayout(0, 0));
+		
+		JRadioButton rdbtnEmpleado = new JRadioButton("Empleado");
+		rdbtnEmpleado.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(rdbtnEmpleado);
+		rdbtnEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnEmpleado.setActionCommand("EMPLEADO");
 		
 		G = new ButtonGroup();
-		G.add(rdbtnEmpleador);
-		G.add(rdbtnAdministrador);
-		G.add(rdbtnEmpleado);
 		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
@@ -102,40 +122,17 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panelSur.add(btnVolver);
 		
-		JButton btnNewButton = new JButton("Registrarse");
+		JButton btnNewButton = new JButton("Siguiente");
 		btnNewButton.setActionCommand("REGISTRARSE");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panelSur.add(btnNewButton);
 		
-		JPanel panelCentro = new JPanel();
-		contentPane.add(panelCentro, BorderLayout.CENTER);
-		panelCentro.setLayout(new GridLayout(0, 1, 0, 0));
+		JPanel panel_6 = new JPanel();
+		contentPane.add(panel_6, BorderLayout.NORTH);
 		
-		JPanel panelUsername = new JPanel();
-		panelCentro.add(panelUsername);
-		panelUsername.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JLabel lblNewLabel_1 = new JLabel("Nombre de usuario");
-		panelUsername.add(lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		textFieldUsuario = new JTextField();
-		textFieldUsuario.setToolTipText("username\r\n");
-		textFieldUsuario.setHorizontalAlignment(SwingConstants.LEFT);
-		panelUsername.add(textFieldUsuario);
-		textFieldUsuario.setColumns(20);
-		
-		JPanel panelContrasena = new JPanel();
-		panelCentro.add(panelContrasena);
-		panelContrasena.setLayout(new GridLayout(0, 2, 0, 5));
-		
-		JLabel Contrasena = new JLabel("Contrase\u00F1a");
-		panelContrasena.add(Contrasena);
-		Contrasena.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		textFieldContrasena = new JTextField();
-		panelContrasena.add(textFieldContrasena);
-		textFieldContrasena.setColumns(20);
+		JLabel lblNewLabel = new JLabel("Seleccione tipo de usuario con el que desea registrarse:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		panel_6.add(lblNewLabel);
 		
 
 		
@@ -152,7 +149,7 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		this.setVisible(false);
 	}
 
-	@Override
+/*	@Override
 	public RegistroRequest getFormulario() {
 		RegistroRequest req = new RegistroRequest();
 		req.setNombreUsuario(this.textFieldUsuario.getText());
@@ -160,7 +157,7 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		req.setTipo(TipoUsuario.valueOf(G.getSelection().getActionCommand()));
 		return req;
 	}
-
+*/
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.actionListener = actionListener;
