@@ -73,6 +73,7 @@ public class Agencia extends Observable{
 		this.busquedas = new ArrayList<>();
 		this.solicitudes = new ArrayList<>();
 		this.bolsaDeTrabajo = new ArrayList<>();
+		this.administradores = new HashSet<>();
 		this.comisiones = 0f;
 	}
 

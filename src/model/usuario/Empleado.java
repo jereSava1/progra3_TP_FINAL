@@ -29,8 +29,8 @@ public class Empleado extends Usuario {
         this.edad = edad;
         this.email = email;
         this.telefono = telefono;
-        this.setIntentosBolsaDeTrabajo(0);
-        this.setExitoBolsaDeTrabajo(false);
+        this.intentosBolsaDeTrabajo = 0;
+        this.exitoBolsaDeTrabajo = false;
     }
 
     /**

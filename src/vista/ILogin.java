@@ -7,7 +7,6 @@ public interface ILogin {
 	String getContrasena();
 	void setActionListener(ActionListener actionListener);
 	void entrar();
-	void registrarse();
 	void usuarioNoEncontrado();
 	void contrasenaIncorrecta();
 	void mostrar();

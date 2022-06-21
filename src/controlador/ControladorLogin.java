@@ -13,6 +13,7 @@ import model.usuario.Empleador;
 import model.usuario.Usuario;
 import vista.ILogin;
 import vista.VistaLogin;
+import vista.VistaRegistro;
 
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
@@ -48,6 +49,10 @@ public class ControladorLogin implements ActionListener {
 					//TODO: Vista de agencia
 				}
 			}
+		} else if (comando.equalsIgnoreCase("REGISTRAR")) {
+			this.vistaLogin.esconder();
+			VistaRegistro registro = new VistaRegistro();
+			registro.mostrar();
 		}
 
 	}

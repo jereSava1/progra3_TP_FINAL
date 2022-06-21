@@ -22,6 +22,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JPasswordField;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class VistaLogin extends JFrame implements KeyListener, ILogin {
 
@@ -157,11 +159,6 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 		
 	}
 
-	@Override
-	public void registrarse() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void mostrar() {
