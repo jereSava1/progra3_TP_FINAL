@@ -5,6 +5,7 @@ import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
+import state.CanceladoState;
 import types.*;
 
 public class Empleado extends Usuario {
@@ -52,7 +53,7 @@ public class Empleado extends Usuario {
     @Override
     public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException{
 		if (ticket.getDueno().equals(this)) {
-			ticket.setEstadoTicket(EstadoTicket.CANCELADO);
+			ticket.setEstadoTicket(new CanceladoState(ticket));
 			this.bajarPuntaje(1);
 		} else {
 			throw new NoDuenoDeTicketException(ticket,"ticket "+ticket.getDueno()+" no es dueno de este ticket");

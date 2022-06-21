@@ -4,6 +4,7 @@ import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.UsuarioPuntuado;
+import state.FinalizadoState;
 import types.EstadoTicket;
 
 import java.util.List;
@@ -15,8 +16,7 @@ import java.util.stream.Collectors;
 public class RondaDeContrataciones {
   /**
    * PRECONDICION: se debe ejecutar luego de la ronda de encuentro y de la ronda de elecciones
-   * @param solicitudes
-   * @param busquedas
+   * @param agencia
    */
   public static void ejecutarRondaDeContrataciones(Agencia agencia) {
       
@@ -30,11 +30,11 @@ public class RondaDeContrataciones {
               .collect(Collectors.toList()); //filtro los candidatos seleccionados por los empleadores de la lista de asignaciones
 
       for (TicketBusquedaDeEmpleo busqueda : agencia.getBusquedas()) { //TICKETS DE EMPLEADOS
-        if (solicitud.getEstadoTicket() == EstadoTicket.FINALIZADO) { //Si el ticket se cerró durante la ejecucion, la corto
+        if (solicitud.getEstadoTicket().getNombre() == EstadoTicket.FINALIZADO) { //Si el ticket se cerró durante la ejecucion, la corto
           break;
         }
 
-        if (busqueda.getEstadoTicket() == EstadoTicket.ACTIVO
+        if (busqueda.getEstadoTicket().getNombre() == EstadoTicket.ACTIVO
                 && candidatosSeleccionados.stream().anyMatch(
                 c -> c.getUsuario().equals(busqueda.getDueno()))
         ) { //validamos que el ticket este activo y que el dueño de la solicitud
@@ -49,13 +49,13 @@ public class RondaDeContrataciones {
         	comisiones=agencia.calculaComisionesEmpleado(busqueda) + agencia.calculaComisionesEmpleador(solicitud);
         	agencia.setComisiones(agencia.getComisiones()+comisiones);
         	/* Actualizamos los atributos del ticket de empleado*/
-            busqueda.setEstadoTicket(EstadoTicket.FINALIZADO); //Si se contrata, finalizamos el ticket
+            busqueda.setEstadoTicket(new FinalizadoState(busqueda)); //Si se contrata, finalizamos el ticket
             busqueda.getDueno().aumentarPuntaje(10); //aumentamos el puntaje del usuario
 
             /*actualizamos los atributos del ticket de empleador*/
             solicitud.aumentarEmpleadosObtenidos();
             if (solicitud.getEmpleadosObtenidos() == solicitud.getEmpleadosNecesitados()) { //si alcanza el tope, cierro el ticket
-              solicitud.setEstadoTicket(EstadoTicket.FINALIZADO);
+              solicitud.setEstadoTicket(new FinalizadoState(solicitud));
               solicitud.getDueno().aumentarPuntaje(50);
             }
           }

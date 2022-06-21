@@ -1,9 +1,7 @@
 package model.ticket.estudios;
 
 import interfaces.Puntajes;
-import lombok.Getter;
 
-@Getter
 public abstract class Estudios implements Puntajes {
   private final String valor;
   private int peso; 
@@ -13,4 +11,13 @@ public abstract class Estudios implements Puntajes {
     this.valor = valor;
     this.peso=peso;
   }
+
+  public String getValor() {
+    return valor;
+  }
+
+  public int getPeso() {
+    return peso;
+  }
+
 }

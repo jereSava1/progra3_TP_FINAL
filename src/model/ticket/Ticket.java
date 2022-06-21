@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import model.usuario.UsuarioPuntuado;
 import model.usuario.Usuario;
+import state.ActivoState;
+import state.IState;
 import types.EstadoTicket;
 
 
@@ -25,7 +27,7 @@ public class Ticket {
 	   * - Finalizado
 	   *     - Alcanzo la cantidad de empleados solicitados
 	   */
-	  private EstadoTicket estadoTicket;
+	  private IState estadoTicket;
 	/**
 	 * Lista compuesta por Usuarios puntuados segun el nivel de coincidencias entre el Empleado y Empleador
 	 *
@@ -43,7 +45,7 @@ public class Ticket {
     public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {
         this.formularioDeBusqueda = formularioDeBusqueda;
         this.fechaDeAlta = LocalDate.now();
-        this.estadoTicket = EstadoTicket.ACTIVO;
+        this.estadoTicket = new ActivoState(this);
         this.dueno = usuario;
         
     }
@@ -62,7 +64,7 @@ public class Ticket {
 	}
 
 
-	public void setEstadoTicket(EstadoTicket estadoTicket) {
+	public void setEstadoTicket(IState estadoTicket) {
 		this.estadoTicket = estadoTicket;
 	}
 
@@ -87,7 +89,7 @@ public class Ticket {
 	}
 
 
-	public EstadoTicket getEstadoTicket() {
+	public IState getEstadoTicket() {
 		return estadoTicket;
 	}
 

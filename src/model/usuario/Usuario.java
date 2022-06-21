@@ -2,6 +2,8 @@ package model.usuario;
 
 import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
+import state.CanceladoState;
+import state.IState;
 import types.*;
 
 import java.util.Objects;
@@ -39,7 +41,7 @@ public abstract class Usuario extends Thread{
 
 	public void bajaTicket(Ticket ticket) throws NoDuenoDeTicketException {
 		if (ticket.getDueno().equals(this)) {
-			ticket.setEstadoTicket(EstadoTicket.CANCELADO);
+			ticket.setEstadoTicket(new CanceladoState(ticket));
 		} else {
 			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");// try
 		}
@@ -59,7 +61,7 @@ public abstract class Usuario extends Thread{
 		}
 	}
 
-	public void cambiaEstadoTicket(Ticket ticket, EstadoTicket estado) throws NoDuenoDeTicketException {
+	public void cambiaEstadoTicket(Ticket ticket, IState estado) throws NoDuenoDeTicketException {
 		if (ticket.getDueno().equals(this)) {
 			ticket.setEstadoTicket(estado);
 		} else {
