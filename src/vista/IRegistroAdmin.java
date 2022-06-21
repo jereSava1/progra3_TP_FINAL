@@ -1,14 +1,15 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import dto.RegistroRequestAdmin;
 
-import javax.swing.ButtonGroup;
-
-import dto.RegistroRequest;
-
-public interface IRegistro {
+public interface IRegistroAdmin {
 	void mostrar();
 	void esconder();
-	ButtonGroup getG();
 	void setActionListener(ActionListener actionListener);
+	RegistroRequestAdmin getFormulario();
+
+	
+
+
 }

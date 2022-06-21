@@ -7,6 +7,11 @@ public class RegistroRequest {
 	private String contrasena;
 	private TipoUsuario tipo;
 	
+	public RegistroRequest(String n,String c,TipoUsuario t) {
+		this.nombreUsuario=n;
+		this.contrasena=c;
+		this.tipo=t;
+	}
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}

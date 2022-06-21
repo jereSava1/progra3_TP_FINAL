@@ -6,7 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.RegistroRequest;
+import dto.RegistroRequestAdmin;
+import types.TipoUsuario;
+
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -16,13 +24,21 @@ import javax.swing.BoxLayout;
 import java.awt.CardLayout;
 import javax.swing.SwingConstants;
 
-public class ventanaRegistroAdministrador extends JFrame {
+public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textFieldID;
+	private JTextField textFieldUsuario;
+	private JTextField textFieldContrasena;
+	private JTextField textFieldEmail;
+	private JButton btnVolver;
+	private JButton btnRegistro;
+	protected ActionListener actionListener;
+	private String contrasena;
+	private String ID;
+	private String email;
+	private String usuario;
+	
 
 	/**
 	 * Launch the application.
@@ -31,7 +47,7 @@ public class ventanaRegistroAdministrador extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaRegistroAdministrador frame = new ventanaRegistroAdministrador();
+					VistaRegistroAdministrador frame = new VistaRegistroAdministrador();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +59,7 @@ public class ventanaRegistroAdministrador extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventanaRegistroAdministrador() {
+	public VistaRegistroAdministrador() {
 		setTitle("Registro Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 491, 391);
@@ -70,9 +86,9 @@ public class ventanaRegistroAdministrador extends JFrame {
 		panelCentral.add(panel_fieldID);
 		panel_fieldID.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		textField = new JTextField();
-		panel_fieldID.add(textField);
-		textField.setColumns(15);
+		textFieldID = new JTextField();
+		panel_fieldID.add(textFieldID);
+		textFieldID.setColumns(15);
 		
 		JPanel panel_Usuario = new JPanel();
 		panelCentral.add(panel_Usuario);
@@ -84,9 +100,9 @@ public class ventanaRegistroAdministrador extends JFrame {
 		JPanel panel_fieldUsuario = new JPanel();
 		panelCentral.add(panel_fieldUsuario);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(15);
-		panel_fieldUsuario.add(textField_1);
+		textFieldUsuario = new JTextField();
+		textFieldUsuario.setColumns(15);
+		panel_fieldUsuario.add(textFieldUsuario);
 		
 		JPanel panel_Contrasena = new JPanel();
 		panelCentral.add(panel_Contrasena);
@@ -98,9 +114,9 @@ public class ventanaRegistroAdministrador extends JFrame {
 		JPanel panel_fieldContrasena = new JPanel();
 		panelCentral.add(panel_fieldContrasena);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(15);
-		panel_fieldContrasena.add(textField_2);
+		textFieldContrasena = new JTextField();
+		textFieldContrasena.setColumns(15);
+		panel_fieldContrasena.add(textFieldContrasena);
 		
 		JPanel panel_Contrasena_1 = new JPanel();
 		panelCentral.add(panel_Contrasena_1);
@@ -112,23 +128,59 @@ public class ventanaRegistroAdministrador extends JFrame {
 		JPanel panel_fieldContrasena_1 = new JPanel();
 		panelCentral.add(panel_fieldContrasena_1);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(15);
-		panel_fieldContrasena_1.add(textField_3);
+		textFieldEmail = new JTextField();
+		textFieldEmail.setColumns(15);
+		panel_fieldContrasena_1.add(textFieldEmail);
 		
 		JPanel panel_Volver = new JPanel();
 		panelCentral.add(panel_Volver);
 		
-		JButton btnNewButton_1 = new JButton("Volver\r\n");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_Volver.add(btnNewButton_1);
+		btnVolver = new JButton("Volver\r\n");
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_Volver.add(btnVolver);
 		
 		JPanel panel_RegisterButton = new JPanel();
 		panelCentral.add(panel_RegisterButton);
 		
-		JButton btnNewButton = new JButton("Registro");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_RegisterButton.add(btnNewButton);
+		btnRegistro = new JButton("Registro");
+		btnRegistro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_RegisterButton.add(btnRegistro);
 	}
 
+	@Override
+	public void mostrar() {
+		this.setVisible(true);
+	}
+
+	@Override
+	public void esconder() {
+		this.setVisible(false);
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		this.btnRegistro.addActionListener(actionListener);
+		this.btnVolver.addActionListener(actionListener);
+		this.actionListener=actionListener;
+		
+		
+	}
+
+	public void keyReleased(KeyEvent e) {
+		this.usuario = this.textFieldUsuario.getText();
+		this.email=this.textFieldEmail.getText();
+		this.ID= this.textFieldID.getText();
+		this.contrasena =this.textFieldContrasena.getText();
+	}
+	
+	
+	@Override
+	public RegistroRequestAdmin getFormulario() {
+		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario,this.contrasena,this.email,this.ID);
+		req.setNombreUsuario(this.textFieldUsuario.getText());
+		req.setContrasena(this.textFieldContrasena.getText());
+		return req;
+	}
+
+	
 }

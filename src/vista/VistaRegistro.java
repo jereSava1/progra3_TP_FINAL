@@ -30,13 +30,17 @@ import dto.RegistroRequest;
 import types.TipoUsuario;
 import java.awt.CardLayout;
 import javax.swing.BoxLayout;
+import java.awt.event.ActionEvent;
 
 public class VistaRegistro extends JFrame implements IRegistro {
 
 	private JPanel contentPane;
-	private ButtonGroup G;
+	public ButtonGroup G;
 	private ActionListener actionListener;
-
+	private JButton btnSiguiente;
+	private JButton btnVolver;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -111,21 +115,28 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		rdbtnEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		rdbtnEmpleado.setActionCommand("EMPLEADO");
 		
-		G = new ButtonGroup();
+		this.G = new ButtonGroup();
+		this.G.add(rdbtnEmpleado);
+		this.G.add(rdbtnAdministrador);
+		this.G.add(rdbtnEmpleador);
 		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
 		panelSur.setLayout(new GridLayout(1, 1, 0, 0));
 		
-		JButton btnVolver = new JButton("Volver");
+		btnVolver = new JButton("Volver");
 		btnVolver.setActionCommand("VOLVER");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panelSur.add(btnVolver);
 		
-		JButton btnNewButton = new JButton("Siguiente");
-		btnNewButton.setActionCommand("REGISTRARSE");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panelSur.add(btnNewButton);
+	    btnSiguiente = new JButton("Siguiente");
+	    btnSiguiente.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	}
+	    });
+		btnSiguiente.setActionCommand("SIGUIENTE");
+		btnSiguiente.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panelSur.add(btnSiguiente);
 		
 		JPanel panel_6 = new JPanel();
 		contentPane.add(panel_6, BorderLayout.NORTH);
@@ -149,18 +160,15 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		this.setVisible(false);
 	}
 
-/*	@Override
-	public RegistroRequest getFormulario() {
-		RegistroRequest req = new RegistroRequest();
-		req.setNombreUsuario(this.textFieldUsuario.getText());
-		req.setContrasena(this.textFieldContrasena.getText());
-		req.setTipo(TipoUsuario.valueOf(G.getSelection().getActionCommand()));
-		return req;
-	}
-*/
 	@Override
 	public void setActionListener(ActionListener actionListener) {
+		this.btnVolver.addActionListener(actionListener);
+        this.btnSiguiente.addActionListener(actionListener);
 		this.actionListener = actionListener;
 	}
 
+	public ButtonGroup getG() {
+		return this.G;
+		
+	}
 }

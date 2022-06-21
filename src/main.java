@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 import controlador.ControladorLogin;
+import controlador.ControladorRegistro;
+import controlador.ControladorRegistroAdmin;
 import factory.CargaHorariaFactory;
 import factory.EstudiosFactory;
 import factory.ExperienciaFactory;
@@ -64,6 +66,8 @@ public class main {
       }
       
       ControladorLogin controlador = new ControladorLogin();
+      ControladorRegistro controladorReg= new ControladorRegistro();
+    
   }
 
 
