@@ -8,6 +8,9 @@ import javax.swing.JOptionPane;
 import exception.ContrasenaIncorrectaException;
 import exception.UsuarioIncorrectoException;
 import model.Agencia;
+import model.usuario.Empleado;
+import model.usuario.Empleador;
+import model.usuario.Usuario;
 import vista.ILogin;
 import vista.VistaLogin;
 
@@ -25,12 +28,25 @@ public class ControladorLogin implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		if (comando.equalsIgnoreCase("LOGIN")) {
+			Usuario logueado = null;
+			
 			try {
-				this.agencia.login(vistaLogin.getUsername(), vistaLogin.getContrasena());
+				logueado = this.agencia.login(vistaLogin.getUsername(), vistaLogin.getContrasena());
 			} catch (UsuarioIncorrectoException err) {
 				this.vistaLogin.usuarioNoEncontrado();
 			} catch (ContrasenaIncorrectaException err) {
 				this.vistaLogin.contrasenaIncorrecta();
+			}
+			
+			if (logueado != null) {
+				this.vistaLogin.esconder();
+				if (logueado instanceof Empleador) {
+					//TODO: Vista de empleador
+				} else if (logueado instanceof Empleado) {
+					//TODO: Vista de empleado
+				} else {
+					//TODO: Vista de agencia
+				}
 			}
 		}
 

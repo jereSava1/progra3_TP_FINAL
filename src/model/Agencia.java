@@ -4,8 +4,10 @@ import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.ticket.TicketSimplificado;
 import model.ticket.DatosDeEmpleo;
+import model.usuario.Administrador;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
+import model.usuario.Usuario;
 import model.usuario.UsuarioPuntuado;
 import types.Rubro;
 import types.TipoPersona;
@@ -13,6 +15,7 @@ import types.TipoPersona;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Observable;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,7 +26,9 @@ import exception.UsuarioIncorrectoException;
 /**
  *
  */
-public class Agencia {
+public class Agencia extends Observable{
+	
+
 	/**
 	 *  coleccion que contiene a los empleados (sin repeticiones) que consumen la aplicacion
 	 */
@@ -32,6 +37,8 @@ public class Agencia {
 	 *  coleccion que contiene a los empleadores (sin repeticiones) que consumen la aplicacion
 	 */
 	private Set<Empleador> empleadores;
+	
+	private Set<Administrador> administradores;
 	/**
 	 * Lista con los tickets de busqueda de empleo
 	 */
@@ -60,7 +67,7 @@ public class Agencia {
 
 	static private Agencia singleton = null;
 
-	private Agencia() {
+	private Agencia(String usuario, String contrasena) {
 		this.empleadores = new HashSet<>();
 		this.empleados = new HashSet<>();
 		this.busquedas = new ArrayList<>();
@@ -72,7 +79,7 @@ public class Agencia {
 	public static Agencia getAgencia() {
 
 		if (singleton == null) {
-			singleton = new Agencia();
+			singleton = new Agencia("admin", "admin");
 		}
 		return singleton;
 	}
@@ -94,31 +101,31 @@ public class Agencia {
 	}
 
 	
-	public void login(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
-		boolean logged = false;
+	public Usuario login(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
 		Optional<Empleador> candidatoEmpleador = empleadores.stream()
 													.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
 		if (candidatoEmpleador.isPresent()) {
 			candidatoEmpleador.get().validaContrasena(contrasena);
-			logged = true;
+			return candidatoEmpleador.get();
 		}
 		
-		if (!logged) {
-			Optional<Empleado> candidatoEmpleado = empleados.stream()
-					.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
-			
-			if (candidatoEmpleado.isPresent()) {
-				candidatoEmpleado.get().validaContrasena(contrasena);
-				logged = true;
-			}
-			
+		Optional<Empleado> candidatoEmpleado = empleados.stream()
+				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
+		
+		if (candidatoEmpleado.isPresent()) {
+			candidatoEmpleado.get().validaContrasena(contrasena);
+			return candidatoEmpleado.get();
 		}
 		
+		Optional<Administrador> candidatoAdmin = administradores.stream()
+				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
 		
-		if (!logged) {
-			throw new UsuarioIncorrectoException("Usuario no encontrado", nombreUsuario);
+		if (candidatoAdmin.isPresent()) {
+			candidatoAdmin.get().validaContrasena(contrasena);
+			return candidatoAdmin.get();
 		}
-		//TODO: AGREGAR LOGUEO DE LA AGENCIA
+		
+		throw new UsuarioIncorrectoException("Usuario no encontrado", nombreUsuario);
 	}
 
 

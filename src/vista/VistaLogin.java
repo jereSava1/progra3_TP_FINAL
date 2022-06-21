@@ -162,4 +162,14 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void mostrar() {
+		this.setVisible(true);
+	}
+
+	@Override
+	public void esconder() {
+		this.setVisible(false);
+	}
 }

@@ -10,4 +10,6 @@ public interface ILogin {
 	void registrarse();
 	void usuarioNoEncontrado();
 	void contrasenaIncorrecta();
+	void mostrar();
+	void esconder();
 }
