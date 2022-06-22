@@ -28,13 +28,8 @@ public class ControladorRegistro implements ActionListener {
 			String comando = this.vistaRegistro.getG().getSelection().getActionCommand();
 			if (comando.equalsIgnoreCase("admin")) {
 				this.vistaRegistro.esconder();
-				VistaRegistroAdmin vistaRegistroAdmin = new VistaRegistroAdmin();
 				ControladorRegistroAdmin controladorAdmin = ControladorRegistroAdmin.getControladorRegistroAdmin();
-				vistaRegistroAdmin.setActionListener(controladorAdmin);
-				vistaRegistroAdmin.mostrar();
-			}
-
-			else if (comando.equalsIgnoreCase("empleado")) {
+			} else if (comando.equalsIgnoreCase("empleado")) {
 				this.vistaRegistro.esconder();
 				ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
 			} else if (comando.equalsIgnoreCase("empleador")) {

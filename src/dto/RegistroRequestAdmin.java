@@ -2,7 +2,7 @@ package dto;
 
 import types.TipoUsuario;
 
-public class RegistroRequestAdmin extends RegistroRequest{
+public class RegistroRequestAdmin extends RegistroRequest {
 	private String email;
 	private String ID;
 	

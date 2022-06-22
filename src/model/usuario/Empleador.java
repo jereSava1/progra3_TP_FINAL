@@ -69,4 +69,11 @@ public class Empleador extends Usuario {
 		this.ticketsSimplificadosSinAsignar = ticketsSimplificadosSinAsignar;
 	}
 
+	public void setTipoPersona(TipoPersona tipoPersona) {
+		this.tipoPersona = tipoPersona;
+	}
+
+	public void setRubro(Rubro rubro) {
+		this.rubro = rubro;
+	}
 }

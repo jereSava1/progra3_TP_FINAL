@@ -1,5 +1,7 @@
 package model;
 
+import dto.RegistroRequestAdmin;
+import dto.RegistroRequestEmpleador;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.ticket.TicketSimplificado;
@@ -297,5 +299,23 @@ public class Agencia extends Observable {
 
 	public List<TicketSimplificado> getBolsaDeTrabajo() {
 		return bolsaDeTrabajo;
+	}
+
+	public void registrarAdmin(RegistroRequestAdmin req) {
+		Administrador newAdmin = new Administrador(req.getNombreUsuario(), req.getContrasena(), req.getID(), req.getEmail());
+		this.administradores.add(newAdmin);
+	}
+
+	public void registrarEmpleador(RegistroRequestEmpleador req) {
+		Empleador newEmpleador = new Empleador(req.getNombreUsuario(), req.getContrasena());
+		newEmpleador.setNombre(req.getNombre());
+		newEmpleador.setRubro(Rubro.valueOf(req.getRubro()));
+		newEmpleador.setTipoPersona(TipoPersona.valueOf(req.getTipoPersona()));
+		this.empleadores.add(newEmpleador);
+		System.out.println("Se registro el empleador: " + newEmpleador.getNombre());
+	}
+
+	public void registrarEmpleado(){
+
 	}
 }

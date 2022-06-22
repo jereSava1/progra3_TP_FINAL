@@ -6,6 +6,7 @@ public class RegistroRequest {
 	private String nombreUsuario;
 	private String contrasena;
 	private TipoUsuario tipo;
+	private String nombre;
 
 	public RegistroRequest(String n, String c, TipoUsuario t) {
 		this.nombreUsuario = n;
@@ -36,4 +37,7 @@ public class RegistroRequest {
 	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}
+
+	public String getNombre() { return this.nombre; }
+	public void setNombre(String n) { this.nombre = n; }
 }

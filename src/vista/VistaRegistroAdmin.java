@@ -21,7 +21,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin,KeyListener {
+public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin, KeyListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldID;
@@ -39,14 +39,6 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin,KeyList
 
 	public String getContrasena() {
 		return contrasena;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public String getEmail() {
-		return email;
 	}
 
 	public String getUsuario() {
@@ -152,14 +144,14 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin,KeyList
 		JPanel panel_Volver = new JPanel();
 		panelCentral.add(panel_Volver);
 		
-		btnVolver = new JButton("VOLVER");
+		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_Volver.add(btnVolver);
 		
 		JPanel panel_RegisterButton = new JPanel();
 		panelCentral.add(panel_RegisterButton);
 		
-		btnRegistro = new JButton("REGISTRO");
+		btnRegistro = new JButton("Registro");
 		btnRegistro.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_RegisterButton.add(btnRegistro);
 		btnRegistro.setEnabled(false);

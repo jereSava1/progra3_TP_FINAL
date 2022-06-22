@@ -10,4 +10,5 @@ public interface IRegistroEmpleador {
 	void esconder();
 	void setActionListener(ActionListener actionListener);
 	RegistroRequestEmpleador getFormulario();
+	void success();
 }

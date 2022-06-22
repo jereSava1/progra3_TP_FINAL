@@ -3,8 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import dto.RegistroRequestAdmin;
@@ -18,14 +17,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 
 public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador,KeyListener,MouseListener{
 
@@ -102,11 +95,13 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 		PanelBotonTipoPersona.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JRadioButton BotonPersonaJuridica = new JRadioButton("Persona Juridica");
+		BotonPersonaJuridica.setActionCommand("JURIDICA");
 		BotonPersonaJuridica.setHorizontalAlignment(SwingConstants.CENTER);
 		BotonPersonaJuridica.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		PanelBotonTipoPersona.add(BotonPersonaJuridica);
 		
 		JRadioButton BotonPersonaFisica = new JRadioButton("Persona Fisica");
+		BotonPersonaFisica.setActionCommand("FISICA");
 		BotonPersonaFisica.setHorizontalAlignment(SwingConstants.CENTER);
 		BotonPersonaFisica.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		PanelBotonTipoPersona.add(BotonPersonaFisica);
@@ -129,14 +124,17 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 		PanelBotonesRubro.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JRadioButton BotonSalud = new JRadioButton("Salud");
+		BotonSalud.setActionCommand("SALUD");
 		BotonSalud.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		PanelBotonesRubro.add(BotonSalud);
 		
 		JRadioButton BotonComercioLocal = new JRadioButton("Comercio Local");
+		BotonComercioLocal.setActionCommand("COMERCIO_LOCAL");
 		BotonComercioLocal.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		PanelBotonesRubro.add(BotonComercioLocal);
 		
 		JRadioButton BotonComercioInternacional = new JRadioButton("Comercio Internacional");
+		BotonComercioInternacional.setActionCommand("COMERCIO_INTERNACIONAL");
 		BotonComercioInternacional.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		PanelBotonesRubro.add(BotonComercioInternacional);
 		
@@ -210,8 +208,13 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 
 	@Override
 	public RegistroRequestEmpleador getFormulario() {
-		RegistroRequestEmpleador req = new RegistroRequestEmpleador(this.usuario, this.contrasena, this.TipoPersona,this.Rubro);
+		RegistroRequestEmpleador req = new RegistroRequestEmpleador(this.usuario, this.contrasena, this.TipoPersona, this.Rubro, this.nombre);
 		return req;
+	}
+
+	@Override
+	public void success() {
+		JOptionPane.showMessageDialog(this, "Usuario registrado con exito");
 	}
 
 	@Override
@@ -263,9 +266,9 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		this.nombre =this.TextFieldNombre.getText();
+		this.nombre = this.TextFieldNombre.getText();
 		this.usuario = this.TextFieldUsuario.getText();
-		this.contrasena =this.TextFieldContrasena.getText();
+		this.contrasena = this.TextFieldContrasena.getText();
 		
 		if(usuario.length() > 0 && contrasena.length() > 0 && nombre.length() > 0)
 			if(this.GrupoRubro.getSelection()!=null && this.GrupoTipoPersona.getSelection()!=null)

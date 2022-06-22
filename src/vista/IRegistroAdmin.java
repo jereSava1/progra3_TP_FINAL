@@ -9,7 +9,4 @@ public interface IRegistroAdmin {
 	void setActionListener(ActionListener actionListener);
 	RegistroRequestAdmin getFormulario();
 
-	
-
-
 }
