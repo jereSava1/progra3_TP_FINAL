@@ -168,4 +168,11 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 	public void esconder() {
 		this.setVisible(false);
 	}
+
+	@Override
+	public void limpiaCampos() {
+		// TODO Auto-generated method stub
+		this.usernameField.setText("");
+		this.contrasenaField.setText("");
+	}
 }

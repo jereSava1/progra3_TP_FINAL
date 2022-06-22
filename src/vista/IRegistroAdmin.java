@@ -9,5 +9,5 @@ public interface IRegistroAdmin {
 	void success();
 	void setActionListener(ActionListener actionListener);
 	RegistroRequestAdmin getFormulario();
-
+    void limpiaCampos();
 }

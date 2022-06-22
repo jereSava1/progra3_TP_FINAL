@@ -37,8 +37,10 @@ public class ControladorRegistro implements ActionListener {
 				this.vistaRegistro.esconder();
 				ControladorRegistroEmpleador controladorEmpleador = ControladorRegistroEmpleador.getControladorRegistroEmpleador();
 			}
+			this.vistaRegistro.limpiaCampos();
 		} else if (e.getActionCommand().equalsIgnoreCase("VOLVER")) {
 			this.vistaRegistro.esconder();
+			this.vistaRegistro.limpiaCampos();
 			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
 		}
 	}

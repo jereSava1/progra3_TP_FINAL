@@ -11,4 +11,5 @@ public interface IRegistroEmpleador {
 	void setActionListener(ActionListener actionListener);
 	RegistroRequestEmpleador getFormulario();
 	void success();
+	void limpiaCampos();
 }

@@ -33,9 +33,11 @@ public class ControladorRegistroEmpleado implements ActionListener {
 				agencia.registrarEmpleado(nuevoEmpleadoRequest);
 				this.vista.success();
 				this.vista.esconder();
+				this.vista.limpiaCampos();
 				ControladorLogin controladorReg = ControladorLogin.getControladorLogin();
 			}else if (comando.equalsIgnoreCase("VOLVER")){
 				ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); //Controlador para la vista del registro
+				this.vista.limpiaCampos();
 				this.vista.esconder();
 		}
 

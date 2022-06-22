@@ -188,6 +188,7 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 		BotonRegistrarse = new JButton("Registrarse");
 		BotonRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		Sur.add(BotonRegistrarse);
+		BotonRegistrarse.setEnabled(false);
 	}
 
 	public void setActionListener(ActionListener actionListener) {
@@ -235,7 +236,7 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 		if(this.GrupoRubro.getSelection()!=null && this.GrupoTipoPersona.getSelection()!=null) {
 			this.TipoPersona = this.GrupoTipoPersona.getSelection().getActionCommand();
 			this.Rubro = this.GrupoRubro.getSelection().getActionCommand();
-			if(StringUtils.isNotEmpty(usuario) && StringUtils.isNotEmpty(contrasena) && StringUtils.isNotEmpty(nombre))
+			if(usuario.length()>0 && nombre.length()>0 && contrasena.length()>0)
 				this.BotonRegistrarse.setEnabled(true);
 	   }
 	}
@@ -273,5 +274,14 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 		if(usuario.length() > 0 && contrasena.length() > 0 && nombre.length() > 0)
 			if(this.GrupoRubro.getSelection()!=null && this.GrupoTipoPersona.getSelection()!=null)
 				this.BotonRegistrarse.setEnabled(true);
+	}
+	
+	public void limpiaCampos() {
+		this.GrupoRubro.clearSelection();
+		this.GrupoTipoPersona.clearSelection();
+		this.TextFieldContrasena.setText("");
+		this.TextFieldUsuario.setText("");
+		this.TextFieldNombre.setText("");
+		
 	}
 }

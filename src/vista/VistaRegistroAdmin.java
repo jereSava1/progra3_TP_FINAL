@@ -206,5 +206,13 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin, KeyLis
 		JOptionPane.showMessageDialog(this, "Usuario registrado con exito");
 		
 	}
+
+	@Override
+	public void limpiaCampos() {
+		this.textFieldContrasena.setText("");
+		this.textFieldEmail.setText("");
+		this.textFieldID.setText("");
+		this.textFieldUsuario.setText("");		
+	}
 	
 }

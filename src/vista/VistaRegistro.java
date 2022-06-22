@@ -193,4 +193,11 @@ public class VistaRegistro extends JFrame implements IRegistro, MouseListener {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void limpiaCampos() {
+		this.G.clearSelection();
+		
+	}
+	
 }

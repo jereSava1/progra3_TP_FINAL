@@ -58,9 +58,11 @@ public class ControladorLogin implements ActionListener {
 					// TODO: Vista de agencia
 				}
 			}
+			this.vistaLogin.limpiaCampos();
 		} else if (comando.equalsIgnoreCase("REGISTRAR")) {
 			ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); // Contraolador para la vista del registro
 			this.vistaLogin.esconder();
+			this.vistaLogin.limpiaCampos();
 		}
 
 	}

@@ -253,6 +253,16 @@ public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEm
 		nombre.length()>0 && apellido.length()>0 && email.length()>0 && 
 		usuario.length()>0 && contrasena.length()>0 && telefono.length()>0 && edad.length()>0);
 	}
+	
+	public void limpiaCampos() {
+		this.textFieldApellido.setText("");
+		this.textFieldContrasena.setText("");
+		this.textFieldEdad.setText("");
+		this.textFieldEmail.setText("");
+		this.textFieldNombre.setText("");
+		this.textFieldEdad.setText("");
+		this.textFieldTelefono.setText("");
+	}
 		
 }
 

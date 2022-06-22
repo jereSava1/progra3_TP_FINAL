@@ -14,4 +14,6 @@ public interface IRegistro {
 	ButtonGroup getG();
 
 	void setActionListener(ActionListener actionListener);
+	
+	void limpiaCampos();
 }

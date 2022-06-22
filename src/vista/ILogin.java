@@ -18,4 +18,6 @@ public interface ILogin {
 	void mostrar();
 
 	void esconder();
+	
+	void limpiaCampos();
 }
