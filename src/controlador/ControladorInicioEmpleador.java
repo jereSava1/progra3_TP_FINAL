@@ -35,8 +35,12 @@ public class ControladorInicioEmpleador implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		
-		if(comando.equalsIgnoreCase("GESTIONAR")) {
+		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 		
+	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
+	    	
+	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
+	    	
 	    }else if(comando.equalsIgnoreCase("VER LISTA")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("INGRESAR")) {

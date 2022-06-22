@@ -22,11 +22,13 @@ import java.awt.GridBagConstraints;
 public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 
 	private JPanel contentPane;
-	private JButton btnGestionTicket;
+	private JButton btnAltaTicket;
+	private JButton btnBajaTicket;
 	private JButton btnListaEmpleadores;
 	private JButton btnRondaEleccion;
 	private JButton btnResultado;
 	private JButton btnCerrarSesion;
+	private JButton btnModificaTicket;
 	
 
 	/**
@@ -61,10 +63,38 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
+		JPanel panel_4 = new JPanel();
+		panel.add(panel_4);
+		
+		JLabel lblNewLabel_1 = new JLabel("Baja del ticket: ");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_4.add(lblNewLabel_1);
+		
+		JPanel panel_5 = new JPanel();
+		panel.add(panel_5);
+		
+		btnBajaTicket = new JButton("Dar de baja mi ticket");
+		btnBajaTicket.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_5.add(btnBajaTicket);
+		
+		JPanel panel_6 = new JPanel();
+		panel.add(panel_6);
+		
+		JLabel lblNewLabel_2 = new JLabel("Modificar el ticket:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_6.add(lblNewLabel_2);
+		
+		JPanel panel_7 = new JPanel();
+		panel.add(panel_7);
+		
+		btnModificaTicket = new JButton("Modifica mi ticket");
+		btnModificaTicket.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_7.add(btnModificaTicket);
+		
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
 		
-		JLabel lblNewLabel = new JLabel("Gestion del ticket: ");
+		JLabel lblNewLabel = new JLabel("Alta del ticket: ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lblNewLabel);
 		
@@ -72,9 +102,9 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		panel.add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		btnGestionTicket = new JButton("Ingresar");
-		btnGestionTicket.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_2.add(btnGestionTicket);
+		btnAltaTicket = new JButton("Generar mi ticket");
+		btnAltaTicket.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_2.add(btnAltaTicket);
 		
 		JPanel panel_1_1 = new JPanel();
 		panel.add(panel_1_1);
@@ -86,13 +116,9 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		JPanel panel_2_1 = new JPanel();
 		panel.add(panel_2_1);
 		
-		btnListaEmpleadores = new JButton("Ver\r\n");
+		btnListaEmpleadores = new JButton("Ver Lista");
 		btnListaEmpleadores.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnListaEmpleadores.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnListaEmpleadores.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		panel_2_1.add(btnListaEmpleadores);
 		
 		JPanel panel_1_2 = new JPanel();
@@ -120,7 +146,7 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		JPanel panel_2_3 = new JPanel();
 		panel.add(panel_2_3);
 		
-		btnResultado = new JButton("Ver");
+		btnResultado = new JButton("Ver Resultado");
 		btnResultado.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnResultado.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2_3.add(btnResultado);
@@ -150,10 +176,12 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 	public void setActionListener(ActionListener actionListener) {
 		
 		this.btnCerrarSesion.addActionListener(actionListener);
-		this.btnGestionTicket.addActionListener(actionListener);
+		this.btnAltaTicket.addActionListener(actionListener);
 		this.btnListaEmpleadores.addActionListener(actionListener);
 		this.btnResultado.addActionListener(actionListener);
-		this.btnListaEmpleadores.addActionListener(actionListener);	
+		this.btnListaEmpleadores.addActionListener(actionListener);
+		this.btnBajaTicket.addActionListener(actionListener);
+		this.btnModificaTicket.addActionListener(actionListener);
 	}
 
 }
