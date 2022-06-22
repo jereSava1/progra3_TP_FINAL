@@ -31,7 +31,7 @@ public class ControladorRegistro implements ActionListener {
 				ControladorRegistroAdmin controladorAdmin = ControladorRegistroAdmin.getControladorRegistroAdmin();
 			} else if (comando.equalsIgnoreCase("empleado")) {
 				this.vistaRegistro.esconder();
-				ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
+				ControladorRegistroEmpleado controladorRegistroEmpleado = ControladorRegistroEmpleado.getControladorRegistroEmpleado();
 			} else if (comando.equalsIgnoreCase("empleador")) {
 
 				this.vistaRegistro.esconder();

@@ -1,6 +1,7 @@
 package model;
 
 import dto.RegistroRequestAdmin;
+import dto.RegistroRequestEmpleado;
 import dto.RegistroRequestEmpleador;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
@@ -304,6 +305,7 @@ public class Agencia extends Observable {
 	public void registrarAdmin(RegistroRequestAdmin req) {
 		Administrador newAdmin = new Administrador(req.getNombreUsuario(), req.getContrasena(), req.getID(), req.getEmail());
 		this.administradores.add(newAdmin);
+		System.out.println("Se registro el admin: " + newAdmin.getNombreUsuario());
 	}
 
 	public void registrarEmpleador(RegistroRequestEmpleador req) {
@@ -315,7 +317,10 @@ public class Agencia extends Observable {
 		System.out.println("Se registro el empleador: " + newEmpleador.getNombre());
 	}
 
-	public void registrarEmpleado(){
+	public void registrarEmpleado(RegistroRequestEmpleado req){
+		Empleado newEmpleado = new Empleado(req.getNombreUsuario(),req.getContrasena(),req.getNombre(),Integer.parseInt(req.getEdad()),req.getEmail(),req.getTelefono());
+		this.empleados.add(newEmpleado);
+		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
 
 	}
 }

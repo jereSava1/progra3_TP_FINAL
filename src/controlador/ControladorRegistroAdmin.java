@@ -33,6 +33,9 @@ public class ControladorRegistroAdmin implements ActionListener {
 		if (comando.equalsIgnoreCase("REGISTRO")) {
 			RegistroRequestAdmin NuevoU = vista.getFormulario(); //Aca guardamos el formulario
 			this.agencia.registrarAdmin(NuevoU);
+			this.vista.success();
+			this.vista.esconder();
+			ControladorLogin controladorLogin= ControladorLogin.getControladorLogin();
 		} else if (comando.equalsIgnoreCase("VOLVER")) {
 			ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); //Contralador para la vista del registro
 			this.vista.esconder();

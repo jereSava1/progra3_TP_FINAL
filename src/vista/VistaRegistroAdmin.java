@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.FlowLayout;
@@ -201,5 +202,9 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin, KeyLis
 		
 	}
 
+	public void success() {
+		JOptionPane.showMessageDialog(this, "Usuario registrado con exito");
+		
+	}
 	
 }

@@ -6,14 +6,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.apache.commons.lang3.StringUtils;
+
+import dto.RegistroRequestEmpleado;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class VistaRegistroEmpleadoPretenso extends JFrame {
+public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEmpleado,KeyListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
@@ -22,6 +31,18 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 	private JTextField textFieldUsuario;
 	private JTextField textFieldContrasena;
 	private JTextField textFieldEmail;
+	private String nombre;
+	private String apellido;
+	private String telefono;
+	private String usuario;
+	private String contrasena;
+	private String email;
+	private String edad;
+	private JButton btnRegistrarse;
+	private JButton btnVolver;
+	private ActionListener actionListener; 
+	private JTextField textFieldEdad;
+	
 
 	/**
 	 * Launch the application.
@@ -45,7 +66,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 	public VistaRegistroEmpleadoPretenso() {
 		setTitle("Registro Empleado Pretenso");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 373);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -68,6 +89,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 		textFieldNombre = new JTextField();
 		panelTextFieldNombre.add(textFieldNombre);
 		textFieldNombre.setColumns(15);
+		this.textFieldNombre.addKeyListener(this);
 		
 		JPanel panelLabelApellido = new JPanel();
 		panel.add(panelLabelApellido);
@@ -82,6 +104,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 		textFieldApellido = new JTextField();
 		textFieldApellido.setColumns(15);
 		panelTextFieldApellido.add(textFieldApellido);
+		this.textFieldApellido.addKeyListener(this);
 		
 		JPanel panelTelefono = new JPanel();
 		panel.add(panelTelefono);
@@ -96,6 +119,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 		textFieldTelefono = new JTextField();
 		textFieldTelefono.setColumns(15);
 		panelTextFieldTelefono.add(textFieldTelefono);
+		this.textFieldTelefono.addKeyListener(this);
 		
 		JPanel panelLabelUsuario = new JPanel();
 		panel.add(panelLabelUsuario);
@@ -110,6 +134,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 		textFieldUsuario = new JTextField();
 		textFieldUsuario.setColumns(15);
 		panelTextFieldUsuario.add(textFieldUsuario);
+		this.textFieldUsuario.addKeyListener(this);
 		
 		JPanel panelLabelContrasena = new JPanel();
 		panel.add(panelLabelContrasena);
@@ -124,6 +149,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 		textFieldContrasena = new JTextField();
 		textFieldContrasena.setColumns(15);
 		panelTextFieldContrasena.add(textFieldContrasena);
+		this.textFieldContrasena.addKeyListener(this);
 		
 		JPanel panelLabelEmail = new JPanel();
 		panel.add(panelLabelEmail);
@@ -138,18 +164,96 @@ public class VistaRegistroEmpleadoPretenso extends JFrame {
 		textFieldEmail = new JTextField();
 		textFieldEmail.setColumns(15);
 		panelTextFieldEmail.add(textFieldEmail);
+		this.textFieldEmail.addKeyListener(this);
 		
-		JPanel panelButtonVolver = new JPanel();
-		panel.add(panelButtonVolver);
+		JPanel panelEdad = new JPanel();
+		panel.add(panelEdad);
+	    
+	    JLabel lblEmail_1 =new JLabel("Edad :");
+	    panelEdad.add(lblEmail_1);
+	    lblEmail_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JButton btnVolver = new JButton("Volver");
-		panelButtonVolver.add(btnVolver);
+		JPanel panelTextFieldEdad = new JPanel();
+		panel.add(panelTextFieldEdad);
 		
-		JPanel panelButtonRegistrarse = new JPanel();
-		panel.add(panelButtonRegistrarse);
+		textFieldEdad = new JTextField();
+		panelTextFieldEdad.add(textFieldEdad);
+		textFieldEdad.setColumns(15);
+		this.textFieldEdad.addKeyListener(this);
 		
-		JButton btnRegistrarse = new JButton("Registrarse");
-		panelButtonRegistrarse.add(btnRegistrarse);
+		JPanel panelVolver = new JPanel();
+		panel.add(panelVolver);
+		
+	    btnVolver = new JButton("Volver");
+	    panelVolver.add(btnVolver);
+		
+		JPanel panelRegistrarse = new JPanel();
+		panel.add(panelRegistrarse);
+		
+		btnRegistrarse = new JButton("Registrarse");
+		panelRegistrarse.add(btnRegistrarse);
+	    btnRegistrarse.setEnabled(false); 
 	}
 
+	
+	@Override
+	public void mostrar() {
+		this.setVisible(true);
+		
+	}
+
+	@Override
+	public void esconder() {
+		this.setVisible(false);
+		
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+	   this.actionListener=actionListener;
+	   this.btnVolver.addActionListener(actionListener);
+       this.btnRegistrarse.addActionListener(actionListener);
+	}
+
+	@Override
+	public RegistroRequestEmpleado getFormulario() {
+		RegistroRequestEmpleado req= new RegistroRequestEmpleado(this.nombre,this.apellido,this.telefono,
+		this.usuario,this.contrasena,this.email,this.edad);
+		return req;
+	}
+
+	@Override
+	public void success() {
+		JOptionPane.showMessageDialog(this, "Usuario registrado con exito");
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		this.nombre=this.textFieldNombre.getText();
+		this.apellido=this.textFieldApellido.getText();
+		this.email=this.textFieldEmail.getText();
+		this.usuario=this.textFieldUsuario.getText();
+		this.contrasena=this.textFieldContrasena.getText();
+		this.telefono=this.textFieldTelefono.getText();
+		this.edad=this.textFieldEdad.getText();
+		this.btnRegistrarse.setEnabled(
+		nombre.length()>0 && apellido.length()>0 && email.length()>0 && 
+		usuario.length()>0 && contrasena.length()>0 && telefono.length()>0 && edad.length()>0);
+	}
+		
 }
+
+
