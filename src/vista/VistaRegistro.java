@@ -18,6 +18,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JTable;
 import java.awt.FlowLayout;
@@ -32,13 +35,14 @@ import java.awt.CardLayout;
 import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
 
-public class VistaRegistro extends JFrame implements IRegistro {
+public class VistaRegistro extends JFrame implements IRegistro,MouseListener {
 
 	private JPanel contentPane;
 	public ButtonGroup G;
 	private ActionListener actionListener;
 	private JButton btnSiguiente;
 	private JButton btnVolver;
+	
 	
 	
 	/**
@@ -119,6 +123,9 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		this.G.add(rdbtnEmpleado);
 		this.G.add(rdbtnAdministrador);
 		this.G.add(rdbtnEmpleador);
+		rdbtnEmpleado.addMouseListener(this);
+		rdbtnAdministrador.addMouseListener(this);
+		rdbtnEmpleador.addMouseListener(this);
 		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
@@ -137,6 +144,7 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		btnSiguiente.setActionCommand("SIGUIENTE");
 		btnSiguiente.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panelSur.add(btnSiguiente);
+		btnSiguiente.setEnabled(false);
 		
 		JPanel panel_6 = new JPanel();
 		contentPane.add(panel_6, BorderLayout.NORTH);
@@ -144,8 +152,6 @@ public class VistaRegistro extends JFrame implements IRegistro {
 		JLabel lblNewLabel = new JLabel("Seleccione tipo de usuario con el que desea registrarse:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		panel_6.add(lblNewLabel);
-		
-
 		
 	}
 
@@ -169,6 +175,34 @@ public class VistaRegistro extends JFrame implements IRegistro {
 
 	public ButtonGroup getG() {
 		return this.G;
+		
+	}
+	
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		this.btnSiguiente.setEnabled(this.G.getSelection()!=null);
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

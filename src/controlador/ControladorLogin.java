@@ -18,6 +18,7 @@ import vista.VistaRegistro;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
+	ControladorRegistro controladorReg= new ControladorRegistro(); //Contraolador para la vista del registro
 
 	public ControladorLogin() {
 		this.vistaLogin = new VistaLogin();
@@ -50,8 +51,13 @@ public class ControladorLogin implements ActionListener {
 				}
 			}
 		} else if (comando.equalsIgnoreCase("REGISTRAR")) {
+			
+			ControladorRegistro controladorReg= new ControladorRegistro(); //Contraolador para la vista del registro
+			
 			this.vistaLogin.esconder();
 			VistaRegistro registro = new VistaRegistro();
+			controladorReg.setVista(registro);
+			registro.setActionListener(controladorReg);
 			registro.mostrar();
 		}
 

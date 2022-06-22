@@ -14,6 +14,7 @@ import types.TipoUsuario;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -24,7 +25,7 @@ import javax.swing.BoxLayout;
 import java.awt.CardLayout;
 import javax.swing.SwingConstants;
 
-public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin {
+public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin,KeyListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldID;
@@ -39,6 +40,22 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 	private String email;
 	private String usuario;
 	
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
 
 	/**
 	 * Launch the application.
@@ -89,6 +106,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		textFieldID = new JTextField();
 		panel_fieldID.add(textFieldID);
 		textFieldID.setColumns(15);
+		this.textFieldID.addKeyListener(this);
 		
 		JPanel panel_Usuario = new JPanel();
 		panelCentral.add(panel_Usuario);
@@ -103,6 +121,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		textFieldUsuario = new JTextField();
 		textFieldUsuario.setColumns(15);
 		panel_fieldUsuario.add(textFieldUsuario);
+		this.textFieldUsuario.addKeyListener(this);
 		
 		JPanel panel_Contrasena = new JPanel();
 		panelCentral.add(panel_Contrasena);
@@ -117,6 +136,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		textFieldContrasena = new JTextField();
 		textFieldContrasena.setColumns(15);
 		panel_fieldContrasena.add(textFieldContrasena);
+		this.textFieldContrasena.addKeyListener(this);
 		
 		JPanel panel_Contrasena_1 = new JPanel();
 		panelCentral.add(panel_Contrasena_1);
@@ -131,6 +151,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		textFieldEmail = new JTextField();
 		textFieldEmail.setColumns(15);
 		panel_fieldContrasena_1.add(textFieldEmail);
+		this.textFieldEmail.addKeyListener(this);
 		
 		JPanel panel_Volver = new JPanel();
 		panelCentral.add(panel_Volver);
@@ -145,6 +166,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_RegisterButton.add(btnRegistro);
+		btnRegistro.setEnabled(false);
 	}
 
 	@Override
@@ -162,8 +184,6 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		this.btnRegistro.addActionListener(actionListener);
 		this.btnVolver.addActionListener(actionListener);
 		this.actionListener=actionListener;
-		
-		
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -171,15 +191,29 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		this.email=this.textFieldEmail.getText();
 		this.ID= this.textFieldID.getText();
 		this.contrasena =this.textFieldContrasena.getText();
+		
+		this.btnRegistro.setEnabled(usuario.length() > 0 && contrasena.length() > 0 && email.length() > 0 && ID.length() > 0);
 	}
 	
 	
 	@Override
 	public RegistroRequestAdmin getFormulario() {
 		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario,this.contrasena,this.email,this.ID);
-		req.setNombreUsuario(this.textFieldUsuario.getText());
+		req.setNombreUsuario(this.textFieldUsuario.getText()); // POR QUE NO SACAMOS ESTOS?? Ya los pasamos por constructor
 		req.setContrasena(this.textFieldContrasena.getText());
 		return req;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

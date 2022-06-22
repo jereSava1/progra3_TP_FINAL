@@ -66,7 +66,6 @@ public class main {
       }
       
       ControladorLogin controlador = new ControladorLogin();
-      ControladorRegistro controladorReg= new ControladorRegistro();
     
   }
 
