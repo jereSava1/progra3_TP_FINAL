@@ -6,27 +6,33 @@ public class RegistroRequest {
 	private String nombreUsuario;
 	private String contrasena;
 	private TipoUsuario tipo;
-	
-	public RegistroRequest(String n,String c,TipoUsuario t) {
-		this.nombreUsuario=n;
-		this.contrasena=c;
-		this.tipo=t;
+
+	public RegistroRequest(String n, String c, TipoUsuario t) {
+		this.nombreUsuario = n;
+		this.contrasena = c;
+		this.tipo = t;
 	}
+
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
+
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
+
 	public String getContrasena() {
 		return contrasena;
 	}
+
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+
 	public TipoUsuario getTipo() {
 		return tipo;
 	}
+
 	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}

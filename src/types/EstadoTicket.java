@@ -1,8 +1,5 @@
 package types;
 
 public enum EstadoTicket {
-  ACTIVO,
-  SUSPENDIDO,
-  CANCELADO,
-  FINALIZADO
+	ACTIVO, SUSPENDIDO, CANCELADO, FINALIZADO
 }

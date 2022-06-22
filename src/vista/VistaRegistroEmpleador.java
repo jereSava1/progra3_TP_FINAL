@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dto.RegistroRequestAdmin;
+import dto.RegistroRequestEmpleador;
+import org.apache.commons.lang3.StringUtils;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -207,8 +209,8 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 	}
 
 	@Override
-	public RegistroRequestAdmin getFormulario() {
-		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario,this.contrasena,this.TipoPersona,this.Rubro);
+	public RegistroRequestEmpleador getFormulario() {
+		RegistroRequestEmpleador req = new RegistroRequestEmpleador(this.usuario, this.contrasena, this.TipoPersona,this.Rubro);
 		return req;
 	}
 
@@ -230,7 +232,7 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
 		if(this.GrupoRubro.getSelection()!=null && this.GrupoTipoPersona.getSelection()!=null) {
 			this.TipoPersona = this.GrupoTipoPersona.getSelection().getActionCommand();
 			this.Rubro = this.GrupoRubro.getSelection().getActionCommand();
-			if(usuario.length() > 0 && contrasena.length() > 0 && nombre.length() > 0)
+			if(StringUtils.isNotEmpty(usuario) && StringUtils.isNotEmpty(contrasena) && StringUtils.isNotEmpty(nombre))
 				this.BotonRegistrarse.setEnabled(true);
 	   }
 	}

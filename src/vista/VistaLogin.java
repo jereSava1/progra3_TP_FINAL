@@ -62,69 +62,69 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
 		panelCentro.setLayout(new GridLayout(4, 1, 0, 0));
-		
+
 		JLabel lblNewLabel = new JLabel("Username:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		panelCentro.add(lblNewLabel);
-		
+
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		panelCentro.add(panel_1);
-		
+
 		usernameField = new JTextField();
 		usernameField.addKeyListener(this);
 		panel_1.add(usernameField);
 		usernameField.setColumns(20);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Contrase\u00F1a:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		panelCentro.add(lblNewLabel_1);
-		
+
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		panelCentro.add(panel);
-		
+
 		contrasenaField = new JPasswordField();
 		contrasenaField.addKeyListener(this);
 		contrasenaField.setColumns(20);
 		panel.add(contrasenaField);
-		
+
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
 		panelSur.setLayout(new GridLayout(2, 1, 0, 0));
-		
+
 		loginButton = new JButton("Entrar");
 		loginButton.setActionCommand("LOGIN");
 		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		loginButton.setEnabled(false);
 		panelSur.add(loginButton);
-		
+
 		registrarseButton = new JButton("Registrarse");
 		registrarseButton.setActionCommand("REGISTRAR");
 		registrarseButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelSur.add(registrarseButton);
-		
+
 		this.setVisible(true);
 	}
 
 	public void keyPressed(KeyEvent e) {
 	}
-	
+
 	public void keyReleased(KeyEvent e) {
 		this.username = this.usernameField.getText();
 		this.contrasena = new String(this.contrasenaField.getPassword());
-		
+
 		this.loginButton.setEnabled(username.length() > 0 && contrasena.length() > 0);
 	}
-	
+
 	public void keyTyped(KeyEvent e) {
 	}
 
@@ -148,17 +148,16 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 	public void usuarioNoEncontrado() {
 		JOptionPane.showMessageDialog(this, "Usuario no encontrado");
 	}
-	public void  contrasenaIncorrecta() {
+
+	public void contrasenaIncorrecta() {
 		JOptionPane.showMessageDialog(this, "Contrasena incorrecta");
 	}
-	
-	
+
 	@Override
 	public void entrar() {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	@Override
 	public void mostrar() {

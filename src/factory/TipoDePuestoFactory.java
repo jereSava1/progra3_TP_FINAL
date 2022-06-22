@@ -8,24 +8,24 @@ import model.ticket.DatosDeEmpleo;
 
 public class TipoDePuestoFactory {
 
-  public DatosDeEmpleo getTipoDePuesto(String tipo,int peso) throws ConstructorInvalidoException {
-    if (tipo == null) {
-      return null;
-    }
+	public DatosDeEmpleo getTipoDePuesto(String tipo, int peso) throws ConstructorInvalidoException {
+		if (tipo == null) {
+			return null;
+		}
 
-    if (tipo.equalsIgnoreCase("JR")) {
-      return new Jr(peso);
-    }
+		if (tipo.equalsIgnoreCase("JR")) {
+			return new Jr(peso);
+		}
 
-    if (tipo.equalsIgnoreCase("Management")) {
-      return new Management(peso);
-    }
+		if (tipo.equalsIgnoreCase("Management")) {
+			return new Management(peso);
+		}
 
-    if (tipo.equalsIgnoreCase("SR")){
-      return new Sr(peso);
-    }
+		if (tipo.equalsIgnoreCase("SR")) {
+			return new Sr(peso);
+		}
 
-    throw new ConstructorInvalidoException(tipo);
-  }
+		throw new ConstructorInvalidoException(tipo);
+	}
 
 }

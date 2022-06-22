@@ -10,24 +10,19 @@ import types.*;
 public class Empleador extends Usuario {
 
 	/**
-	 * - TipoPersona
-	 *   - Fisica
-	 *   - Juridica
+	 * - TipoPersona - Fisica - Juridica
 	 */
 	private TipoPersona tipoPersona;
 	/**
-	 * - Tipo De Rubro
-	 *    - Comercio Internacional
-	 *    - Comercio Local
-	 *    - Salud
+	 * - Tipo De Rubro - Comercio Internacional - Comercio Local - Salud
 	 */
 	private Rubro rubro;
 	private int ticketsSimplificadosSinAsignar;
 
 	public Empleador() {
-		
+
 	}
-	
+
 	public Empleador(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
 		this.ticketsSimplificadosSinAsignar = 0;
@@ -35,7 +30,9 @@ public class Empleador extends Usuario {
 
 	/**
 	 * Se crea un nuevo ticket de busqueda de empleador
-	 * @param formulario contiene las preferencias del empleador para la busqueda de empleados
+	 * 
+	 * @param formulario contiene las preferencias del empleador para la busqueda de
+	 *                   empleados
 	 * @return TicketBusquedaDeEmpleo
 	 */
 	public TicketBusquedaDeEmpleado altaTicket(FormularioBusqueda formulario, int cantEmpleados) {
@@ -49,13 +46,13 @@ public class Empleador extends Usuario {
 			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");
 		}
 	}
-	
+
 	@Override
 	public void run() {
-		
+
 	}
-	
-    //GETTERS Y SETTERS
+
+	// GETTERS Y SETTERS
 	public TipoPersona getTipoPersona() {
 		return tipoPersona;
 	}
@@ -71,5 +68,5 @@ public class Empleador extends Usuario {
 	public void setTicketsSimplificadosSinAsignar(int ticketsSimplificadosSinAsignar) {
 		this.ticketsSimplificadosSinAsignar = ticketsSimplificadosSinAsignar;
 	}
-	
+
 }

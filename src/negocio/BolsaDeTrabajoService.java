@@ -10,46 +10,55 @@ import model.usuario.Empleado;
 import model.usuario.Empleador;
 
 public class BolsaDeTrabajoService {
-	
+
 	public synchronized void agregarTicketSimplificado(TicketSimplificadoRequest request, Agencia agencia) {
 		Empleador posibleDueno = agencia.getEmpleadores().stream()
-				.filter(e -> e.getNombreUsuario()
-						.equals(request.getNombreUsuario())).findFirst().get();
-		
+				.filter(e -> e.getNombreUsuario().equals(request.getNombreUsuario())).findFirst().get();
+
 		while (posibleDueno.getTicketsSimplificadosSinAsignar() == 3) {
 			try {
 				wait();
-			} catch (Exception cumpleContrato) {}
+			} catch (Exception cumpleContrato) {
+			}
 		}
-		
-		TicketSimplificado nuevo = new TicketSimplificado(posibleDueno, request.getTipoDeEmpleo(), request.getLocacion());
-		
+
+		TicketSimplificado nuevo = new TicketSimplificado(posibleDueno, request.getTipoDeEmpleo(),
+				request.getLocacion());
+
 		agencia.getBolsaDeTrabajo().add(nuevo);
 		posibleDueno.setTicketsSimplificadosSinAsignar(posibleDueno.getTicketsSimplificadosSinAsignar() + 1);
 		notifyAll();
 	}
-	
-	public synchronized void verificaEmpleado(TicketSimplificado ticket, Empleado empleado, Locacion locacion, Agencia agencia) throws TicketFinalizadoException, EmpleadoSinIntentosException {
-		
-		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) { //si el ticket está tomado, espero que se desocupe
+
+	public synchronized void verificaEmpleado(TicketSimplificado ticket, Empleado empleado, Locacion locacion,
+			Agencia agencia) throws TicketFinalizadoException, EmpleadoSinIntentosException {
+
+		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) { // si el ticket está tomado, espero que se
+																			// desocupe
 			try {
 				wait();
-			} catch (Exception cumpleContrato) {}
+			} catch (Exception cumpleContrato) {
+			}
 		}
-		
-		if (!ticket.isEsPermanente() && empleado.getIntentosBolsaDeTrabajo() < 10) { //si sali del wait porque se libero el ticket, intento, sino ignoro el intento porque el ticket se tomo mientras se esperaba
+
+		if (!ticket.isEsPermanente() && empleado.getIntentosBolsaDeTrabajo() < 10) { // si sali del wait porque se
+																						// libero el ticket, intento,
+																						// sino ignoro el intento porque
+																						// el ticket se tomo mientras se
+																						// esperaba
 			ticket.setAsignacion(empleado);
-			
+
 			if (locacion.calculaPuntaje(ticket.getLocacion()) != 1F) {
-				ticket.setAsignacion(null); //si no hay coincidencia, libero el ticket
+				ticket.setAsignacion(null); // si no hay coincidencia, libero el ticket
 				empleado.setIntentosBolsaDeTrabajo(empleado.getIntentosBolsaDeTrabajo() + 1);
 			} else {
-				ticket.setEsPermanente(true); //confirmo que el empleado se queda el ticket
+				ticket.setEsPermanente(true); // confirmo que el empleado se queda el ticket
 			}
-			
+
 			notifyAll();
 		} else if (ticket.isEsPermanente()) {
-			throw new TicketFinalizadoException("El ticket finalizo mientras se realizaba la operacion", ticket.getDueno().toString());
+			throw new TicketFinalizadoException("El ticket finalizo mientras se realizaba la operacion",
+					ticket.getDueno().toString());
 		} else {
 			throw new EmpleadoSinIntentosException("Este empleado no tiene mas intentos!", empleado.toString());
 		}

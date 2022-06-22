@@ -7,9 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import dto.RegistroRequest;
 import dto.RegistroRequestAdmin;
-import types.TipoUsuario;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -21,11 +19,9 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import java.awt.CardLayout;
 import javax.swing.SwingConstants;
 
-public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin,KeyListener {
+public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin,KeyListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldID;
@@ -64,7 +60,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaRegistroAdministrador frame = new VistaRegistroAdministrador();
+					VistaRegistroAdmin frame = new VistaRegistroAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -76,7 +72,7 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 	/**
 	 * Create the frame.
 	 */
-	public VistaRegistroAdministrador() {
+	public VistaRegistroAdmin() {
 		setTitle("Registro Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 491, 391);
@@ -156,14 +152,14 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 		JPanel panel_Volver = new JPanel();
 		panelCentral.add(panel_Volver);
 		
-		btnVolver = new JButton("Volver\r\n");
+		btnVolver = new JButton("VOLVER");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_Volver.add(btnVolver);
 		
 		JPanel panel_RegisterButton = new JPanel();
 		panelCentral.add(panel_RegisterButton);
 		
-		btnRegistro = new JButton("Registro");
+		btnRegistro = new JButton("REGISTRO");
 		btnRegistro.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_RegisterButton.add(btnRegistro);
 		btnRegistro.setEnabled(false);
@@ -183,24 +179,21 @@ public class VistaRegistroAdministrador extends JFrame implements IRegistroAdmin
 	public void setActionListener(ActionListener actionListener) {
 		this.btnRegistro.addActionListener(actionListener);
 		this.btnVolver.addActionListener(actionListener);
-		this.actionListener=actionListener;
+		this.actionListener = actionListener;
 	}
 
 	public void keyReleased(KeyEvent e) {
 		this.usuario = this.textFieldUsuario.getText();
-		this.email=this.textFieldEmail.getText();
-		this.ID= this.textFieldID.getText();
-		this.contrasena =this.textFieldContrasena.getText();
-		
+		this.email =this.textFieldEmail.getText();
+		this.ID = this.textFieldID.getText();
+		this.contrasena = this.textFieldContrasena.getText();
 		this.btnRegistro.setEnabled(usuario.length() > 0 && contrasena.length() > 0 && email.length() > 0 && ID.length() > 0);
 	}
 	
 	
 	@Override
 	public RegistroRequestAdmin getFormulario() {
-		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario,this.contrasena,this.email,this.ID);
-		req.setNombreUsuario(this.textFieldUsuario.getText()); // POR QUE NO SACAMOS ESTOS?? Ya los pasamos por constructor
-		req.setContrasena(this.textFieldContrasena.getText());
+		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario, this.contrasena, this.email,this.ID);
 		return req;
 	}
 

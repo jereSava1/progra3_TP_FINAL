@@ -1,49 +1,50 @@
 package model.ticket;
 
-
 import model.usuario.Empleador;
 
-
 /**
- * Ticket que deberan tener todos los empleadores que deseen realizar busquedas de empleado.
+ * Ticket que deberan tener todos los empleadores que deseen realizar busquedas
+ * de empleado.
  */
 public class TicketBusquedaDeEmpleado extends Ticket {
 
-    /**
-     * Total de empleados que requiere la empresa para satisfacer su busqueda de empleados.
-     */
-    private int empleadosNecesitados;
-    /**
-     * Empleados que se obtienen luego de las rondas de contrataciones.
-     */
-    private int empleadosObtenidos = 0;
+	/**
+	 * Total de empleados que requiere la empresa para satisfacer su busqueda de
+	 * empleados.
+	 */
+	private int empleadosNecesitados;
+	/**
+	 * Empleados que se obtienen luego de las rondas de contrataciones.
+	 */
+	private int empleadosObtenidos = 0;
 
-    
-    public TicketBusquedaDeEmpleado(FormularioBusqueda formularioDeBusqueda, int empleadosNecesitados, Empleador empleador) {
-        super(formularioDeBusqueda, empleador);
-        this.empleadosNecesitados = empleadosNecesitados;
-    }
+	public TicketBusquedaDeEmpleado(FormularioBusqueda formularioDeBusqueda, int empleadosNecesitados,
+			Empleador empleador) {
+		super(formularioDeBusqueda, empleador);
+		this.empleadosNecesitados = empleadosNecesitados;
+	}
 
-    //TODO: completar
-    @Override
-    public String toString(){
-        return super.toString()+" \nCantidad de empleados: " + this.empleadosNecesitados + "\n" +
-                "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
-    }
+	// TODO: completar
+	@Override
+	public String toString() {
+		return super.toString() + " \nCantidad de empleados: " + this.empleadosNecesitados + "\n"
+				+ "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
+	}
 
-    /**
-     * Al producirse una contratacion, se incrementa en 1
-     * la cantidad de empleados obtenidos
-     *
-     * pos: se incrementa en 1 los empleados obtenidos, siempre y cuando obtenidos < necesitados
-     */
-    public void aumentarEmpleadosObtenidos(){
-        if (empleadosObtenidos < empleadosNecesitados) {
-            this.empleadosObtenidos++;
-        }
-    }
+	/**
+	 * Al producirse una contratacion, se incrementa en 1 la cantidad de empleados
+	 * obtenidos
+	 *
+	 * pos: se incrementa en 1 los empleados obtenidos, siempre y cuando obtenidos <
+	 * necesitados
+	 */
+	public void aumentarEmpleadosObtenidos() {
+		if (empleadosObtenidos < empleadosNecesitados) {
+			this.empleadosObtenidos++;
+		}
+	}
 
-    //GETTERS Y SETTERS
+	// GETTERS Y SETTERS
 	public int getEmpleadosNecesitados() {
 		return empleadosNecesitados;
 	}
@@ -57,4 +58,3 @@ public class TicketBusquedaDeEmpleado extends Ticket {
 	}
 
 }
-

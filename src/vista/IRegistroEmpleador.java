@@ -2,11 +2,12 @@ package vista;
 
 import java.awt.event.ActionListener;
 import dto.RegistroRequestAdmin;
+import dto.RegistroRequestEmpleador;
 
 public interface IRegistroEmpleador {
 
 	void mostrar();
 	void esconder();
 	void setActionListener(ActionListener actionListener);
-	RegistroRequestAdmin getFormulario();
+	RegistroRequestEmpleador getFormulario();
 }

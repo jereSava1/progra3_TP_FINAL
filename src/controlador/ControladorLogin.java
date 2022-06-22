@@ -18,12 +18,20 @@ import vista.VistaRegistro;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
-	ControladorRegistro controladorReg= new ControladorRegistro(); //Contraolador para la vista del registro
-
-	public ControladorLogin() {
+	private static ControladorLogin controladorLogin = null;
+	
+	private ControladorLogin() {
 		this.vistaLogin = new VistaLogin();
 		this.agencia = Agencia.getAgencia();
 		this.vistaLogin.setActionListener(this);
+	}
+	
+	public static ControladorLogin getControladorLogin() {
+		if (controladorLogin == null) {
+			controladorLogin = new ControladorLogin();
+		}
+		controladorLogin.vistaLogin.mostrar();
+		return controladorLogin;
 	}
 
 	@Override
@@ -31,7 +39,7 @@ public class ControladorLogin implements ActionListener {
 		String comando = e.getActionCommand();
 		if (comando.equalsIgnoreCase("LOGIN")) {
 			Usuario logueado = null;
-			
+
 			try {
 				logueado = this.agencia.login(vistaLogin.getUsername(), vistaLogin.getContrasena());
 			} catch (UsuarioIncorrectoException err) {
@@ -39,35 +47,22 @@ public class ControladorLogin implements ActionListener {
 			} catch (ContrasenaIncorrectaException err) {
 				this.vistaLogin.contrasenaIncorrecta();
 			}
-			
+
 			if (logueado != null) {
 				this.vistaLogin.esconder();
 				if (logueado instanceof Empleador) {
-					//TODO: Vista de empleador
+					// TODO: Vista de empleador
 				} else if (logueado instanceof Empleado) {
-					//TODO: Vista de empleado
+					// TODO: Vista de empleado
 				} else {
-					//TODO: Vista de agencia
+					// TODO: Vista de agencia
 				}
 			}
 		} else if (comando.equalsIgnoreCase("REGISTRAR")) {
-			
-			ControladorRegistro controladorReg= new ControladorRegistro(); //Contraolador para la vista del registro
-			
+			ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); // Contraolador para la vista del registro
 			this.vistaLogin.esconder();
-			VistaRegistro registro = new VistaRegistro();
-			controladorReg.setVista(registro);
-			registro.setActionListener(controladorReg);
-			registro.mostrar();
 		}
 
 	}
 
-	public ILogin getVistaLogin() {
-		return vistaLogin;
-	}
-
-	public void setVistaLogin(ILogin vistaLogin) {
-		this.vistaLogin = vistaLogin;
-	}
 }

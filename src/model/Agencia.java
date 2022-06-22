@@ -26,18 +26,19 @@ import exception.UsuarioIncorrectoException;
 /**
  *
  */
-public class Agencia extends Observable{
-	
+public class Agencia extends Observable {
 
 	/**
-	 *  coleccion que contiene a los empleados (sin repeticiones) que consumen la aplicacion
+	 * coleccion que contiene a los empleados (sin repeticiones) que consumen la
+	 * aplicacion
 	 */
 	private Set<Empleado> empleados;
 	/**
-	 *  coleccion que contiene a los empleadores (sin repeticiones) que consumen la aplicacion
+	 * coleccion que contiene a los empleadores (sin repeticiones) que consumen la
+	 * aplicacion
 	 */
 	private Set<Empleador> empleadores;
-	
+
 	private Set<Administrador> administradores;
 	/**
 	 * Lista con los tickets de busqueda de empleo
@@ -87,6 +88,7 @@ public class Agencia extends Observable{
 
 	/**
 	 * Agrega un nuevo empleado a la coleccion de empleados
+	 * 
 	 * @param nuevoEmpleado
 	 */
 	public void registraEmpleado(Empleado nuevoEmpleado) {
@@ -94,41 +96,41 @@ public class Agencia extends Observable{
 	}
 
 	/**
-	 *Agrega un nuevo empleador a la coleccion de empleadores
+	 * Agrega un nuevo empleador a la coleccion de empleadores
+	 * 
 	 * @param nuevoEmpleador
 	 */
 	public void registraEmpleador(Empleador nuevoEmpleador) {
 		this.empleadores.add(nuevoEmpleador);
 	}
 
-	
-	public Usuario login(String nombreUsuario, String contrasena) throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
+	public Usuario login(String nombreUsuario, String contrasena)
+			throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
 		Optional<Empleador> candidatoEmpleador = empleadores.stream()
-													.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
+				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
 		if (candidatoEmpleador.isPresent()) {
 			candidatoEmpleador.get().validaContrasena(contrasena);
 			return candidatoEmpleador.get();
 		}
-		
+
 		Optional<Empleado> candidatoEmpleado = empleados.stream()
 				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
-		
+
 		if (candidatoEmpleado.isPresent()) {
 			candidatoEmpleado.get().validaContrasena(contrasena);
 			return candidatoEmpleado.get();
 		}
-		
+
 		Optional<Administrador> candidatoAdmin = administradores.stream()
 				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
-		
+
 		if (candidatoAdmin.isPresent()) {
 			candidatoAdmin.get().validaContrasena(contrasena);
 			return candidatoAdmin.get();
 		}
-		
+
 		throw new UsuarioIncorrectoException("Usuario no encontrado", nombreUsuario);
 	}
-
 
 	public void mostrarEmpleados() {
 		for (Empleado empleado : this.empleados) {
@@ -155,15 +157,16 @@ public class Agencia extends Observable{
 	}
 
 	/**
-	 * PRECOND:
-	 *   - El empleador debe haber conseguido un empleado
+	 * PRECOND: - El empleador debe haber conseguido un empleado
 	 *
-	 * Calcula las comisiones que obtendra del empleador segun el sueldo con el que el empleador remunerará al empleado
-	 * El porcentaje de comision varia segun el tipo de persona que sea la empresa y segun el rubro que esta misma desarrolle
+	 * Calcula las comisiones que obtendra del empleador segun el sueldo con el que
+	 * el empleador remunerará al empleado El porcentaje de comision varia segun el
+	 * tipo de persona que sea la empresa y segun el rubro que esta misma desarrolle
 	 *
 	 * Por cada punto que tenga el empleador se restara un 1% a la comision final
 	 *
-	 * Si el puntaje del empleador supera el porcentaje de comision, la comision final quedara en cero.
+	 * Si el puntaje del empleador supera el porcentaje de comision, la comision
+	 * final quedara en cero.
 	 *
 	 * @param ticket
 	 * @return comision final para el empleador
@@ -197,15 +200,15 @@ public class Agencia extends Observable{
 	}
 
 	/**
-	 * PRECOND:
-	 *   - El empleado debe haber conseguido trabajo
+	 * PRECOND: - El empleado debe haber conseguido trabajo
 	 *
 	 * Calcula las comisiones que obtendra del empleado segun el sueldo pretendido
 	 * El porcentaje de comision varia segun el tipo de puesto
 	 *
 	 * Por cada punto que tenga el empleado se restara un 1% a la comision final
 	 *
-	 * Si el puntaje del empleado supera el porcentaje de comision, la comision final quedara en cero.
+	 * Si el puntaje del empleado supera el porcentaje de comision, la comision
+	 * final quedara en cero.
 	 *
 	 * @param ticket
 	 * @return comision final para el empleado
@@ -229,7 +232,6 @@ public class Agencia extends Observable{
 		return comision;
 	}
 
-	
 	// GETTERS Y SETTERS
 	public Set<Empleado> getEmpleados() {
 		return empleados;
@@ -260,13 +262,17 @@ public class Agencia extends Observable{
 	}
 
 	/**
-	 * Por cada empleador se verifica si este fue por lo menos elegido alguna vez por algun empleado en la ronda de eleccion.
+	 * Por cada empleador se verifica si este fue por lo menos elegido alguna vez
+	 * por algun empleado en la ronda de eleccion.
 	 *
-	 * En cada ticket de busqueda de empleo encontraremos una lista de empleadores puntuados segun nuestro nivel de coincidencias con ellos.
+	 * En cada ticket de busqueda de empleo encontraremos una lista de empleadores
+	 * puntuados segun nuestro nivel de coincidencias con ellos.
 	 *
-	 * Recorro cada empleador de la lista del empleado para ver si este fue seleccionado.
+	 * Recorro cada empleador de la lista del empleado para ver si este fue
+	 * seleccionado.
 	 *
-	 * Si verifico que el empleador jamas fue seleccionado en la ronda de eleccion, se le restara 20 puntos a su puntaje final.
+	 * Si verifico que el empleador jamas fue seleccionado en la ronda de eleccion,
+	 * se le restara 20 puntos a su puntaje final.
 	 *
 	 */
 	public void empleadorNoElegido() {

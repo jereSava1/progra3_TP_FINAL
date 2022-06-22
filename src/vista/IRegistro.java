@@ -8,7 +8,10 @@ import dto.RegistroRequest;
 
 public interface IRegistro {
 	void mostrar();
+
 	void esconder();
+
 	ButtonGroup getG();
+
 	void setActionListener(ActionListener actionListener);
 }

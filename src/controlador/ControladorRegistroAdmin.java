@@ -4,38 +4,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dto.RegistroRequestAdmin;
-import types.TipoUsuario;
+import vista.IRegistroAdmin;
 import vista.VistaRegistro;
-import vista.VistaRegistroAdministrador;
+import vista.VistaRegistroAdmin;
 
 public class ControladorRegistroAdmin implements ActionListener{
-	private String nombreUsuario;
-	private String contrasena;
-	private TipoUsuario tipo;
-	private String email;
-	private String ID;
-	private VistaRegistroAdministrador vista;
+	private IRegistroAdmin vista;
+	private static ControladorRegistroAdmin controladorRegistroAdmin = null;
 	
-	public ControladorRegistroAdmin() {};
-	
-	public void setVista(VistaRegistroAdministrador vista) {
-		this.vista=vista;
+	private ControladorRegistroAdmin() {
+
+		this.vista = new VistaRegistroAdmin();
+		this.vista.setActionListener(this);
+	};
+
+	public static ControladorRegistroAdmin getControladorRegistroAdmin() {
+		if (controladorRegistroAdmin == null) {
+			controladorRegistroAdmin = new ControladorRegistroAdmin();
+		}
+		return controladorRegistroAdmin;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equalsIgnoreCase("Registro")) {
-			RegistroRequestAdmin NuevoU = vista.getFormulario(); //Aca guardamos el 
-			
-		}else/* if (e.getActionCommand().equalsIgnoreCase("Volver")) */{  //No tengo idea por que no anda la condicion
-			
-			ControladorRegistro controladorReg= new ControladorRegistro(); //Contraolador para la vista del registro
-			
+		String comando = e.getActionCommand();
+		if (comando.equalsIgnoreCase("REGISTRO")) {
+			RegistroRequestAdmin NuevoU = vista.getFormulario(); //Aca guardamos el formulario
+		}else if (comando.equalsIgnoreCase("VOLVER")) {
+			ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); //Contraolador para la vista del registro
 			this.vista.esconder();
-			VistaRegistro registro = new VistaRegistro();
-			controladorReg.setVista(registro);
-			registro.setActionListener(controladorReg);
-			registro.mostrar();
-	}
+		}
 	}
 }	
 

@@ -10,14 +10,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * En esta ronda un empleado seleccionara un empleador y un empleador seleccionara multiples empleados.
- * Las elecciones quedaran almacenadas para ser usadas posteriormente en la ultima etapa,la ronda de contrataciones.
+ * En esta ronda un empleado seleccionara un empleador y un empleador
+ * seleccionara multiples empleados. Las elecciones quedaran almacenadas para
+ * ser usadas posteriormente en la ultima etapa,la ronda de contrataciones.
  */
 public class RondaDeElecciones {
 	/**
 	 * PRECONTRATO
 	 *
 	 * Busco el usuario a seleccionar
+	 * 
 	 * @param ticket
 	 * @param usuario No null, el usuario existe en el ranking
 	 */
@@ -46,7 +48,7 @@ public class RondaDeElecciones {
 
 	public static void muestraCandidatosSeleccionados(Ticket ticket) {
 		List<UsuarioPuntuado> seleccionados = ticket.getListaDeAsignaciones().stream().filter(r -> r.isSeleccionado())
-				.collect(Collectors.toList()); //guarda los usuarios seleccionados por el creador del ticket
+				.collect(Collectors.toList()); // guarda los usuarios seleccionados por el creador del ticket
 		for (UsuarioPuntuado usuarioP : seleccionados) {
 			System.out.println(usuarioP.toString());
 		}

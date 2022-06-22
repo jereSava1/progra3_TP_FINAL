@@ -2,7 +2,7 @@ package exception;
 
 public class TicketFinalizadoException extends Exception {
 	private String dato;
-	
+
 	public TicketFinalizadoException(String message, String dato) {
 		super(message);
 		this.setDato(dato);

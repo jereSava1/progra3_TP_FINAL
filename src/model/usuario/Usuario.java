@@ -12,17 +12,16 @@ import exception.ContrasenaIncorrectaException;
 import exception.NoDuenoDeTicketException;
 import exception.UsuarioIncorrectoException;
 
-public abstract class Usuario extends Thread{
+public abstract class Usuario extends Thread {
 	private String nombre;
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;
 
 	public Usuario() {
-		
+
 	}
-	
-	
+
 	public Usuario(String nombreUsuario, String contrasena) {
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -48,8 +47,10 @@ public abstract class Usuario extends Thread{
 	}
 
 	/**
-	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en el.
-	 * @param ticket ticket al que se le desea aplicar la modificacion
+	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en
+	 * el.
+	 * 
+	 * @param ticket             ticket al que se le desea aplicar la modificacion
 	 * @param formularioBusqueda nuevo formulario, reemplaza al anterior
 	 * @throws NoDuenoDeTicketException
 	 */
@@ -74,8 +75,9 @@ public abstract class Usuario extends Thread{
 	}
 
 	/**
-	 * Baja un determinado puntaje al puntaje final del usuario.
-	 * El puntaje final no puede ser menor a 0
+	 * Baja un determinado puntaje al puntaje final del usuario. El puntaje final no
+	 * puede ser menor a 0
+	 * 
 	 * @param puntaje se le resta al puntaje final
 	 */
 	public void bajarPuntaje(int puntaje) {
@@ -90,7 +92,7 @@ public abstract class Usuario extends Thread{
 	}
 
 	// GETTERS Y SETTERS
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -111,21 +113,16 @@ public abstract class Usuario extends Thread{
 		this.nombre = nombre;
 	}
 
-
 	public String getContrasena() {
 		return contrasena;
 	}
-
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 
-
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;
 	}
-	
-	
 
 }

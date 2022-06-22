@@ -1,7 +1,5 @@
 package types;
 
 public enum Resultado {
-  EXITO,
-  FRACASO,
-  INCONCLUSO
+	EXITO, FRACASO, INCONCLUSO
 }

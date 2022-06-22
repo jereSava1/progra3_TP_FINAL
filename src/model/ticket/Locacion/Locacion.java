@@ -3,13 +3,13 @@ package model.ticket.Locacion;
 import interfaces.Puntajes;
 
 public abstract class Locacion implements Puntajes {
-  private final String valor;
-  private int peso;
+	private final String valor;
+	private int peso;
 
-  public abstract float calculaPuntaje(Locacion locacion);
+	public abstract float calculaPuntaje(Locacion locacion);
 
-  public Locacion(String valor,int peso){
-    this.valor = valor;
-    this.peso = peso;
-  }
+	public Locacion(String valor, int peso) {
+		this.valor = valor;
+		this.peso = peso;
+	}
 }

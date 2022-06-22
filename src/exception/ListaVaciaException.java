@@ -1,9 +1,9 @@
 package exception;
 
 public class ListaVaciaException extends Exception {
-  private String dato;
+	private String dato;
 
-  public ListaVaciaException(String message){
-    super(message);
-  }
+	public ListaVaciaException(String message) {
+		super(message);
+	}
 }
