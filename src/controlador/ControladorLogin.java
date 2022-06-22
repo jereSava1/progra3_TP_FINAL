@@ -51,11 +51,11 @@ public class ControladorLogin implements ActionListener {
 			if (logueado != null) {
 				this.vistaLogin.esconder();
 				if (logueado instanceof Empleador) {
-					// TODO: Vista de empleador
+					ControladorInicioEmpleador CEmpleador = ControladorInicioEmpleador.get();
 				} else if (logueado instanceof Empleado) {
-					// TODO: Vista de empleado
+					ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.get();
 				} else {
-					// TODO: Vista de agencia
+					ControladorSesionAdmin CAdmin = ControladorSesionAdmin.get();
 				}
 			}
 			this.vistaLogin.limpiaCampos();
