@@ -6,21 +6,37 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import model.Agencia;
-
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JRadioButton;
-import javax.swing.JButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 
-public class VistaAltaTicket extends JFrame {
+public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketEmpleado,MouseListener{
 
 	private JPanel General;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private ActionListener actionListener;
+	private ButtonGroup GrupoLocacion;
+	private ButtonGroup GrupoRemuneracion;
+	private ButtonGroup GrupoHorario;
+	private ButtonGroup GrupoPuesto;
+	private ButtonGroup GrupoREtario;
+	private ButtonGroup GrupoExperiencia;
+	private ButtonGroup GrupoEstudios;
+	private JButton btnVolver;
+	private JButton btnFinalizar;
+	private String Locacion;
+	private String Remuneracion;
+	private String Puesto;
+	private String REtario;
+	private String Experiencia;
+	private String Estudios;
+	private String Horario;
 
 	/**
 	 * Launch the application.
@@ -29,7 +45,7 @@ public class VistaAltaTicket extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaAltaTicket frame = new VistaAltaTicket();
+					VistaAltaTicketEmpleado frame = new VistaAltaTicketEmpleado();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +57,7 @@ public class VistaAltaTicket extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VistaAltaTicket() {
+	public VistaAltaTicketEmpleado() {
 		setTitle("Alta de su Ticket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 646, 665);
@@ -65,19 +81,24 @@ public class VistaAltaTicket extends JFrame {
 		panel.add(panel_2);
 		
 		JRadioButton rdbtnHomeOffice = new JRadioButton("Home Office");
-		buttonGroup_1.add(rdbtnHomeOffice);
 		rdbtnHomeOffice.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnHomeOffice);
 		
 		JRadioButton rdbtnPresencial = new JRadioButton("Presencial");
-		buttonGroup_1.add(rdbtnPresencial);
 		rdbtnPresencial.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnPresencial);
 		
 		JRadioButton rdbtnIndistinto = new JRadioButton("Indistinto");
-		buttonGroup_1.add(rdbtnIndistinto);
 		rdbtnIndistinto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnIndistinto);
+		
+		GrupoLocacion = new ButtonGroup();
+		GrupoLocacion.add(rdbtnIndistinto);
+		GrupoLocacion.add(rdbtnPresencial);
+		GrupoLocacion.add(rdbtnHomeOffice);
+		rdbtnIndistinto.addMouseListener(this);
+		rdbtnPresencial.addMouseListener(this);
+		rdbtnHomeOffice.addMouseListener(this);
 		
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3);
@@ -89,17 +110,25 @@ public class VistaAltaTicket extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
 		
-		JRadioButton rdbtnHastav1 = new JRadioButton("Hasta " + Agencia.getAgencia().getRemuneracionV2());
+		JRadioButton rdbtnHastav1 = new JRadioButton("Hasta");
 		rdbtnHastav1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnHastav1);
 		
-		JRadioButton rdbtnEntreV1yV2 = new JRadioButton("Entre " + Agencia.getAgencia().getRemuneracionV1() + " y " + Agencia.getAgencia().getRemuneracionV2());
+		JRadioButton rdbtnEntreV1yV2 = new JRadioButton("Entre");
 		rdbtnEntreV1yV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnEntreV1yV2);
 		
-		JRadioButton rdbtnMasDeV2 = new JRadioButton("Mas de " + Agencia.getAgencia().getRemuneracionV2());
+		JRadioButton rdbtnMasDeV2 = new JRadioButton("Mas de");
 		rdbtnMasDeV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnMasDeV2);
+		
+		GrupoRemuneracion = new ButtonGroup();
+		GrupoRemuneracion.add(rdbtnMasDeV2);
+		GrupoRemuneracion.add(rdbtnEntreV1yV2);
+		GrupoRemuneracion.add(rdbtnHastav1);
+		rdbtnMasDeV2.addMouseListener(this);
+		rdbtnEntreV1yV2.addMouseListener(this);
+		rdbtnHastav1.addMouseListener(this);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -123,6 +152,14 @@ public class VistaAltaTicket extends JFrame {
 		rdbtnExtendida.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_6.add(rdbtnExtendida);
 		
+		GrupoHorario = new ButtonGroup();
+		GrupoHorario.add(rdbtnExtendida);
+		GrupoHorario.add(rdbtnCompleta);
+		GrupoHorario.add(rdbtnMedia);
+		rdbtnExtendida.addMouseListener(this);
+		rdbtnCompleta.addMouseListener(this);
+		rdbtnMedia.addMouseListener(this);
+		
 		JPanel panel_7 = new JPanel();
 		panel.add(panel_7);
 		
@@ -144,6 +181,14 @@ public class VistaAltaTicket extends JFrame {
 		JRadioButton rdbtnManagment = new JRadioButton("Managment");
 		rdbtnManagment.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_8.add(rdbtnManagment);
+		
+		GrupoPuesto = new ButtonGroup();
+		GrupoPuesto.add(rdbtnManagment);
+		GrupoPuesto.add(rdbtnSenior);
+		GrupoPuesto.add(rdbtnJunior);
+		rdbtnManagment.addMouseListener(this);
+		rdbtnSenior.addMouseListener(this);
+		rdbtnJunior.addMouseListener(this);
 		
 		JPanel panel_9 = new JPanel();
 		panel.add(panel_9);
@@ -167,6 +212,14 @@ public class VistaAltaTicket extends JFrame {
 		rdbtnMas50.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_10.add(rdbtnMas50);
 		
+		GrupoREtario = new ButtonGroup();
+		GrupoREtario.add(rdbtnMas50);
+		GrupoREtario.add(rdbtn4050);
+		GrupoREtario.add(rdbtnMenos40);
+		rdbtnMas50.addMouseListener(this);
+		rdbtn4050.addMouseListener(this);
+		rdbtnMenos40.addMouseListener(this);
+		
 		JPanel panel_11 = new JPanel();
 		panel.add(panel_11);
 		
@@ -188,6 +241,15 @@ public class VistaAltaTicket extends JFrame {
 		JRadioButton rdbtnMucha = new JRadioButton("Mucha");
 		rdbtnMucha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_12.add(rdbtnMucha);
+		
+		GrupoExperiencia = new ButtonGroup();
+		GrupoExperiencia.add(rdbtnMucha);
+		GrupoExperiencia.add(rdbtnMediaExp);
+		GrupoExperiencia.add(rdbtnNada);
+		rdbtnMucha.addMouseListener(this);
+		rdbtnMediaExp.addMouseListener(this);
+		rdbtnNada.addMouseListener(this);
+		
 		
 		JPanel panel_13 = new JPanel();
 		panel.add(panel_13);
@@ -211,17 +273,109 @@ public class VistaAltaTicket extends JFrame {
 		rdbtnTerciario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_14.add(rdbtnTerciario);
 		
+		GrupoEstudios = new ButtonGroup();
+		GrupoEstudios.add(rdbtnTerciario);
+		GrupoEstudios.add(rdbtnSecundario);
+		GrupoEstudios.add(rdbtnPrimario);
+		rdbtnTerciario.addMouseListener(this);
+		rdbtnSecundario.addMouseListener(this);
+		rdbtnPrimario.addMouseListener(this);
+		
 		JPanel panel_15 = new JPanel();
 		General.add(panel_15, BorderLayout.SOUTH);
 		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JButton btnVolver = new JButton("Volver");
+		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnVolver);
 		
-		JButton btnFinalizar = new JButton("Finalizar");
+		btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnFinalizar);
+		btnFinalizar.setEnabled(false);
+	}
+
+	@Override
+	public void mostrar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void esconder() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		// TODO Auto-generated method stub
+        this.btnVolver.addActionListener(actionListener);
+        this.btnFinalizar.addActionListener(actionListener);
+        this.actionListener = actionListener;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		if(this.GrupoEstudios.getSelection()!=null)
+			this.Estudios = this.GrupoEstudios.getSelection().getActionCommand();
+		if(this.GrupoRemuneracion.getSelection()!=null)
+			this.Remuneracion = this.GrupoRemuneracion.getSelection().getActionCommand();
+		if(this.GrupoHorario.getSelection()!=null)
+			this.Horario = this.GrupoHorario.getSelection().getActionCommand();
+		if(this.GrupoPuesto.getSelection()!=null)
+			this.Puesto = this.GrupoPuesto.getSelection().getActionCommand();
+		if(this.GrupoREtario.getSelection()!=null)
+			this.REtario = this.GrupoREtario.getSelection().getActionCommand();
+		if(this.GrupoExperiencia.getSelection()!=null)
+			this.Experiencia = this.GrupoExperiencia.getSelection().getActionCommand();
+		if(this.GrupoLocacion.getSelection()!=null)
+			this.Locacion = this.GrupoLocacion.getSelection().getActionCommand();
+		if(this.GrupoEstudios.getSelection()!=null && this.GrupoRemuneracion.getSelection()!=null && this.GrupoHorario.getSelection()!=null
+				&& this.GrupoPuesto.getSelection()!=null && this.GrupoREtario.getSelection()!=null  && this.GrupoExperiencia.getSelection()!=null
+				&& this.GrupoLocacion.getSelection()!=null)
+			this.btnFinalizar.setEnabled(true);
+			
+		
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void limpiaCampos() {
+		// TODO Auto-generated method stub
+		this.GrupoEstudios.clearSelection();
+		this.GrupoExperiencia.clearSelection();
+		this.GrupoHorario.clearSelection();
+		this.GrupoLocacion.clearSelection();
+		this.GrupoPuesto.clearSelection();
+		this.GrupoRemuneracion.clearSelection();
+		this.GrupoREtario.clearSelection();
 	}
 
 }
