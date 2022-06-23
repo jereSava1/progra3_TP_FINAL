@@ -19,6 +19,7 @@ import model.usuario.UsuarioPuntuado;
  */
 public class RondaDeEncuentro {
 
+	private static boolean activada = false;
 	/**
 	 * PRECOND: busquedas != null solicitud != null
 	 *
@@ -41,7 +42,7 @@ public class RondaDeEncuentro {
 			FormularioBusqueda formulario = busqueda.getFormularioDeBusqueda();
 			float puntaje = 0F;
 
-			puntaje += formulario.getPretensionSalarial().calculaPuntaje(solicitudForm.getPretensionSalarial());
+			puntaje += formulario.getRemuneracion().calculaPuntaje(solicitudForm.getRemuneracion());
 			puntaje += formulario.getEstudios().calculaPuntaje(solicitudForm.getEstudios());
 			puntaje += formulario.getRangoEtario().calculaPuntaje(solicitudForm.getRangoEtario());
 			puntaje += formulario.getTipoDePuesto().calculaPuntaje(solicitudForm.getTipoDePuesto());
@@ -54,6 +55,7 @@ public class RondaDeEncuentro {
 		Collections.sort(ranking);
 
 		solicitud.setListaDeAsignaciones(ranking);
+	
 	}
 
 	/**
@@ -65,6 +67,9 @@ public class RondaDeEncuentro {
 	 * @param agencia
 	 */
 	public static void ejecutarRondaDeEncuentros(Agencia agencia) {
+		
+		RondaDeEncuentro.activada = false;
+		
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
 		}
@@ -72,6 +77,8 @@ public class RondaDeEncuentro {
 		for (Ticket solicitud : agencia.getSolicitudes()) { // TICKETS DE EMPLEADORES
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getBusquedas(), solicitud);
 		}
+		
+		RondaDeEncuentro.activada = true;
 	}
 
 	/**
@@ -125,4 +132,10 @@ public class RondaDeEncuentro {
 		} else
 			throw new ListaVaciaException("lista de asignaciones vacia");
 	}
+
+	public static boolean isActivada() {
+		return activada;
+	}
+	
+	
 }

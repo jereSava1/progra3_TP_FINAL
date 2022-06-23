@@ -9,7 +9,7 @@ import model.ticket.DatosDeEmpleo;
 
 public class RangoEtarioFactory {
 
-	public DatosDeEmpleo getRangoEtario(String tipo, int peso) throws ConstructorInvalidoException {
+	public static DatosDeEmpleo getRangoEtario(String tipo, int peso) throws ConstructorInvalidoException {
 
 		if (tipo == null) {
 			return null;

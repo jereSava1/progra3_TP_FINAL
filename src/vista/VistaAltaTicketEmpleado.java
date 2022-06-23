@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.TicketDeEmpleadoRequest;
+import exception.ConstructorInvalidoException;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,8 +20,11 @@ import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import java.awt.FlowLayout;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketEmpleado,MouseListener{
+public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketEmpleado, IVistaModificarTicketEmpleado, MouseListener{
 
 	private JPanel General;
 	private ActionListener actionListener;
@@ -37,6 +44,13 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 	private String Experiencia;
 	private String Estudios;
 	private String Horario;
+	private JTextField pesoLocacion;
+	private JTextField pesoRemuneracion;
+	private JTextField pesocargaHoraria;
+	private JTextField pesoTipoDePuesto;
+	private JTextField pesoRangoEtario;
+	private JTextField pesoExperiencia;
+	private JTextField pesoEstudios;
 
 	/**
 	 * Launch the application.
@@ -64,10 +78,11 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		General = new JPanel();
 		General.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(General);
-		General.setLayout(new BorderLayout(0, 0));
+		General.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		General.add(panel, BorderLayout.CENTER);
+		panel.setBounds(5, 5, 428, 587);
+		General.add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel panel_1 = new JPanel();
@@ -282,7 +297,8 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		rdbtnPrimario.addMouseListener(this);
 		
 		JPanel panel_15 = new JPanel();
-		General.add(panel_15, BorderLayout.SOUTH);
+		panel_15.setBounds(5, 592, 620, 29);
+		General.add(panel_15);
 		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		btnVolver = new JButton("Volver");
@@ -293,17 +309,91 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnFinalizar);
 		btnFinalizar.setEnabled(false);
+		
+		JPanel panel_16 = new JPanel();
+		panel_16.setBounds(433, 5, 192, 587);
+		General.add(panel_16);
+		panel_16.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panel_17_1 = new JPanel();
+		panel_16.add(panel_17_1);
+		panel_17_1.setLayout(null);
+		
+		JLabel lblNewLabel_7_1 = new JLabel("Importancia");
+		lblNewLabel_7_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7_1.setBounds(24, 0, 142, 20);
+		lblNewLabel_7_1.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		panel_17_1.add(lblNewLabel_7_1);
+		
+		pesoLocacion = new JTextField();
+		pesoLocacion.setBounds(53, 36, 86, 20);
+		panel_17_1.add(pesoLocacion);
+		pesoLocacion.setColumns(10);
+		
+		JPanel panel_17_2 = new JPanel();
+		panel_16.add(panel_17_2);
+		panel_17_2.setLayout(null);
+		
+		pesoRemuneracion = new JTextField();
+		pesoRemuneracion.setBounds(54, 28, 86, 20);
+		panel_17_2.add(pesoRemuneracion);
+		pesoRemuneracion.setColumns(10);
+		
+		JPanel panel_17_3 = new JPanel();
+		panel_16.add(panel_17_3);
+		panel_17_3.setLayout(null);
+		
+		pesocargaHoraria = new JTextField();
+		pesocargaHoraria.setBounds(55, 29, 86, 20);
+		panel_17_3.add(pesocargaHoraria);
+		pesocargaHoraria.setColumns(10);
+		
+		JPanel panel_17_4 = new JPanel();
+		panel_16.add(panel_17_4);
+		panel_17_4.setLayout(null);
+		
+		pesoTipoDePuesto = new JTextField();
+		pesoTipoDePuesto.setBounds(56, 26, 86, 20);
+		panel_17_4.add(pesoTipoDePuesto);
+		pesoTipoDePuesto.setColumns(10);
+		
+		JPanel panel_17_5 = new JPanel();
+		panel_16.add(panel_17_5);
+		panel_17_5.setLayout(null);
+		
+		pesoRangoEtario = new JTextField();
+		pesoRangoEtario.setBounds(57, 27, 86, 20);
+		panel_17_5.add(pesoRangoEtario);
+		pesoRangoEtario.setColumns(10);
+		
+		JPanel panel_17_6 = new JPanel();
+		panel_16.add(panel_17_6);
+		panel_17_6.setLayout(null);
+		
+		pesoExperiencia = new JTextField();
+		pesoExperiencia.setBounds(59, 26, 86, 20);
+		panel_17_6.add(pesoExperiencia);
+		pesoExperiencia.setColumns(10);
+		
+		JPanel panel_17_1_1 = new JPanel();
+		panel_16.add(panel_17_1_1);
+		panel_17_1_1.setLayout(null);
+		
+		pesoEstudios = new JTextField();
+		pesoEstudios.setBounds(59, 30, 86, 20);
+		panel_17_1_1.add(pesoEstudios);
+		pesoEstudios.setColumns(10);
 	}
 
 	@Override
 	public void mostrar() {
-		// TODO Auto-generated method stub
+		this.setVisible(true);
 		
 	}
 
 	@Override
 	public void esconder() {
-		// TODO Auto-generated method stub
+		this.setVisible(false);
 		
 	}
 
@@ -368,7 +458,6 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 
 	@Override
 	public void limpiaCampos() {
-		// TODO Auto-generated method stub
 		this.GrupoEstudios.clearSelection();
 		this.GrupoExperiencia.clearSelection();
 		this.GrupoHorario.clearSelection();
@@ -376,6 +465,29 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		this.GrupoPuesto.clearSelection();
 		this.GrupoRemuneracion.clearSelection();
 		this.GrupoREtario.clearSelection();
+		
+		this.pesocargaHoraria.setText("");
+		this.pesoEstudios.setText("");
+		this.pesoExperiencia.setText("");
+		this.pesoLocacion.setText("");
+		this.pesoRangoEtario.setText("");
+		this.pesoRemuneracion.setText("");
+		this.pesoTipoDePuesto.setText("");
 	}
 
+	@Override
+	public TicketDeEmpleadoRequest getFormulario() throws ConstructorInvalidoException{
+		
+		TicketDeEmpleadoRequest ticketDeEmpleadoRequest;
+		ticketDeEmpleadoRequest = new TicketDeEmpleadoRequest(this.Locacion, this.pesoLocacion.getText(), 
+																					  this.Estudios, this.pesoEstudios.getText(),
+																					  this.Experiencia, this.pesoExperiencia.getText(), 
+																					  this.Horario,this.pesocargaHoraria.getText(), 
+																					  this.REtario, this.pesoRangoEtario.getText(),
+																					  this.Remuneracion, this.pesoRemuneracion.getText(), 
+																					  this.Puesto, this.pesoTipoDePuesto.getText());
+		
+		return ticketDeEmpleadoRequest;
+		
+	}
 }

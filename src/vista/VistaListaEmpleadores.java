@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,10 +22,11 @@ import javax.swing.JButton;
 
 
 //La utilizamos para ver los empleados pretensos de UN solo ticket
-public class VistaListaEmpleadosPretensos extends JFrame {
+public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPretensos {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JButton btnVolver;
 	private TicketBusquedaDeEmpleado ticket;
 	
 	DefaultTableModel model = new DefaultTableModel();	
@@ -36,7 +38,7 @@ public class VistaListaEmpleadosPretensos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaListaEmpleadosPretensos frame = new VistaListaEmpleadosPretensos();
+					VistaListaEmpleadores frame = new VistaListaEmpleadores();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,9 +50,9 @@ public class VistaListaEmpleadosPretensos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VistaListaEmpleadosPretensos() {
+	public VistaListaEmpleadores() {
 		
-		List<UsuarioPuntuado> listaEmpleados = ticket.getListaDeAsignaciones();
+		//List<UsuarioPuntuado> listaEmpleados = ticket.getListaDeAsignaciones();
 		
 		setTitle("Lista de Empleados Pretensos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +74,7 @@ public class VistaListaEmpleadosPretensos extends JFrame {
 		table.setModel(model);
 		
 		model.setRowCount(0);
-		for (UsuarioPuntuado usuarioPuntuado : listaEmpleados) {
+		/*for (UsuarioPuntuado usuarioPuntuado : listaEmpleados) {
 			Object[] fila = {
 				usuarioPuntuado.getFechaDeGeneracion(),
 				usuarioPuntuado.getUsuario(),
@@ -80,11 +82,27 @@ public class VistaListaEmpleadosPretensos extends JFrame {
 			};
 			model.addRow(fila);	
 		}
+		*/
 		
 		
+		btnVolver = new JButton("Volver");
+		btnVolver.setBounds(10, 227, 89, 23);
+		contentPane.add(btnVolver);
+	}
+
+	@Override
+	public void mostrar() {
+		this.setVisible(true);
+	}
+
+	@Override
+	public void esconder() {
+		this.setVisible(false);
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		this.btnVolver.addActionListener(actionListener);
 		
-		JButton btnNewButton = new JButton("Volver");
-		btnNewButton.setBounds(10, 227, 89, 23);
-		contentPane.add(btnNewButton);
 	}
 }

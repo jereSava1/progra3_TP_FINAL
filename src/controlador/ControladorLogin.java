@@ -18,6 +18,10 @@ import vista.VistaRegistro;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
+	public Agencia getAgencia() {
+		return agencia;
+	}
+	
 	private static ControladorLogin controladorLogin = null;
 	
 	private ControladorLogin() {
@@ -32,6 +36,10 @@ public class ControladorLogin implements ActionListener {
 		}
 		controladorLogin.vistaLogin.mostrar();
 		return controladorLogin;
+	}
+	
+	public ILogin getVistaLogin() {
+		return vistaLogin;
 	}
 
 	@Override
@@ -53,7 +61,7 @@ public class ControladorLogin implements ActionListener {
 				if (logueado instanceof Empleador) {
 					ControladorInicioEmpleador CEmpleador = ControladorInicioEmpleador.get();
 				} else if (logueado instanceof Empleado) {
-					ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.get();
+					ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
 				} else {
 					ControladorSesionAdmin CAdmin = ControladorSesionAdmin.get();
 				}

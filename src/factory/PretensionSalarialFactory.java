@@ -10,12 +10,10 @@ import model.ticket.pretensionSalarial.PretensionSalarial;
 
 public class PretensionSalarialFactory {
 
-	private Agencia agencia = Agencia.getAgencia();
-
-	public PretensionSalarial getPretensionSalarial(int peso, float remuneracionPretendida)
+	public static PretensionSalarial getPretensionSalarial(int peso, float remuneracionPretendida)
 			throws ConstructorInvalidoException {
-		float v1 = this.agencia.getRemuneracionV1();
-		float v2 = this.agencia.getRemuneracionV2();
+		float v1 = Agencia.getAgencia().getRemuneracionV1();
+		float v2 = Agencia.getAgencia().getRemuneracionV2();
 
 		if (remuneracionPretendida > 0) {
 			if (remuneracionPretendida < v1) {

@@ -319,13 +319,13 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 
 	@Override
 	public void mostrar() {
-		// TODO Auto-generated method stub
+		this.setVisible(true);
 		
 	}
 
 	@Override
 	public void esconder() {
-		// TODO Auto-generated method stub
+		this.setVisible(false);
 		
 	}
 

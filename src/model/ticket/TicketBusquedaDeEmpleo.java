@@ -27,7 +27,7 @@ public class TicketBusquedaDeEmpleo extends Ticket {
 	@Override
 	public String toString() {
 		return super.toString() + "Remuneracion pretendida: "
-				+ this.getFormularioDeBusqueda().getRemuneracionPretendida() + "\n" + "Resultado "
+				+ this.getFormularioDeBusqueda().getRemuneracion() + "\n" + "Resultado "
 				+ (this.resultado != null ? this.resultado.toString() : "inconcluso") + "\n";
 	}
 }

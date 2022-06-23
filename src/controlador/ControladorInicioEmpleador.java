@@ -2,8 +2,13 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import model.Agencia;
+import model.ticket.TicketBusquedaDeEmpleo;
+import state.CanceladoState;
 import vista.IVistaIEmpleador;
 import vista.VistaInicioEmpleador;
 import vista.VistaRegistroAdmin;
@@ -34,9 +39,10 @@ public class ControladorInicioEmpleador implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
+			
 		
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
-		
+			
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {

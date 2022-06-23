@@ -25,7 +25,7 @@ public class CargaHorariaFactory {
 	 *                                      de requerimiento
 	 */
 
-	public DatosDeEmpleo getCargaHoraria(String tipo, int peso) throws ConstructorInvalidoException {
+	public static DatosDeEmpleo getCargaHoraria(String tipo, int peso) throws ConstructorInvalidoException {
 		if (tipo == null) {
 			return null;
 		}

@@ -323,4 +323,21 @@ public class Agencia extends Observable {
 		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
 
 	}
+	
+	public void addTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
+		this.busquedas.add(ticket);
+	}
+	
+	public void addTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
+		this.solicitudes.add(ticket);
+	}
+	
+	public void removeTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
+		this.busquedas.remove(ticket);
+	}
+	
+	public void removeTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
+		this.solicitudes.remove(ticket);
+	}
+	
 }
