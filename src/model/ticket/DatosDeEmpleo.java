@@ -8,6 +8,7 @@ import interfaces.Puntajes;
  * dato de empleo peso: importancia que le da el usuario a este dato de empleo
  */
 public abstract class DatosDeEmpleo implements Puntajes {
+	
 	private final String valor;
 	private int peso;
 

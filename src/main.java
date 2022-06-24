@@ -13,6 +13,8 @@ import factory.TipoDePuestoFactory;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
+import model.ticket.TicketBusquedaDeEmpleado;
+import model.ticket.TicketBusquedaDeEmpleo;
 import model.ticket.DatosDeEmpleo;
 import model.ticket.pretensionSalarial.*;
 import model.usuario.Empleado;
@@ -43,28 +45,43 @@ public class main {
 		agencia.getEmpleados().add(e3);
 		agencia.getEmpleadores().add(empleador3);
 
+		FormularioBusqueda formularioEmpleado = null;
+		FormularioBusqueda formularioEmpleador = null;
+	
+		
 		try {
-			FormularioBusqueda formularioEmpleado = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
+			formularioEmpleado = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
 					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
 					cargaH.getCargaHoraria("media", 30), tipoDePuesto.getTipoDePuesto("jr", 10),
-					estudios.getEstudios("secundario", 20), 100000);
+					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, 10000));
 
-			FormularioBusqueda formularioEmpleador = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
+			formularioEmpleador = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
 					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
 					cargaH.getCargaHoraria("media", 30), tipoDePuesto.getTipoDePuesto("jr", 10),
-					estudios.getEstudios("secundario", 20), 100000);
+					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, 10000));
 
-			agencia.getBusquedas().add(e1.altaTicket(formularioEmpleado));
-			agencia.getSolicitudes().add(empleador3.altaTicket(formularioEmpleador, 1));
+			TicketBusquedaDeEmpleo ticketEmpleado1 = e1.altaTicket(formularioEmpleado);
+			
+			TicketBusquedaDeEmpleado ticketEmpleador1 = empleador3.altaTicket(formularioEmpleador, 1);
+			
+			agencia.getBusquedas().add(ticketEmpleado1);
+			agencia.getSolicitudes().add(ticketEmpleador1);
+			
+			System.out.println(ticketEmpleado1);
+			
+			ControladorLogin controlador = ControladorLogin.getControladorLogin();
 
-			agencia.mostrarTicketBusqueda();
-			agencia.mostrarTicketSolicitud();
+			System.out.println(ticketEmpleado1);
+
+			//agencia.mostrarTicketBusqueda();
+			//agencia.mostrarTicketSolicitud();
+			
 		} catch (Exception e) {
-
+			
 		}
 
-		ControladorLogin controlador = ControladorLogin.getControladorLogin();
-
+		
+		
 	}
 
 }

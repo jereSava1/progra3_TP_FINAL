@@ -73,9 +73,6 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 			}
 			
 			
-			
-			
-			
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();

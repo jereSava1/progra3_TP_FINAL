@@ -53,20 +53,21 @@ public class ControladorInicioEmpleado implements ActionListener {
 			}
 			i++;
 		}
-		
+		TicketBusquedaDeEmpleo ticket = busquedas.get(i);
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 			
-			if( encontre == true ) 
-				busquedas.get(i).setEstadoTicket(new CanceladoState(busquedas.get(i)));
+			if( encontre == true ) {
+				ticket.setEstadoTicket(new CanceladoState(ticket));
+				Agencia.getAgencia().removeTicketBusquedaDeEmpleo(ticket);
+			}
 			else
 				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
 			
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
 	    	
 	    	if( encontre == true ) {
-	    		//this.vista.esconder();
-		    	//ControladorModificarTicket controladorModificarTicket = ControladorModificarTicket.get();
-	    		//ControladorModificarTicket esta enlazado con la vista AltaTicket
+	    		this.vista.esconder();
+	    		ControladorModificarTicketEmpleado controladorModificarTicketEmpleado = ControladorModificarTicketEmpleado.getControladorModificarTicketEmpleado();
 	    	}
 			else
 				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -76,7 +77,8 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	if( encontre == false ) {
 	    		this.vista.esconder();
 		    	ControladorAltaTicketEmpleado controladorAltaTicketEmpleado = ControladorAltaTicketEmpleado.get();
-	    	}else {
+	    	}
+	    	else{
 	    		JOptionPane.showMessageDialog(null, "Usted ya tiene un ticket de busqueda de empleo activo", "Error", JOptionPane.ERROR_MESSAGE);
 	    	}
 	    	
@@ -87,6 +89,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    		this.vista.esconder();
 		    	ControladorListaEmpleadores controladorListaEmpleadores = ControladorListaEmpleadores.getControladorListaEmpleadores();
 		    	//Llenar lista con lista de asignaciones del ticket 
+		    	
 	    	}else {
 	    		if( encontre == false )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);

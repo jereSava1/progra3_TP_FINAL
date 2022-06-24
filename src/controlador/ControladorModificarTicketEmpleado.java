@@ -4,15 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import dto.TicketDeEmpleadoRequest;
+import exception.ConstructorInvalidoException;
+import exception.NoDuenoDeTicketException;
 import model.Agencia;
+import model.ticket.FormularioBusqueda;
 import model.ticket.TicketBusquedaDeEmpleo;
-import vista.IVistaModificarTicketEmpleado;
+import model.usuario.Empleado;
+import vista.IVistaAltaTicketEmpleado;
 import vista.VistaAltaTicketEmpleado;
 import vista.VistaRegistro;
 
 public class ControladorModificarTicketEmpleado implements ActionListener {
 	
-	private IVistaModificarTicketEmpleado vista;
+	private IVistaAltaTicketEmpleado vista;
 	private static ControladorModificarTicketEmpleado controladorModificarTicketEmpleado = null;
 
 	private ControladorModificarTicketEmpleado() {
@@ -45,8 +50,32 @@ public class ControladorModificarTicketEmpleado implements ActionListener {
 			i++;
 		}
 		TicketBusquedaDeEmpleo ticket = busquedas.get(i);
+		Empleado empleado = (Empleado)ticket.getDueno();
 		if( encontre == true ) {
 			
+			TicketDeEmpleadoRequest request;
+			try {
+				request = this.vista.getFormulario();
+				
+				FormularioBusqueda formulario = new FormularioBusqueda(request.getrEtario(), request.getLocacion(), 
+						   request.getExperiencia(), request.getHorario(),
+						   request.getPuesto(), request.getEstudios(), 
+						   request.getRemuneracion());
+
+				try {
+					empleado.modificaTicket(ticket, formulario);
+				}
+				catch (NoDuenoDeTicketException e1) {
+					//No se ejecuta nunca
+				}
+				
+			} 
+			catch (ConstructorInvalidoException e1) {
+				//TODO
+			}
+			
+			
+		
 		}
 		
 		

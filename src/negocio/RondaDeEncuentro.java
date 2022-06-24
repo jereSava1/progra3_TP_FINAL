@@ -42,7 +42,7 @@ public class RondaDeEncuentro {
 			FormularioBusqueda formulario = busqueda.getFormularioDeBusqueda();
 			float puntaje = 0F;
 
-			puntaje += formulario.getRemuneracion().calculaPuntaje(solicitudForm.getRemuneracion());
+			puntaje += formulario.getPretensionSalarial().calculaPuntaje(solicitudForm.getPretensionSalarial());
 			puntaje += formulario.getEstudios().calculaPuntaje(solicitudForm.getEstudios());
 			puntaje += formulario.getRangoEtario().calculaPuntaje(solicitudForm.getRangoEtario());
 			puntaje += formulario.getTipoDePuesto().calculaPuntaje(solicitudForm.getTipoDePuesto());

@@ -24,7 +24,7 @@ import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketEmpleado, IVistaModificarTicketEmpleado, MouseListener{
+public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketEmpleado, MouseListener{
 
 	private JPanel General;
 	private ActionListener actionListener;

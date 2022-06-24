@@ -13,7 +13,7 @@ public class FormularioBusqueda {
 	 * - Pretension Salarial - R < V1 - V1 < R < V2 - R > V2 -> V1, V2 Seran valores
 	 * para establecer un rango, son establecidos arbitrariamente por la Agencia
 	 */
-	private PretensionSalarial remuneracion;
+	private PretensionSalarial pretensionSalarial;
 	/**
 	 * - Rango etario - E < 40 - 40 < E < 50 - E > 50
 	 */
@@ -48,20 +48,20 @@ public class FormularioBusqueda {
 		this.cargaHoraria = cargaHoraria;
 		this.tipoDePuesto = tipoDePuesto;
 		this.estudios = estudios;
-		this.remuneracion = remuneracion;
+		this.pretensionSalarial = remuneracion;
 	}
 
 	@Override
 	public String toString() {
-		return "FormularioBusqueda " + " remuneracionPretendida=" + remuneracion + ", rangoEtario="
+		return "FormularioBusqueda " + " remuneracionPretendida=" + pretensionSalarial + ", rangoEtario="
 				+ rangoEtario.getValor() + ", locacion=" + locacion.getValor() + ", experienciaPrevia="
 				+ experienciaPrevia.getValor() + ", cargaHoraria=" + cargaHoraria.getValor() + ", tipoDePuesto="
 				+ tipoDePuesto.getValor() + ", estudios=" + estudios.getValor() + "]";
 	}
 
 	// GETTERS
-	public PretensionSalarial getRemuneracion() {
-		return remuneracion;
+	public PretensionSalarial getPretensionSalarial() {
+		return pretensionSalarial;
 	}
 
 	public DatosDeEmpleo getRangoEtario() {
