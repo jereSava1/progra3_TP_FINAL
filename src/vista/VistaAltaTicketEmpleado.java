@@ -51,6 +51,31 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 	private JTextField pesoRangoEtario;
 	private JTextField pesoExperiencia;
 	private JTextField pesoEstudios;
+	private JRadioButton rdbtnHastav1;
+	private JRadioButton rdbtnEntreV1yV2;
+	private JRadioButton rdbtnMasDeV2;
+	private float v1;
+	private float v2;
+	
+	public float getV1() {
+        return v1;
+    }
+
+    public void setV1(float v1) {
+        this.v1 = v1;
+        rdbtnHastav1.setText("Hasta "+v1);
+        rdbtnEntreV1yV2.setText("Entre "+v1+" y "+this.v2);
+    }
+
+    public float getV2() {
+        return v2;
+    }
+
+    public void setV2(float v2) {
+        this.v2 = v2;
+        rdbtnEntreV1yV2.setText("Entre "+this.v1+" y "+v2);
+        rdbtnMasDeV2.setText("Mas de "+v2);
+    }
 
 	/**
 	 * Launch the application.
@@ -125,15 +150,18 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
 		
-		JRadioButton rdbtnHastav1 = new JRadioButton("Hasta");
+		rdbtnHastav1 = new JRadioButton("Hasta");
+		rdbtnHastav1.setActionCommand("MENOS_V1");
 		rdbtnHastav1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnHastav1);
 		
-		JRadioButton rdbtnEntreV1yV2 = new JRadioButton("Entre");
+		rdbtnEntreV1yV2 = new JRadioButton("Entre");
+		rdbtnEntreV1yV2.setActionCommand("ENTRE_V1_Y_V2");
 		rdbtnEntreV1yV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnEntreV1yV2);
 		
 		JRadioButton rdbtnMasDeV2 = new JRadioButton("Mas de");
+		rdbtnMasDeV2.setActionCommand("MAS_DE_V2");
 		rdbtnMasDeV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnMasDeV2);
 		

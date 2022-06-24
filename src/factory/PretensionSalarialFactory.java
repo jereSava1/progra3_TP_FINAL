@@ -10,23 +10,23 @@ import model.ticket.pretensionSalarial.PretensionSalarial;
 
 public class PretensionSalarialFactory {
 
-	public static PretensionSalarial getPretensionSalarial(int peso, float remuneracionPretendida)
+	public static PretensionSalarial getPretensionSalarial(int peso, String remuneracionPretendida)
 			throws ConstructorInvalidoException {
+		
 		float v1 = Agencia.getAgencia().getRemuneracionV1();
 		float v2 = Agencia.getAgencia().getRemuneracionV2();
 
-		if (remuneracionPretendida > 0) {
-			if (remuneracionPretendida < v1) {
-				return new MenosV1(peso, remuneracionPretendida);
-			}
-
-			if (remuneracionPretendida >= v1 && remuneracionPretendida <= v2) {
-				return new EntreV1YV2(peso, remuneracionPretendida);
-			}
-			if (remuneracionPretendida > v2) {
-				return new MasDeV2(peso, remuneracionPretendida);
-			}
+		if (remuneracionPretendida.equalsIgnoreCase("MENOS_V1")) {
+				return new MenosV1(peso);
 		}
+
+		if (remuneracionPretendida.equalsIgnoreCase("ENTRE_V1_Y_V2")) {
+			return new EntreV1YV2(peso);
+		}
+		if (remuneracionPretendida.equalsIgnoreCase("MAS_DE_V2")) {
+			return new MasDeV2(peso);
+		}
+		
 		throw new ConstructorInvalidoException("Sueldo Pretendido menor a 0");
 	}
 }

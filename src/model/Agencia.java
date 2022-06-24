@@ -178,7 +178,19 @@ public class Agencia extends Observable {
 																				// devuelvo 0
 		float comision = 0;
 		Empleador empleador = (Empleador) ticket.getDueno();
-		float sueldo = ticket.getFormularioDeBusqueda().getPretensionSalarial().getRemuneracion();
+		String pretensionSalarial = ticket.getFormularioDeBusqueda().getPretensionSalarial().getValor();
+		float sueldo = 0;
+		switch (pretensionSalarial) {
+		case "MENOS_V1":
+			sueldo = this.remuneracionV1;
+			break;
+		case "ENTRE_V1_Y_V2":
+			sueldo = (float)(this.remuneracionV1 + this.remuneracionV2 ) / 2;
+			break;
+		case "MAS_DE_V2":
+			sueldo = this.remuneracionV2;
+			break;
+		}
 
 		if (empleador.getTipoPersona().equals(TipoPersona.FISICA)) {
 			if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
@@ -219,7 +231,19 @@ public class Agencia extends Observable {
 	public float calculaComisionesEmpleado(TicketBusquedaDeEmpleo ticket) {
 		float comision = 0;
 		Empleado empleado = (Empleado) ticket.getDueno();
-		float sueldo = ticket.getFormularioDeBusqueda().getPretensionSalarial().getRemuneracion();
+		String pretensionSalarial = ticket.getFormularioDeBusqueda().getPretensionSalarial().getValor();
+		float sueldo = 0;
+		switch (pretensionSalarial) {
+		case "MENOS_V1":
+			sueldo = this.remuneracionV1;
+			break;
+		case "ENTRE_V1_Y_V2":
+			sueldo = (float)(this.remuneracionV1 + this.remuneracionV2 ) / 2;
+			break;
+		case "MAS_DE_V2":
+			sueldo = this.remuneracionV2;
+			break;
+		}
 		String tipoDePuesto = ticket.getFormularioDeBusqueda().getTipoDePuesto().getValor();
 
 		if (tipoDePuesto.equalsIgnoreCase("JR")) {
@@ -242,6 +266,15 @@ public class Agencia extends Observable {
 
 	public Set<Empleador> getEmpleadores() {
 		return empleadores;
+	}
+	
+
+	public void setRemuneracionV1(Float remuneracionV1) {
+		this.remuneracionV1 = remuneracionV1;
+	}
+
+	public void setRemuneracionV2(Float remuneracionV2) {
+		this.remuneracionV2 = remuneracionV2;
 	}
 
 	public List<TicketBusquedaDeEmpleo> getBusquedas() {

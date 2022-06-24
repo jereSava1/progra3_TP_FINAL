@@ -44,10 +44,10 @@ public class ControladorModificarTicketEmpleado implements ActionListener {
 		int i = 0;
 		boolean encontre = false;
 		while( (i < busquedas.size()) && (encontre == false) ) {
-			if( ( busquedas.get(i).getDueno().getNombreUsuario() == usuario) == true ) {
+			if( ( busquedas.get(i).getDueno().getNombreUsuario().equals(usuario)) ) {
 				encontre = true;
-			}
-			i++;
+			}else
+				i++;
 		}
 		TicketBusquedaDeEmpleo ticket = busquedas.get(i);
 		Empleado empleado = (Empleado)ticket.getDueno();

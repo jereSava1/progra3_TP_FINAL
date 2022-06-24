@@ -26,7 +26,7 @@ public class TicketDeEmpleadoRequest {
 								String remuneracion, String pesoRemuneracion ,	String tipoDePuesto, String pesoTipoDePuesto) throws ConstructorInvalidoException {
 		
 			this.locacion = LocacionFactory.getLocacion(locacion, Integer.parseInt(pesoLocacion));
-			this.remuneracion = PretensionSalarialFactory.getPretensionSalarial(Integer.parseInt(pesoRemuneracion), Float.parseFloat(remuneracion));
+			this.remuneracion = PretensionSalarialFactory.getPretensionSalarial(Integer.parseInt(pesoRemuneracion), remuneracion);
 			this.experiencia = ExperienciaFactory.getExperiencia(experiencia, Integer.parseInt(pesoExperiencia));
 			this.estudios = EstudiosFactory.getEstudios(estudio, Integer.parseInt(pesoEstudio));
 			this.horario = CargaHorariaFactory.getCargaHoraria(horario, Integer.parseInt(pesoHorario));

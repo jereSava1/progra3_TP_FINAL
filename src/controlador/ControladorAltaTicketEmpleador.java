@@ -5,36 +5,38 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import dto.TicketDeEmpleadoRequest;
+import dto.TicketDeEmpleadorRequest;
 import exception.ConstructorInvalidoException;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
-import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Empleado;
-import vista.IVistaAltaTicketEmpleado;
-import vista.IVistaIEmpleador;
-import vista.VistaAltaTicketEmpleado;
-import vista.VistaInicioEmpleador;
+import model.usuario.Empleador;
+import vista.IVistaAltaTicketEmpleador;
+import vista.VistaAltaTicketEmpleador;
 
-public class ControladorAltaTicketEmpleado implements ActionListener {
+public class ControladorAltaTicketEmpleador implements ActionListener{
 
-	private IVistaAltaTicketEmpleado vista;
-	private static ControladorAltaTicketEmpleado controladorAltaTicket=null;
+
+	private IVistaAltaTicketEmpleador vista;
+	private static ControladorAltaTicketEmpleador controladorAltaTicket=null;
 	private Agencia agencia;
 	
-	private ControladorAltaTicketEmpleado() {
-		this.vista = new VistaAltaTicketEmpleado();
+	private ControladorAltaTicketEmpleador() {
+		this.vista = new VistaAltaTicketEmpleador();
 		this.agencia = Agencia.getAgencia();
 		this.vista.setActionListener(this);
 	};
 	
-	public static ControladorAltaTicketEmpleado get(){
+	public static ControladorAltaTicketEmpleador get(){
 		if(controladorAltaTicket==null)
-			controladorAltaTicket = new ControladorAltaTicketEmpleado();
+			controladorAltaTicket = new ControladorAltaTicketEmpleador();
+		controladorAltaTicket.vista.setV1(Agencia.getAgencia().getRemuneracionV1());
+		controladorAltaTicket.vista.setV2(Agencia.getAgencia().getRemuneracionV2());
 		controladorAltaTicket.vista.mostrar();
 		return controladorAltaTicket;
 	}
 	
-	public void setVista(IVistaAltaTicketEmpleado vista) {
+	public void setVista(IVistaAltaTicketEmpleador vista) {
 		this.vista=vista;
 	}
 	
@@ -47,15 +49,15 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 			this.vista.limpiaCampos();
 			//Guardo Ticket
 			
-			TicketDeEmpleadoRequest request;
+			TicketDeEmpleadorRequest request;
 			try {
 				request = this.vista.getFormulario();
 				
 				String usuario = ControladorLogin.getControladorLogin().getVistaLogin().getUsername();
-				List <Empleado> empleados = (List<Empleado>) Agencia.getAgencia().getEmpleados();
+				List <Empleador> empleadores = (List<Empleador>) Agencia.getAgencia().getEmpleadores();
 				
 				int i = 0;
-				while( empleados.get(i).getNombreUsuario() != usuario ) {
+				while( empleadores.get(i).getNombreUsuario() != usuario ) {
 					i++;
 				}
 				
@@ -65,14 +67,15 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 																	   request.getRemuneracion());
 				
 				//Dimos de alta el ticket del empleado en la agencia
-				Agencia.getAgencia().addTicketBusquedaDeEmpleo( empleados.get(i).altaTicket(formulario) );
-				
-				ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
+				Agencia.getAgencia().addTicketBusquedaDeEmpleado( empleadores.get(i).altaTicket(formulario,request.getCantEmpleados()) );
 				
 			} 
-			catch (ConstructorInvalidoException e1) {
+			catch (Exception e1) {
 				//Manejar exc
 			}
+			
+			
+			
 			
 			
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
@@ -80,7 +83,6 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 			this.vista.limpiaCampos();
 			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
 		}
-		
-	}
 
-}
+	}
+}	

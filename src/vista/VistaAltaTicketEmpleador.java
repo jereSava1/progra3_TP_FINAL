@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.TicketDeEmpleadoRequest;
+import dto.TicketDeEmpleadorRequest;
+import exception.ConstructorInvalidoException;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -19,8 +24,9 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicketEmpleador,MouseListener,KeyListener{
+public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicketEmpleador,MouseListener{
 
 	private JPanel General;
 	private ActionListener actionListener;
@@ -40,10 +46,38 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 	private String Experiencia;
 	private String Estudios;
 	private String Horario;
+	private JTextField pesoLocacion;
+	private JTextField pesoRemuneracion;
+	private JTextField pesocargaHoraria;
+	private JTextField pesoTipoDePuesto;
+	private JTextField pesoRangoEtario;
+	private JTextField pesoExperiencia;
+	private JTextField pesoEstudios;
+	private float v1,v2;
+	private JRadioButton rdbtnHastav1,rdbtnEntreV1yV2,rdbtnMasDeV2;
 	private JTextField textFieldCantEmpleados;
-	private float cantEmpleados=-1;
-	int complete=0;
 
+	
+	public float getV1() {
+		return v1;
+	}
+
+	public void setV1(float v1) {
+		this.v1 = v1;
+		rdbtnHastav1.setText("Hasta "+v1);
+		rdbtnEntreV1yV2.setText("Entre "+v1+" y "+this.v2);
+	}
+
+	public float getV2() {
+		return v2;
+	}
+
+	public void setV2(float v2) {
+		this.v2 = v2;
+		rdbtnEntreV1yV2.setText("Entre "+this.v1+" y "+v2);
+		rdbtnMasDeV2.setText("Mas de "+v2);
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -71,26 +105,22 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		General = new JPanel();
 		General.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(General);
-		General.setLayout(new BorderLayout(0, 0));
+		General.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		General.add(panel, BorderLayout.CENTER);
+		panel.setBounds(5, 5, 428, 587);
+		General.add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JPanel panel_16 = new JPanel();
-		panel.add(panel_16);
-		
-		JLabel lblNewLabel_7 = new JLabel("Cantidad de empleados requeridos:");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_16.add(lblNewLabel_7);
 		
 		JPanel panel_17 = new JPanel();
 		panel.add(panel_17);
 		
-		textFieldCantEmpleados = new JTextField();
-		panel_17.add(textFieldCantEmpleados);
-		textFieldCantEmpleados.setColumns(10);
-		textFieldCantEmpleados.addKeyListener(this);
+		JLabel lblNewLabel_7 = new JLabel("Empleados requeridos:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_17.add(lblNewLabel_7);
+		
+		JPanel panel_18 = new JPanel();
+		panel.add(panel_18);
 		
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
@@ -101,6 +131,7 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2);
+		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnHomeOffice = new JRadioButton("Home Office");
 		rdbtnHomeOffice.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -131,16 +162,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
+		panel_4.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JRadioButton rdbtnHastav1 = new JRadioButton("Hasta");
+		rdbtnHastav1 = new JRadioButton("Hasta "+this.v1);
 		rdbtnHastav1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnHastav1);
 		
-		JRadioButton rdbtnEntreV1yV2 = new JRadioButton("Entre");
+		rdbtnEntreV1yV2 = new JRadioButton("Entre "+this.v1+" y "+this.v2);
 		rdbtnEntreV1yV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnEntreV1yV2);
 		
-		JRadioButton rdbtnMasDeV2 = new JRadioButton("Mas de");
+		rdbtnMasDeV2 = new JRadioButton("Mas de "+this.v2);
 		rdbtnMasDeV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnMasDeV2);
 		
@@ -161,6 +193,7 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_6 = new JPanel();
 		panel.add(panel_6);
+		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnMedia = new JRadioButton("Media");
 		rdbtnMedia.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -191,6 +224,7 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_8 = new JPanel();
 		panel.add(panel_8);
+		panel_8.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnJunior = new JRadioButton("Junior");
 		rdbtnJunior.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -221,6 +255,7 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_10 = new JPanel();
 		panel.add(panel_10);
+		panel_10.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnMenos40 = new JRadioButton("Menos de 40");
 		rdbtnMenos40.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -251,6 +286,7 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_12 = new JPanel();
 		panel.add(panel_12);
+		panel_12.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnNada = new JRadioButton("Nada");
 		rdbtnNada.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -282,6 +318,7 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		
 		JPanel panel_14 = new JPanel();
 		panel.add(panel_14);
+		panel_14.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnPrimario = new JRadioButton("Primario");
 		rdbtnPrimario.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -304,7 +341,8 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		rdbtnPrimario.addMouseListener(this);
 		
 		JPanel panel_15 = new JPanel();
-		General.add(panel_15, BorderLayout.SOUTH);
+		panel_15.setBounds(5, 592, 620, 29);
+		General.add(panel_15);
 		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		btnVolver = new JButton("Volver");
@@ -312,9 +350,98 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_15.add(btnVolver);
 		
 		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setEnabled(false);
 		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnFinalizar);
-		btnFinalizar.setEnabled(false);
+		
+		JPanel panel_16 = new JPanel();
+		panel_16.setBounds(433, 5, 192, 587);
+		General.add(panel_16);
+		panel_16.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panel_19 = new JPanel();
+		panel_16.add(panel_19);
+		
+		textFieldCantEmpleados = new JTextField();
+		textFieldCantEmpleados.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_19.add(textFieldCantEmpleados);
+		textFieldCantEmpleados.setColumns(10);
+		
+		JPanel panel_17_1 = new JPanel();
+		panel_16.add(panel_17_1);
+		panel_17_1.setLayout(null);
+		
+		JLabel lblNewLabel_7_1 = new JLabel("Importancia");
+		lblNewLabel_7_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7_1.setBounds(24, 0, 142, 20);
+		lblNewLabel_7_1.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		panel_17_1.add(lblNewLabel_7_1);
+		
+		pesoLocacion = new JTextField();
+		pesoLocacion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesoLocacion.setBounds(53, 36, 86, 20);
+		panel_17_1.add(pesoLocacion);
+		pesoLocacion.setColumns(10);
+		
+		JPanel panel_17_2 = new JPanel();
+		panel_16.add(panel_17_2);
+		panel_17_2.setLayout(null);
+		
+		pesoRemuneracion = new JTextField();
+		pesoRemuneracion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesoRemuneracion.setBounds(54, 28, 86, 20);
+		panel_17_2.add(pesoRemuneracion);
+		pesoRemuneracion.setColumns(10);
+		
+		JPanel panel_17_3 = new JPanel();
+		panel_16.add(panel_17_3);
+		panel_17_3.setLayout(null);
+		
+		pesocargaHoraria = new JTextField();
+		pesocargaHoraria.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesocargaHoraria.setBounds(55, 29, 86, 20);
+		panel_17_3.add(pesocargaHoraria);
+		pesocargaHoraria.setColumns(10);
+		
+		JPanel panel_17_4 = new JPanel();
+		panel_16.add(panel_17_4);
+		panel_17_4.setLayout(null);
+		
+		pesoTipoDePuesto = new JTextField();
+		pesoTipoDePuesto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesoTipoDePuesto.setBounds(56, 26, 86, 20);
+		panel_17_4.add(pesoTipoDePuesto);
+		pesoTipoDePuesto.setColumns(10);
+		
+		JPanel panel_17_5 = new JPanel();
+		panel_16.add(panel_17_5);
+		panel_17_5.setLayout(null);
+		
+		pesoRangoEtario = new JTextField();
+		pesoRangoEtario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesoRangoEtario.setBounds(57, 27, 86, 20);
+		panel_17_5.add(pesoRangoEtario);
+		pesoRangoEtario.setColumns(10);
+		
+		JPanel panel_17_6 = new JPanel();
+		panel_16.add(panel_17_6);
+		panel_17_6.setLayout(null);
+		
+		pesoExperiencia = new JTextField();
+		pesoExperiencia.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesoExperiencia.setBounds(59, 26, 86, 20);
+		panel_17_6.add(pesoExperiencia);
+		pesoExperiencia.setColumns(10);
+		
+		JPanel panel_17_1_1 = new JPanel();
+		panel_16.add(panel_17_1_1);
+		panel_17_1_1.setLayout(null);
+		
+		pesoEstudios = new JTextField();
+		pesoEstudios.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		pesoEstudios.setBounds(59, 30, 86, 20);
+		panel_17_1_1.add(pesoEstudios);
+		pesoEstudios.setColumns(10);
 	}
 
 	@Override
@@ -369,10 +496,8 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 			this.Locacion = this.GrupoLocacion.getSelection().getActionCommand();
 		if(this.GrupoEstudios.getSelection()!=null && this.GrupoRemuneracion.getSelection()!=null && this.GrupoHorario.getSelection()!=null
 				&& this.GrupoPuesto.getSelection()!=null && this.GrupoREtario.getSelection()!=null  && this.GrupoExperiencia.getSelection()!=null
-				&& this.GrupoLocacion.getSelection()!=null && complete==1) 
+				&& this.GrupoLocacion.getSelection()!=null)
 			this.btnFinalizar.setEnabled(true);
-		else if(complete==0)
-			complete=1;
 			
 		
 		
@@ -392,7 +517,6 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 
 	@Override
 	public void limpiaCampos() {
-		// TODO Auto-generated method stub
 		this.GrupoEstudios.clearSelection();
 		this.GrupoExperiencia.clearSelection();
 		this.GrupoHorario.clearSelection();
@@ -400,34 +524,33 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		this.GrupoPuesto.clearSelection();
 		this.GrupoRemuneracion.clearSelection();
 		this.GrupoREtario.clearSelection();
-		this.textFieldCantEmpleados.setText("");
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
+		this.pesocargaHoraria.setText("");
+		this.pesoEstudios.setText("");
+		this.pesoExperiencia.setText("");
+		this.pesoLocacion.setText("");
+		this.pesoRangoEtario.setText("");
+		this.pesoRemuneracion.setText("");
+		this.pesoTipoDePuesto.setText("");
 	}
-
+	
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		try{
-		 this.cantEmpleados = Float.parseFloat(textFieldCantEmpleados.getText());
+	public TicketDeEmpleadorRequest getFormulario(){
+		
+		TicketDeEmpleadorRequest ticketDeEmpleadorRequest=null;
+		try {
+		ticketDeEmpleadorRequest = new TicketDeEmpleadorRequest(this.Locacion, this.pesoLocacion.getText(), 
+																					  this.Estudios, this.pesoEstudios.getText(),
+																					  this.Experiencia, this.pesoExperiencia.getText(), 
+																					  this.Horario,this.pesocargaHoraria.getText(), 
+																					  this.REtario, this.pesoRangoEtario.getText(),
+																					  this.Remuneracion, this.pesoRemuneracion.getText(), 
+																					  this.Puesto, this.pesoTipoDePuesto.getText(),
+																					  Integer.parseInt(this.textFieldCantEmpleados.getText()));
 		}
-		catch(Exception exception){	}
-		if(this.cantEmpleados!=-1 && complete==1)
-			this.btnFinalizar.setEnabled(true);
-		else if(complete==0)
-			complete=1;
+		catch(Exception e) {}
+		return ticketDeEmpleadorRequest;
 		
 	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
 

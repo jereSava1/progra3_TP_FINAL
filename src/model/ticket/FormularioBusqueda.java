@@ -13,7 +13,7 @@ public class FormularioBusqueda {
 	 * - Pretension Salarial - R < V1 - V1 < R < V2 - R > V2 -> V1, V2 Seran valores
 	 * para establecer un rango, son establecidos arbitrariamente por la Agencia
 	 */
-	private PretensionSalarial pretensionSalarial;
+	private DatosDeEmpleo pretensionSalarial;
 	/**
 	 * - Rango etario - E < 40 - 40 < E < 50 - E > 50
 	 */
@@ -41,7 +41,7 @@ public class FormularioBusqueda {
 
 	public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia,
 			DatosDeEmpleo cargaHoraria, DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios,
-			PretensionSalarial remuneracion) {
+			DatosDeEmpleo remuneracion) {
 		this.rangoEtario = rangoEtario;
 		this.locacion = locacion;
 		this.experienciaPrevia = experienciaPrevia;
@@ -60,7 +60,7 @@ public class FormularioBusqueda {
 	}
 
 	// GETTERS
-	public PretensionSalarial getPretensionSalarial() {
+	public DatosDeEmpleo getPretensionSalarial() {
 		return pretensionSalarial;
 	}
 

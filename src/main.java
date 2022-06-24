@@ -47,18 +47,21 @@ public class main {
 
 		FormularioBusqueda formularioEmpleado = null;
 		FormularioBusqueda formularioEmpleador = null;
+		
+		Agencia.getAgencia().setRemuneracionV1(1500F);
+		Agencia.getAgencia().setRemuneracionV2(3000F);
 	
 		
 		try {
 			formularioEmpleado = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
 					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
 					cargaH.getCargaHoraria("media", 30), tipoDePuesto.getTipoDePuesto("jr", 10),
-					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, 10000));
+					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, "MENOS_V1"));
 
 			formularioEmpleador = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
 					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
 					cargaH.getCargaHoraria("media", 30), tipoDePuesto.getTipoDePuesto("jr", 10),
-					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, 10000));
+					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, "ENTRE_V1_Y_V2"));
 
 			TicketBusquedaDeEmpleo ticketEmpleado1 = e1.altaTicket(formularioEmpleado);
 			

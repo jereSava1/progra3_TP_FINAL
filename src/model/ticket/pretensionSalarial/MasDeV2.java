@@ -3,11 +3,12 @@ package model.ticket.pretensionSalarial;
 import model.ticket.DatosDeEmpleo;
 
 public class MasDeV2 extends PretensionSalarial {
+	
+	public MasDeV2(int peso) {
+		super("MAS_DE_V2", peso);
 
-	public MasDeV2(int peso, float remuneracionPretendida) {
-		super("MAS_DE_V2", peso, remuneracionPretendida);
 	}
-
+	
 	@Override
 	public float match1() {
 		return 1F;
@@ -20,11 +21,12 @@ public class MasDeV2 extends PretensionSalarial {
 
 	@Override
 	public float match3() {
-		return 1F;
+		return -0.5F;
 	}
 
 	@Override
-	public float calculaPuntaje(PretensionSalarial pretensionSalarial) {
-		return pretensionSalarial.match3() * this.getPeso();
+	public float calculaPuntaje(DatosDeEmpleo datoDeEmpleo) {
+		return datoDeEmpleo.match3() * this.getPeso();
 	}
+
 }
