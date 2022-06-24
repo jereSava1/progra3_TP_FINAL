@@ -43,6 +43,9 @@ public class ControladorSesionAdmin implements ActionListener {
 			
 		}else if(comando.equalsIgnoreCase("Activar Contrataciones")) {
 			
+		}else if(comando.equalsIgnoreCase("Actualiza Sueldos")){
+			agencia.getAgencia().setRemuneracionV1(controladorSesionAdmin.vista.getMinimo());
+			agencia.getAgencia().setRemuneracionV2(controladorSesionAdmin.vista.getMaximo());
 		}else if(comando.equalsIgnoreCase("Cerrar Sesion")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();

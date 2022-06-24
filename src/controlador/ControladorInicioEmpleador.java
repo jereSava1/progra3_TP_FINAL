@@ -46,7 +46,8 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
-	    	
+	    	this.vista.esconder();
+	    	ControladorAltaTicketEmpleador controladorAltaTicket = ControladorAltaTicketEmpleador.get();
 	    }else if(comando.equalsIgnoreCase("VER LISTA")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("INGRESAR")) {

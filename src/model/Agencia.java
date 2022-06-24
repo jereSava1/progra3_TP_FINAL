@@ -7,6 +7,7 @@ import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.ticket.TicketSimplificado;
 import model.ticket.DatosDeEmpleo;
+import model.ticket.Ticket;
 import model.usuario.Administrador;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
@@ -23,6 +24,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import controlador.ControladorLogin;
 import exception.ContrasenaIncorrectaException;
 import exception.UsuarioIncorrectoException;
 
@@ -42,7 +44,7 @@ public class Agencia extends Observable {
 	 */
 	private Set<Empleador> empleadores;
 
-	private Set<Administrador> administradores;
+	private Administrador administrador;
 	/**
 	 * Lista con los tickets de busqueda de empleo
 	 */
@@ -70,17 +72,20 @@ public class Agencia extends Observable {
 	}
 
 	static private Agencia singleton = null;
-
+	
+	public Administrador getAdministrador() {
+		return administrador;
+	}
+	
 	private Agencia(String usuario, String contrasena) {
 		this.empleadores = new HashSet<>();
 		this.empleados = new HashSet<>();
 		this.busquedas = new ArrayList<>();
 		this.solicitudes = new ArrayList<>();
 		this.bolsaDeTrabajo = new ArrayList<>();
-		this.administradores = new HashSet<>();
+		this.administrador = null;
 		this.comisiones = 0f;
 	}
-
 	public static Agencia getAgencia() {
 
 		if (singleton == null) {
@@ -107,10 +112,11 @@ public class Agencia extends Observable {
 		this.empleadores.add(nuevoEmpleador);
 	}
 
-	public Usuario login(String nombreUsuario, String contrasena)
-			throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
+	public Usuario login(String nombreUsuario, String contrasena)throws UsuarioIncorrectoException, ContrasenaIncorrectaException {
+		
 		Optional<Empleador> candidatoEmpleador = empleadores.stream()
 				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
+		
 		if (candidatoEmpleador.isPresent()) {
 			candidatoEmpleador.get().validaContrasena(contrasena);
 			return candidatoEmpleador.get();
@@ -123,14 +129,13 @@ public class Agencia extends Observable {
 			candidatoEmpleado.get().validaContrasena(contrasena);
 			return candidatoEmpleado.get();
 		}
-
-		Optional<Administrador> candidatoAdmin = administradores.stream()
-				.filter(e -> e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)).findAny();
-
-		if (candidatoAdmin.isPresent()) {
-			candidatoAdmin.get().validaContrasena(contrasena);
-			return candidatoAdmin.get();
-		}
+		
+		if(this.administrador!=null) {
+		  if (this.administrador.getNombreUsuario().equalsIgnoreCase(nombreUsuario)) {
+			 this.administrador.validaContrasena(contrasena);
+			 return administrador;
+		 }
+		} 
 
 		throw new UsuarioIncorrectoException("Usuario no encontrado", nombreUsuario);
 	}
@@ -337,7 +342,7 @@ public class Agencia extends Observable {
 
 	public void registrarAdmin(RegistroRequestAdmin req) {
 		Administrador newAdmin = new Administrador(req.getNombreUsuario(), req.getContrasena(), req.getID(), req.getEmail());
-		this.administradores.add(newAdmin);
+		this.administrador= newAdmin;
 		System.out.println("Se registro el admin: " + newAdmin.getNombreUsuario());
 	}
 
@@ -371,6 +376,26 @@ public class Agencia extends Observable {
 	
 	public void removeTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
 		this.solicitudes.remove(ticket);
+	}
+	
+	public TicketBusquedaDeEmpleo encuentraTicketDeEmpleo(Usuario usuario) {
+		
+		List <TicketBusquedaDeEmpleo> busquedas = this.busquedas;
+		int i = 0;
+		boolean encontre = false;
+		
+		while( (i < busquedas.size()) && (encontre == false) ) {
+			if( ( busquedas.get(i).getDueno().getNombreUsuario().equals(usuario)) ) {
+				encontre = true;
+			}else
+				i++;
+		}
+		
+		if(encontre == true) 
+		  return busquedas.get(i);
+		else
+			return null;
+		
 	}
 	
 }

@@ -74,7 +74,7 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 		table.setModel(model);
 		
 		model.setRowCount(0);
-		/*for (UsuarioPuntuado usuarioPuntuado : listaEmpleados) {
+		for (UsuarioPuntuado usuarioPuntuado : listaEmpleados) {
 			Object[] fila = {
 				usuarioPuntuado.getFechaDeGeneracion(),
 				usuarioPuntuado.getUsuario(),
@@ -82,7 +82,7 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 			};
 			model.addRow(fila);	
 		}
-		*/
+		
 		
 		
 		btnVolver = new JButton("Volver");

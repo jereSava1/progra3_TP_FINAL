@@ -24,6 +24,8 @@ public class ControladorListaEmpleadores implements ActionListener {
 		if (ControladorListaEmpleadores == null) {
 			ControladorListaEmpleadores = new ControladorListaEmpleadores();
 		}
+		//Traigo los empleadores correspondientes
+		agencia.getAgencia();
 		ControladorListaEmpleadores.vistaLista.mostrar();
 		return ControladorListaEmpleadores;
 	}

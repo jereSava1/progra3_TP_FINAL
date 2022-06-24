@@ -18,6 +18,7 @@ import vista.VistaRegistro;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
+	private static Usuario logueado=null;
 	public Agencia getAgencia() {
 		return agencia;
 	}
@@ -34,6 +35,7 @@ public class ControladorLogin implements ActionListener {
 		if (controladorLogin == null) {
 			controladorLogin = new ControladorLogin();
 		}
+		logueado=null;
 		controladorLogin.vistaLogin.mostrar();
 		return controladorLogin;
 	}
@@ -46,8 +48,6 @@ public class ControladorLogin implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		if (comando.equalsIgnoreCase("LOGIN")) {
-			Usuario logueado = null;
-
 			try {
 				logueado = this.agencia.login(vistaLogin.getUsername(), vistaLogin.getContrasena());
 			} catch (UsuarioIncorrectoException err) {
@@ -74,5 +74,9 @@ public class ControladorLogin implements ActionListener {
 		}
 
 	}
+
+	public static Usuario getLogueado() {
+		return logueado;
+	}   	
 
 }

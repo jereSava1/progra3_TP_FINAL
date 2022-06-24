@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
+import model.usuario.Usuario;
 import negocio.RondaDeEncuentro;
 import state.CanceladoState;
 import vista.IVistaIEmpleado;
@@ -39,24 +40,13 @@ public class ControladorInicioEmpleado implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
+		Usuario usuario = ControladorLogin.getLogueado();
 		
-		String usuario = ControladorLogin.getControladorLogin().getVistaLogin().getUsername();
-		ControladorLogin.getControladorLogin().getVistaLogin().esconder();
-		
-		List <TicketBusquedaDeEmpleo> busquedas = Agencia.getAgencia().getBusquedas();
-		
-		int i = 0;
-		boolean encontre = false;
-		while( (i < busquedas.size()) && (encontre == false) ) {
-			if( ( busquedas.get(i).getDueno().getNombreUsuario().equals(usuario)) ) {
-				encontre = true;
-			}else
-				i++;
-		}
-		TicketBusquedaDeEmpleo ticket = busquedas.get(i);
+		TicketBusquedaDeEmpleo ticket = agencia.getAgencia().encuentraTicketDeEmpleo(usuario);
+        
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 			
-			if( encontre == true ) {
+			if( ticket!=null ) {
 				ticket.setEstadoTicket(new CanceladoState(ticket));
 				Agencia.getAgencia().removeTicketBusquedaDeEmpleo(ticket);
 			}
@@ -65,7 +55,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 			
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
 	    	
-	    	if( encontre == true ) {
+	    	if( ticket!=null ) {
 	    		this.vista.esconder();
 	    		ControladorModificarTicketEmpleado controladorModificarTicketEmpleado = ControladorModificarTicketEmpleado.getControladorModificarTicketEmpleado();
 	    	}
@@ -74,7 +64,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
 	    	
-	    	if( encontre == false ) {
+	    	if( ticket==null) {
 	    		this.vista.esconder();
 		    	ControladorAltaTicketEmpleado controladorAltaTicketEmpleado = ControladorAltaTicketEmpleado.get();
 	    	}
@@ -85,13 +75,11 @@ public class ControladorInicioEmpleado implements ActionListener {
 		
 	    }else if(comando.equalsIgnoreCase("VER LISTA")) {
 	    	
-	    	if( (encontre == true) && (RondaDeEncuentro.isActivada() == true)) {
+	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
 	    		this.vista.esconder();
 		    	ControladorListaEmpleadores controladorListaEmpleadores = ControladorListaEmpleadores.getControladorListaEmpleadores();
-		    	//Llenar lista con lista de asignaciones del ticket 
-		    	
 	    	}else {
-	    		if( encontre == false )
+	    		if( ticket == null )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
 	    		else
 	    			JOptionPane.showMessageDialog(null, "No se ha ejecutado la ronda de encuentros", "Error", JOptionPane.ERROR_MESSAGE);
@@ -100,12 +88,12 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("INGRESAR")) {
 	    	
-	    	if( (encontre == true) && (RondaDeEncuentro.isActivada() == true)) {
+	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
 	    		this.vista.esconder();
 		    	//ControladorEleccionEmpleadores ControladorEleccionEmpleadores = ControladorEleccionEmpleadores.getControladorEleccionEmpleadores();
 		    	//Llenar lista con lista de asignaciones del ticket 
 	    	}else {
-	    		if( encontre == false )
+	    		if( ticket==null )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
 	    		else
 	    			JOptionPane.showMessageDialog(null, "No se ha ejecutado la ronda de encuentros", "Error", JOptionPane.ERROR_MESSAGE);
@@ -119,6 +107,5 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	this.vista.esconder();
 			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
 	    }
-	}
-
-}
+  }
+}	

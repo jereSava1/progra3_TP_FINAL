@@ -29,7 +29,9 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 	private JButton btnActivarEncuentros;
 	private JButton btnActivarContratacion;
 	private JButton btnCerrarSesion;
-	private float maximo,minimo;
+	private JButton btnActualizaSueldos;
+	private float maximo=-1;
+	private float minimo=-1;
 	
 
 	/**
@@ -119,6 +121,7 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		textFieldSueldoMinimo = new JTextField();
 		panel_2_2_1.add(textFieldSueldoMinimo);
 		textFieldSueldoMinimo.setColumns(10);
+		textFieldSueldoMinimo.addKeyListener(this);
 		
 		JPanel panel_1_2_1_1 = new JPanel();
 		panel.add(panel_1_2_1_1);
@@ -133,6 +136,7 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		textFieldSueldoMaximo = new JTextField();
 		textFieldSueldoMaximo.setColumns(10);
 		panel_2_2_1_1.add(textFieldSueldoMaximo);
+		textFieldSueldoMaximo.addKeyListener(this);
 		
 		JPanel panel_1_2_2 = new JPanel();
 		panel.add(panel_1_2_2);
@@ -169,6 +173,12 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		btnCerrarSesion = new JButton("Cerrar Sesion");
 		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_3.add(btnCerrarSesion);
+		
+		btnActualizaSueldos = new JButton("Actualiza Sueldos");
+		btnActualizaSueldos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_3.add(btnActualizaSueldos, BorderLayout.NORTH);
+		btnActualizaSueldos.setEnabled(false);
+		
 	}
 	@Override
 	public void mostrar() {
@@ -190,7 +200,8 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		this.btnActivarEncuentros.addActionListener(actionListener);
 		this.btnCerrarSesion.addActionListener(actionListener);
 		this.btnVerComisiones.addActionListener(actionListener);
-		this.btnVerEmpleadores.addActionListener(actionListener);		
+		this.btnVerEmpleadores.addActionListener(actionListener);	
+		this.btnActualizaSueldos.addActionListener(actionListener);
 	}
 
 	@Override
@@ -207,15 +218,15 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		System.out.println("awe");
 		try {
 		  maximo = Float.parseFloat(this.textFieldSueldoMaximo.getText());
 		  minimo = Float.parseFloat(this.textFieldSueldoMinimo.getText());
 		}
-		catch(Exception exception){
-			
-		}
+		catch(Exception exception){}
 		
+		if(maximo!=-1 && minimo!=-1)
+			this.btnActualizaSueldos.setEnabled(true);
 	}
 
 	@Override

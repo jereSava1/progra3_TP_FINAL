@@ -3,6 +3,9 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
+import model.Agencia;
 import vista.*;
 
 public class ControladorRegistro implements ActionListener {
@@ -27,8 +30,12 @@ public class ControladorRegistro implements ActionListener {
 		if (e.getActionCommand().equalsIgnoreCase("SIGUIENTE")) {
 			String comando = this.vistaRegistro.getG().getSelection().getActionCommand();
 			if (comando.equalsIgnoreCase("admin")) {
-				this.vistaRegistro.esconder();
-				ControladorRegistroAdmin controladorAdmin = ControladorRegistroAdmin.getControladorRegistroAdmin();
+				if(Agencia.getAgencia().getAdministrador()!=null)
+				  JOptionPane.showMessageDialog(null, "Ya existe un administrador", "Error", JOptionPane.ERROR_MESSAGE);
+				else {
+				  this.vistaRegistro.esconder();
+				  ControladorRegistroAdmin controladorAdmin = ControladorRegistroAdmin.getControladorRegistroAdmin();
+				}  
 			} else if (comando.equalsIgnoreCase("empleado")) {
 				this.vistaRegistro.esconder();
 				ControladorRegistroEmpleado controladorRegistroEmpleado = ControladorRegistroEmpleado.getControladorRegistroEmpleado();
