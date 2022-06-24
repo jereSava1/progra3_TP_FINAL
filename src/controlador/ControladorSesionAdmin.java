@@ -63,10 +63,19 @@ public class ControladorSesionAdmin implements ActionListener {
 				this.vista.error("Todavia no se efectuo la Ronda de encuentros", "Ronda de contrataciones");			
 			
 		}else if(comando.equalsIgnoreCase("Actualiza Sueldos")){
-			agencia.getAgencia().setRemuneracionV1(controladorSesionAdmin.vista.getMinimo());
-			agencia.getAgencia().setRemuneracionV2(controladorSesionAdmin.vista.getMaximo());
-			this.vista.limpiaCampos();
-			this.vista.success("Sueldos actualizados con exito", "Actualizacion de sueldos");
+			float min=controladorSesionAdmin.vista.getMinimo();
+			float max=controladorSesionAdmin.vista.getMaximo();
+			if(min!=-1 && max!=-1) {
+			  agencia.getAgencia().setRemuneracionV1(min);
+			  agencia.getAgencia().setRemuneracionV2(max);
+			  this.vista.limpiaCampos();
+			  this.vista.success("Sueldos actualizados con exito", "Actualizacion de sueldos");
+			}
+			else {
+				this.controladorSesionAdmin.vista.setMaximo(-1);
+				this.controladorSesionAdmin.vista.setMinimo(-1);
+				controladorSesionAdmin.get();
+			}
 		}else if(comando.equalsIgnoreCase("Cerrar Sesion")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();

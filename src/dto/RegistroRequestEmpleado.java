@@ -7,11 +7,11 @@ public class RegistroRequestEmpleado extends RegistroRequest {
 	private String apellido;
 	private String telefono;
 	private String email;
-	private String edad;
+	private int edad;
 	private String nombreCompleto;
 	
 	
-	public RegistroRequestEmpleado( String nombre,String apellido,String telefono,String nombreUsuario, String contrasena,String email,String edad) {
+	public RegistroRequestEmpleado( String nombre,String apellido,String telefono,String nombreUsuario, String contrasena,String email,int edad) {
 		
 		super(nombreUsuario, contrasena, TipoUsuario.EMPLEADO);
 	    this.telefono = telefono;
@@ -39,11 +39,11 @@ public class RegistroRequestEmpleado extends RegistroRequest {
 		this.email = email;
 	}
 	
-	public String getEdad() {
+	public int getEdad() {
 		return edad;
 	}
 
-	public void setEdad(String edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 

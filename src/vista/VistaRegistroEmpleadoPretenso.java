@@ -38,6 +38,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEm
 	private String contrasena;
 	private String email;
 	private String edad;
+	private int edadI;
 	private JButton btnRegistrarse;
 	private JButton btnVolver;
 	private ActionListener actionListener; 
@@ -217,8 +218,19 @@ public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEm
 
 	@Override
 	public RegistroRequestEmpleado getFormulario() {
+		
+		try {
+		    this.edadI=Integer.parseInt(this.textFieldEdad.getText());
+		}
+		catch(Exception exception) {
+			JOptionPane.showMessageDialog(null, "No ingreso correctamente su edad", "Error", JOptionPane.ERROR_MESSAGE);
+			this.textFieldEdad.setText("");
+			RegistroRequestEmpleado req = null;
+			return req;
+		}
+		
 		RegistroRequestEmpleado req= new RegistroRequestEmpleado(this.nombre,this.apellido,this.telefono,
-		this.usuario,this.contrasena,this.email,this.edad);
+		this.usuario,this.contrasena,this.email,this.edadI);
 		return req;
 	}
 

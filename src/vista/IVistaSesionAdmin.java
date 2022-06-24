@@ -11,4 +11,6 @@ public interface IVistaSesionAdmin {
      void limpiaCampos();
      void error(String error, String titulo);
      void success(String ok, String titulo);
+     void setMinimo(float minimo);
+     void setMaximo(float maximo);
 }

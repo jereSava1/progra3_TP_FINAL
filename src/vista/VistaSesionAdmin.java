@@ -24,6 +24,8 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 	private JPanel contentPane;
 	private JTextField textFieldSueldoMinimo;
 	private JTextField textFieldSueldoMaximo;
+	private String sMinimo;
+	private String sMaximo;
 	private JButton btnVerEmpleadores;
 	private JButton btnVerEmpleados;
 	private JButton btnVerComisiones;
@@ -221,25 +223,35 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
-		try {
-		  maximo = Float.parseFloat(this.textFieldSueldoMaximo.getText());
-		  minimo = Float.parseFloat(this.textFieldSueldoMinimo.getText());
-		}
-		catch(Exception exception){}
+		this.sMinimo = this.textFieldSueldoMinimo.getText();
+		this.sMaximo = this.textFieldSueldoMaximo.getText();
 		
-		if(maximo!=-1 && minimo!=-1)
+		if(sMinimo.length()>0 && sMaximo.length()>0)
 			this.btnActualizaSueldos.setEnabled(true);
 	}
 
 	@Override
 	public float getMaximo() {
 		// TODO Auto-generated method stub
+		try {
+			  maximo = Float.parseFloat(this.textFieldSueldoMaximo.getText());
+			}
+			catch(Exception exception){
+				JOptionPane.showMessageDialog(null, "No ingreso correctamente el valor del sueldo maximo", "Error", JOptionPane.ERROR_MESSAGE);
+				this.textFieldSueldoMaximo.setText("");
+			}
 		return this.maximo;
 	}
 
 	@Override
 	public float getMinimo() {
-		// TODO Auto-generated method stub
+		try {
+			  minimo = Float.parseFloat(this.textFieldSueldoMinimo.getText());
+			}
+			catch(Exception exception){
+				JOptionPane.showMessageDialog(null, "No ingreso correctamente el valor del sueldo minimo", "Error", JOptionPane.ERROR_MESSAGE);
+				this.textFieldSueldoMinimo.setText("");
+			}
 		return this.minimo;
 	}
 
@@ -260,6 +272,18 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		JOptionPane.showMessageDialog(null, ok, titulo, JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	
 
+	@Override
+	public void setMinimo(float minimo) {
+		// TODO Auto-generated method stub
+		this.minimo = minimo;
+	}
+
+	@Override
+	public void setMaximo(float maximo) {
+		// TODO Auto-generated method stub
+		this.maximo = maximo;
+	}
+	
+	
 }

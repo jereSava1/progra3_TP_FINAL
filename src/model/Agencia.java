@@ -369,7 +369,7 @@ public class Agencia extends Observable {
 	}
 
 	public void registrarEmpleado(RegistroRequestEmpleado req){
-		Empleado newEmpleado = new Empleado(req.getNombreUsuario(),req.getContrasena(),req.getNombre(),Integer.parseInt(req.getEdad()),req.getEmail(),req.getTelefono());
+		Empleado newEmpleado = new Empleado(req.getNombreUsuario(),req.getContrasena(),req.getNombre(),req.getEdad(),req.getEmail(),req.getTelefono());
 		this.empleados.add(newEmpleado);
 		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
 
