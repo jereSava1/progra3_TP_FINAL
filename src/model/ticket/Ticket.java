@@ -7,6 +7,7 @@ import model.usuario.Usuario;
 import state.ActivoState;
 import state.IState;
 import types.EstadoTicket;
+import types.Resultado;
 
 /**
  * Cada ticket estara asignado para un Usuario que podra ser Empleado o
@@ -36,12 +37,21 @@ public class Ticket {
 	 * Empleado y del Empleador
 	 */
 	private List<UsuarioPuntuado> listaDeAsignaciones;
+	
+	/**
+	 * - Resultado - Exito : Al final de la ronda de contratacion el empleado
+	 * consiguio empleo - Fracaso : Al final de la ronda de contratacion el empleado
+	 * NO consiguio empleo - Indeterminado : La ronda de contratacion aun no
+	 * finaliza, hay una posible contratacion.
+	 */
+	private Resultado resultado;
 
 	public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {
 		this.formularioDeBusqueda = formularioDeBusqueda;
 		this.fechaDeAlta = LocalDate.now();
 		this.estadoTicket = new ActivoState(this);
 		this.dueno = usuario;
+		this.resultado = Resultado.INCONCLUSO;
 
 	}
 
@@ -66,6 +76,14 @@ public class Ticket {
 
 	public Usuario getDueno() {
 		return dueno;
+	}
+	
+	public Resultado getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(Resultado resultado) {
+		this.resultado = resultado;
 	}
 
 	public FormularioBusqueda getFormularioDeBusqueda() {

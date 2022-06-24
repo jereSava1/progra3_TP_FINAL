@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -200,7 +201,8 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		this.btnActivarEncuentros.addActionListener(actionListener);
 		this.btnCerrarSesion.addActionListener(actionListener);
 		this.btnVerComisiones.addActionListener(actionListener);
-		this.btnVerEmpleadores.addActionListener(actionListener);	
+		this.btnVerEmpleadores.addActionListener(actionListener);
+		this.btnVerEmpleados.addActionListener(actionListener);
 		this.btnActualizaSueldos.addActionListener(actionListener);
 	}
 
@@ -218,7 +220,7 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("awe");
+		
 		try {
 		  maximo = Float.parseFloat(this.textFieldSueldoMaximo.getText());
 		  minimo = Float.parseFloat(this.textFieldSueldoMinimo.getText());
@@ -247,6 +249,17 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 		this.textFieldSueldoMaximo.setText("");
 		this.textFieldSueldoMinimo.setText("");
 	}
+
+	@Override
+	public void error(String error, String titulo) {
+		JOptionPane.showMessageDialog(null, error, titulo, JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void success(String ok, String titulo) {
+		JOptionPane.showMessageDialog(null, ok, titulo, JOptionPane.INFORMATION_MESSAGE);
+	}
+
 	
 
 }

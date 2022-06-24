@@ -1,13 +1,12 @@
 package negocio;
 
-import model.Agencia;
-import model.ticket.FormularioBusqueda;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import exception.ListaVaciaException;
-
-import java.util.ArrayList;
+import model.Agencia;
+import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
@@ -57,6 +56,12 @@ public class RondaDeEncuentro {
 		solicitud.setListaDeAsignaciones(ranking);
 	
 	}
+	
+	
+
+	public static void setActivada(boolean activada) {
+		RondaDeEncuentro.activada = activada;
+	}
 
 	/**
 	 * Ejecucion de la ronda de encuentro: Ticket de empleado: - A ticket de
@@ -67,8 +72,6 @@ public class RondaDeEncuentro {
 	 * @param agencia
 	 */
 	public static void ejecutarRondaDeEncuentros(Agencia agencia) {
-		
-		RondaDeEncuentro.activada = false;
 		
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);

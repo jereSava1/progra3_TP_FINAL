@@ -9,4 +9,6 @@ public interface IVistaSesionAdmin {
      float getMaximo();
      float getMinimo();
      void limpiaCampos();
+     void error(String error, String titulo);
+     void success(String ok, String titulo);
 }

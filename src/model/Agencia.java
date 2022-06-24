@@ -13,6 +13,7 @@ import model.usuario.Empleado;
 import model.usuario.Empleador;
 import model.usuario.Usuario;
 import model.usuario.UsuarioPuntuado;
+import types.Resultado;
 import types.Rubro;
 import types.TipoPersona;
 
@@ -179,44 +180,56 @@ public class Agencia extends Observable {
 	 * @param ticket
 	 * @return comision final para el empleador
 	 */
-	public float calculaComisionesEmpleador(TicketBusquedaDeEmpleado ticket) {// si el puntaje supera a la comision-->
+	public float calculaComisionesEmpleador(Empleador empleador) {// si el puntaje supera a la comision-->
 																				// devuelvo 0
-		float comision = 0;
-		Empleador empleador = (Empleador) ticket.getDueno();
-		String pretensionSalarial = ticket.getFormularioDeBusqueda().getPretensionSalarial().getValor();
-		float sueldo = 0;
-		switch (pretensionSalarial) {
-		case "MENOS_V1":
-			sueldo = this.remuneracionV1;
-			break;
-		case "ENTRE_V1_Y_V2":
-			sueldo = (float)(this.remuneracionV1 + this.remuneracionV2 ) / 2;
-			break;
-		case "MAS_DE_V2":
-			sueldo = this.remuneracionV2;
-			break;
-		}
+		float sumaComision = 0;
+		
+		List<TicketBusquedaDeEmpleado> solicitudes = this.getSolicitudes();
+		for (TicketBusquedaDeEmpleado ticket : solicitudes) {
+			if( ticket.getDueno().equals(empleador) && ticket.getResultado() == Resultado.EXITO)  {
+				
+				float comision = 0;
+				
+				String pretensionSalarial = ticket.getFormularioDeBusqueda().getPretensionSalarial().getValor();
+				float sueldo = 0;
+				switch (pretensionSalarial) {
+				case "MENOS_V1":
+					sueldo = this.remuneracionV1;
+					break;
+				case "ENTRE_V1_Y_V2":
+					sueldo = (float)(this.remuneracionV1 + this.remuneracionV2 ) / 2;
+					break;
+				case "MAS_DE_V2":
+					sueldo = this.remuneracionV2;
+					break;
+				}
 
-		if (empleador.getTipoPersona().equals(TipoPersona.FISICA)) {
-			if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
-				if (0.8 > empleador.getPuntaje() / 100)
-					comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
-			} else if (empleador.getRubro().equals(Rubro.COMERCIO_LOCAL)) {
-				if (0.7 > empleador.getPuntaje() / 100)
-					comision = (float) (sueldo * (0.7 - empleador.getPuntaje() / 100));
-			} else if (0.6 > empleador.getPuntaje() / 100)
-				comision = (float) (sueldo * (0.6 - empleador.getPuntaje() / 100));
-		} else {
-			if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
-				if (1 > empleador.getPuntaje() / 100)
-					comision = sueldo * (1 - empleador.getPuntaje() / 100);
-			} else if (empleador.getRubro().equals(Rubro.COMERCIO_LOCAL)) {
-				if (0.9 > empleador.getPuntaje() / 100)
-					comision = (float) (sueldo * (0.9 - empleador.getPuntaje() / 100));
-			} else if (0.8 > empleador.getPuntaje() / 100)
-				comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
+				if (empleador.getTipoPersona().equals(TipoPersona.FISICA)) {
+					if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
+						if (0.8 > empleador.getPuntaje() / 100)
+							comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
+					} else if (empleador.getRubro().equals(Rubro.COMERCIO_LOCAL)) {
+						if (0.7 > empleador.getPuntaje() / 100)
+							comision = (float) (sueldo * (0.7 - empleador.getPuntaje() / 100));
+					} else if (0.6 > empleador.getPuntaje() / 100)
+						comision = (float) (sueldo * (0.6 - empleador.getPuntaje() / 100));
+				} else {
+					if (empleador.getRubro().equals(Rubro.COMERCIO_INTERNACIONAL)) {
+						if (1 > empleador.getPuntaje() / 100)
+							comision = sueldo * (1 - empleador.getPuntaje() / 100);
+					} else if (empleador.getRubro().equals(Rubro.COMERCIO_LOCAL)) {
+						if (0.9 > empleador.getPuntaje() / 100)
+							comision = (float) (sueldo * (0.9 - empleador.getPuntaje() / 100));
+					} else if (0.8 > empleador.getPuntaje() / 100)
+						comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
+				}
+				
+				sumaComision += comision;
+				
+			}
 		}
-		return comision;
+		
+		return sumaComision;
 	}
 
 	/**

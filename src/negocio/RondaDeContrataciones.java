@@ -15,13 +15,20 @@ import java.util.stream.Collectors;
  *
  */
 public class RondaDeContrataciones {
+	
+	private static boolean activada = false; 
+	
 	/**
 	 * PRECONDICION: se debe ejecutar luego de la ronda de encuentro y de la ronda
 	 * de elecciones
 	 * 
 	 * @param agencia
 	 */
+	
+	
 	public static void ejecutarRondaDeContrataciones(Agencia agencia) {
+		
+		activada = false;
 
 		float comisiones = 0;
 		agencia.empleadorNoElegido();// actualiza los puntajes en caso de que el empleador no haya sido elegido por
@@ -89,5 +96,11 @@ public class RondaDeContrataciones {
 				}
 			}
 		}
+		activada = true;
+		RondaDeEncuentro.setActivada(false);
+	}
+
+	public static boolean isActivada() {
+		return activada;
 	}
 }

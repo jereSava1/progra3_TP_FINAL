@@ -30,6 +30,8 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 	public static ControladorAltaTicketEmpleado get(){
 		if(controladorAltaTicket==null)
 			controladorAltaTicket = new ControladorAltaTicketEmpleado();
+		controladorAltaTicket.vista.setV1(Agencia.getAgencia().getRemuneracionV1());
+        controladorAltaTicket.vista.setV2(Agencia.getAgencia().getRemuneracionV2());
 		controladorAltaTicket.vista.mostrar();
 		return controladorAltaTicket;
 	}

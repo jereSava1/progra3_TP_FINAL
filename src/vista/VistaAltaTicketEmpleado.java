@@ -61,7 +61,7 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
         return v1;
     }
 
-    public void setV1(float v1) {
+    public void setV1(Float v1) {
         this.v1 = v1;
         rdbtnHastav1.setText("Hasta "+v1);
         rdbtnEntreV1yV2.setText("Entre "+v1+" y "+this.v2);
@@ -71,7 +71,7 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
         return v2;
     }
 
-    public void setV2(float v2) {
+    public void setV2(Float v2) {
         this.v2 = v2;
         rdbtnEntreV1yV2.setText("Entre "+this.v1+" y "+v2);
         rdbtnMasDeV2.setText("Mas de "+v2);

@@ -78,6 +78,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
 	    		this.vista.esconder();
 		    	ControladorListaEmpleadores controladorListaEmpleadores = ControladorListaEmpleadores.getControladorListaEmpleadores();
+		    	
 	    	}else {
 	    		if( ticket == null )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);

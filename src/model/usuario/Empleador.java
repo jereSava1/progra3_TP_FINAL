@@ -47,6 +47,8 @@ public class Empleador extends Usuario {
 		}
 	}
 
+	
+	
 	@Override
 	public void run() {
 

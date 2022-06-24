@@ -10,17 +10,8 @@ import types.Resultado;
  */
 public class TicketBusquedaDeEmpleo extends Ticket {
 
-	/**
-	 * - Resultado - Exito : Al final de la ronda de contratacion el empleado
-	 * consiguio empleo - Fracaso : Al final de la ronda de contratacion el empleado
-	 * NO consiguio empleo - Indeterminado : La ronda de contratacion aun no
-	 * finaliza, hay una posible contratacion.
-	 */
-	private Resultado resultado;
-
 	public TicketBusquedaDeEmpleo(FormularioBusqueda formularioBusqueda, Empleado empleado) {
 		super(formularioBusqueda, empleado);
-		this.resultado = Resultado.INCONCLUSO;
 	}
 
 	// TODO: completar to string con todos los atributos del form

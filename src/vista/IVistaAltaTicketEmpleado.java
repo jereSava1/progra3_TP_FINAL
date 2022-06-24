@@ -11,4 +11,8 @@ public interface IVistaAltaTicketEmpleado {
      void setActionListener(ActionListener actionListener);
      void limpiaCampos();
      TicketDeEmpleadoRequest getFormulario() throws ConstructorInvalidoException;
+     float getV1();
+     float getV2();
+     void setV1(Float v1);
+     void setV2(Float v2);
 }

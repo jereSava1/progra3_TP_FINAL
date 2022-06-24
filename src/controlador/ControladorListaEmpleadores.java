@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Agencia;
+import model.ticket.TicketBusquedaDeEmpleo;
+import model.usuario.Usuario;
 import vista.IListaEmpleadosPretensos;
 import vista.VistaInicioEmpleador;
 import vista.VistaListaEmpleadores;
@@ -24,8 +26,11 @@ public class ControladorListaEmpleadores implements ActionListener {
 		if (ControladorListaEmpleadores == null) {
 			ControladorListaEmpleadores = new ControladorListaEmpleadores();
 		}
-		//Traigo los empleadores correspondientes
-		agencia.getAgencia();
+		//!VER
+		Usuario usuario = ControladorLogin.getLogueado();
+		TicketBusquedaDeEmpleo ticket = Agencia.getAgencia().encuentraTicketDeEmpleo(usuario);
+		ControladorListaEmpleadores.vistaLista.setListaDeAsignacion(ticket.getListaDeAsignaciones());
+		
 		ControladorListaEmpleadores.vistaLista.mostrar();
 		return ControladorListaEmpleadores;
 	}

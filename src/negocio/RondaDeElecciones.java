@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
  * ser usadas posteriormente en la ultima etapa,la ronda de contrataciones.
  */
 public class RondaDeElecciones {
+	
 	/**
 	 * PRECONTRATO
 	 *

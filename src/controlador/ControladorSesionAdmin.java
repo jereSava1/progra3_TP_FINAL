@@ -3,7 +3,11 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import model.Agencia;
+import negocio.RondaDeContrataciones;
+import negocio.RondaDeEncuentro;
 import vista.IVistaSesionAdmin;
 import vista.VistaSesionAdmin;
 
@@ -34,18 +38,35 @@ public class ControladorSesionAdmin implements ActionListener {
 		String comando = e.getActionCommand();
 		
 		if(comando.equalsIgnoreCase("Ver Empleadores")){
-			
+			this.vista.esconder();
+			ControladorMuestraEmpleadoresAdmin controladorMuestraEmpleadoresAdmin = ControladorMuestraEmpleadoresAdmin.getControladorMuestraEmpleadoresAdmin();
 		}else if(comando.equalsIgnoreCase("Ver Empleados")){
+			this.vista.esconder();
+			ControladorMuestraEmpleadosAdmin controladorMuestraEmpleadosAdmin = ControladorMuestraEmpleadosAdmin.getControladorMuestraEmpleadosAdmin();
 			
 		}else if(comando.equalsIgnoreCase("Ver Comisones")) {
 			
 		}else if(comando.equalsIgnoreCase("Activar Encuentros")) {
 			
+			if( !RondaDeEncuentro.isActivada() ) {
+				RondaDeEncuentro.ejecutarRondaDeEncuentros(Agencia.getAgencia());
+				this.vista.success("Ronda de encuentros activada con exito", "Ronda de encuentros");
+			}else
+				this.vista.error("Todavia no se efectuaron las contrataciones", "Ronda de encuentros");
+			
 		}else if(comando.equalsIgnoreCase("Activar Contrataciones")) {
+			
+			if( !RondaDeContrataciones.isActivada() ) {
+				RondaDeContrataciones.ejecutarRondaDeContrataciones(Agencia.getAgencia());
+				this.vista.success("Ronda de contrataciones activada con exito", "Ronda de contrataciones");
+			}else
+				this.vista.error("Todavia no se efectuo la Ronda de encuentros", "Ronda de contrataciones");			
 			
 		}else if(comando.equalsIgnoreCase("Actualiza Sueldos")){
 			agencia.getAgencia().setRemuneracionV1(controladorSesionAdmin.vista.getMinimo());
 			agencia.getAgencia().setRemuneracionV2(controladorSesionAdmin.vista.getMaximo());
+			this.vista.limpiaCampos();
+			this.vista.success("Sueldos actualizados con exito", "Actualizacion de sueldos");
 		}else if(comando.equalsIgnoreCase("Cerrar Sesion")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
