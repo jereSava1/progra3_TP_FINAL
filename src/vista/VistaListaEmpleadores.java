@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.usuario.UsuarioPuntuado;
@@ -28,10 +29,10 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 	private JTable table;
 	private JButton btnVolver;
 	private TicketBusquedaDeEmpleado ticket;
-	private List<UsuarioPuntuado> listaAsignacion;
+	private List<UsuarioPuntuadoDTO> listaAsignacion;
 	
 	@Override
-	public void setListaDeAsignacion(List<UsuarioPuntuado> lista) {
+	public void setListaDeAsignacion(List<UsuarioPuntuadoDTO> lista) {
 		this.listaAsignacion = lista;
 	}
 	
@@ -80,16 +81,14 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 		table.setModel(model);
 		
 		model.setRowCount(0);
-		for (UsuarioPuntuado usuarioPuntuado : this.listaAsignacion) {
-			
+		listaAsignacion.forEach(usuarioPuntuado -> {
 			Object[] fila = {
-				usuarioPuntuado.getUsuario(),
+				usuarioPuntuado.getUsername(),
 				usuarioPuntuado.getFechaDeGeneracion(),
 				usuarioPuntuado.getPuntaje()		
 			};
-			model.addRow(fila);	
-			
-		}
+			model.addRow(fila);
+		});
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(10, 227, 89, 23);

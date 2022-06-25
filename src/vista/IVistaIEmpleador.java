@@ -14,5 +14,5 @@ public interface IVistaIEmpleador {
        JList getListaTickets();
        void setListaTickets(JList listaTickets);
 	   DefaultListModel<TicketBusquedaDeEmpleado> getTickets();
-	   void setTickets(DefaultListModel<TicketBusquedaDeEmpleado> tickets);
+	   void setTickets(DefaultListModel<Ticket> tickets);
 }
