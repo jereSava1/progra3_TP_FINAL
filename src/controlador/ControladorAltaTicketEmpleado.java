@@ -52,31 +52,12 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 			TicketDeEmpleadoRequest request;
 			try {
 				request = this.vista.getFormulario();
-				
 				String usuario = ControladorLogin.getControladorLogin().getVistaLogin().getUsername();
-				List <Empleado> empleados = (List<Empleado>) Agencia.getAgencia().getEmpleados();
-				
-				int i = 0;
-				while( empleados.get(i).getNombreUsuario() != usuario ) {
-					i++;
-				}
-				
-				FormularioBusqueda formulario = new FormularioBusqueda(request.getrEtario(), request.getLocacion(), 
-																	   request.getExperiencia(), request.getHorario(),
-																	   request.getPuesto(), request.getEstudios(), 
-																	   request.getRemuneracion());
-				
-				//Dimos de alta el ticket del empleado en la agencia
-				Agencia.getAgencia().addTicketBusquedaDeEmpleo( empleados.get(i).altaTicket(formulario) );
-				
-				ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
-				
-			} 
-			catch (ConstructorInvalidoException e1) {
-				//Manejar exc
-			}
-			
-			
+				agencia.crearTicketBusquedaDeEmpleo(request, usuario);
+			}catch (ConstructorInvalidoException e1) {}
+
+			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
+
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();

@@ -18,7 +18,7 @@ import vista.VistaRegistro;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
-	private static Usuario logueado=null;
+	private static Usuario logueado = null;
 	public Agencia getAgencia() {
 		return agencia;
 	}

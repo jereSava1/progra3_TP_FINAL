@@ -1,13 +1,8 @@
 package model;
 
-import dto.RegistroRequestAdmin;
-import dto.RegistroRequestEmpleado;
-import dto.RegistroRequestEmpleador;
-import model.ticket.TicketBusquedaDeEmpleado;
-import model.ticket.TicketBusquedaDeEmpleo;
-import model.ticket.TicketSimplificado;
-import model.ticket.DatosDeEmpleo;
-import model.ticket.Ticket;
+import controlador.ControladorInicioEmpleado;
+import dto.*;
+import model.ticket.*;
 import model.usuario.Administrador;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
@@ -378,9 +373,45 @@ public class Agencia extends Observable {
 	public void addTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
 		this.busquedas.add(ticket);
 	}
-	
+
+	public void crearTicketBusquedaDeEmpleo(TicketDeEmpleadoRequest request, String username) {
+		Set<Empleado> empleados = this.empleados;
+
+		int i = 0;
+		Empleado dueno = empleados.stream().filter(e -> e.getNombreUsuario().equalsIgnoreCase(username)).findFirst().get();
+
+		FormularioBusqueda formulario = new FormularioBusqueda(request.getrEtario(), request.getLocacion(),
+						request.getExperiencia(), request.getHorario(),
+						request.getPuesto(), request.getEstudios(),
+						request.getRemuneracion());
+
+		//Dimos de alta el ticket del empleado en la agencia
+	 	TicketBusquedaDeEmpleo ticket =	dueno.altaTicket(formulario);
+
+		this.busquedas.add(ticket);
+	}
+
 	public void addTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
 		this.solicitudes.add(ticket);
+	}
+
+	public void crearTicketBusquedaDeEmpleado(TicketDeEmpleadorRequest request, String username) {
+		Set <Empleador> empleadores = this.empleadores;
+
+		Empleador dueno = empleadores.stream().filter(e -> e.getNombreUsuario().equalsIgnoreCase(username)).findFirst().get();
+
+		FormularioBusqueda formulario = new FormularioBusqueda(request.getrEtario(), request.getLocacion(),
+						request.getExperiencia(), request.getHorario(),
+						request.getPuesto(), request.getEstudios(),
+						request.getRemuneracion());
+
+		//Dimos de alta el ticket del empleado en la agencia
+		addTicketBusquedaDeEmpleado(
+						dueno.altaTicket(
+							formulario,
+							request.getCantEmpleados()
+						)
+		);
 	}
 	
 	public void removeTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
@@ -408,7 +439,6 @@ public class Agencia extends Observable {
 		  return busquedas.get(i);
 		else
 			return null;
-		
 	}
 	
 }
