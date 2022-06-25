@@ -231,6 +231,9 @@ public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEm
 		
 		RegistroRequestEmpleado req= new RegistroRequestEmpleado(this.nombre,this.apellido,this.telefono,
 		this.usuario,this.contrasena,this.email,this.edadI);
+		
+		System.out.println(req.getNombreUsuario() + " | " + req.getNombre());
+		
 		return req;
 	}
 

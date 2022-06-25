@@ -31,7 +31,7 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 			controladorAltaTicket = new ControladorAltaTicketEmpleado();
 		controladorAltaTicket.vista.setV1(Agencia.getAgencia().getRemuneracionV1());
         controladorAltaTicket.vista.setV2(Agencia.getAgencia().getRemuneracionV2());
-		controladorAltaTicket.vista.mostrar();
+        controladorAltaTicket.vista.mostrar();
 		return controladorAltaTicket;
 	}
 	
@@ -45,22 +45,22 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 		
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
 			this.vista.esconder();
-			this.vista.limpiaCampos();
+			
 			//Guardo Ticket
 			
 			TicketDeEmpleadoRequest request;
 			try {
 				request = this.vista.getFormulario();
-				String usuario = ControladorLogin.getControladorLogin().getVistaLogin().getUsername();
+				String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
 				agencia.crearTicketBusquedaDeEmpleo(request, usuario);
 			}catch (ConstructorInvalidoException e1) {}
 
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
-
+			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
+			this.vista.limpiaCampos();
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
+			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 			this.vista.limpiaCampos();
-			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
 		}
 		
 	}

@@ -26,7 +26,7 @@ public class ControladorListaEmpleadores implements ActionListener {
 			ControladorListaEmpleadores = new ControladorListaEmpleadores();
 		}
 		//!VER
-		Usuario usuario = ControladorLogin.getLogueado();
+		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
 		TicketBusquedaDeEmpleo ticket = Agencia.getAgencia().encuentraTicketDeEmpleo(usuario);
 		ControladorListaEmpleadores.vistaLista.setListaDeAsignacion(ticket.getListaDeAsignaciones());
 		
@@ -39,8 +39,8 @@ public class ControladorListaEmpleadores implements ActionListener {
 		String comando = e.getActionCommand();
 		
 		if( comando.equalsIgnoreCase("Volver") ) {
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
 			this.vistaLista.esconder();
+			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 		}
 		
 	}

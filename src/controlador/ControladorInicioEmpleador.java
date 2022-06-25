@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+import dto.TicketEmpleadorDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
@@ -29,29 +30,22 @@ public class ControladorInicioEmpleador implements ActionListener{
 		this.vista.setActionListener(this);
 	};
 	
-	public static ControladorInicioEmpleador get(){
+	public static ControladorInicioEmpleador get(boolean mostrar){
 		if(controladorInicioEmpleador==null)
 			controladorInicioEmpleador = new ControladorInicioEmpleador();
 		
-		String nombreEmpleador = ControladorLogin.getLogueado().getNombreUsuario();
+		String nombreEmpleador = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
 		List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();
 		List<TicketBusquedaDeEmpleado> solicitudesUsuario = solicitudes.stream().filter(s -> s.getDueno().getNombreUsuario().equals(nombreEmpleador)). collect(Collectors.toList());
 	
-		DefaultListModel<TicketBusquedaDeEmpleado> lista = new DefaultListModel<>();
-		for (TicketBusquedaDeEmpleado ticket : solicitudesUsuario) {
-			Object[] infoTicket = {
-					"Fecha de alta: " + ticket.getFechaDeAlta(),
-					"Empleados solicitados: " + ticket.getEmpleadosNecesitados(),
-					"Empleados obtenidos" + ticket.getEmpleadosObtenidos(),
-					"Estado " + ticket.getEstadoTicket().getNombre()
-			};
-			
-			lista.addElement(infoTicket);
-		}
+		DefaultListModel<TicketEmpleadorDTO> lista = new DefaultListModel<>();
+		
+		solicitudesUsuario.forEach(ticket -> { lista.addElement(new TicketEmpleadorDTO(ticket)); } );
 		
 		controladorInicioEmpleador.vista.setModel(lista);
-			
-		controladorInicioEmpleador.vista.mostrar();
+		
+		if( mostrar )
+			controladorInicioEmpleador.vista.mostrar();
 		
 		return controladorInicioEmpleador;
 	}
@@ -60,6 +54,11 @@ public class ControladorInicioEmpleador implements ActionListener{
 		this.vista=vista;
 	}
 	
+	
+	public IVistaIEmpleador getVista() {
+		return vista;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
@@ -79,7 +78,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    	
 	    }else if(comando.equalsIgnoreCase("Cerrar sesion")) {
 	    	this.vista.esconder();
-			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
+			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
 	    }
 	}
 }

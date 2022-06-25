@@ -392,9 +392,10 @@ public class Agencia extends Observable {
 
 	public void addTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
 		this.solicitudes.add(ticket);
+		
 	}
 
-	public void crearTicketBusquedaDeEmpleado(TicketDeEmpleadorRequest request, String username) {
+	public TicketBusquedaDeEmpleado crearTicketBusquedaDeEmpleado(TicketDeEmpleadorRequest request, String username) {
 		Set <Empleador> empleadores = this.empleadores;
 
 		Empleador dueno = empleadores.stream().filter(e -> e.getNombreUsuario().equalsIgnoreCase(username)).findFirst().get();
@@ -404,13 +405,7 @@ public class Agencia extends Observable {
 						request.getPuesto(), request.getEstudios(),
 						request.getRemuneracion());
 
-		//Dimos de alta el ticket del empleado en la agencia
-		addTicketBusquedaDeEmpleado(
-						dueno.altaTicket(
-							formulario,
-							request.getCantEmpleados()
-						)
-		);
+		return dueno.altaTicket(formulario,request.getCantEmpleados());
 	}
 	
 	public void removeTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
@@ -424,20 +419,9 @@ public class Agencia extends Observable {
 	public TicketBusquedaDeEmpleo encuentraTicketDeEmpleo(Usuario usuario) {
 		
 		List <TicketBusquedaDeEmpleo> busquedas = this.busquedas;
-		int i = 0;
-		boolean encontre = false;
 		
-		while( (i < busquedas.size()) && (encontre == false) ) {
-			if( ( busquedas.get(i).getDueno().getNombreUsuario().equals(usuario)) ) {
-				encontre = true;
-			}else
-				i++;
-		}
-		
-		if(encontre == true) 
-		  return busquedas.get(i);
-		else
-			return null;
+		return busquedas.stream().filter( b -> b.getDueno().equals(usuario) ).findFirst().orElse(null);
+
 	}
 	
 }

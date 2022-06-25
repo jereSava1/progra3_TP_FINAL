@@ -191,7 +191,6 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		this.btnAltaTicket.addActionListener(actionListener);
 		this.btnListaEmpleadores.addActionListener(actionListener);
 		this.btnResultado.addActionListener(actionListener);
-		this.btnListaEmpleadores.addActionListener(actionListener);
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificaTicket.addActionListener(actionListener);
 		this.btnVerTicket.addActionListener(actionListener);

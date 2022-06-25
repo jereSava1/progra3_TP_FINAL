@@ -26,10 +26,11 @@ public class ControladorInicioEmpleado implements ActionListener {
 		this.vista.setActionListener(this);
 	};
 	
-	public static ControladorInicioEmpleado getControladorInicioEmpleado(){
+	public static ControladorInicioEmpleado getControladorInicioEmpleado(boolean mostrar){
 		if(controladorInicioEmpleado==null)
 			controladorInicioEmpleado = new ControladorInicioEmpleado();
-		controladorInicioEmpleado.vista.mostrar();
+		if( mostrar )
+			controladorInicioEmpleado.vista.mostrar();
 		return controladorInicioEmpleado;
 	}
 	
@@ -37,18 +38,22 @@ public class ControladorInicioEmpleado implements ActionListener {
 		this.vista=vista;
 	}
 	
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
-		Usuario usuario = ControladorLogin.getLogueado();
+		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
 		
 		TicketBusquedaDeEmpleo ticket = agencia.getAgencia().encuentraTicketDeEmpleo(usuario);
+		System.out.println(ticket);
         
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 			
 			if( ticket!=null ) {
 				ticket.setEstadoTicket(new CanceladoState(ticket));
 				Agencia.getAgencia().removeTicketBusquedaDeEmpleo(ticket);
+				JOptionPane.showMessageDialog(null, "Ticket dado de baja con exito", "Ticket", JOptionPane.INFORMATION_MESSAGE);
 			}
 			else
 				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -64,7 +69,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
 	    	
-	    	if( ticket==null) {
+	    	if( ticket == null) {
 	    		this.vista.esconder();
 		    	ControladorAltaTicketEmpleado controladorAltaTicketEmpleado = ControladorAltaTicketEmpleado.get();
 	    	}
@@ -78,7 +83,6 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
 	    		this.vista.esconder();
 		    	ControladorListaEmpleadores controladorListaEmpleadores = ControladorListaEmpleadores.getControladorListaEmpleadores();
-		    	
 	    	}else {
 	    		if( ticket == null )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -106,7 +110,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("CERRAR SESION")) {
 	    	this.vista.esconder();
-			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
+			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
 	    }
   }
 }	

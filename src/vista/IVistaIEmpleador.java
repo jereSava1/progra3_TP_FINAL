@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
+import dto.TicketEmpleadorDTO;
 import model.ticket.TicketBusquedaDeEmpleado;
 
 public interface IVistaIEmpleador {
@@ -14,7 +15,9 @@ public interface IVistaIEmpleador {
        void setActionListener(ActionListener actionListener);
        JList getListaTickets();
        void setListaTickets(JList listaTickets);
-       DefaultListModel<TicketBusquedaDeEmpleado> getTickets();
-	   void setTickets(DefaultListModel<TicketBusquedaDeEmpleado> tickets);
-	   void setModel(DefaultListModel<TicketBusquedaDeEmpleado> model);
-}
+       DefaultListModel<TicketEmpleadorDTO> getTickets();
+	   void setTickets(DefaultListModel<TicketEmpleadorDTO> tickets);
+	   void setModel(DefaultListModel<TicketEmpleadorDTO> model);
+	   void addTicket(TicketEmpleadorDTO ticket);
+	   void removeTicket(TicketEmpleadorDTO ticket);
+} 

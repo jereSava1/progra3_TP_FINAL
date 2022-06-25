@@ -32,7 +32,7 @@ public class main {
 		Empleado e1 = new Empleado("Tibau", "12345", "Bautista Priano", 20, "tibau@gmail.com", "12323143");
 		Empleado e2 = new Empleado("Tibau2", "12345", "Bautista Sobenko", 21, "tibau2@gmail.com", "121233");
 		Empleado e3 = new Empleado("Tibau3", "12345", "Bauti tibau", 22, "tibau3@gmail.com", "12333");
-		agencia.registrarAdmin(new RegistroRequestAdmin("w", "w", "w", "w"));
+		agencia.registrarAdmin(new RegistroRequestAdmin("w", "w", "w", "w",""));
 		CargaHorariaFactory cargaH = new CargaHorariaFactory();
 		EstudiosFactory estudios = new EstudiosFactory();
 		ExperienciaFactory experiencia = new ExperienciaFactory();
@@ -74,7 +74,7 @@ public class main {
 			agencia.getSolicitudes().add(ticketEmpleador1);
 			agencia.getSolicitudes().add(ticketEmpleador2);
 			
-			ControladorLogin controlador = ControladorLogin.getControladorLogin();
+			ControladorLogin controlador = ControladorLogin.getControladorLogin(true);
 
 			//agencia.mostrarTicketBusqueda();
 			//agencia.mostrarTicketSolicitud();
@@ -82,9 +82,7 @@ public class main {
 		} catch (Exception e) {
 			
 		}
-
-		
-		
+	
 	}
 
 }

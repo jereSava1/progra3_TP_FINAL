@@ -6,9 +6,11 @@ import java.util.List;
 
 import dto.TicketDeEmpleadoRequest;
 import dto.TicketDeEmpleadorRequest;
+import dto.TicketEmpleadorDTO;
 import exception.ConstructorInvalidoException;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
+import model.ticket.TicketBusquedaDeEmpleado;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
 import vista.IVistaAltaTicketEmpleador;
@@ -46,22 +48,25 @@ public class ControladorAltaTicketEmpleador implements ActionListener{
 		
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
 			this.vista.esconder();
-			this.vista.limpiaCampos();
 			//Guardo Ticket
 			
 			TicketDeEmpleadorRequest request;
 			try {
 				request = this.vista.getFormulario();
-				String usuario = ControladorLogin.getControladorLogin().getVistaLogin().getUsername();
-				agencia.crearTicketBusquedaDeEmpleado(request, usuario);
+				String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
+				TicketBusquedaDeEmpleado ticket = agencia.crearTicketBusquedaDeEmpleado(request, usuario);
+				agencia.addTicketBusquedaDeEmpleado(ticket);
+				
+				ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
 			} 
 			catch (Exception e1) {
-				//Manejar exc
+				e1.printStackTrace();
 			}
+			this.vista.limpiaCampos();
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
-			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
+			ControladorInicioEmpleador CEmpleado = ControladorInicioEmpleador.get(true);
 		}
 
 	}

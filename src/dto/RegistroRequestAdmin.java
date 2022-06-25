@@ -6,8 +6,8 @@ public class RegistroRequestAdmin extends RegistroRequest {
 	private String email;
 	private String ID;
 	
-	public RegistroRequestAdmin(String nombreUsuario,String contrasena,String email,String ID) {
-		super(nombreUsuario,contrasena,TipoUsuario.ADMIN);
+	public RegistroRequestAdmin(String nombreUsuario,String contrasena,String email,String ID, String nombre) {
+		super(nombreUsuario,contrasena,TipoUsuario.ADMIN, nombre);
 		this.email=email;
 		this.ID=ID;
 	}

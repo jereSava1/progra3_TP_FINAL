@@ -8,10 +8,11 @@ public class RegistroRequest {
 	private TipoUsuario tipo;
 	private String nombre;
 
-	public RegistroRequest(String n, String c, TipoUsuario t) {
+	public RegistroRequest(String n, String c, TipoUsuario t, String nombre) {
 		this.nombreUsuario = n;
 		this.contrasena = c;
 		this.tipo = t;
+		this.nombre = nombre;
 	}
 
 	public String getNombreUsuario() {

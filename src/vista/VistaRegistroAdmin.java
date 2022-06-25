@@ -186,7 +186,7 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin, KeyLis
 	
 	@Override
 	public RegistroRequestAdmin getFormulario() {
-		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario, this.contrasena, this.email,this.ID);
+		RegistroRequestAdmin req = new RegistroRequestAdmin(this.usuario, this.contrasena, this.email,this.ID,"");
 		return req;
 	}
 
