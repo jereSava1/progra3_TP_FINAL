@@ -2,7 +2,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Usuario;
@@ -26,9 +29,12 @@ public class ControladorListaEmpleadores implements ActionListener {
 			ControladorListaEmpleadores = new ControladorListaEmpleadores();
 		}
 		//!VER
-		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
-		TicketBusquedaDeEmpleo ticket = Agencia.getAgencia().encuentraTicketDeEmpleo(usuario);
-		ControladorListaEmpleadores.vistaLista.setListaDeAsignacion(ticket.getListaDeAsignaciones());
+		Usuario usuario = ControladorLogin.getLogueado();
+		List<UsuarioPuntuadoDTO> usuariosPuntuados = Agencia.getAgencia().encuentraTicketDeEmpleo(usuario)
+																											.getListaDeAsignaciones()
+																															.stream()
+																																			.map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
+		ControladorListaEmpleadores.vistaLista.setListaDeAsignacion(usuariosPuntuados);
 		
 		ControladorListaEmpleadores.vistaLista.mostrar();
 		return ControladorListaEmpleadores;
