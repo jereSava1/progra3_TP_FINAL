@@ -7,7 +7,6 @@ import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Usuario;
 import vista.IListaEmpleadosPretensos;
-import vista.VistaInicioEmpleador;
 import vista.VistaListaEmpleadores;
 
 public class ControladorListaEmpleadores implements ActionListener {

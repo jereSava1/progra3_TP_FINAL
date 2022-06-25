@@ -13,7 +13,6 @@ import model.usuario.Empleado;
 import vista.IVistaAltaTicketEmpleado;
 import vista.IVistaIEmpleador;
 import vista.VistaAltaTicketEmpleado;
-import vista.VistaInicioEmpleador;
 
 public class ControladorAltaTicketEmpleado implements ActionListener {
 

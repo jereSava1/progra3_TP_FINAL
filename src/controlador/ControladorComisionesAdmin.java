@@ -3,22 +3,18 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Set;
-
+import java.util.Optional;
+import java.util.stream.Collectors;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
-import model.usuario.Empleador;
-import vista.IVistaAltaTicketEmpleado;
-import vista.IVistaMuestraListasAdmin;
-import vista.VistaAltaTicketEmpleado;
+import types.Resultado;
+import vista.IVistaComisionesAdmin;
 import vista.VistaComisionesAdmin;
-import vista.VistaMuestraEmpleadoresAdmin;
-import vista.VistaMuestraEmpleadosAdmin;
 
 public class ControladorComisionesAdmin implements ActionListener {
 
-	private IVistaMuestraListasAdmin vista;
+	private IVistaComisionesAdmin vista;
 	private static ControladorComisionesAdmin controladorComisionesAdmin = null;
 
 	private ControladorComisionesAdmin() {
@@ -31,26 +27,49 @@ public class ControladorComisionesAdmin implements ActionListener {
 			controladorComisionesAdmin = new ControladorComisionesAdmin();
 		}
 		
-		List<TicketBusquedaDeEmpleo> busquedas = Agencia.getAgencia().getBusquedas();
+		controladorComisionesAdmin.vista.getModel().setRowCount(0);
 		
 		List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();
+
 		for (TicketBusquedaDeEmpleado solicitud : solicitudes) {
-			if( Agenci )
+			String userNameEmpleador = solicitud.getDueno().getNombreUsuario();
+			List<TicketBusquedaDeEmpleado> exitos = solicitudes.stream().filter(s -> s.getDueno().getNombreUsuario().equals(userNameEmpleador) && s.getResultado()==Resultado.EXITO). collect(Collectors.toList());
+			float comisionEmpleador = 0;
+			if( !exitos.isEmpty() ) {
+				for (TicketBusquedaDeEmpleado ticketExito : exitos) {
+					comisionEmpleador += ticketExito.getComisionAPagar();
+				}
+				String nombreEmpleador = exitos.get(0).getDueno().getNombre();
+				Object[] fila = {
+						nombreEmpleador,
+						"Empleador",
+						comisionEmpleador
+				};
+				controladorComisionesAdmin.vista.getModel().addRow(fila);
+				
+			}
 		}
 		
-		controladorComisionesAdmin.vista.getModel().setRowCount(0);
-		for (Empleador empleador : empleadores) {
-			
-			Object[] fila = {
-				empleador.getNombre(),	
-				empleador.getRubro(),
-				empleador.getTipoPersona(),
-				empleador.getPuntaje()
-			};
-			
-			controladorComisionesAdmin.vista.getModel().addRow(fila);	
-			
+		List<TicketBusquedaDeEmpleo> busquedas = Agencia.getAgencia().getBusquedas();
+		
+		for (TicketBusquedaDeEmpleo busqueda : busquedas) {
+			String userNameEmpleador = busqueda.getDueno().getNombreUsuario();
+			Optional<TicketBusquedaDeEmpleo> exito = busquedas.stream().filter(s -> s.getDueno().getNombreUsuario().equals(userNameEmpleador) && s.getResultado()==Resultado.EXITO).findAny();
+			float comisionEmpleado = 0;
+			if( exito.isPresent() ) {
+				TicketBusquedaDeEmpleo ticket = exito.get();
+				String nombreEmpleado = ticket.getDueno().getNombre();
+				comisionEmpleado = ticket.getComisionAPagar();
+				Object[] fila = {
+						nombreEmpleado,	
+						"Empleado",
+						comisionEmpleado
+				};
+				controladorComisionesAdmin.vista.getModel().addRow(fila);
+			}
 		}
+		
+		controladorComisionesAdmin.vista.setTextAreaComisionTotal( Float.toString( Agencia.getAgencia().getComisiones()) );
 		
 		controladorComisionesAdmin.vista.mostrar();
 		

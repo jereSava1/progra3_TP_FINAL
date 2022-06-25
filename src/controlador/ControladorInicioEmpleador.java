@@ -10,8 +10,8 @@ import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
 import state.CanceladoState;
 import vista.IVistaIEmpleador;
-import vista.VistaInicioEmpleador;
 import vista.VistaRegistroAdmin;
+import vista.VistaSesionEmpleador;
 
 public class ControladorInicioEmpleador implements ActionListener{
 
@@ -20,7 +20,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 	private Agencia agencia;
 	
 	private ControladorInicioEmpleador() {
-		this.vista = new VistaInicioEmpleador();
+		this.vista = new VistaSesionEmpleador();
 		this.agencia = Agencia.getAgencia();
 		this.vista.setActionListener(this);
 	};

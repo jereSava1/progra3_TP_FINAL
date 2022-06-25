@@ -45,6 +45,7 @@ public class Ticket {
 	 * finaliza, hay una posible contratacion.
 	 */
 	private Resultado resultado;
+	private Float comisionAPagar;
 
 	public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {
 		this.formularioDeBusqueda = formularioDeBusqueda;
@@ -52,6 +53,7 @@ public class Ticket {
 		this.estadoTicket = new ActivoState(this);
 		this.dueno = usuario;
 		this.resultado = Resultado.INCONCLUSO;
+		this.comisionAPagar = 0F;
 
 	}
 
@@ -64,6 +66,14 @@ public class Ticket {
 	// GETTERS Y SETTERS
 	public void setFormularioDeBusqueda(FormularioBusqueda formularioDeBusqueda) {
 		this.formularioDeBusqueda = formularioDeBusqueda;
+	}
+
+	public Float getComisionAPagar() {
+		return comisionAPagar;
+	}
+
+	public void setComisionAPagar(Float comisionAPagar) {
+		this.comisionAPagar = comisionAPagar;
 	}
 
 	public void setEstadoTicket(IState estadoTicket) {

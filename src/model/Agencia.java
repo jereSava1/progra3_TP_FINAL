@@ -180,18 +180,15 @@ public class Agencia extends Observable {
 	 * @param ticket
 	 * @return comision final para el empleador
 	 */
-	public float calculaComisionesEmpleador(Empleador empleador) {// si el puntaje supera a la comision-->
-																				// devuelvo 0
-		float sumaComision = 0;
-		
-		List<TicketBusquedaDeEmpleado> solicitudes = this.getSolicitudes();
-		for (TicketBusquedaDeEmpleado ticket : solicitudes) {
-			if( ticket.getDueno().equals(empleador) && ticket.getResultado() == Resultado.EXITO)  {
+	public float calculaComisionesEmpleador(TicketBusquedaDeEmpleado ticket) {// si el puntaje supera a la comision--> // devuelvo 
 				
 				float comision = 0;
 				
 				String pretensionSalarial = ticket.getFormularioDeBusqueda().getPretensionSalarial().getValor();
+				Empleador empleador = (Empleador)ticket.getDueno();
+				
 				float sueldo = 0;
+				
 				switch (pretensionSalarial) {
 				case "MENOS_V1":
 					sueldo = this.remuneracionV1;
@@ -223,13 +220,8 @@ public class Agencia extends Observable {
 					} else if (0.8 > empleador.getPuntaje() / 100)
 						comision = (float) (sueldo * (0.8 - empleador.getPuntaje() / 100));
 				}
-				
-				sumaComision += comision;
-				
-			}
-		}
 		
-		return sumaComision;
+		return comision;
 	}
 
 	/**

@@ -45,6 +45,8 @@ public class ControladorSesionAdmin implements ActionListener {
 			ControladorMuestraEmpleadosAdmin controladorMuestraEmpleadosAdmin = ControladorMuestraEmpleadosAdmin.getControladorMuestraEmpleadosAdmin();
 			
 		}else if(comando.equalsIgnoreCase("Ver Comisones")) {
+			this.vista.esconder();
+			ControladorComisionesAdmin controladorComisionesAdmin = ControladorComisionesAdmin.getControladorComisionesAdmin();
 			
 		}else if(comando.equalsIgnoreCase("Activar Encuentros")) {
 			

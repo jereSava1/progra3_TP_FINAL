@@ -76,9 +76,10 @@ public class RondaDeContrataciones {
 																														// HAY
 																														// MATCH
 						/* Agrego comisiones a la agencia */
-						comisiones = agencia.calculaComisionesEmpleado(busqueda)
-								+ agencia.calculaComisionesEmpleador(solicitud);
+						comisiones = agencia.calculaComisionesEmpleado(busqueda) + agencia.calculaComisionesEmpleador(solicitud);
 						agencia.setComisiones(agencia.getComisiones() + comisiones);
+						busqueda.setComisionAPagar(busqueda.getComisionAPagar()+agencia.calculaComisionesEmpleado(busqueda));
+						solicitud.setComisionAPagar(solicitud.getComisionAPagar()+agencia.calculaComisionesEmpleador(solicitud));
 						/* Actualizamos los atributos del ticket de empleado */
 						busqueda.setEstadoTicket(new FinalizadoState(busqueda)); // Si se contrata, finalizamos el
 																					// ticket

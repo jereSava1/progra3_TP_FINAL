@@ -91,9 +91,6 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 			
 		}
 		
-		
-		
-		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(10, 227, 89, 23);
 		contentPane.add(btnVolver);
