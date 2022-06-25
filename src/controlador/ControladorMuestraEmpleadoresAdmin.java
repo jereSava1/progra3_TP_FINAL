@@ -2,8 +2,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Set;
 
+import dto.EmpleadorDTO;
 import model.Agencia;
 import model.usuario.Empleador;
 import vista.IVistaAltaTicketEmpleado;
@@ -27,21 +29,18 @@ public class ControladorMuestraEmpleadoresAdmin implements ActionListener {
 			controladorMuestraEmpleadoresAdmin = new ControladorMuestraEmpleadoresAdmin();
 		}
 		
-		Set<Empleador> empleadores = Agencia.getAgencia().getEmpleadores();
+		List<EmpleadorDTO> empleadores = Agencia.getAgencia().listarEmpleadores();
 		
 		controladorMuestraEmpleadoresAdmin.vista.getModel().setRowCount(0);
-		for (Empleador empleador : empleadores) {
-			
+		empleadores.forEach( empleador -> {
 			Object[] fila = {
-				empleador.getNombre(),	
+				empleador.getNombre(),
 				empleador.getRubro(),
 				empleador.getTipoPersona(),
 				empleador.getPuntaje()
 			};
-			
-			controladorMuestraEmpleadoresAdmin.vista.getModel().addRow(fila);	
-			
-		}
+			controladorMuestraEmpleadoresAdmin.vista.getModel().addRow(fila);
+		});
 		
 		controladorMuestraEmpleadoresAdmin.vista.mostrar();
 		

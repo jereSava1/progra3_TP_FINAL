@@ -68,15 +68,15 @@ public class ControladorSesionAdmin implements ActionListener {
 			float min=controladorSesionAdmin.vista.getMinimo();
 			float max=controladorSesionAdmin.vista.getMaximo();
 			if(min!=-1 && max!=-1) {
-			  agencia.getAgencia().setRemuneracionV1(min);
-			  agencia.getAgencia().setRemuneracionV2(max);
+			  agencia.setRemuneracionV1(min);
+			  agencia.setRemuneracionV2(max);
 			  this.vista.limpiaCampos();
 			  this.vista.success("Sueldos actualizados con exito", "Actualizacion de sueldos");
 			}
 			else {
-				this.controladorSesionAdmin.vista.setMaximo(-1);
-				this.controladorSesionAdmin.vista.setMinimo(-1);
-				controladorSesionAdmin.get();
+				controladorSesionAdmin.vista.setMaximo(-1);
+				controladorSesionAdmin.vista.setMinimo(-1);
+				get();
 			}
 		}else if(comando.equalsIgnoreCase("Cerrar Sesion")) {
 			this.vista.esconder();
