@@ -2,6 +2,9 @@ package model.ticket;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
 import model.usuario.UsuarioPuntuado;
 import model.usuario.Usuario;
 import state.ActivoState;
@@ -16,7 +19,25 @@ import types.Resultado;
 public class Ticket {
 	private Usuario dueno;
 	private FormularioBusqueda formularioDeBusqueda;
-	private LocalDate fechaDeAlta; // LocalDate -> Represents a date (year, month, day
+	private LocalDate fechaDeAlta; // LocalDate -> Represents a date (year, month, day)
+
+	public void setDueno(Usuario dueno) {
+		this.dueno = dueno;
+	}
+
+	public void setFechaDeAlta(LocalDate fechaDeAlta) {
+		this.fechaDeAlta = fechaDeAlta;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String id;
 
 	/**
 	 * - Activo - Al momento del alta - Suspendido - Se puede volver a reactivar -
@@ -54,7 +75,7 @@ public class Ticket {
 		this.dueno = usuario;
 		this.resultado = Resultado.INCONCLUSO;
 		this.comisionAPagar = 0F;
-
+		this.id	= UUID.randomUUID().toString();
 	}
 
 	@Override
