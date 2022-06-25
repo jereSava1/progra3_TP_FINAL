@@ -36,6 +36,7 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	private DefaultListModel<TicketBusquedaDeEmpleado> tickets;
 	
 	private JList<TicketBusquedaDeEmpleado> listaTickets;
+	private JButton btnGenerarTicketSimplificado;
 
 	/**
 	 * Launch the application.
@@ -81,37 +82,47 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 			}
 		});
 		btnAltaTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAltaTicket.setBounds(10, 11, 195, 45);
+		btnAltaTicket.setBounds(65, 18, 195, 33);
 		contentPane.add(btnAltaTicket);
 		
 		btnBajaTicket = new JButton("Baja Ticket");
 		btnBajaTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnBajaTicket.setBounds(586, 103, 125, 38);
+		btnBajaTicket.setBounds(586, 81, 169, 38);
 		contentPane.add(btnBajaTicket);
 		
 		btnModificarTicket = new JButton("Modificar Ticket");
 		btnModificarTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnModificarTicket.setBounds(586, 166, 125, 38);
+		btnModificarTicket.setBounds(586, 140, 169, 38);
 		contentPane.add(btnModificarTicket);
 		
 		btnListaDeAsignacion = new JButton("Lista de asignacion");
 		btnListaDeAsignacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnListaDeAsignacion.setBounds(586, 227, 157, 38);
+		btnListaDeAsignacion.setBounds(586, 207, 169, 38);
 		contentPane.add(btnListaDeAsignacion);
 		
 		btnRondaDeEleccion = new JButton("Ronda de Elecciones");
 		btnRondaDeEleccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnRondaDeEleccion.setBounds(586, 288, 157, 38);
+		btnRondaDeEleccion.setBounds(586, 271, 169, 38);
 		contentPane.add(btnRondaDeEleccion);
 		
 		btnResultado = new JButton("Resultado");
 		btnResultado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnResultado.setBounds(586, 348, 112, 38);
+		btnResultado.setBounds(586, 330, 169, 38);
 		contentPane.add(btnResultado);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesion");
 		btnCerrarSesion.setBounds(10, 435, 125, 45);
 		contentPane.add(btnCerrarSesion);
+		
+		btnGenerarTicketSimplificado = new JButton("Generar Ticket Simplificado");
+		btnGenerarTicketSimplificado.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnGenerarTicketSimplificado.setBounds(313, 18, 206, 38);
+		contentPane.add(btnGenerarTicketSimplificado);
+		
+		JButton btnVerTicketsSimplificados = new JButton("Ver Tickets Simplificados");
+		btnVerTicketsSimplificados.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVerTicketsSimplificados.setBounds(576, 18, 179, 38);
+		contentPane.add(btnVerTicketsSimplificados);
 	}
 	
 
@@ -161,5 +172,7 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	public void setModel(DefaultListModel<TicketBusquedaDeEmpleado> model) {
 		this.listaTickets.setModel(model);
 		
+		this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
+		this.btnGenerarTicketSimplificado.addActionListener(actionListener);
 	}
 }
