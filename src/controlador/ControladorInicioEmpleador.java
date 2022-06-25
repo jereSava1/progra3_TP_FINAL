@@ -39,12 +39,20 @@ public class ControladorInicioEmpleador implements ActionListener{
 	
 		DefaultListModel<TicketBusquedaDeEmpleado> lista = new DefaultListModel<>();
 		for (TicketBusquedaDeEmpleado ticket : solicitudesUsuario) {
-			lista.addElement(ticket);
+			Object[] infoTicket = {
+					"Fecha de alta: " + ticket.getFechaDeAlta(),
+					"Empleados solicitados: " + ticket.getEmpleadosNecesitados(),
+					"Empleados obtenidos" + ticket.getEmpleadosObtenidos(),
+					"Estado " + ticket.getEstadoTicket().getNombre()
+			};
+			
+			lista.addElement(infoTicket);
 		}
 		
-		controladorInicioEmpleador.vista.setTickets(lista);
+		controladorInicioEmpleador.vista.setModel(lista);
 			
 		controladorInicioEmpleador.vista.mostrar();
+		
 		return controladorInicioEmpleador;
 	}
 	

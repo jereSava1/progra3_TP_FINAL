@@ -54,7 +54,6 @@ public class main {
 		Agencia.getAgencia().setRemuneracionV1(1500F);
 		Agencia.getAgencia().setRemuneracionV2(3000F);
 	
-		
 		try {
 			formularioEmpleado = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
 					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
@@ -69,15 +68,13 @@ public class main {
 			TicketBusquedaDeEmpleo ticketEmpleado1 = e1.altaTicket(formularioEmpleado);
 			
 			TicketBusquedaDeEmpleado ticketEmpleador1 = empleador3.altaTicket(formularioEmpleador, 1);
+			TicketBusquedaDeEmpleado ticketEmpleador2 = empleador3.altaTicket(formularioEmpleado, 1);
 			
 			agencia.getBusquedas().add(ticketEmpleado1);
 			agencia.getSolicitudes().add(ticketEmpleador1);
-			
-			System.out.println(ticketEmpleado1);
+			agencia.getSolicitudes().add(ticketEmpleador2);
 			
 			ControladorLogin controlador = ControladorLogin.getControladorLogin();
-
-			System.out.println(ticketEmpleado1);
 
 			//agencia.mostrarTicketBusqueda();
 			//agencia.mostrarTicketSolicitud();
