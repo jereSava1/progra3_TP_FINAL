@@ -3,12 +3,16 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import model.Agencia;
+import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import state.CanceladoState;
+import types.Resultado;
 import vista.IVistaIEmpleador;
 import vista.VistaRegistroAdmin;
 import vista.VistaSesionEmpleador;
@@ -28,6 +32,18 @@ public class ControladorInicioEmpleador implements ActionListener{
 	public static ControladorInicioEmpleador get(){
 		if(controladorInicioEmpleador==null)
 			controladorInicioEmpleador = new ControladorInicioEmpleador();
+		
+		String nombreEmpleador = ControladorLogin.getLogueado().getNombreUsuario();
+		List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();
+		List<TicketBusquedaDeEmpleado> solicitudesUsuario = solicitudes.stream().filter(s -> s.getDueno().getNombreUsuario().equals(nombreEmpleador)). collect(Collectors.toList());
+	
+		DefaultListModel<TicketBusquedaDeEmpleado> lista = new DefaultListModel<>();
+		for (TicketBusquedaDeEmpleado ticket : solicitudesUsuario) {
+			lista.addElement(ticket);
+		}
+		
+		controladorInicioEmpleador.vista.setTickets(lista);
+			
 		controladorInicioEmpleador.vista.mostrar();
 		return controladorInicioEmpleador;
 	}
@@ -39,22 +55,21 @@ public class ControladorInicioEmpleador implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
-			
 		
-		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
+		if(comando.equalsIgnoreCase("Baja ticket")) {
 			
-	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
+	    }else if(comando.equalsIgnoreCase("Modificar ticket")) {
 	    	
-	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
+	    }else if(comando.equalsIgnoreCase("Alta ticket")) {
 	    	this.vista.esconder();
 	    	ControladorAltaTicketEmpleador controladorAltaTicket = ControladorAltaTicketEmpleador.get();
-	    }else if(comando.equalsIgnoreCase("VER LISTA")) {
+	    }else if(comando.equalsIgnoreCase("Lista de Asignacion")) {
 	    	
-	    }else if(comando.equalsIgnoreCase("INGRESAR")) {
+	    }else if(comando.equalsIgnoreCase("Ronda de Elecciones")) {
 	    	
-	    }else if(comando.equalsIgnoreCase("VER RESULTADO")) {
+	    }else if(comando.equalsIgnoreCase("Resultados")) {
 	    	
-	    }else if(comando.equalsIgnoreCase("CERRAR SESION")) {
+	    }else if(comando.equalsIgnoreCase("Cerrar sesion")) {
 	    	this.vista.esconder();
 			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
 	    }

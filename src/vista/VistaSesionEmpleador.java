@@ -6,16 +6,34 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionListener;
+
+import model.ticket.TicketBusquedaDeEmpleado;
+
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 
 	private JPanel contentPane;
+	private JButton btnAltaTicket;
+	private JButton btnBajaTicket;
+	private JButton btnModificarTicket;
+	private JButton btnListaDeAsignacion;
+	private JButton btnRondaDeEleccion;
+	private JButton btnResultado;
+	private JButton btnCerrarSesion;
+	private DefaultListModel<TicketBusquedaDeEmpleado> tickets;
+	
+	private JList<TicketBusquedaDeEmpleado> listaTickets;
 
 	/**
 	 * Launch the application.
@@ -37,6 +55,7 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	 * Create the frame.
 	 */
 	public VistaSesionEmpleador() {
+		setTitle("Sesion Empleador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 781, 539);
 		contentPane = new JPanel();
@@ -48,63 +67,89 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		scrollPane.setBounds(10, 71, 550, 353);
 		contentPane.add(scrollPane);
 		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
+		tickets = new DefaultListModel<>();
+		this.listaTickets = new JList( tickets );
+		scrollPane.setViewportView(listaTickets);
+		listaTickets.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		
-		JButton btnNewButton = new JButton("Generar nuevo Ticket");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnAltaTicket = new JButton("Alta Ticket");
+		btnAltaTicket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(10, 11, 195, 45);
-		contentPane.add(btnNewButton);
+		btnAltaTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAltaTicket.setBounds(10, 11, 195, 45);
+		contentPane.add(btnAltaTicket);
 		
-		JButton btnNewButton_1 = new JButton("Baja Ticket");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton_1.setBounds(586, 103, 125, 38);
-		contentPane.add(btnNewButton_1);
+		btnBajaTicket = new JButton("Baja Ticket");
+		btnBajaTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBajaTicket.setBounds(586, 103, 125, 38);
+		contentPane.add(btnBajaTicket);
 		
-		JButton btnNewButton_2 = new JButton("Modificar Ticket");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton_2.setBounds(586, 166, 125, 38);
-		contentPane.add(btnNewButton_2);
+		btnModificarTicket = new JButton("Modificar Ticket");
+		btnModificarTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnModificarTicket.setBounds(586, 166, 125, 38);
+		contentPane.add(btnModificarTicket);
 		
-		JButton btnNewButton_3 = new JButton("Ver Lista de asignacion");
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton_3.setBounds(586, 227, 157, 38);
-		contentPane.add(btnNewButton_3);
+		btnListaDeAsignacion = new JButton("Lista de asignacion");
+		btnListaDeAsignacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnListaDeAsignacion.setBounds(586, 227, 157, 38);
+		contentPane.add(btnListaDeAsignacion);
 		
-		JButton btnNewButton_4 = new JButton("Ronda de Elecciones");
-		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton_4.setBounds(586, 288, 157, 38);
-		contentPane.add(btnNewButton_4);
+		btnRondaDeEleccion = new JButton("Ronda de Elecciones");
+		btnRondaDeEleccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRondaDeEleccion.setBounds(586, 288, 157, 38);
+		contentPane.add(btnRondaDeEleccion);
 		
-		JButton btnNewButton_5 = new JButton("Resultado");
-		btnNewButton_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton_5.setBounds(586, 348, 112, 38);
-		contentPane.add(btnNewButton_5);
+		btnResultado = new JButton("Resultado");
+		btnResultado.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnResultado.setBounds(586, 348, 112, 38);
+		contentPane.add(btnResultado);
 		
-		JButton btnNewButton_6 = new JButton("Cerrar Sesion");
-		btnNewButton_6.setBounds(10, 435, 125, 45);
-		contentPane.add(btnNewButton_6);
+		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setBounds(10, 435, 125, 45);
+		contentPane.add(btnCerrarSesion);
 	}
+	
+
+	public JList getListaTickets() {
+		return listaTickets;
+	}
+	
+	public void setListaTickets(JList listaTickets) {
+		this.listaTickets = listaTickets;
+	}
+	
+	public DefaultListModel<TicketBusquedaDeEmpleado> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(DefaultListModel<TicketBusquedaDeEmpleado> tickets) {
+		this.tickets = tickets;
+	}
+	
 
 	@Override
 	public void mostrar() {
-		// TODO Auto-generated method stub
+		this.setVisible(true);
 		
 	}
 
 	@Override
 	public void esconder() {
-		// TODO Auto-generated method stub
+		this.setVisible(false);
 		
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		// TODO Auto-generated method stub
-		
+		this.btnAltaTicket.addActionListener(actionListener);
+		this.btnListaDeAsignacion.addActionListener(actionListener);
+		this.btnRondaDeEleccion.addActionListener(actionListener);
+		this.btnResultado.addActionListener(actionListener);
+		this.btnCerrarSesion.addActionListener(actionListener);
+		this.btnBajaTicket.addActionListener(actionListener);
+		this.btnModificarTicket.addActionListener(actionListener);
+		this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
 	}
 }

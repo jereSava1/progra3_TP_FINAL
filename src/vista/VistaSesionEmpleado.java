@@ -162,13 +162,11 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 
 	@Override
 	public void mostrar() {
-		// TODO Auto-generated method stub
 		this.setVisible(true);
 	}
 
 	@Override
 	public void esconder() {
-		// TODO Auto-generated method stub
 		this.setVisible(false);
 	}
 
