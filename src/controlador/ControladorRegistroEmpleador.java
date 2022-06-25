@@ -31,8 +31,7 @@ public class ControladorRegistroEmpleador implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 			String comando = e.getActionCommand();
 			if (comando.equalsIgnoreCase("REGISTRARSE")) {
-				RegistroRequestEmpleador nuevoEmpleadorRequest = vista.getFormulario(); //Aca guardamos el formulario
-				agencia.registrarEmpleador(nuevoEmpleadorRequest);
+				agencia.registrarEmpleador(vista.getFormulario());
 				this.vista.success();
 				this.vista.esconder();
 				this.vista.limpiaCampos();

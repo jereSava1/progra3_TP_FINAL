@@ -269,10 +269,17 @@ public class Agencia extends Observable {
 		return empleados;
 	}
 
+	public List<EmpleadoDTO> listarEmpleados() {
+		return empleados.stream().map(EmpleadoDTO::of).collect(Collectors.toList());
+	}
+
 	public Set<Empleador> getEmpleadores() {
 		return empleadores;
 	}
-	
+
+	public List<EmpleadorDTO> listarEmpleadores() {
+		return empleadores.stream().map(EmpleadorDTO::of).collect(Collectors.toList());
+	}
 
 	public void setRemuneracionV1(Float remuneracionV1) {
 		this.remuneracionV1 = remuneracionV1;

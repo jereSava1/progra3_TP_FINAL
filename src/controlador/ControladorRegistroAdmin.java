@@ -31,8 +31,7 @@ public class ControladorRegistroAdmin implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		if (comando.equalsIgnoreCase("REGISTRO")) {
-			RegistroRequestAdmin NuevoU = vista.getFormulario(); //Aca guardamos el formulario
-			this.agencia.registrarAdmin(NuevoU);
+			this.agencia.registrarAdmin(vista.getFormulario());
 			this.vista.success();
 			this.vista.esconder();
 			this.vista.limpiaCampos();
