@@ -17,6 +17,7 @@ import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,7 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	private JButton btnRondaDeEleccion;
 	private JButton btnResultado;
 	private JButton btnCerrarSesion;
+	
 	private DefaultListModel<TicketBusquedaDeEmpleado> tickets;
 	
 	private JList<TicketBusquedaDeEmpleado> listaTickets;
@@ -67,8 +69,9 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		scrollPane.setBounds(10, 71, 550, 353);
 		contentPane.add(scrollPane);
 		
+		this.listaTickets = new JList();
 		tickets = new DefaultListModel<>();
-		this.listaTickets = new JList( tickets );
+		this.listaTickets.setModel(tickets);
 		scrollPane.setViewportView(listaTickets);
 		listaTickets.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		
@@ -128,6 +131,7 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.tickets = tickets;
 	}
 	
+	
 
 	@Override
 	public void mostrar() {
@@ -150,6 +154,12 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.btnCerrarSesion.addActionListener(actionListener);
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificarTicket.addActionListener(actionListener);
-		this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
+		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
+	}
+
+	@Override
+	public void setModel(DefaultListModel<TicketBusquedaDeEmpleado> model) {
+		this.listaTickets.setModel(model);
+		
 	}
 }
