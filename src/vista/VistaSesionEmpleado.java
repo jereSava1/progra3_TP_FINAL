@@ -29,7 +29,7 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 	private JButton btnResultado;
 	private JButton btnCerrarSesion;
 	private JButton btnModificaTicket;
-	
+	private JButton btnVerTicket;
 
 	/**
 	 * Launch the application.
@@ -151,6 +151,20 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		btnResultado.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2_3.add(btnResultado);
 		
+		JPanel panel_1_2_1 = new JPanel();
+		panel.add(panel_1_2_1);
+		
+		JLabel lblVerTicketSimplificado = new JLabel("Ver Ticket Simplificado");
+		lblVerTicketSimplificado.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_1_2_1.add(lblVerTicketSimplificado);
+		
+		JPanel panel_2_2_1 = new JPanel();
+		panel.add(panel_2_2_1);
+		
+		btnVerTicket = new JButton("Ver Tickets");
+		btnVerTicket.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_2_2_1.add(btnVerTicket);
+		
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3, BorderLayout.SOUTH);
 		panel_3.setLayout(new BorderLayout(0, 0));
@@ -180,6 +194,7 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		this.btnListaEmpleadores.addActionListener(actionListener);
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificaTicket.addActionListener(actionListener);
+		this.btnVerTicket.addActionListener(actionListener);
 	}
 
 }
