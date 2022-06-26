@@ -18,7 +18,7 @@ import javax.swing.*;
 
 public class ControladorListaDeAsignacion implements ActionListener {
 	
-	private IListaEmpleadosPretensos vistaLista;
+	private IListaDeAsignaciones vistaLista;
 	private TicketService ticketService;
 	private static ControladorListaDeAsignacion controladorListaDeAsignacion = null;
 	private static Agencia agencia;
@@ -48,7 +48,7 @@ public class ControladorListaDeAsignacion implements ActionListener {
 			usuariosPuntuados.forEach(model::addElement);
 			controladorListaDeAsignacion.vistaLista.setListaDeAsignacion(model);
 		} catch (NullPointerException e) {
-			controladorListaDeAsignacion.vistaLista.success("Aviso", "La lista de asignaciones a�n no ha sido generada");
+			controladorListaDeAsignacion.vistaLista.success("Aviso", "La lista de asignaciones aï¿½n no ha sido generada");
 		}
 		if (mostrar && usuariosPuntuados != null) {
 			controladorListaDeAsignacion.vistaLista.mostrar();
