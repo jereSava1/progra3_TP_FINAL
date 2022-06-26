@@ -39,14 +39,13 @@ public class ControladorListaDeAsignacion implements ActionListener {
 							.getListaDeAsignaciones()
 							.stream()
 							.map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
-		} catch (Exception e) {
-			e.printStackTrace();
+			DefaultListModel<UsuarioPuntuadoDTO> model = new DefaultListModel<>();
+			usuariosPuntuados.forEach(model::addElement);
+			controladorListaDeAsignacion.vistaLista.setListaDeAsignacion(model);
+		} catch (NullPointerException e) {
 			controladorListaDeAsignacion.vistaLista.success("Aviso", "La lista de asignaciones aún no ha sido generada");
 		}
-		DefaultListModel<UsuarioPuntuadoDTO> model = new DefaultListModel<>();
-		usuariosPuntuados.forEach(model::addElement);
-		controladorListaDeAsignacion.vistaLista.setListaDeAsignacion(model);
-
+		
 		if (mostrar && usuariosPuntuados != null) {
 			controladorListaDeAsignacion.vistaLista.mostrar();
 		} else if (usuariosPuntuados == null) {
