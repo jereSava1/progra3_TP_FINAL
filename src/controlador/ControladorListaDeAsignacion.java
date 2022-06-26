@@ -8,16 +8,15 @@ import java.util.stream.Collectors;
 import dto.TicketDTO;
 import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
-import model.ticket.Ticket;
 import model.usuario.Usuario;
-import vista.IListaEmpleadosPretensos;
+import vista.IListaDeAsignaciones;
 import vista.VistaListaDeAsignaciones;
 
 import javax.swing.*;
 
 public class ControladorListaDeAsignacion implements ActionListener {
 	
-	private IListaEmpleadosPretensos vistaLista;
+	private IListaDeAsignaciones vistaLista;
 	private static ControladorListaDeAsignacion controladorListaDeAsignacion = null;
 	private static Agencia agencia;
 
