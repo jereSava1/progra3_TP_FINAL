@@ -1,5 +1,6 @@
 package negocio;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +12,8 @@ import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.UsuarioPuntuado;
+import persistencia.Ipersistencia;
+import persistencia.PersistenciaXML;
 
 /**
  * Se analizan los tickets y se determinan las coincidencias para elaborar las
@@ -54,7 +57,6 @@ public class RondaDeEncuentro {
 		Collections.sort(ranking);
 
 		solicitud.setListaDeAsignaciones(ranking);
-	
 	}
 	
 	
@@ -76,9 +78,24 @@ public class RondaDeEncuentro {
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
 		}
+		Ipersistencia persistencia = new PersistenciaXML();
+		try {
+			persistencia.abrirOutput("lista-de-asignaciones-empleados.xml");
+			persistencia.escribir(agencia.getBusquedas());
+			persistencia.cerrarOutput();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		for (Ticket solicitud : agencia.getSolicitudes()) { // TICKETS DE EMPLEADORES
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getBusquedas(), solicitud);
+		}
+		try {
+			persistencia.abrirOutput("lista-de-asignaciones-empleador.xml");
+			persistencia.escribir(agencia.getBusquedas());
+			persistencia.cerrarOutput();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 		RondaDeEncuentro.activada = true;
