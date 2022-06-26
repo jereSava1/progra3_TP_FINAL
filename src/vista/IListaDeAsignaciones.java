@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import dto.UsuarioPuntuadoDTO;
 
@@ -12,4 +13,5 @@ public interface IListaDeAsignaciones {
     void setActionListener(ActionListener actionListener);
     void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista);
     void success(String title, String message);
+    List<UsuarioPuntuadoDTO> getSeleccionados();
 }

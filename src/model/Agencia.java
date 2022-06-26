@@ -3,10 +3,7 @@ package model;
 import dto.*;
 import exception.ContrasenaIncorrectaException;
 import exception.UsuarioIncorrectoException;
-import model.ticket.FormularioBusqueda;
-import model.ticket.TicketBusquedaDeEmpleado;
-import model.ticket.TicketBusquedaDeEmpleo;
-import model.ticket.TicketSimplificado;
+import model.ticket.*;
 import model.usuario.*;
 import persistencia.Ipersistencia;
 import persistencia.PersistenciaXML;
@@ -473,5 +470,15 @@ public class Agencia extends Observable {
 			this.removeTicketBusquedaDeEmpleo(ticket.get());
 		}
 	}
-	
+
+	public Ticket encuentraTicket(String ticketId) {
+		Optional<? extends Ticket> result = this.busquedas.stream().filter(t -> t.getId().equals(ticketId)).findFirst();
+		if (result.isPresent()) {
+			return result.get();
+		} else {
+			result = this.solicitudes.stream().filter(t -> t.getId().equals(ticketId)).findFirst();
+			return result.orElse(null);
+		}
+	}
+
 }

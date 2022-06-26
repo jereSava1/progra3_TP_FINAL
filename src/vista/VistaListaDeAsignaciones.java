@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -83,5 +84,10 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 	}
 	public void success(String title, String message){
 		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	@Override
+	public List<UsuarioPuntuadoDTO> getSeleccionados() {
+		return list.getSelectedValuesList();
 	}
 }

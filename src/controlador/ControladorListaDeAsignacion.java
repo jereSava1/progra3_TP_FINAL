@@ -8,7 +8,11 @@ import java.util.stream.Collectors;
 import dto.TicketDTO;
 import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
+import model.ticket.Ticket;
 import model.usuario.Usuario;
+import model.usuario.UsuarioPuntuado;
+import negocio.RondaDeElecciones;
+import negocio.TicketService;
 import vista.IListaDeAsignaciones;
 import vista.VistaListaDeAsignaciones;
 
@@ -19,11 +23,13 @@ public class ControladorListaDeAsignacion implements ActionListener {
 	private IListaDeAsignaciones vistaLista;
 	private static ControladorListaDeAsignacion controladorListaDeAsignacion = null;
 	private static Agencia agencia;
-
+	private TicketService ticketService;
+	private static TicketDTO ticketSeleccionado;
 	private ControladorListaDeAsignacion() {
 		this.vistaLista = new VistaListaDeAsignaciones();
 		this.vistaLista.setActionListener(this);
 		this.agencia = Agencia.getAgencia();
+		this.ticketService = TicketService.getTicketService();
 	};
 	
 	public static ControladorListaDeAsignacion getControladorListaDeAsignacion(boolean mostrar, TicketDTO ticketSeleccionado) {
@@ -33,6 +39,7 @@ public class ControladorListaDeAsignacion implements ActionListener {
 		//!VER
 		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
 		List<UsuarioPuntuadoDTO> usuariosPuntuados = null;
+		ControladorListaDeAsignacion.ticketSeleccionado = ticketSeleccionado;
 		try {
 			usuariosPuntuados = agencia.encuentraTicketsDeEmpleador(ticketSeleccionado.getId())
 							.getListaDeAsignaciones()
@@ -64,11 +71,11 @@ public class ControladorListaDeAsignacion implements ActionListener {
 			this.vistaLista.esconder();
 			ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
 		} else if ( comando.equalsIgnoreCase("CONFIRMAR")) {
-			List<UsuarioPuntuadoDTO> seleccion = this.vistaLista.getSeleccion();
-			ticketService.seleccionarUsuariosPuntuados(seleccion, ticketSeleccionado);
+			List<UsuarioPuntuadoDTO> seleccion = this.vistaLista.getSeleccionados();
+			ticketService.seleccionarUsuariosPuntuados(seleccion, ControladorListaDeAsignacion.ticketSeleccionado);
 
 			this.vistaLista.success("Exito", "Seleccion confirmada");
-			List<UsuarioPuntuadoDTO> usuariosPuntuados = ticketService.encuentraTicketsDeEmpleador(ControladorListaDeAsignacion.ticketSeleccionado)
+			List<UsuarioPuntuadoDTO> usuariosPuntuados = ticketService.encuentraTicket(ControladorListaDeAsignacion.ticketSeleccionado.getId())
 							.getListaDeAsignaciones()
 							.stream()
 							.map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
@@ -78,5 +85,4 @@ public class ControladorListaDeAsignacion implements ActionListener {
 		}
 		
 	}
-
 }
