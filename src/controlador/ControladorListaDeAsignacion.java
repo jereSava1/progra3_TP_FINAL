@@ -65,12 +65,12 @@ public class ControladorListaDeAsignacion implements ActionListener {
 		
 		if( comando.equalsIgnoreCase("Volver") ) {
 			this.vistaLista.esconder();
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
+			ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
 		} else if ( comando.equalsIgnoreCase("CONFIRMAR")) {
 			List<UsuarioPuntuadoDTO> seleccion = this.vistaLista.getSeleccion();
 			ticketService.seleccionarUsuariosPuntuados(seleccion, ticketSeleccionado);
 
-			this.vistaLista.success("�xito", "Selecci�n confirmada");
+			this.vistaLista.success("Exito", "Seleccion confirmada");
 			List<UsuarioPuntuadoDTO> usuariosPuntuados = ticketService.encuentraTicketsDeEmpleador(ControladorListaDeAsignacion.ticketSeleccionado)
 							.getListaDeAsignaciones()
 							.stream()

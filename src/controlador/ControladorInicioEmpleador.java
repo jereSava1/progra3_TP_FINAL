@@ -94,7 +94,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    	if( this.vista.getTicketSeleccionado() != null) {
 	    		if( RondaDeContrataciones.isActivada() ) {
 	    			this.vista.esconder();
-	    			ControladorResultadoEmpleador controladorResultadoEmpleador = ControladorResultadoEmpleador.getControladorResultadoEmpleador();
+	    			ControladorResultadoEmpleador controladorResultadoEmpleador = ControladorResultadoEmpleador.getControladorResultadoEmpleador(this.vista.getTicketSeleccionado());
 	    		}else{
 	    			this.vista.failure("Error", "Ronda de contrataciones inactiva");
 	    		}	

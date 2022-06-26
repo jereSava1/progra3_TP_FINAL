@@ -20,7 +20,7 @@ public interface IVistaIEmpleador {
 	   void setModel(DefaultListModel<TicketEmpleadorDTO> model);
 	   void addTicket(TicketEmpleadorDTO ticket);
 	   void removeTicket(TicketEmpleadorDTO ticket);
-     TicketEmpleadorDTO getTicketSeleccionado();
-     void success(String titulo, String mensaje);
-     void failure(String title, String message);
+	     TicketEmpleadorDTO getTicketSeleccionado();
+	     void success(String titulo, String mensaje);
+	     void failure(String title, String message);
 } 

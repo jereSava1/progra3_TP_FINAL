@@ -25,12 +25,11 @@ public class ControladorResultadoEmpleador implements ActionListener {
 		this.vista.setActionListener(this);
 	}
 	
-	public static ControladorResultadoEmpleador getControladorResultadoEmpleador(){
+	public static ControladorResultadoEmpleador getControladorResultadoEmpleador(TicketEmpleadorDTO ticket){
 		if (controladorResultadoEmpleador == null) {
 			controladorResultadoEmpleador = new ControladorResultadoEmpleador();
 		}
 		
-		TicketEmpleadorDTO ticket = ControladorInicioEmpleador.get(false).getVista().getTicketSeleccionado();
     	List<UsuarioPuntuado> listaAsignacionTicket = ticket.getListaAsignaciones();
     	List<UsuarioPuntuado> contratados = listaAsignacionTicket.stream().filter(s -> s.isContratado()). collect(Collectors.toList());
 		
@@ -57,7 +56,7 @@ public class ControladorResultadoEmpleador implements ActionListener {
 		
 		if( comando.equalsIgnoreCase("Volver") ) {
 			this.vista.esconder();
-			
+			ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
 		}
 		
 	}
