@@ -10,6 +10,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class TicketDTO {
+  public static TicketDTO of (Ticket ticket) {
+    if (ticket == null) {
+      return null;
+    }
+    return new TicketDTO(ticket);
+  }
   public LocalDate getFechaDeAlta() {
     return fechaDeAlta;
   }

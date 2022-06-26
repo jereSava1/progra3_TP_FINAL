@@ -78,6 +78,8 @@ public class Ticket {
 		this.id	= UUID.randomUUID().toString();
 	}
 
+	public Ticket(){}
+
 	@Override
 	public String toString() {
 		return "Ticket [dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString()

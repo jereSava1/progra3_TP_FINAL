@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="16.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.HashSet">
+  <void method="add">
+   <object class="model.usuario.Empleado">
+    <void property="contrasena">
+     <string>12345</string>
+    </void>
+    <void property="edad">
+     <int>20</int>
+    </void>
+    <void property="email">
+     <string>tibau@gmail.com</string>
+    </void>
+    <void property="name">
+     <string>Thread-0</string>
+    </void>
+    <void property="nombre">
+     <string>Bautista Priano</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Tibau</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="telefono">
+     <string>12323143</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleado">
+    <void property="contrasena">
+     <string>pepe</string>
+    </void>
+    <void property="edad">
+     <int>10</int>
+    </void>
+    <void property="email">
+     <string>pepe</string>
+    </void>
+    <void property="name">
+     <string>Thread-5</string>
+    </void>
+    <void property="nombre">
+     <string>pepe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>pepe</string>
+    </void>
+    <void property="telefono">
+     <string>pepe</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleado">
+    <void property="contrasena">
+     <string>12345</string>
+    </void>
+    <void property="edad">
+     <int>22</int>
+    </void>
+    <void property="email">
+     <string>tibau3@gmail.com</string>
+    </void>
+    <void property="name">
+     <string>Thread-2</string>
+    </void>
+    <void property="nombre">
+     <string>Bauti tibau</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Tibau3</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="telefono">
+     <string>12333</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleado">
+    <void property="contrasena">
+     <string>12345</string>
+    </void>
+    <void property="edad">
+     <int>21</int>
+    </void>
+    <void property="email">
+     <string>tibau2@gmail.com</string>
+    </void>
+    <void property="name">
+     <string>Thread-1</string>
+    </void>
+    <void property="nombre">
+     <string>Bautista Sobenko</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Tibau2</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="telefono">
+     <string>121233</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
