@@ -7,6 +7,7 @@ import controlador.ControladorAltaTicketEmpleador;
 import controlador.ControladorInicioEmpleado;
 import dto.TicketSimplificadoRequest;
 import model.Agencia;
+import model.usuario.Empleador;
 import negocio.BolsaDeTrabajoService;
 import vista.IVistaAltaTicketSimplificado;
 import vista.VistaAltaTicketSimplificado;
@@ -14,15 +15,13 @@ import vista.VistaAltaTicketSimplificado;
 public class ControladorAltaTicketSimplificado implements ActionListener{
 
 	private IVistaAltaTicketSimplificado vista;
-	private static ControladorAltaTicketSimplificado controladorAltaTicket = null;
+	private static ControladorAltaTicketSimplificado controladorAltaTicket=null;
 	private Agencia agencia;
-	private BolsaDeTrabajoService service;
 	
 	private ControladorAltaTicketSimplificado() {
 		this.vista = new VistaAltaTicketSimplificado();
 		this.agencia = Agencia.getAgencia();
 		this.vista.setActionListener(this);
-		this.service = new BolsaDeTrabajoService();
 	};
 	
 	public static ControladorAltaTicketSimplificado get(){
@@ -44,10 +43,10 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 		String comando = e.getActionCommand();
 		
 		if(comando.equalsIgnoreCase("FINALIZAR")) {
-			TicketSimplificadoRequest request = this.vista.getFormulario();
-			request.setNombreUsuario(ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername());
-			this.service.agregarTicketSimplificado(request);
-
+			//Guardo el ticket en la "Bolsa de empleo", aca pasa la concurrencia
+			TicketSimplificadoRequest req = this.vista.getTicketSimplificado();
+			Empleador empleador = (Empleador) ControladorLogin.getControladorLogin(false).getLogueado();
+			BolsaDeTrabajoService.getBolsaDeTrabajoService().agregarTicketSimplificado(req,empleador);
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();

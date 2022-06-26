@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.TicketEmpleadorDTO;
+import model.ticket.TicketSimplificado;
+import vista.IVistaGeneral;
+
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,10 +20,12 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JRadioButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
-public class VistaEleccionTicketSimplificado extends JFrame implements IVistaGeneral,MouseListener {
+public class VistaEleccionTicketSimplificado extends JFrame implements IVistaEleccionTicketSimplificado,MouseListener {
 
 	private JPanel contentPane;
 	private JButton btnVolver;
@@ -29,6 +36,9 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaGen
 	private ActionListener actionListener;
 	private ButtonGroup grupoLocacion;
 	private String tipoLocacion = null;
+	
+	private DefaultListModel<TicketSimplificado> tickets;
+	private JList<TicketSimplificado> listaTickets;
 
 	/**
 	 * Launch the application.
@@ -64,6 +74,7 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaGen
 		
 		JList list = new JList();
 		scrollPane.setViewportView(list);
+		list.addMouseListener(this);
 		
 		JLabel lblNewLabel = new JLabel("Ingrese Locacion: ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -135,6 +146,8 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaGen
 	public void mouseReleased(MouseEvent e) {
 		if(this.grupoLocacion.getSelection() != null)
 	        this.tipoLocacion = this.grupoLocacion.getSelection().getActionCommand();
+		if(this.grupoLocacion.getSelection() != null && this.listaTickets.getSelectedValue()!=null)
+			this.btnSeleccionar.setEnabled(true);
 	}
 
 	@Override
@@ -144,6 +157,39 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaGen
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
+
+	@Override
+	public void limpiaCampos() {
+		this.grupoLocacion.clearSelection();
+		this.btnSeleccionar.setEnabled(false);
+	}
+
+	@Override
+	public void setModel(DefaultListModel<TicketSimplificado> model) {
+		// TODO Auto-generated method stub
+		this.listaTickets.setModel(model);
+	}
 	
+	public TicketSimplificado getTicketSeleccionado() {
+		return this.listaTickets.getSelectedValue();
+	}
+
+	@Override
+	public String getTipoLocacion() {
+		// TODO Auto-generated method stub
+		return this.tipoLocacion;
+	}
+
+	@Override
+	public void success(String message,String title) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	@Override
+	public void failure(String message,String title) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
+	}
 	
 }

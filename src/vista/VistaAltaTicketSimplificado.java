@@ -82,14 +82,17 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		JRadioButton rdbtnSalud = new JRadioButton("Salud");
 		rdbtnSalud.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnSalud);
+		rdbtnSalud.addMouseListener(this);
 		
 		JRadioButton rdbtnComercioLocal = new JRadioButton("Comercio Local");
 		rdbtnComercioLocal.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnComercioLocal);
+		rdbtnComercioLocal.addMouseListener(this);
 		
 		JRadioButton rdbtnComercioInternacional = new JRadioButton("ComercioInternacional");
 		rdbtnComercioInternacional.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnComercioInternacional);
+		rdbtnComercioInternacional.addMouseListener(this);
 		
 		this.grupoTipo.add(rdbtnComercioInternacional);
 		this.grupoTipo.add(rdbtnComercioLocal);
@@ -100,6 +103,7 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("Ingrese la locacion:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_3.add(lblNewLabel_1, BorderLayout.CENTER);
 		
 		JPanel panel_4 = new JPanel();
@@ -109,14 +113,17 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		JRadioButton rdbtnHomeOffice = new JRadioButton("Home Office");
 		rdbtnHomeOffice.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnHomeOffice);
+		rdbtnHomeOffice.addMouseListener(this);
 		
 		JRadioButton rdbtnPresencial = new JRadioButton("Presencial");
 		rdbtnPresencial.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnPresencial);
+		rdbtnPresencial.addMouseListener(this);
 		
 		JRadioButton rdbtnAmbas = new JRadioButton("Ambas");
 		rdbtnAmbas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnAmbas);
+		rdbtnAmbas.addMouseListener(this);
 		
 		this.grupoLocacion.add(rdbtnAmbas);
 		this.grupoLocacion.add(rdbtnPresencial);
@@ -200,9 +207,14 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	}
 
 	@Override
-	public TicketSimplificadoRequest getFormulario() {
+	public TicketSimplificadoRequest getTicketSimplificado() {
 		
-		TicketSimplificadoRequest req = new TicketSimplificadoRequest(this.locacion, this.tipoDeTrabajo);
+		TicketSimplificadoRequest req=null;
+		try {
+			req = new TicketSimplificadoRequest(this.locacion,this.tipoDeTrabajo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return req;
 	}
 	

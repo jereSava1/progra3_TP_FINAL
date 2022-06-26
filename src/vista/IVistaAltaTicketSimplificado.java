@@ -5,6 +5,6 @@ import vista.IVistaGeneral;
 
 public interface IVistaAltaTicketSimplificado extends IVistaGeneral {
 	
-	TicketSimplificadoRequest getFormulario();
+	TicketSimplificadoRequest getTicketSimplificado();
 	void limpiaCampos();
 }
