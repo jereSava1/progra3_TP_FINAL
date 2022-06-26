@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -183,6 +184,8 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 	public void esconder() {
 		this.setVisible(false);
 	}
+	
+	
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
@@ -194,6 +197,16 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificaTicket.addActionListener(actionListener);
 		this.btnVerTicket.addActionListener(actionListener);
+	}
+
+	@Override
+	public void failure(String error, String titulo) {
+		JOptionPane.showMessageDialog(null, error, titulo, JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void success(String ok, String titulo) {
+		JOptionPane.showMessageDialog(null, ok, titulo, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }

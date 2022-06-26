@@ -63,7 +63,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 			if(ticket!=null) {
 				try {
 					ticketService.bajaTicketEmpleador(ticket);
-					this.vista.success("Baja de ticket", "Ticket borrado con éxito");
+					this.vista.success("Baja de ticket", "Ticket borrado con ï¿½xito");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -87,7 +87,17 @@ public class ControladorInicioEmpleador implements ActionListener{
 				}
 	    }else if(comando.equalsIgnoreCase("Ronda de Elecciones")) {
 	    	
-	    }else if(comando.equalsIgnoreCase("Resultados")) {
+	    }else if(comando.equalsIgnoreCase("Resultado")) {
+	    	if( this.vista.getTicketSeleccionado() != null) {
+	    		if( RondaDeContrataciones.isActivada() ) {
+	    			this.vista.esconder();
+	    			ControladorResultadoEmpleador controladorResultadoEmpleador = ControladorResultadoEmpleador.getControladorResultadoEmpleador(this.vista.getTicketSeleccionado());
+	    		}else{
+	    			this.vista.failure("Error", "Ronda de contrataciones inactiva");
+	    		}	
+	    	}else {
+	    		this.vista.failure("Error", "Seleccione un ticket");
+	    	}
 	    	
 	    }else if(comando.equalsIgnoreCase("Cerrar sesion")) {
 	    	this.vista.esconder();

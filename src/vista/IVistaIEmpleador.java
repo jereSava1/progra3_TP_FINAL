@@ -10,16 +10,17 @@ import dto.TicketEmpleadorDTO;
 import model.ticket.TicketBusquedaDeEmpleado;
 
 public interface IVistaIEmpleador {
-       void mostrar();
-       void esconder();
-       void setActionListener(ActionListener actionListener);
-       JList getListaTickets();
-       void setListaTickets(JList listaTickets);
-       DefaultListModel<TicketEmpleadorDTO> getTickets();
-	   void setTickets(DefaultListModel<TicketEmpleadorDTO> tickets);
-	   void setModel(DefaultListModel<TicketEmpleadorDTO> model);
-	   void addTicket(TicketEmpleadorDTO ticket);
-	   void removeTicket(TicketEmpleadorDTO ticket);
+     void mostrar();
+     void esconder();
+     void setActionListener(ActionListener actionListener);
+     JList getListaTickets();
+     void setListaTickets(JList listaTickets);
+     DefaultListModel<TicketEmpleadorDTO> getTickets();
+     void setTickets(DefaultListModel<TicketEmpleadorDTO> tickets);
+     void setModel(DefaultListModel<TicketEmpleadorDTO> model);
+     void addTicket(TicketEmpleadorDTO ticket);
+     void removeTicket(TicketEmpleadorDTO ticket);
      TicketEmpleadorDTO getTicketSeleccionado();
      void success(String titulo, String mensaje);
+     void failure(String title, String message);
 } 

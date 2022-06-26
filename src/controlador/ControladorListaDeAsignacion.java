@@ -39,9 +39,11 @@ public class ControladorListaDeAsignacion implements ActionListener {
 							.getListaDeAsignaciones()
 							.stream()
 							.map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
-		} catch (Exception e) {
-			e.printStackTrace();
-			controladorListaDeAsignacion.vistaLista.success("Aviso", "La lista de asignaciones aún no ha sido generada");
+			DefaultListModel<UsuarioPuntuadoDTO> model = new DefaultListModel<>();
+			usuariosPuntuados.forEach(model::addElement);
+			controladorListaDeAsignacion.vistaLista.setListaDeAsignacion(model);
+		} catch (NullPointerException e) {
+			controladorListaDeAsignacion.vistaLista.success("Aviso", "La lista de asignaciones aï¿½n no ha sido generada");
 		}
 		DefaultListModel<UsuarioPuntuadoDTO> model = new DefaultListModel<>();
 		usuariosPuntuados.forEach(model::addElement);
@@ -61,7 +63,19 @@ public class ControladorListaDeAsignacion implements ActionListener {
 		
 		if( comando.equalsIgnoreCase("Volver") ) {
 			this.vistaLista.esconder();
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
+			ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
+		} else if ( comando.equalsIgnoreCase("CONFIRMAR")) {
+			List<UsuarioPuntuadoDTO> seleccion = this.vistaLista.getSeleccion();
+			ticketService.seleccionarUsuariosPuntuados(seleccion, ticketSeleccionado);
+
+			this.vistaLista.success("Exito", "Seleccion confirmada");
+			List<UsuarioPuntuadoDTO> usuariosPuntuados = ticketService.encuentraTicketsDeEmpleador(ControladorListaDeAsignacion.ticketSeleccionado)
+							.getListaDeAsignaciones()
+							.stream()
+							.map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
+			DefaultListModel<UsuarioPuntuadoDTO> model = new DefaultListModel<>();
+			usuariosPuntuados.forEach(model::addElement);
+			controladorListaDeAsignacion.vistaLista.setListaDeAsignacion(model);
 		}
 		
 	}
