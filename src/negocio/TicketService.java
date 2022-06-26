@@ -31,7 +31,7 @@ public class TicketService {
   public void modificarTicketDeEmpleado(TicketDeEmpleadoRequest request, String username) {
     List<TicketBusquedaDeEmpleo> busquedas = Agencia.getAgencia().getBusquedas();
 
-    Optional<TicketBusquedaDeEmpleo> result = busquedas.stream().filter(ticket -> ticket.getDueno().getNombreUsuario().equals(username)).findFirst();
+    Optional<TicketBusquedaDeEmpleo> result = busquedas.stream().filter(ticket -> ticket.getDueno().getNombreUsuario().equalsIgnoreCase(username)).findFirst();
 
     if (result.isPresent()) {
       TicketBusquedaDeEmpleo ticket = result.get();
@@ -43,10 +43,10 @@ public class TicketService {
               request.getRemuneracion());
       try {
         empleado.modificaTicket(ticket, formulario);
+        System.out.println("Ticket modificado: " + ticket.getId());
       } catch (NoDuenoDeTicketException e1) {
         //No se ejecuta nunca
       }
-
     }
   }
 }

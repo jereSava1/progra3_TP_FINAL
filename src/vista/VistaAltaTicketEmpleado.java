@@ -3,8 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import dto.TicketDeEmpleadoRequest;
@@ -15,14 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import java.awt.FlowLayout;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketEmpleado, MouseListener{
 
@@ -504,16 +497,21 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 	}
 
 	@Override
+	public void success(String titulo, String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	@Override
 	public TicketDeEmpleadoRequest getFormulario() throws ConstructorInvalidoException{
 		
 		TicketDeEmpleadoRequest ticketDeEmpleadoRequest;
-		ticketDeEmpleadoRequest = new TicketDeEmpleadoRequest(this.Locacion, this.pesoLocacion.getText(), 
-																					  this.Estudios, this.pesoEstudios.getText(),
-																					  this.Experiencia, this.pesoExperiencia.getText(), 
-																					  this.Horario,this.pesocargaHoraria.getText(), 
-																					  this.REtario, this.pesoRangoEtario.getText(),
-																					  this.Remuneracion, this.pesoRemuneracion.getText(), 
-																					  this.Puesto, this.pesoTipoDePuesto.getText());
+		ticketDeEmpleadoRequest = new TicketDeEmpleadoRequest(this.GrupoLocacion.getSelection().getActionCommand(), this.pesoLocacion.getText(),
+																					  this.GrupoEstudios.getSelection().getActionCommand(), this.pesoEstudios.getText(),
+																					  this.GrupoExperiencia.getSelection().getActionCommand(), this.pesoExperiencia.getText(),
+																					  this.GrupoHorario.getSelection().getActionCommand(),this.pesocargaHoraria.getText(),
+																					  this.GrupoREtario.getSelection().getActionCommand(), this.pesoRangoEtario.getText(),
+																					  this.GrupoRemuneracion.getSelection().getActionCommand(), this.pesoRemuneracion.getText(),
+																					  this.GrupoPuesto.getSelection().getActionCommand(), this.pesoTipoDePuesto.getText());
 		
 		return ticketDeEmpleadoRequest;
 		

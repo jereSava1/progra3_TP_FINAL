@@ -10,6 +10,7 @@ public interface IVistaAltaTicketEmpleado {
      void esconder();
      void setActionListener(ActionListener actionListener);
      void limpiaCampos();
+     void success(String titulo, String mensaje);
      TicketDeEmpleadoRequest getFormulario() throws ConstructorInvalidoException;
      float getV1();
      float getV2();

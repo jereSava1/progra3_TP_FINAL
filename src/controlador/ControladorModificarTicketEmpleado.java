@@ -43,6 +43,9 @@ public class ControladorModificarTicketEmpleado implements ActionListener {
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
 			try {
 				ticketService.modificarTicketDeEmpleado(this.vista.getFormulario(), usuario);
+				this.vista.success("Modificacion de ticket", "Ticket modificado con exito");
+				this.vista.esconder();
+				ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 			} catch (ConstructorInvalidoException err){ /*cumple contrato*/}
 		} else if (comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
