@@ -396,11 +396,20 @@ public class Agencia extends Observable {
 		System.out.println("Se registro el empleador: " + newEmpleador.getNombre());
 	}
 
-	public void registrarEmpleado(RegistroRequestEmpleado req){
-		Empleado newEmpleado = new Empleado(req.getNombreUsuario(),req.getContrasena(),req.getNombre(),req.getEdad(),req.getEmail(),req.getTelefono());
+	public void registrarEmpleado(RegistroRequestEmpleado req) {
+		Empleado newEmpleado = new Empleado(req.getNombreUsuario(), req.getContrasena(), req.getNombre(), req.getEdad(), req.getEmail(), req.getTelefono());
 		this.empleados.add(newEmpleado);
-		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
 
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("empleados.xml");
+			persistencia.escribir(this.empleados);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
 	}
 	
 	public void addTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {

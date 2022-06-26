@@ -45,12 +45,11 @@ public class ControladorInicioEmpleado implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
-		
-		TicketDTO ticket = new TicketDTO(agencia.getAgencia().encuentraTicketDeEmpleo(usuario));
-		System.out.println(ticket);
-        
+
+		TicketDTO ticket = TicketDTO.of(agencia.getAgencia().encuentraTicketDeEmpleo(usuario));
+
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
-			
+
 			if( ticket!=null ) {
 				agencia.cancelaTicket(ticket);
 				JOptionPane.showMessageDialog(null, "Ticket dado de baja con exito", "Ticket", JOptionPane.INFORMATION_MESSAGE);
@@ -59,7 +58,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
 			
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
-	    	
+
 	    	if( ticket!=null ) {
 	    		this.vista.esconder();
 	    		ControladorModificarTicketEmpleado controladorModificarTicketEmpleado = ControladorModificarTicketEmpleado.getControladorModificarTicketEmpleado();
@@ -68,7 +67,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
-	    	
+
 	    	if( ticket == null) {
 	    		this.vista.esconder();
 		    	ControladorAltaTicketEmpleado controladorAltaTicketEmpleado = ControladorAltaTicketEmpleado.get();
@@ -79,7 +78,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 		
 	    }else if(comando.equalsIgnoreCase("VER LISTA")) {
-	    	
+
 	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada())) {
 
 					ControladorListaDeAsignacion controladorListaEmpleadores = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, ticket);
@@ -93,7 +92,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    	
 	    }else if(comando.equalsIgnoreCase("INGRESAR")) {
-	    	
+
 	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
 	    		this.vista.esconder();
 		    	//ControladorEleccionEmpleadores ControladorEleccionEmpleadores = ControladorEleccionEmpleadores.getControladorEleccionEmpleadores();
@@ -111,7 +110,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("CERRAR SESION")) {
 	    	this.vista.esconder();
-			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
+				ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
 	    }
   }
 }	

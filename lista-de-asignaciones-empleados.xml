@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="16.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.LinkedList">
+  <void method="add">
+   <object class="dto.OutputListaDeAsignacion">
+    <void property="lista">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="model.usuario.UsuarioPuntuado">
+        <void property="puntaje">
+         <float>140.0</float>
+        </void>
+        <void property="usuario">
+         <object class="model.usuario.Empleador" id="Empleador0">
+          <void property="contrasena">
+           <string>facu</string>
+          </void>
+          <void property="name">
+           <string>Thread-4</string>
+          </void>
+          <void property="nombre">
+           <string>Empresa</string>
+          </void>
+          <void property="nombreUsuario">
+           <string>Empleador</string>
+          </void>
+          <void property="priority">
+           <int>5</int>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="model.usuario.UsuarioPuntuado">
+        <void property="puntaje">
+         <float>140.0</float>
+        </void>
+        <void property="usuario">
+         <object idref="Empleador0"/>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="ticketId">
+     <string>e74d02a9-0fb1-4a8b-961c-8c981537d48e</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

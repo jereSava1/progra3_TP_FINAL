@@ -8,6 +8,12 @@ import types.Resultado;
 import java.time.LocalDate;
 
 public class TicketDTO {
+  public static TicketDTO of (Ticket ticket) {
+    if (ticket == null) {
+      return null;
+    }
+    return new TicketDTO(ticket);
+  }
   public LocalDate getFechaDeAlta() {
     return fechaDeAlta;
   }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="16.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.LinkedList">
+  <void method="add">
+   <object class="dto.OutputListaDeAsignacion">
+    <void property="lista">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="model.usuario.UsuarioPuntuado">
+        <void property="puntaje">
+         <float>140.0</float>
+        </void>
+        <void property="usuario">
+         <object class="model.usuario.Empleado" id="Empleado0">
+          <void property="contrasena">
+           <string>12345</string>
+          </void>
+          <void property="edad">
+           <int>20</int>
+          </void>
+          <void property="email">
+           <string>tibau@gmail.com</string>
+          </void>
+          <void property="name">
+           <string>Thread-0</string>
+          </void>
+          <void property="nombre">
+           <string>Bautista Priano</string>
+          </void>
+          <void property="nombreUsuario">
+           <string>Tibau</string>
+          </void>
+          <void property="priority">
+           <int>5</int>
+          </void>
+          <void property="telefono">
+           <string>12323143</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="ticketId">
+     <string>d2497375-78e4-4c0b-9103-6adf3a210af4</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="dto.OutputListaDeAsignacion">
+    <void property="lista">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="model.usuario.UsuarioPuntuado">
+        <void property="puntaje">
+         <float>140.0</float>
+        </void>
+        <void property="usuario">
+         <object idref="Empleado0"/>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="ticketId">
+     <string>abada237-3533-4dfc-bf1d-488bc6905d89</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
