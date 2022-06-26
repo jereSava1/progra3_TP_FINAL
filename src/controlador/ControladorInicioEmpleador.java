@@ -66,7 +66,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 			if(ticket!=null) {
 				try {
 					ticketService.bajaTicketEmpleador(ticket);
-					this.vista.success("Baja de ticket", "Ticket borrado con éxito");
+					this.vista.success("Baja de ticket", "Ticket borrado con ï¿½xito");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

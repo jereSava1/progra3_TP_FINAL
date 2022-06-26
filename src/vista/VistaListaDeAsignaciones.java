@@ -6,14 +6,12 @@ import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import dto.UsuarioPuntuadoDTO;
-import model.ticket.TicketBusquedaDeEmpleado;
 
 
 //La utilizamos para ver los empleados pretensos de UN solo ticket
-public class VistaListaDeAsignaciones extends JFrame implements IListaEmpleadosPretensos {
+public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaciones {
 
 	private JPanel contentPane;
 	private JButton btnVolver;

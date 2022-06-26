@@ -8,11 +8,10 @@ import java.util.stream.Collectors;
 import dto.TicketDTO;
 import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
-import model.ticket.Ticket;
 import model.usuario.Usuario;
 import negocio.TicketService;
 import sun.security.krb5.internal.Ticket;
-import vista.IListaEmpleadosPretensos;
+import vista.IListaDeAsignaciones;
 import vista.VistaListaDeAsignaciones;
 
 import javax.swing.*;
@@ -51,7 +50,6 @@ public class ControladorListaDeAsignacion implements ActionListener {
 		} catch (NullPointerException e) {
 			controladorListaDeAsignacion.vistaLista.success("Aviso", "La lista de asignaciones a�n no ha sido generada");
 		}
-
 		if (mostrar && usuariosPuntuados != null) {
 			controladorListaDeAsignacion.vistaLista.mostrar();
 		} else if (usuariosPuntuados == null) {
