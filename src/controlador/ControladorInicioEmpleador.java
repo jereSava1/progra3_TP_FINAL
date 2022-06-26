@@ -73,8 +73,10 @@ public class ControladorInicioEmpleador implements ActionListener{
 				List<TicketEmpleadorDTO> solicitudes = Agencia.getAgencia().getListaSolicitudes(nombreEmpleador);
 				solicitudes.forEach(updatedList::addElement);
 				this.vista.setModel(updatedList);
+			} else {
+				this.vista.success("Error", "Seleccione un ticket");
 			}
-	    }else if(comando.equalsIgnoreCase("Modificar ticket")) {
+		}else if(comando.equalsIgnoreCase("Modificar ticket")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Alta ticket")) {
 	    	this.vista.esconder();
