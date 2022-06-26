@@ -44,17 +44,16 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 		String comando = e.getActionCommand();
 		
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
-			this.vista.esconder();
-			
 			//Guardo Ticket
-			
 			TicketDeEmpleadoRequest request;
 			try {
 				request = this.vista.getFormulario();
 				String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
 				agencia.crearTicketBusquedaDeEmpleo(request, usuario);
+				this.vista.success("Ticket creado", "Ticket creado con exito");
 			}catch (ConstructorInvalidoException e1) {}
 
+			this.vista.esconder();
 			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 			this.vista.limpiaCampos();
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
