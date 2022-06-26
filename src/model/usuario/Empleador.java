@@ -2,12 +2,12 @@ package model.usuario;
 
 import exception.NoDuenoDeTicketException;
 import model.ticket.FormularioBusqueda;
-import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
-import model.ticket.TicketBusquedaDeEmpleo;
 import types.*;
 
-public class Empleador extends Usuario {
+import java.io.Serializable;
+
+public class Empleador extends Usuario implements Serializable {
 
 	/**
 	 * - TipoPersona - Fisica - Juridica

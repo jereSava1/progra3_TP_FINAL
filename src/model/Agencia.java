@@ -1,28 +1,20 @@
 package model;
 
-import controlador.ControladorInicioEmpleado;
 import dto.*;
-import model.ticket.*;
-import model.usuario.Administrador;
-import model.usuario.Empleado;
-import model.usuario.Empleador;
-import model.usuario.Usuario;
-import model.usuario.UsuarioPuntuado;
-import types.Resultado;
+import exception.ContrasenaIncorrectaException;
+import exception.UsuarioIncorrectoException;
+import model.ticket.FormularioBusqueda;
+import model.ticket.TicketBusquedaDeEmpleado;
+import model.ticket.TicketBusquedaDeEmpleo;
+import model.ticket.TicketSimplificado;
+import model.usuario.*;
+import persistencia.Ipersistencia;
+import persistencia.PersistenciaXML;
 import types.Rubro;
 import types.TipoPersona;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Observable;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
-
-import controlador.ControladorLogin;
-import exception.ContrasenaIncorrectaException;
-import exception.UsuarioIncorrectoException;
 
 /**
  *
@@ -74,8 +66,30 @@ public class Agencia extends Observable {
 	}
 	
 	private Agencia(String usuario, String contrasena) {
-		this.empleadores = new HashSet<>();
-		this.empleados = new HashSet<>();
+		Ipersistencia persistencia = new PersistenciaXML();
+
+		try { // cargar los datos de la agencia desde el archivo XML
+			persistencia.abrirInput("empleadores.xml");
+			this.empleadores = (HashSet<Empleador>) persistencia.lee();
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+			this.empleados = new HashSet<>();
+		}
+
+		try {
+			persistencia.abrirInput("empleados.xml");
+			this.empleados = (HashSet<Empleado>) persistencia.lee();
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+			this.empleados = new HashSet<>();
+		}
+
+		try {
+			persistencia.abrirInput("administrador.xml");
+			this.administrador = (Administrador) persistencia.lee();
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+		}
 		this.busquedas = new ArrayList<>();
 		this.solicitudes = new ArrayList<>();
 		this.bolsaDeTrabajo = new ArrayList<>();
@@ -349,7 +363,7 @@ public class Agencia extends Observable {
 
 	public void registrarAdmin(RegistroRequestAdmin req) {
 		Administrador newAdmin = new Administrador(req.getNombreUsuario(), req.getContrasena(), req.getID(), req.getEmail());
-		this.administrador= newAdmin;
+		this.administrador = newAdmin;
 		System.out.println("Se registro el admin: " + newAdmin.getNombreUsuario());
 	}
 
@@ -359,6 +373,16 @@ public class Agencia extends Observable {
 		newEmpleador.setRubro(Rubro.valueOf(req.getRubro()));
 		newEmpleador.setTipoPersona(TipoPersona.valueOf(req.getTipoPersona()));
 		this.empleadores.add(newEmpleador);
+
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("empleadores.xml");
+			persistencia.escribir(this.empleadores);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		System.out.println("Se registro el empleador: " + newEmpleador.getNombre());
 	}
 

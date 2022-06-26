@@ -1,21 +1,15 @@
 package controlador;
 
+import model.Agencia;
+import model.ticket.TicketBusquedaDeEmpleado;
+import vista.IVistaIEmpleador;
+import vista.VistaSesionEmpleador;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-
-import model.Agencia;
-import model.ticket.TicketBusquedaDeEmpleado;
-import model.ticket.TicketBusquedaDeEmpleo;
-import state.CanceladoState;
-import types.Resultado;
-import vista.IVistaIEmpleador;
-import vista.VistaRegistroAdmin;
-import vista.VistaSesionEmpleador;
 
 public class ControladorInicioEmpleador implements ActionListener{
 

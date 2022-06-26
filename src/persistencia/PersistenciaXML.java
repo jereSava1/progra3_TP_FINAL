@@ -23,7 +23,6 @@ public class PersistenciaXML implements Ipersistencia {
 	public void abrirOutput(String nombre) throws IOException {
 		fileoutput = new FileOutputStream(nombre);
 		xmlEncoder = new XMLEncoder(fileoutput);
-
 	}
 
 	@Override
@@ -41,7 +40,6 @@ public class PersistenciaXML implements Ipersistencia {
 	@Override
 	public void escribir(Object objeto) throws IOException {
 		xmlEncoder.writeObject(objeto);
-
 	}
 
 	@Override

@@ -8,7 +8,9 @@ import model.ticket.TicketBusquedaDeEmpleo;
 import state.CanceladoState;
 import types.*;
 
-public class Empleado extends Usuario {
+import java.io.Serializable;
+
+public class Empleado extends Usuario implements Serializable {
 
 	private String telefono;
 	private String email;
