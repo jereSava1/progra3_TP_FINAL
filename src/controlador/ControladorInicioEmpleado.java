@@ -10,6 +10,8 @@ import dto.TicketDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Usuario;
+import model.usuario.UsuarioPuntuado;
+import negocio.RondaDeContrataciones;
 import negocio.RondaDeEncuentro;
 import state.CanceladoState;
 import vista.IVistaIEmpleado;
@@ -105,8 +107,17 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	}
 	    	
 	    }else if(comando.equalsIgnoreCase("VER RESULTADO")) {
+	    	if( RondaDeContrataciones.isActivada() ) {
+	    		UsuarioPuntuado contratado = ticket.getListaAsignaciones().stream().filter(t -> t.isContratado() == true).findAny().orElse(null);
+	    		if( contratado != null ) {
+	    			this.vista.success("Has sido contratado por: " + contratado.getUsuario().getNombre(), "Resultado" );
+	    		}else {
+	    			this.vista.success("No has sido contratado", "Resultado");
+	    		}
+	    	}else{
+	    		this.vista.failure("Ronda de contrataciones inactiva", "Resultado");
+	    	}
 	    	
-	    	//Si ha sido contratado nos muestra el nombre del empleador y datos del empleo, caso contrario vuelve a la vista sesion
 	    	
 	    }else if(comando.equalsIgnoreCase("CERRAR SESION")) {
 	    	this.vista.esconder();

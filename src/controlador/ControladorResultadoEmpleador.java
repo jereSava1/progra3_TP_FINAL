@@ -46,6 +46,7 @@ public class ControladorResultadoEmpleador implements ActionListener {
 		
 		controladorResultadoEmpleador.vista.setTextAreaEmpleadosObtenidos(Integer.toString( ticket.getEmpleadosObtenidos() ));
 		controladorResultadoEmpleador.vista.setTextAreaEmpleadosSolicitados(Integer.toString( ticket.getEmpleadosNecesitados() ));
+		controladorResultadoEmpleador.vista.setTextAreaEmpleadosObtenidosEnRonda( Integer.toString( contratados.size() ) );
 		
 		return controladorResultadoEmpleador;
 	}

@@ -24,6 +24,7 @@ public class VistaResultadoEmpleador extends JFrame implements IVistaResultadoEm
 	private JButton btnVolver;
 	private JTextArea textAreaEmpleadosSolicitados;
 	private JTextArea textAreaEmpleadosObtenidos;
+	private JTextArea textAreaEmpleadosObtenidosEnRonda;
 	
 	DefaultTableModel model = new DefaultTableModel();
 
@@ -61,7 +62,7 @@ public class VistaResultadoEmpleador extends JFrame implements IVistaResultadoEm
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 42, 233, 185);
+		scrollPane.setBounds(10, 42, 233, 191);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -74,25 +75,35 @@ public class VistaResultadoEmpleador extends JFrame implements IVistaResultadoEm
 		btnVolver.setBounds(10, 249, 89, 23);
 		contentPane.add(btnVolver);
 		
-		JLabel lblNewLabel_1 = new JLabel("Empleados Solicitados");
+		JLabel lblNewLabel_1 = new JLabel("Solicitados totales");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(253, 67, 152, 14);
+		lblNewLabel_1.setBounds(263, 56, 133, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		textAreaEmpleadosSolicitados = new JTextArea();
 		textAreaEmpleadosSolicitados.setEnabled(false);
-		textAreaEmpleadosSolicitados.setBounds(253, 92, 104, 23);
+		textAreaEmpleadosSolicitados.setBounds(263, 81, 104, 23);
 		contentPane.add(textAreaEmpleadosSolicitados);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Empleados Obtenidos");
+		JLabel lblNewLabel_1_1 = new JLabel("Obtenidos totales");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(253, 139, 152, 14);
+		lblNewLabel_1_1.setBounds(263, 115, 133, 14);
 		contentPane.add(lblNewLabel_1_1);
 		
 		textAreaEmpleadosObtenidos = new JTextArea();
 		textAreaEmpleadosObtenidos.setEnabled(false);
-		textAreaEmpleadosObtenidos.setBounds(253, 164, 104, 23);
+		textAreaEmpleadosObtenidos.setBounds(263, 140, 104, 23);
 		contentPane.add(textAreaEmpleadosObtenidos);
+		
+		JLabel lblNewLabel_2 = new JLabel("Obtenidos en la Ronda");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(263, 174, 142, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		textAreaEmpleadosObtenidosEnRonda = new JTextArea();
+		textAreaEmpleadosObtenidosEnRonda.setEnabled(false);
+		textAreaEmpleadosObtenidosEnRonda.setBounds(263, 199, 104, 23);
+		contentPane.add(textAreaEmpleadosObtenidosEnRonda);
 	}
 
 	@Override
@@ -133,6 +144,15 @@ public class VistaResultadoEmpleador extends JFrame implements IVistaResultadoEm
 	public void setTextAreaEmpleadosObtenidos(String obtenidos) {
 		this.textAreaEmpleadosObtenidos.setText(obtenidos);
 	}
+
+	@Override
+	public void setTextAreaEmpleadosObtenidosEnRonda(String obtenidos) {
+		this.textAreaEmpleadosObtenidosEnRonda.setText(obtenidos);
+		
+	}
+	
+	
+	
 	
 	
 	

@@ -13,6 +13,6 @@ public interface IVistaResultadoEmpleador {
     DefaultTableModel getModel();
     void setTextAreaEmpleadosSolicitados(String solicitados);
     void setTextAreaEmpleadosObtenidos(String obtenidos);
-    
+    void setTextAreaEmpleadosObtenidosEnRonda(String obtenidos);
 
 }

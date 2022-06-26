@@ -91,11 +91,15 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    }else if(comando.equalsIgnoreCase("Ronda de Elecciones")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Resultado")) {
-	    	if( RondaDeContrataciones.isActivada() ) {
-	    		this.vista.esconder();
-	    		ControladorResultadoEmpleador controladorResultadoEmpleador = ControladorResultadoEmpleador.getControladorResultadoEmpleador();
-	    	}else{
-	    		this.vista.failure("Error", "Ronda de contrataciones inactiva");
+	    	if( this.vista.getTicketSeleccionado() != null) {
+	    		if( RondaDeContrataciones.isActivada() ) {
+	    			this.vista.esconder();
+	    			ControladorResultadoEmpleador controladorResultadoEmpleador = ControladorResultadoEmpleador.getControladorResultadoEmpleador();
+	    		}else{
+	    			this.vista.failure("Error", "Ronda de contrataciones inactiva");
+	    		}	
+	    	}else {
+	    		this.vista.failure("Error", "Seleccione un ticket");
 	    	}
 	    	
 	    }else if(comando.equalsIgnoreCase("Cerrar sesion")) {
