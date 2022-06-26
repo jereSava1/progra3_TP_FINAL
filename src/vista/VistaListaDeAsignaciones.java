@@ -1,42 +1,29 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import dto.UsuarioPuntuadoDTO;
-import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
-import model.usuario.UsuarioPuntuado;
-import negocio.RondaDeEncuentro;
-
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JButton;
 
 
 //La utilizamos para ver los empleados pretensos de UN solo ticket
-public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPretensos {
+public class VistaListaDeAsignaciones extends JFrame implements IListaEmpleadosPretensos {
 
 	private JPanel contentPane;
-	private JTable table;
 	private JButton btnVolver;
-	private TicketBusquedaDeEmpleado ticket;
-	private List<UsuarioPuntuadoDTO> listaAsignacion;
+	private DefaultListModel<UsuarioPuntuadoDTO> listaAsignacion;
+	private JList<UsuarioPuntuadoDTO> list;
 	
 	@Override
-	public void setListaDeAsignacion(List<UsuarioPuntuadoDTO> lista) {
+	public void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista) {
 		this.listaAsignacion = lista;
 	}
-	
-	DefaultTableModel model = new DefaultTableModel();	
 
 	/**
 	 * Launch the application.
@@ -45,7 +32,7 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaListaEmpleadores frame = new VistaListaEmpleadores();
+					VistaListaDeAsignaciones frame = new VistaListaDeAsignaciones();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +44,7 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 	/**
 	 * Create the frame.
 	 */
-	public VistaListaEmpleadores() {
+	public VistaListaDeAsignaciones() {
 		
 		//List<UsuarioPuntuado> listaEmpleados = ticket.getListaDeAsignaciones();
 		
@@ -68,31 +55,18 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 414, 204);
-		contentPane.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		model.addColumn("Empleado Pretenso");
-		model.addColumn("Fecha de Alta");
-		model.addColumn("Puntaje obtenido");
-		table.setModel(model);
-		
-		model.setRowCount(0);
-		listaAsignacion.forEach(usuarioPuntuado -> {
-			Object[] fila = {
-				usuarioPuntuado.getUsername(),
-				usuarioPuntuado.getFechaDeGeneracion(),
-				usuarioPuntuado.getPuntaje()		
-			};
-			model.addRow(fila);
-		});
+
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(10, 227, 89, 23);
 		contentPane.add(btnVolver);
+		
+		list = new JList();
+		listaAsignacion = new DefaultListModel<UsuarioPuntuadoDTO>();
+		list.setModel(listaAsignacion);
+		list.setBounds(10, 10, 416, 211);
+		list.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		contentPane.add(list);
 	}
 
 	@Override
@@ -110,5 +84,7 @@ public class VistaListaEmpleadores extends JFrame implements IListaEmpleadosPret
 		this.btnVolver.addActionListener(actionListener);
 		
 	}
-
+	public void success(String title, String message){
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
+	}
 }

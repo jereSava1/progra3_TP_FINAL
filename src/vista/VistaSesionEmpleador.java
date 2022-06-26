@@ -1,21 +1,12 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import dto.TicketEmpleadorDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionListener;
-
-import dto.TicketEmpleadorDTO;
-import model.ticket.TicketBusquedaDeEmpleado;
-
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 

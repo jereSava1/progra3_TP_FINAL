@@ -35,7 +35,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 		String nombreEmpleador = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
 		List<TicketEmpleadorDTO> solicitudes = Agencia.getAgencia().getListaSolicitudes(nombreEmpleador);
 		DefaultListModel<TicketEmpleadorDTO> lista = new DefaultListModel<>();
-		solicitudes.forEach(ticket -> { lista.addElement(ticket); } );
+		solicitudes.forEach(lista::addElement);
 		
 		controladorInicioEmpleador.vista.setModel(lista);
 
@@ -70,7 +70,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 				String nombreEmpleador = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
 				DefaultListModel updatedList = new DefaultListModel();
 				List<TicketEmpleadorDTO> solicitudes = Agencia.getAgencia().getListaSolicitudes(nombreEmpleador);
-				solicitudes.forEach(t -> { updatedList.addElement(t); } );
+				solicitudes.forEach(updatedList::addElement);
 				this.vista.setModel(updatedList);
 			}
 	    }else if(comando.equalsIgnoreCase("Modificar ticket")) {
@@ -79,7 +79,12 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    	this.vista.esconder();
 	    	ControladorAltaTicketEmpleador controladorAltaTicket = ControladorAltaTicketEmpleador.get();
 	    }else if(comando.equalsIgnoreCase("Lista de Asignacion")) {
-	    	
+				if (this.vista.getTicketSeleccionado() != null) {
+					ControladorListaDeAsignacion controladorListaAsignacion = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, this.vista.getTicketSeleccionado());
+					this.vista.esconder();
+				} else {
+					this.vista.success("Error", "Seleccione un ticket");
+				}
 	    }else if(comando.equalsIgnoreCase("Ronda de Elecciones")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Resultados")) {

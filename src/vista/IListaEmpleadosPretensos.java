@@ -6,9 +6,12 @@ import java.util.List;
 import dto.UsuarioPuntuadoDTO;
 import model.usuario.UsuarioPuntuado;
 
+import javax.swing.*;
+
 public interface IListaEmpleadosPretensos {
 	void mostrar();
     void esconder();
     void setActionListener(ActionListener actionListener);
-    void setListaDeAsignacion(List<UsuarioPuntuadoDTO> lista);
+    void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista);
+    void success(String title, String message);
 }

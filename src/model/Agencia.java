@@ -10,6 +10,7 @@ import model.ticket.TicketSimplificado;
 import model.usuario.*;
 import persistencia.Ipersistencia;
 import persistencia.PersistenciaXML;
+import state.CanceladoState;
 import types.Rubro;
 import types.TipoPersona;
 
@@ -455,6 +456,22 @@ public class Agencia extends Observable {
 		
 		return busquedas.stream().filter( b -> b.getDueno().equals(usuario) ).findFirst().orElse(null);
 
+	}
+
+	public TicketBusquedaDeEmpleado encuentraTicketsDeEmpleador(String ticketId) {
+
+		List <TicketBusquedaDeEmpleado> solicitudes = this.solicitudes;
+
+		return solicitudes.stream().filter( b -> b.getId().equals(ticketId) ).findFirst().orElse(null);
+
+	}
+
+	public void cancelaTicket (TicketDTO request) {
+		Optional<TicketBusquedaDeEmpleo> ticket = this.busquedas.stream().filter(t -> t.getId().equals(request.getId())).findFirst();
+		if (ticket.isPresent()) {
+			ticket.get().setEstadoTicket(new CanceladoState(ticket.get()));
+			this.removeTicketBusquedaDeEmpleo(ticket.get());
+		}
 	}
 	
 }

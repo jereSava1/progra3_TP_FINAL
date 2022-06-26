@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import dto.TicketDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Usuario;
@@ -45,14 +46,13 @@ public class ControladorInicioEmpleado implements ActionListener {
 		String comando = e.getActionCommand();
 		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
 		
-		TicketBusquedaDeEmpleo ticket = agencia.getAgencia().encuentraTicketDeEmpleo(usuario);
+		TicketDTO ticket = new TicketDTO(agencia.getAgencia().encuentraTicketDeEmpleo(usuario));
 		System.out.println(ticket);
         
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 			
 			if( ticket!=null ) {
-				ticket.setEstadoTicket(new CanceladoState(ticket));
-				Agencia.getAgencia().removeTicketBusquedaDeEmpleo(ticket);
+				agencia.cancelaTicket(ticket);
 				JOptionPane.showMessageDialog(null, "Ticket dado de baja con exito", "Ticket", JOptionPane.INFORMATION_MESSAGE);
 			}
 			else
@@ -80,9 +80,10 @@ public class ControladorInicioEmpleado implements ActionListener {
 		
 	    }else if(comando.equalsIgnoreCase("VER LISTA")) {
 	    	
-	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
-	    		this.vista.esconder();
-		    	ControladorListaEmpleadores controladorListaEmpleadores = ControladorListaEmpleadores.getControladorListaEmpleadores();
+	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada())) {
+
+					ControladorListaDeAsignacion controladorListaEmpleadores = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, ticket);
+					this.vista.esconder();
 	    	}else {
 	    		if( ticket == null )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
