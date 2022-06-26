@@ -2,6 +2,7 @@ package negocio;
 
 import dto.TicketDTO;
 import dto.TicketDeEmpleadoRequest;
+import dto.UsuarioPuntuadoDTO;
 import exception.ConstructorInvalidoException;
 import exception.NoDuenoDeTicketException;
 import model.Agencia;
@@ -11,9 +12,12 @@ import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Empleado;
 import model.usuario.Empleador;
+import model.usuario.Usuario;
+import model.usuario.UsuarioPuntuado;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class TicketService {
   private Agencia agencia;
@@ -66,5 +70,19 @@ public class TicketService {
       agencia.getSolicitudes().remove(ticket);
       System.out.println("Ticket borrado: " + ticket.getId());
     }
+  }
+
+  public TicketBusquedaDeEmpleado encuentraTicketsDeEmpleador(TicketDTO request) {
+    return agencia.encuentraTicketsDeEmpleador(request.getId());
+  }
+
+  public void seleccionarUsuariosPuntuados(List<UsuarioPuntuadoDTO> usuarioPuntuadoDTO, TicketDTO ticketDTO) {
+    List<String> usuariosSeleccionados = usuarioPuntuadoDTO.stream().map(UsuarioPuntuadoDTO::getUsername).collect(Collectors.toList());
+    Ticket ticket = agencia.encuentraTicket(ticketDTO.getId());
+    List<Usuario> usuarios = ticket.getListaDeAsignaciones().stream()
+            .map(UsuarioPuntuado::getUsuario)
+            .filter(usuario -> usuariosSeleccionados.contains(usuario.getNombreUsuario())).collect(Collectors.toList());
+
+    RondaDeElecciones.seleccionaMultiplesCandidatos(ticket, usuarios);
   }
 }
