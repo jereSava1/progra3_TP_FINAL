@@ -8,6 +8,16 @@ import model.ticket.tipoDePuesto.TipoDePuesto;
 import types.Rubro;
 
 public class TicketSimplificadoRequest {
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	private String nombreUsuario;
 	private DatosDeEmpleo locacion;
 	private DatosDeEmpleo tipoDeEmpleo;
 

@@ -10,8 +10,8 @@ import model.usuario.Empleado;
 import model.usuario.Empleador;
 
 public class BolsaDeTrabajoService {
-
-	public synchronized void agregarTicketSimplificado(TicketSimplificadoRequest request, Agencia agencia) {
+	private static Agencia agencia = Agencia.getAgencia();
+	public static synchronized void agregarTicketSimplificado(TicketSimplificadoRequest request) {
 		Empleador posibleDueno = agencia.getEmpleadores().stream()
 				.filter(e -> e.getNombreUsuario().equals(request.getNombreUsuario())).findFirst().get();
 

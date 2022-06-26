@@ -181,9 +181,9 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 	if(this.grupoTipo.getSelection() != null)
-		this.TipoDeTrabajo = this.grupoTipo.getSelection().getActionCommand();
+		this.tipoDeTrabajo = this.grupoTipo.getSelection().getActionCommand();
 	if(this.grupoLocacion.getSelection()!=null)
-		this.Locacion = this.grupoLocacion.getSelection().getActionCommand();
+		this.locacion = this.grupoLocacion.getSelection().getActionCommand();
 	if(this.grupoTipo.getSelection() != null && this.grupoLocacion.getSelection()!=null);
 		 this.btnFinalizar.setEnabled(true);
 	}
@@ -202,7 +202,7 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	@Override
 	public TicketSimplificadoRequest getFormulario() {
 		
-		TicketSimplificadoRequest req = new TicketSimplificadoRequest(this.Locacion,this.TipoDeTrabajo);
+		TicketSimplificadoRequest req = new TicketSimplificadoRequest(this.locacion, this.tipoDeTrabajo);
 		return req;
 	}
 	
