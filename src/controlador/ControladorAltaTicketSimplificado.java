@@ -5,14 +5,16 @@ import java.awt.event.ActionListener;
 
 import controlador.ControladorAltaTicketEmpleador;
 import controlador.ControladorInicioEmpleado;
+import dto.TicketSimplificadoRequest;
 import model.Agencia;
+import negocio.BolsaDeTrabajoService;
 import vista.IVistaAltaTicketSimplificado;
 import vista.VistaAltaTicketSimplificado;
 
 public class ControladorAltaTicketSimplificado implements ActionListener{
 
 	private IVistaAltaTicketSimplificado vista;
-	private static ControladorAltaTicketSimplificado controladorAltaTicket=null;
+	private static ControladorAltaTicketSimplificado controladorAltaTicket = null;
 	private Agencia agencia;
 	
 	private ControladorAltaTicketSimplificado() {
@@ -40,7 +42,9 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 		String comando = e.getActionCommand();
 		
 		if(comando.equalsIgnoreCase("FINALIZAR")) {
-			//Guardo el ticket en la "Bolsa de empleo", aca pasa la concurrencia
+			TicketSimplificadoRequest request = this.vista.getFormulario();
+			request.setNombreUsuario(ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername());
+			BolsaDeTrabajoService.agregarTicketSimplificado(request);
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
