@@ -15,10 +15,10 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	private JButton btnBajaTicket;
 	private JButton btnModificarTicket;
 	private JButton btnListaDeAsignacion;
-	private JButton btnRondaDeEleccion;
 	private JButton btnResultado;
 	private JButton btnCerrarSesion;
 	private JButton btnGenerarTicketSimplificado;
+	private JButton btnVerTicketsSimplificados;
 	
 	private DefaultListModel<TicketEmpleadorDTO> tickets;
 	private JList<TicketEmpleadorDTO> listaTickets;
@@ -96,14 +96,9 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		btnListaDeAsignacion.setBounds(586, 207, 169, 38);
 		contentPane.add(btnListaDeAsignacion);
 		
-		btnRondaDeEleccion = new JButton("Ronda de Elecciones");
-		btnRondaDeEleccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnRondaDeEleccion.setBounds(586, 271, 169, 38);
-		contentPane.add(btnRondaDeEleccion);
-		
 		btnResultado = new JButton("Resultado");
 		btnResultado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnResultado.setBounds(586, 330, 169, 38);
+		btnResultado.setBounds(586, 270, 169, 38);
 		contentPane.add(btnResultado);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesion");
@@ -116,7 +111,8 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		btnGenerarTicketSimplificado.setBounds(291, 18, 206, 38);
 		contentPane.add(btnGenerarTicketSimplificado);
 		
-		JButton btnVerTicketsSimplificados = new JButton("Ver Tickets Simplificados");
+		btnVerTicketsSimplificados = new JButton("Ver Tickets Simplificados");
+		btnVerTicketsSimplificados.setActionCommand("VER_TICKETS_SIMPLIFICADOS");
 		btnVerTicketsSimplificados.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerTicketsSimplificados.setBounds(549, 18, 206, 38);
 		contentPane.add(btnVerTicketsSimplificados);
@@ -157,13 +153,13 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	public void setActionListener(ActionListener actionListener) {
 		this.btnAltaTicket.addActionListener(actionListener);
 		this.btnListaDeAsignacion.addActionListener(actionListener);
-		this.btnRondaDeEleccion.addActionListener(actionListener);
 		this.btnResultado.addActionListener(actionListener);
 		this.btnCerrarSesion.addActionListener(actionListener);
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificarTicket.addActionListener(actionListener);
 		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
 		this.btnGenerarTicketSimplificado.addActionListener(actionListener);
+		this.btnVerTicketsSimplificados.addActionListener(actionListener);
 		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
 	}
 

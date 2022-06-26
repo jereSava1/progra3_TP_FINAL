@@ -103,6 +103,9 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    }else if(comando.equalsIgnoreCase("Cerrar sesion")) {
 	    	this.vista.esconder();
 			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
-	    }
+	    } else if (comando.equalsIgnoreCase("VER_TICKETS_SIMPLIFICADOS")){
+				this.vista.esconder();
+				ControladorListaTicketSimplificado controladorListaTicketSimplificado = ControladorListaTicketSimplificado.get();
+		}
 	}
 }

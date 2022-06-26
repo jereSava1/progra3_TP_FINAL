@@ -2,6 +2,7 @@ package negocio;
 
 import dto.TicketDTO;
 import dto.TicketDeEmpleadoRequest;
+import dto.TicketSimplificadoDTO;
 import dto.UsuarioPuntuadoDTO;
 import exception.ConstructorInvalidoException;
 import exception.NoDuenoDeTicketException;
@@ -90,4 +91,11 @@ public class TicketService {
     RondaDeElecciones.seleccionaMultiplesCandidatos(ticket, usuarios);
   }
 
+  public List<TicketSimplificadoDTO> encuentraTicketSimplificado(String username) {
+    return agencia.getBolsaDeTrabajo()
+            .stream()
+            .filter(ticket -> ticket.getDueno().getNombreUsuario().equalsIgnoreCase(username))
+            .map(TicketSimplificadoDTO::of)
+            .collect(Collectors.toList());
+  }
 }
