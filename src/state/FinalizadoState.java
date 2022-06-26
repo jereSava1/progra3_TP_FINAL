@@ -28,6 +28,10 @@ public class FinalizadoState implements IState{
     public void cancelar() {
         System.out.println("El ticket se encuentra finalizado");
     }
+    
+    public void finalizar() {
+        System.out.println("El ticket se encuentra finalizado");
+    }
 
     @Override
     public EstadoTicket getNombre() {

@@ -8,6 +8,7 @@ public interface IState {
     void activar();
     void suspender();
     void cancelar();
+    void finalizar();
     EstadoTicket getNombre();
 
 }

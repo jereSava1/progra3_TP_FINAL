@@ -27,6 +27,10 @@ public class ActivoState implements IState{
     public void cancelar() {
         ticket.setEstadoTicket(new CanceladoState(ticket));
     }
+    
+    public void finalizar() {
+        ticket.setEstadoTicket(new FinalizadoState(ticket));
+    }
 
     @Override
     public EstadoTicket getNombre() {
