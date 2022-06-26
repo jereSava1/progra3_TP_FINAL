@@ -18,7 +18,7 @@ import vista.VistaRegistro;
 public class ControladorLogin implements ActionListener {
 	private Agencia agencia;
 	private ILogin vistaLogin;
-	private static Usuario logueado = null;
+	private Usuario logueado;
 	public Agencia getAgencia() {
 		return agencia;
 	}
@@ -29,14 +29,15 @@ public class ControladorLogin implements ActionListener {
 		this.vistaLogin = new VistaLogin();
 		this.agencia = Agencia.getAgencia();
 		this.vistaLogin.setActionListener(this);
+		logueado = null;
 	}
 	
-	public static ControladorLogin getControladorLogin() {
+	public static ControladorLogin getControladorLogin(boolean mostrar) {
 		if (controladorLogin == null) {
 			controladorLogin = new ControladorLogin();
 		}
-		logueado=null;
-		controladorLogin.vistaLogin.mostrar();
+		if( mostrar )
+			controladorLogin.vistaLogin.mostrar();
 		return controladorLogin;
 	}
 	
@@ -59,9 +60,9 @@ public class ControladorLogin implements ActionListener {
 			if (logueado != null) {
 				this.vistaLogin.esconder();
 				if (logueado instanceof Empleador) {
-					ControladorInicioEmpleador CEmpleador = ControladorInicioEmpleador.get();
+					ControladorInicioEmpleador CEmpleador = ControladorInicioEmpleador.get(true);
 				} else if (logueado instanceof Empleado) {
-					ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
+					ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 				} else {
 					ControladorSesionAdmin CAdmin = ControladorSesionAdmin.get();
 				}
@@ -75,7 +76,13 @@ public class ControladorLogin implements ActionListener {
 
 	}
 
-	public static Usuario getLogueado() {
+	
+	
+	public void setLogueado(Usuario logueado) {
+		this.logueado = logueado;
+	}
+
+	public Usuario getLogueado() {
 		return logueado;
 	}   	
 

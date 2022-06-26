@@ -34,21 +34,21 @@ public class ControladorRegistro implements ActionListener {
 				  JOptionPane.showMessageDialog(null, "Ya existe un administrador", "Error", JOptionPane.ERROR_MESSAGE);
 				else {
 				  this.vistaRegistro.esconder();
-				  ControladorRegistroAdmin controladorAdmin = ControladorRegistroAdmin.getControladorRegistroAdmin();
+				  ControladorRegistroAdmin controladorAdmin = ControladorRegistroAdmin.getControladorRegistroAdmin(true);
 				}  
 			} else if (comando.equalsIgnoreCase("empleado")) {
 				this.vistaRegistro.esconder();
-				ControladorRegistroEmpleado controladorRegistroEmpleado = ControladorRegistroEmpleado.getControladorRegistroEmpleado();
+				ControladorRegistroEmpleado controladorRegistroEmpleado = ControladorRegistroEmpleado.getControladorRegistroEmpleado(true);
 			} else if (comando.equalsIgnoreCase("empleador")) {
 
 				this.vistaRegistro.esconder();
-				ControladorRegistroEmpleador controladorEmpleador = ControladorRegistroEmpleador.getControladorRegistroEmpleador();
+				ControladorRegistroEmpleador controladorEmpleador = ControladorRegistroEmpleador.getControladorRegistroEmpleador(true);
 			}
 			this.vistaRegistro.limpiaCampos();
 		} else if (e.getActionCommand().equalsIgnoreCase("VOLVER")) {
 			this.vistaRegistro.esconder();
 			this.vistaRegistro.limpiaCampos();
-			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
+			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
 		}
 	}
 

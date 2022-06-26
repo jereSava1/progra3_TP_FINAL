@@ -81,7 +81,7 @@ public class ControladorSesionAdmin implements ActionListener {
 		}else if(comando.equalsIgnoreCase("Cerrar Sesion")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
-			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin();
+			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
 		}
 	}
 	

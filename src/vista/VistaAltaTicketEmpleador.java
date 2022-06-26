@@ -165,14 +165,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_4.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		rdbtnHastav1 = new JRadioButton("Hasta "+this.v1);
+		rdbtnHastav1.setActionCommand("MENOS_V1");
 		rdbtnHastav1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnHastav1);
 		
 		rdbtnEntreV1yV2 = new JRadioButton("Entre "+this.v1+" y "+this.v2);
+		rdbtnEntreV1yV2.setActionCommand("Entre_V1_Y_V2");
 		rdbtnEntreV1yV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnEntreV1yV2);
 		
 		rdbtnMasDeV2 = new JRadioButton("Mas de "+this.v2);
+		rdbtnMasDeV2.setActionCommand("Mas_De_V2");
 		rdbtnMasDeV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnMasDeV2);
 		
@@ -548,7 +551,10 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 																					  this.Puesto, this.pesoTipoDePuesto.getText(),
 																					  Integer.parseInt(this.textFieldCantEmpleados.getText()));
 		}
-		catch(Exception e) {}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		return ticketDeEmpleadorRequest;
 		
 	}

@@ -160,7 +160,7 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		rdbtnEntreV1yV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnEntreV1yV2);
 		
-		JRadioButton rdbtnMasDeV2 = new JRadioButton("Mas de");
+		rdbtnMasDeV2 = new JRadioButton("Mas de");
 		rdbtnMasDeV2.setActionCommand("MAS_DE_V2");
 		rdbtnMasDeV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnMasDeV2);

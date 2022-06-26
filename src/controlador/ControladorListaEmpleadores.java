@@ -45,8 +45,8 @@ public class ControladorListaEmpleadores implements ActionListener {
 		String comando = e.getActionCommand();
 		
 		if( comando.equalsIgnoreCase("Volver") ) {
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
 			this.vistaLista.esconder();
+			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 		}
 		
 	}

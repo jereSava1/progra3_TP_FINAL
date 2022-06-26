@@ -13,7 +13,7 @@ public class RegistroRequestEmpleado extends RegistroRequest {
 	
 	public RegistroRequestEmpleado( String nombre,String apellido,String telefono,String nombreUsuario, String contrasena,String email,int edad) {
 		
-		super(nombreUsuario, contrasena, TipoUsuario.EMPLEADO);
+		super(nombreUsuario, contrasena, TipoUsuario.EMPLEADO, nombre);
 	    this.telefono = telefono;
 	    this.email = email;
 	    this.apellido = apellido;

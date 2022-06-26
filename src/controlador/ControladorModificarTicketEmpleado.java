@@ -39,15 +39,14 @@ public class ControladorModificarTicketEmpleado implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
-		String usuario = ControladorLogin.getControladorLogin().getVistaLogin().getUsername();
-		ControladorLogin.getControladorLogin().getVistaLogin().esconder();
+		String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
 			try {
 				ticketService.modificarTicketDeEmpleado(this.vista.getFormulario(), usuario);
 			} catch (ConstructorInvalidoException err){ /*cumple contrato*/}
 		} else if (comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
+			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 		}
 	}
 }

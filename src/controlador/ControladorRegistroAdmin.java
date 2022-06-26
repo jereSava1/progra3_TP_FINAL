@@ -20,11 +20,12 @@ public class ControladorRegistroAdmin implements ActionListener {
 		this.vista.setActionListener(this);
 	};
 
-	public static ControladorRegistroAdmin getControladorRegistroAdmin() {
+	public static ControladorRegistroAdmin getControladorRegistroAdmin(boolean mostrar) {
 		if (controladorRegistroAdmin == null) {
 			controladorRegistroAdmin = new ControladorRegistroAdmin();
 		}
-		controladorRegistroAdmin.vista.mostrar();
+		if( mostrar )
+			controladorRegistroAdmin.vista.mostrar();
 		return controladorRegistroAdmin;
 	}
 
@@ -35,7 +36,7 @@ public class ControladorRegistroAdmin implements ActionListener {
 			this.vista.success();
 			this.vista.esconder();
 			this.vista.limpiaCampos();
-			ControladorLogin controladorLogin= ControladorLogin.getControladorLogin();
+			ControladorLogin controladorLogin= ControladorLogin.getControladorLogin(true);
 		} else if (comando.equalsIgnoreCase("VOLVER")) {
 			ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); //Contralador para la vista del registro
 			this.vista.limpiaCampos();

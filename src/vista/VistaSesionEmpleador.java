@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionListener;
 
+import dto.TicketEmpleadorDTO;
 import model.ticket.TicketBusquedaDeEmpleado;
 
 import javax.swing.JScrollPane;
@@ -32,11 +33,20 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	private JButton btnRondaDeEleccion;
 	private JButton btnResultado;
 	private JButton btnCerrarSesion;
-	
-	private DefaultListModel<TicketBusquedaDeEmpleado> tickets;
-	
-	private JList<TicketBusquedaDeEmpleado> listaTickets;
 	private JButton btnGenerarTicketSimplificado;
+	
+	private DefaultListModel<TicketEmpleadorDTO> tickets;
+	private JList<TicketEmpleadorDTO> listaTickets;
+
+	public void addTicket(TicketEmpleadorDTO ticket) {
+		tickets.addElement(ticket);
+		this.listaTickets.setModel(tickets);
+	}
+	
+	public void removeTicket(TicketEmpleadorDTO ticket) {
+		tickets.removeElement(ticket);
+		this.listaTickets.setModel(tickets);
+	}
 
 	/**
 	 * Launch the application.
@@ -111,6 +121,7 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		contentPane.add(btnResultado);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCerrarSesion.setBounds(10, 435, 125, 45);
 		contentPane.add(btnCerrarSesion);
 		
@@ -134,11 +145,11 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.listaTickets = listaTickets;
 	}
 	
-	public DefaultListModel<TicketBusquedaDeEmpleado> getTickets() {
+	public DefaultListModel<TicketEmpleadorDTO> getTickets() {
 		return tickets;
 	}
 
-	public void setTickets(DefaultListModel<TicketBusquedaDeEmpleado> tickets) {
+	public void setTickets(DefaultListModel<TicketEmpleadorDTO> tickets) {
 		this.tickets = tickets;
 	}
 	
@@ -166,13 +177,14 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificarTicket.addActionListener(actionListener);
 		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
+		this.btnGenerarTicketSimplificado.addActionListener(actionListener);
+		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
 	}
 
 	@Override
-	public void setModel(DefaultListModel<TicketBusquedaDeEmpleado> model) {
+	public void setModel(DefaultListModel<TicketEmpleadorDTO> model) {
 		this.listaTickets.setModel(model);
+	}	
 		
-		this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
-		this.btnGenerarTicketSimplificado.addActionListener(actionListener);
-	}
+	
 }

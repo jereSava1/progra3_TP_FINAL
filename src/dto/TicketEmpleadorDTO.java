@@ -11,4 +11,16 @@ public class TicketEmpleadorDTO extends TicketDTO {
     this.empleadosNecesitados = ticket.getEmpleadosNecesitados();
     this.empleadosObtenidos = ticket.getEmpleadosObtenidos();
   }
+
+	@Override
+	public String toString() {
+		return "EmpleadosNecesitados = " + empleadosNecesitados +
+			   "|  EmpleadosObtenidos  = "  + empleadosObtenidos + 
+			    super.toString();
+	}	
+  
+  
+  
+  
+  
 }

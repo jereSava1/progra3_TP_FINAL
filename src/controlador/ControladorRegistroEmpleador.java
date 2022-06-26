@@ -19,11 +19,12 @@ public class ControladorRegistroEmpleador implements ActionListener {
 		this.vista.setActionListener(this);
 		this.agencia = Agencia.getAgencia();
 	}
-	public static ControladorRegistroEmpleador getControladorRegistroEmpleador() {
+	public static ControladorRegistroEmpleador getControladorRegistroEmpleador(boolean mostrar) {
 		if (controladorRegistroEmpleador == null) {
 			controladorRegistroEmpleador = new ControladorRegistroEmpleador();
 		}
-		controladorRegistroEmpleador.vista.mostrar();
+		if( mostrar )
+			controladorRegistroEmpleador.vista.mostrar();
 		return controladorRegistroEmpleador;
 	}
 
@@ -35,7 +36,7 @@ public class ControladorRegistroEmpleador implements ActionListener {
 				this.vista.success();
 				this.vista.esconder();
 				this.vista.limpiaCampos();
-				ControladorLogin controladorReg = ControladorLogin.getControladorLogin();
+				ControladorLogin controladorReg = ControladorLogin.getControladorLogin(true);
 			}else if (comando.equalsIgnoreCase("VOLVER")){
 				ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); //Contralador para la vista del registro
 				this.vista.esconder();
