@@ -1,13 +1,18 @@
 package negocio;
 
+import dto.PersistenciaContrataciones;
 import model.Agencia;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.UsuarioPuntuado;
+import persistencia.Ipersistencia;
+import persistencia.PersistenciaXML;
 import state.FinalizadoState;
 import types.EstadoTicket;
 
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +32,9 @@ public class RondaDeContrataciones {
 	
 	
 	public static void ejecutarRondaDeContrataciones(Agencia agencia) {
-		
+		Ipersistencia persistencia = new PersistenciaXML();
+		List<PersistenciaContrataciones> output = new LinkedList<>();
+
 		activada = false;
 
 		float comisiones = 0;
@@ -93,11 +100,26 @@ public class RondaDeContrataciones {
 							solicitud.setEstadoTicket(new FinalizadoState(solicitud));
 							solicitud.getDueno().aumentarPuntaje(50);
 						}
+						PersistenciaContrataciones item = new PersistenciaContrataciones();
+						item.setComisionEmpleador(agencia.calculaComisionesEmpleador(solicitud));
+						item.setComisionEmpleado(agencia.calculaComisionesEmpleado(busqueda));
+						item.setIdTicket(busqueda.getId());
+						item.setNombreEmpleado(busqueda.getDueno().getNombre());
+						item.setNombreEmpleador(solicitud.getDueno().getNombre());
+						output.add(item);
 					}
 				}
 			}
 		}
 		activada = true;
+
+		try {
+			persistencia.abrirOutput("ronda-de-contrataciones.xml");
+			persistencia.escribir(output);
+			persistencia.cerrarOutput();
+		} catch (IOException e) {
+			//Cumple contrato
+		}
 		RondaDeEncuentro.setActivada(false);
 	}
 
