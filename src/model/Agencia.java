@@ -317,6 +317,9 @@ public class Agencia extends Observable {
 		return solicitudes;
 	}
 
+	public List<TicketEmpleadorDTO> getListaSolicitudes(String nombreUsuario) {
+		return solicitudes.stream().filter(s -> s.getDueno().getNombreUsuario().equalsIgnoreCase(nombreUsuario)).map(TicketEmpleadorDTO::new).collect(Collectors.toList());
+	}
 	public Float getRemuneracionV1() {
 		return remuneracionV1;
 	}

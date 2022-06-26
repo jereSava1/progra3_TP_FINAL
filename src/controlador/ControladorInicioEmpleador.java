@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import dto.TicketEmpleadorDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
+import negocio.TicketService;
 import vista.IVistaIEmpleador;
 import vista.VistaSesionEmpleador;
 
@@ -18,11 +19,13 @@ public class ControladorInicioEmpleador implements ActionListener{
 	private IVistaIEmpleador vista;
 	private static ControladorInicioEmpleador controladorInicioEmpleador=null;
 	private Agencia agencia;
+	private TicketService ticketService;
 	
 	private ControladorInicioEmpleador() {
 		this.vista = new VistaSesionEmpleador();
 		this.agencia = Agencia.getAgencia();
 		this.vista.setActionListener(this);
+		this.ticketService = TicketService.getTicketService();
 	};
 	
 	public static ControladorInicioEmpleador get(boolean mostrar){
@@ -30,12 +33,9 @@ public class ControladorInicioEmpleador implements ActionListener{
 			controladorInicioEmpleador = new ControladorInicioEmpleador();
 		
 		String nombreEmpleador = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
-		List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();
-		List<TicketBusquedaDeEmpleado> solicitudesUsuario = solicitudes.stream().filter(s -> s.getDueno().getNombreUsuario().equals(nombreEmpleador)). collect(Collectors.toList());
-	
+		List<TicketEmpleadorDTO> solicitudes = Agencia.getAgencia().getListaSolicitudes(nombreEmpleador);
 		DefaultListModel<TicketEmpleadorDTO> lista = new DefaultListModel<>();
-
-		solicitudesUsuario.forEach(ticket -> { lista.addElement(new TicketEmpleadorDTO(ticket)); } );
+		solicitudes.forEach(ticket -> { lista.addElement(ticket); } );
 		
 		controladorInicioEmpleador.vista.setModel(lista);
 
@@ -58,8 +58,21 @@ public class ControladorInicioEmpleador implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		
-		if(comando.equalsIgnoreCase("Baja ticket")) {
-			
+		if(comando.equalsIgnoreCase("BAJA")) {
+			TicketEmpleadorDTO ticket = this.vista.getTicketSeleccionado();
+			if(ticket!=null) {
+				try {
+					ticketService.bajaTicketEmpleador(ticket);
+					this.vista.success("Baja de ticket", "Ticket borrado con éxito");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				String nombreEmpleador = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
+				DefaultListModel updatedList = new DefaultListModel();
+				List<TicketEmpleadorDTO> solicitudes = Agencia.getAgencia().getListaSolicitudes(nombreEmpleador);
+				solicitudes.forEach(t -> { updatedList.addElement(t); } );
+				this.vista.setModel(updatedList);
+			}
 	    }else if(comando.equalsIgnoreCase("Modificar ticket")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Alta ticket")) {

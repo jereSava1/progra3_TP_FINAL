@@ -1,13 +1,16 @@
 package negocio;
 
+import dto.TicketDTO;
 import dto.TicketDeEmpleadoRequest;
 import exception.ConstructorInvalidoException;
 import exception.NoDuenoDeTicketException;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
+import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Empleado;
+import model.usuario.Empleador;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +50,21 @@ public class TicketService {
       } catch (NoDuenoDeTicketException e1) {
         //No se ejecuta nunca
       }
+    }
+  }
+
+  public void bajaTicketEmpleador(TicketDTO ticketDTO) throws NoDuenoDeTicketException {
+    List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();
+
+    Optional<TicketBusquedaDeEmpleado> result = solicitudes.stream().filter(ticket -> ticket.getId().equals(ticketDTO.getId())).findFirst();
+
+    if (result.isPresent()) {
+      TicketBusquedaDeEmpleado ticket = result.get();
+      Empleador empleador = (Empleador) ticket.getDueno();
+
+      empleador.bajaTicket(ticket);
+      agencia.getSolicitudes().remove(ticket);
+      System.out.println("Ticket borrado: " + ticket.getId());
     }
   }
 }

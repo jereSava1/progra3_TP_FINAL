@@ -47,7 +47,6 @@ public class ControladorAltaTicketEmpleador implements ActionListener{
 		String comando = e.getActionCommand();
 		
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
-			this.vista.esconder();
 			//Guardo Ticket
 			
 			TicketDeEmpleadorRequest request;
@@ -62,6 +61,7 @@ public class ControladorAltaTicketEmpleador implements ActionListener{
 			catch (Exception e1) {
 				e1.printStackTrace();
 			}
+			this.vista.esconder();
 			this.vista.limpiaCampos();
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();

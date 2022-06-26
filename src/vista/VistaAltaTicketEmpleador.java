@@ -134,14 +134,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnHomeOffice = new JRadioButton("Home Office");
+		rdbtnHomeOffice.setActionCommand("HOMEOFFICE");
 		rdbtnHomeOffice.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnHomeOffice);
 		
 		JRadioButton rdbtnPresencial = new JRadioButton("Presencial");
+		rdbtnPresencial.setActionCommand("PRESENCIAL");
 		rdbtnPresencial.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnPresencial);
 		
 		JRadioButton rdbtnIndistinto = new JRadioButton("Indistinto");
+		rdbtnIndistinto.setActionCommand("INDISTINTO");
 		rdbtnIndistinto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnIndistinto);
 		
@@ -199,14 +202,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnMedia = new JRadioButton("Media");
+		rdbtnMedia.setActionCommand("MEDIA");
 		rdbtnMedia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_6.add(rdbtnMedia);
 		
 		JRadioButton rdbtnCompleta = new JRadioButton("Completa");
+		rdbtnCompleta.setActionCommand("COMPLETA");
 		rdbtnCompleta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_6.add(rdbtnCompleta);
 		
 		JRadioButton rdbtnExtendida = new JRadioButton("Extendida");
+		rdbtnExtendida.setActionCommand("EXTENDIDA");
 		rdbtnExtendida.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_6.add(rdbtnExtendida);
 		
@@ -230,14 +236,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_8.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnJunior = new JRadioButton("Junior");
+		rdbtnJunior.setActionCommand("JR");
 		rdbtnJunior.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_8.add(rdbtnJunior);
 		
 		JRadioButton rdbtnSenior = new JRadioButton("Senior");
+		rdbtnSenior.setActionCommand("SR");
 		rdbtnSenior.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_8.add(rdbtnSenior);
 		
 		JRadioButton rdbtnManagment = new JRadioButton("Managment");
+		rdbtnManagment.setActionCommand("MANAGEMENT");
 		rdbtnManagment.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_8.add(rdbtnManagment);
 		
@@ -261,14 +270,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_10.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnMenos40 = new JRadioButton("Menos de 40");
+		rdbtnMenos40.setActionCommand("MENOR_40");
 		rdbtnMenos40.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_10.add(rdbtnMenos40);
 		
 		JRadioButton rdbtn4050 = new JRadioButton("De 40 a 50");
+		rdbtn4050.setActionCommand("ENTRE_40_50");
 		rdbtn4050.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_10.add(rdbtn4050);
 		
 		JRadioButton rdbtnMas50 = new JRadioButton("Mas de 50");
+		rdbtnMas50.setActionCommand("MAS_50");
 		rdbtnMas50.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_10.add(rdbtnMas50);
 		
@@ -292,14 +304,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_12.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnNada = new JRadioButton("Nada");
+		rdbtnNada.setActionCommand("NADA");
 		rdbtnNada.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_12.add(rdbtnNada);
 		
 		JRadioButton rdbtnMediaExp = new JRadioButton("Media");
+		rdbtnMediaExp.setActionCommand("MEDIA");
 		rdbtnMediaExp.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_12.add(rdbtnMediaExp);
 		
 		JRadioButton rdbtnMucha = new JRadioButton("Mucha");
+		rdbtnMucha.setActionCommand("MUCHA");
 		rdbtnMucha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_12.add(rdbtnMucha);
 		
@@ -324,14 +339,17 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		panel_14.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JRadioButton rdbtnPrimario = new JRadioButton("Primario");
+		rdbtnPrimario.setActionCommand("PRIMARIO");
 		rdbtnPrimario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_14.add(rdbtnPrimario);
 		
 		JRadioButton rdbtnSecundario = new JRadioButton("Secundario");
+		rdbtnSecundario.setActionCommand("SECUNDARIO");
 		rdbtnSecundario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_14.add(rdbtnSecundario);
 		
 		JRadioButton rdbtnTerciario = new JRadioButton("Terciario");
+		rdbtnTerciario.setActionCommand("TERCIARIO");
 		rdbtnTerciario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_14.add(rdbtnTerciario);
 		

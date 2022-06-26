@@ -3,19 +3,13 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionListener;
 
 import dto.TicketEmpleadorDTO;
 import model.ticket.TicketBusquedaDeEmpleado;
 
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.DefaultListModel;
-import javax.swing.DefaultListSelectionModel;
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -92,10 +86,11 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 			}
 		});
 		btnAltaTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAltaTicket.setBounds(65, 18, 195, 33);
+		btnAltaTicket.setBounds(10, 21, 195, 33);
 		contentPane.add(btnAltaTicket);
 		
 		btnBajaTicket = new JButton("Baja Ticket");
+		btnBajaTicket.setActionCommand("BAJA");
 		btnBajaTicket.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnBajaTicket.setBounds(586, 81, 169, 38);
 		contentPane.add(btnBajaTicket);
@@ -127,12 +122,12 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		
 		btnGenerarTicketSimplificado = new JButton("Generar Ticket Simplificado");
 		btnGenerarTicketSimplificado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnGenerarTicketSimplificado.setBounds(313, 18, 206, 38);
+		btnGenerarTicketSimplificado.setBounds(291, 18, 206, 38);
 		contentPane.add(btnGenerarTicketSimplificado);
 		
 		JButton btnVerTicketsSimplificados = new JButton("Ver Tickets Simplificados");
 		btnVerTicketsSimplificados.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnVerTicketsSimplificados.setBounds(576, 18, 179, 38);
+		btnVerTicketsSimplificados.setBounds(549, 18, 206, 38);
 		contentPane.add(btnVerTicketsSimplificados);
 	}
 	
@@ -186,5 +181,11 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.listaTickets.setModel(model);
 	}	
 		
-	
+	public TicketEmpleadorDTO getTicketSeleccionado() {
+		return this.listaTickets.getSelectedValue();
+	}
+
+	public void success(String title, String message) {
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
+	}
 }
