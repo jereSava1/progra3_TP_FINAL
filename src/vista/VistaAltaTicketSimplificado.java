@@ -8,6 +8,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.TicketSimplificadoRequest;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -28,6 +31,8 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	private JButton btnVolver;
 	private JButton btnFinalizar;
 	private ActionListener actionListener;
+	private String tipoDeTrabajo;
+	private String locacion;
 
 	/**
 	 * Launch the application.
@@ -175,6 +180,10 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+	if(this.grupoTipo.getSelection() != null)
+		this.TipoDeTrabajo = this.grupoTipo.getSelection().getActionCommand();
+	if(this.grupoLocacion.getSelection()!=null)
+		this.Locacion = this.grupoLocacion.getSelection().getActionCommand();
 	if(this.grupoTipo.getSelection() != null && this.grupoLocacion.getSelection()!=null);
 		 this.btnFinalizar.setEnabled(true);
 	}
@@ -188,6 +197,13 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public TicketSimplificadoRequest getFormulario() {
+		
+		TicketSimplificadoRequest req = new TicketSimplificadoRequest(this.Locacion,this.TipoDeTrabajo);
+		return req;
 	}
 	
 	

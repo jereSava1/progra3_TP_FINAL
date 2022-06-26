@@ -6,10 +6,10 @@ public class TicketDeEmpleadorRequest extends TicketDeEmpleadoRequest {
 
 	private int cantEmpleados;
 	
-	public TicketDeEmpleadorRequest(String locacion, String pesoLocacion, String estudio, String pesoEstudio,
-			String experiencia, String pesoExperiencia, String horario, String pesoHorario, String rangoEtario,
-			String pesoRangoEtario, String remuneracion, String pesoRemuneracion, String tipoDePuesto,
-			String pesoTipoDePuesto,int cantEmpleados) throws ConstructorInvalidoException {
+	public TicketDeEmpleadorRequest(String locacion, int pesoLocacion, String estudio, int pesoEstudio,
+			String experiencia, int pesoExperiencia, String horario, int pesoHorario, String rangoEtario,
+			int pesoRangoEtario, String remuneracion, int pesoRemuneracion, String tipoDePuesto,
+			int pesoTipoDePuesto,int cantEmpleados) throws ConstructorInvalidoException {
 		super(locacion, pesoLocacion, estudio, pesoEstudio, experiencia, pesoExperiencia, horario, pesoHorario, rangoEtario,
 				pesoRangoEtario, remuneracion, pesoRemuneracion, tipoDePuesto, pesoTipoDePuesto);
 		// TODO Auto-generated constructor stub

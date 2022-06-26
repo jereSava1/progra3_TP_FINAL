@@ -17,17 +17,7 @@ public class TicketEmpleadorDTO extends TicketDTO {
 		return "EmpleadosNecesitados = " + empleadosNecesitados +
 			   "|  EmpleadosObtenidos  = "  + empleadosObtenidos + 
 			    super.toString();
-	}
-
-	public int getEmpleadosNecesitados() {
-		return empleadosNecesitados;
-	}
-
-	public int getEmpleadosObtenidos() {
-		return empleadosObtenidos;
 	}	
-	
-	
   
   
   

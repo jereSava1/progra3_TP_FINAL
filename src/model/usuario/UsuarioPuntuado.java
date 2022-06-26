@@ -1,13 +1,12 @@
 package model.usuario;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * El usuario puntuado se encontrara dentro de la lista de asignaciones, tanto
  * del empleador, como del empleado.
  */
-public class UsuarioPuntuado implements Comparable<UsuarioPuntuado>, Serializable {
+public class UsuarioPuntuado implements Comparable<UsuarioPuntuado> {
 	private Date fechaDeGeneracion;
 	private Usuario usuario;
 	/**
@@ -32,8 +31,6 @@ public class UsuarioPuntuado implements Comparable<UsuarioPuntuado>, Serializabl
 		this.seleccionado = false;
 		this.contratado = false;
 	}
-
-	public UsuarioPuntuado(){}
 
 	@Override
 	public String toString() {

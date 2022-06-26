@@ -225,6 +225,7 @@ public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEm
 			JOptionPane.showMessageDialog(null, "No ingreso correctamente su edad", "Error", JOptionPane.ERROR_MESSAGE);
 			this.textFieldEdad.setText("");
 			RegistroRequestEmpleado req = null;
+			this.btnRegistrarse.setEnabled(false);
 			return req;
 		}
 		

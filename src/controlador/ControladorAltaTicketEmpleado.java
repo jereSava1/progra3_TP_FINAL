@@ -5,9 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import dto.TicketDeEmpleadoRequest;
+import dto.TicketDeEmpleadorRequest;
 import exception.ConstructorInvalidoException;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
+import model.ticket.TicketBusquedaDeEmpleado;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Empleado;
 import vista.IVistaAltaTicketEmpleado;
@@ -45,17 +47,31 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 		
 		if (comando.equalsIgnoreCase("FINALIZAR")) {
 			//Guardo Ticket
-			TicketDeEmpleadoRequest request;
+			
+			TicketDeEmpleadoRequest request=null;
 			try {
 				request = this.vista.getFormulario();
-				String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
-				agencia.crearTicketBusquedaDeEmpleo(request, usuario);
-				this.vista.success("Ticket creado", "Ticket creado con exito");
-			}catch (ConstructorInvalidoException e1) {}
-
-			this.vista.esconder();
-			ControladorInicioEmpleado controladorInicioEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
-			this.vista.limpiaCampos();
+			} catch (ConstructorInvalidoException e2) {
+				e2.printStackTrace();
+			}
+			
+			if(request == null) {
+				this.vista.setPeso(0);
+				ControladorAltaTicketEmpleado controladorAltaTicket = ControladorAltaTicketEmpleado.get();
+			}else {
+			    try {
+				    request = this.vista.getFormulario();
+				    String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
+				    agencia.crearTicketBusquedaDeEmpleo(request, usuario);
+				    this.vista.success("Ticket creado", "Ticket creado con exito");
+				    ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
+			     } 
+			    catch (Exception e1) {
+				    e1.printStackTrace();
+			     }
+			  this.vista.esconder();
+			  this.vista.limpiaCampos();
+			}
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);

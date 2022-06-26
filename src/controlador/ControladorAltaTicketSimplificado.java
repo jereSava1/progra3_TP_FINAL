@@ -44,7 +44,7 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
-			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
+			ControladorInicioEmpleador CEmpleado = ControladorInicioEmpleador.get(true);
 		}
 	}
 

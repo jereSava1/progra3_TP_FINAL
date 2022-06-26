@@ -50,19 +50,24 @@ public class ControladorAltaTicketEmpleador implements ActionListener{
 			//Guardo Ticket
 			
 			TicketDeEmpleadorRequest request;
-			try {
-				request = this.vista.getFormulario();
-				String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
-				TicketBusquedaDeEmpleado ticket = agencia.crearTicketBusquedaDeEmpleado(request, usuario);
-				agencia.addTicketBusquedaDeEmpleado(ticket);
-				
-				ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
-			} 
-			catch (Exception e1) {
-				e1.printStackTrace();
+			request = this.vista.getFormulario();
+			if(request == null) {
+				this.vista.setPeso(0);
+				ControladorAltaTicketEmpleador controladorAltaTicket = ControladorAltaTicketEmpleador.get();
+			}else {
+			    try {
+				    request = this.vista.getFormulario();
+				    String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
+				    TicketBusquedaDeEmpleado ticket = agencia.crearTicketBusquedaDeEmpleado(request, usuario);
+				    agencia.addTicketBusquedaDeEmpleado(ticket);
+				    ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);
+			     } 
+			    catch (Exception e1) {
+				    e1.printStackTrace();
+			     }
+			  this.vista.esconder();
+			  this.vista.limpiaCampos();
 			}
-			this.vista.esconder();
-			this.vista.limpiaCampos();
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();

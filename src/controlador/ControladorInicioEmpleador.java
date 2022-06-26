@@ -10,10 +10,7 @@ import javax.swing.DefaultListModel;
 import dto.TicketEmpleadorDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
-import model.usuario.UsuarioPuntuado;
-import negocio.RondaDeContrataciones;
 import negocio.TicketService;
-import types.Resultado;
 import vista.IVistaIEmpleador;
 import vista.VistaSesionEmpleador;
 
@@ -90,13 +87,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 				}
 	    }else if(comando.equalsIgnoreCase("Ronda de Elecciones")) {
 	    	
-	    }else if(comando.equalsIgnoreCase("Resultado")) {
-	    	if( RondaDeContrataciones.isActivada() ) {
-	    		this.vista.esconder();
-	    		ControladorResultadoEmpleador controladorResultadoEmpleador = ControladorResultadoEmpleador.getControladorResultadoEmpleador();
-	    	}else{
-	    		this.vista.failure("Error", "Ronda de contrataciones inactiva");
-	    	}
+	    }else if(comando.equalsIgnoreCase("Resultados")) {
 	    	
 	    }else if(comando.equalsIgnoreCase("Cerrar sesion")) {
 	    	this.vista.esconder();

@@ -29,7 +29,7 @@ public class RondaDeElecciones {
 				.filter(r -> r.getUsuario().equals(usuario)).findFirst().orElse(null); // Busco el usuario a seleccionar
 
 		if (seleccionado != null) {
-			seleccionado.setSeleccionado(!seleccionado.isSeleccionado());
+			seleccionado.setSeleccionado(true);
 		}
 
 	}

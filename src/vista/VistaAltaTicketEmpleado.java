@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import dto.TicketDeEmpleadoRequest;
+import dto.TicketDeEmpleadorRequest;
 import exception.ConstructorInvalidoException;
 
 import java.awt.GridLayout;
@@ -49,6 +50,7 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 	private JRadioButton rdbtnMasDeV2;
 	private float v1;
 	private float v2;
+	int peso=0;
 	
 	public float getV1() {
         return v1;
@@ -513,6 +515,8 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		this.pesoRangoEtario.setText("");
 		this.pesoRemuneracion.setText("");
 		this.pesoTipoDePuesto.setText("");
+		
+		this.btnFinalizar.setEnabled(false);
 	}
 
 	@Override
@@ -521,18 +525,61 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 	}
 
 	@Override
-	public TicketDeEmpleadoRequest getFormulario() throws ConstructorInvalidoException{
+	public TicketDeEmpleadoRequest getFormulario(){
 		
-		TicketDeEmpleadoRequest ticketDeEmpleadoRequest;
-		ticketDeEmpleadoRequest = new TicketDeEmpleadoRequest(this.GrupoLocacion.getSelection().getActionCommand(), this.pesoLocacion.getText(),
-																					  this.GrupoEstudios.getSelection().getActionCommand(), this.pesoEstudios.getText(),
-																					  this.GrupoExperiencia.getSelection().getActionCommand(), this.pesoExperiencia.getText(),
-																					  this.GrupoHorario.getSelection().getActionCommand(),this.pesocargaHoraria.getText(),
-																					  this.GrupoREtario.getSelection().getActionCommand(), this.pesoRangoEtario.getText(),
-																					  this.GrupoRemuneracion.getSelection().getActionCommand(), this.pesoRemuneracion.getText(),
-																					  this.GrupoPuesto.getSelection().getActionCommand(), this.pesoTipoDePuesto.getText());
+		TicketDeEmpleadoRequest ticketDeEmpleadoRequest=null;
+		int pesos = -1; //Esta variable se usa para corroborar que anden los parseos
+		try {
+		  
+		  pesos = Integer.parseInt(this.pesoLocacion.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoEstudios.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoExperiencia.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesocargaHoraria.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoRangoEtario.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoRemuneracion.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoTipoDePuesto.getText());
+		  this.peso++;
+		 
+		 ticketDeEmpleadoRequest = new TicketDeEmpleadoRequest(this.Locacion, Integer.parseInt(this.pesoLocacion.getText()), 
+																					  this.Estudios, Integer.parseInt(this.pesoEstudios.getText()),
+																					  this.Experiencia, Integer.parseInt(this.pesoExperiencia.getText()), 
+																					  this.Horario,Integer.parseInt(this.pesocargaHoraria.getText()), 
+																					  this.REtario, Integer.parseInt(this.pesoRangoEtario.getText()),
+																					  this.Remuneracion, Integer.parseInt(this.pesoRemuneracion.getText()), 
+																					  this.Puesto, Integer.parseInt(this.pesoTipoDePuesto.getText()));
+		}
+		catch(Exception e) {
+
+				JOptionPane.showMessageDialog(null, "No ingreso correctamente uno o mas pesos", "Error", JOptionPane.ERROR_MESSAGE);
+				this.pesoLocacion.setText("");
+				this.pesoEstudios.setText("");
+				this.pesoExperiencia.setText("");
+				this.pesocargaHoraria.setText("");
+				this.pesoRangoEtario.setText("");
+				this.pesoRemuneracion.setText("");
+				this.pesoTipoDePuesto.setText("");
+				
+		}
 		
 		return ticketDeEmpleadoRequest;
 		
+	}
+
+	@Override
+	public int getPeso() {
+		// TODO Auto-generated method stub
+		return this.peso;
+	}
+
+	@Override
+	public void setPeso(int peso) {
+		// TODO Auto-generated method stub
+		this.peso = peso;
 	}
 }
