@@ -2,17 +2,7 @@ package model.usuario;
 
 import java.util.Date;
 
-import lombok.Getter;
 
-import lombok.Setter;
-import model.usuario.Usuario;
-
-/**
- *
- */
-
-@Getter
-@Setter
 public class ListaDeAsignaciones implements Comparable<ListaDeAsignaciones> {
 	private Date fechaDeGeneracion;
 	private Usuario usuario;

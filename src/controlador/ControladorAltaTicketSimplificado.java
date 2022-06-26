@@ -1,9 +1,13 @@
+package controlador;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controlador.ControladorAltaTicketEmpleador;
 import controlador.ControladorInicioEmpleado;
 import model.Agencia;
+import vista.IVistaAltaTicketSimplificado;
+import vista.VistaAltaTicketSimplificado;
 
 public class ControladorAltaTicketSimplificado implements ActionListener{
 
@@ -40,7 +44,7 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
-			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado();
+			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 		}
 	}
 

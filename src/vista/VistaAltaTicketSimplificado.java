@@ -1,3 +1,7 @@
+package vista;
+
+import vista.IVistaAltaTicketSimplificado;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

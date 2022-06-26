@@ -6,11 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import dto.EmpleadoDTO;
-import jdk.internal.agent.Agent;
 import model.Agencia;
-import model.usuario.Empleado;
-import model.usuario.Empleador;
-import vista.IVistaAltaTicketEmpleado;
 import vista.IVistaMuestraListasAdmin;
 import vista.VistaAltaTicketEmpleado;
 import vista.VistaMuestraEmpleadosAdmin;

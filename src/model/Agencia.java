@@ -71,14 +71,20 @@ public class Agencia extends Observable {
 		try { // cargar los datos de la agencia desde el archivo XML
 			persistencia.abrirInput("empleadores.xml");
 			this.empleadores = (HashSet<Empleador>) persistencia.lee();
+			if (empleadores == null) {
+				empleadores = new HashSet<>();
+			}
 			persistencia.cerrarInput();
 		} catch (Exception err) {
-			this.empleados = new HashSet<>();
+			this.empleadores = new HashSet<>();
 		}
 
 		try {
 			persistencia.abrirInput("empleados.xml");
 			this.empleados = (HashSet<Empleado>) persistencia.lee();
+			if (empleados == null) {
+				empleados = new HashSet<>();
+			}
 			persistencia.cerrarInput();
 		} catch (Exception err) {
 			this.empleados = new HashSet<>();

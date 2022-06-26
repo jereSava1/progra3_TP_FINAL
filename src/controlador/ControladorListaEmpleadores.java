@@ -29,7 +29,7 @@ public class ControladorListaEmpleadores implements ActionListener {
 			ControladorListaEmpleadores = new ControladorListaEmpleadores();
 		}
 		//!VER
-		Usuario usuario = ControladorLogin.getLogueado();
+		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
 		List<UsuarioPuntuadoDTO> usuariosPuntuados = Agencia.getAgencia().encuentraTicketDeEmpleo(usuario)
 																											.getListaDeAsignaciones()
 																															.stream()

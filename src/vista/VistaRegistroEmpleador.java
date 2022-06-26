@@ -6,9 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import dto.RegistroRequestAdmin;
 import dto.RegistroRequestEmpleador;
-import org.apache.commons.lang3.StringUtils;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;

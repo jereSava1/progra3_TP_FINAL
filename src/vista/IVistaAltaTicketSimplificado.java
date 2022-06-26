@@ -1,6 +1,8 @@
-import java.awt.event.ActionListener;
+package vista;
 
-public interface IVistaAltaTicketSimplificado implements IVistaGeneral{
+import vista.IVistaGeneral;
+
+public interface IVistaAltaTicketSimplificado extends IVistaGeneral {
 	
 	void limpiaCampos();
 }
