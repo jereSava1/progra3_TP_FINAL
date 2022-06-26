@@ -14,6 +14,7 @@ import model.usuario.Usuario;
 import model.usuario.UsuarioPuntuado;
 import negocio.RondaDeContrataciones;
 import negocio.RondaDeEncuentro;
+import negocio.TicketService;
 import state.CanceladoState;
 import vista.IVistaIEmpleado;
 import vista.VistaSesionEmpleado;
@@ -48,14 +49,14 @@ public class ControladorInicioEmpleado implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
-		
-		TicketDTO ticket = new TicketDTO(agencia.getAgencia().encuentraTicketDeEmpleo(usuario));
-		System.out.println(ticket);
+			
+		TicketBusquedaDeEmpleo ticket = TicketService.getTicketService().encuentraTicketEmpleado(usuario);
+		TicketDTO ticketDTO = new TicketDTO( ticket );
         
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 			
 			if( ticket!=null ) {
-				agencia.cancelaTicket(ticket);
+				agencia.cancelaTicket(ticketDTO);
 				JOptionPane.showMessageDialog(null, "Ticket dado de baja con exito", "Ticket", JOptionPane.INFORMATION_MESSAGE);
 			}
 			else
@@ -85,7 +86,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada())) {
 
-					ControladorListaDeAsignacion controladorListaEmpleadores = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, ticket);
+					ControladorListaDeAsignacion controladorListaEmpleadores = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, ticketDTO);
 					this.vista.esconder();
 	    	}else {
 	    		if( ticket == null )
@@ -110,7 +111,7 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("VER RESULTADO")) {
 	    	if( RondaDeContrataciones.isActivada() ) {
-	    		UsuarioPuntuadoDTO contratado = ticket.getListaDeAsignaciones().stream().filter(UsuarioPuntuadoDTO::isContratado).findAny().orElse(null);
+	    		UsuarioPuntuadoDTO contratado = ticketDTO.getListaDeAsignaciones().stream().filter(UsuarioPuntuadoDTO::isContratado).findAny().orElse(null);
 	    		if( contratado != null ) {
 	    			this.vista.success("Has sido contratado por: " + contratado.getUsername(), "Resultado" );
 	    		}else {
