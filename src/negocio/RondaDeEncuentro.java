@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import dto.PersistenciaListaDeAsignaciones;
 import exception.ListaVaciaException;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
@@ -81,7 +83,7 @@ public class RondaDeEncuentro {
 		Ipersistencia persistencia = new PersistenciaXML();
 		try {
 			persistencia.abrirOutput("lista-de-asignaciones-empleados.xml");
-			persistencia.escribir(agencia.getBusquedas());
+			persistencia.escribir(agencia.getBusquedas().stream().map(PersistenciaListaDeAsignaciones::of).collect(Collectors.toList()));
 			persistencia.cerrarOutput();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -92,7 +94,7 @@ public class RondaDeEncuentro {
 		}
 		try {
 			persistencia.abrirOutput("lista-de-asignaciones-empleador.xml");
-			persistencia.escribir(agencia.getBusquedas());
+			persistencia.escribir(agencia.getBusquedas().stream().map(PersistenciaListaDeAsignaciones::of).collect(Collectors.toList()));
 			persistencia.cerrarOutput();
 		} catch (IOException e) {
 			e.printStackTrace();

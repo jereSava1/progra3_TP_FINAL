@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
- <object class="java.util.LinkedList">
+ <object class="java.util.ArrayList">
   <void method="add">
-   <object class="dto.OutputListaDeAsignacion">
-    <void property="lista">
+   <object class="dto.PersistenciaListaDeAsignaciones">
+    <void property="listaDeAsignaciones">
      <object class="java.util.ArrayList">
       <void method="add">
        <object class="model.usuario.UsuarioPuntuado">
@@ -11,60 +11,40 @@
          <float>140.0</float>
         </void>
         <void property="usuario">
-         <object class="model.usuario.Empleado" id="Empleado0">
+         <object class="model.usuario.Empleador" id="Empleador0">
           <void property="contrasena">
-           <string>12345</string>
-          </void>
-          <void property="edad">
-           <int>20</int>
-          </void>
-          <void property="email">
-           <string>tibau@gmail.com</string>
+           <string>facu</string>
           </void>
           <void property="name">
-           <string>Thread-4</string>
+           <string>Thread-18</string>
           </void>
           <void property="nombre">
-           <string>Bautista Priano</string>
+           <string>Empresa</string>
           </void>
           <void property="nombreUsuario">
-           <string>Tibau</string>
+           <string>Empleador</string>
           </void>
           <void property="priority">
            <int>5</int>
-          </void>
-          <void property="telefono">
-           <string>12323143</string>
           </void>
          </object>
         </void>
        </object>
       </void>
-     </object>
-    </void>
-    <void property="ticketId">
-     <string>25509b32-cd69-49ad-a9b2-5b304d9d598e</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="dto.OutputListaDeAsignacion">
-    <void property="lista">
-     <object class="java.util.ArrayList">
       <void method="add">
        <object class="model.usuario.UsuarioPuntuado">
         <void property="puntaje">
          <float>140.0</float>
         </void>
         <void property="usuario">
-         <object idref="Empleado0"/>
+         <object idref="Empleador0"/>
         </void>
        </object>
       </void>
      </object>
     </void>
     <void property="ticketId">
-     <string>9b225f70-064c-4e6d-9496-590b757ae98c</string>
+     <string>2aefe4c8-a309-4a88-bd18-2112e93d2a24</string>
     </void>
    </object>
   </void>

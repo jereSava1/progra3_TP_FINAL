@@ -21,6 +21,7 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 	@Override
 	public void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista) {
 		this.listaAsignacion = lista;
+		this.list.setModel(lista);
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 		
 		//List<UsuarioPuntuado> listaEmpleados = ticket.getListaDeAsignaciones();
 		
-		setTitle("Lista de Empleados Pretensos");
+		setTitle("Lista de Asignaciones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

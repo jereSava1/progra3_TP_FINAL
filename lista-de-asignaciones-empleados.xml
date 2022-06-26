@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
- <object class="java.util.LinkedList">
+ <object class="java.util.ArrayList">
   <void method="add">
-   <object class="dto.OutputListaDeAsignacion">
-    <void property="lista">
+   <object class="dto.PersistenciaListaDeAsignaciones">
+    <void property="listaDeAsignaciones">
      <object class="java.util.ArrayList">
       <void method="add">
        <object class="model.usuario.UsuarioPuntuado">
@@ -16,7 +16,7 @@
            <string>facu</string>
           </void>
           <void property="name">
-           <string>Thread-8</string>
+           <string>Thread-18</string>
           </void>
           <void property="nombre">
            <string>Empresa</string>
@@ -44,7 +44,7 @@
      </object>
     </void>
     <void property="ticketId">
-     <string>90bccba2-8900-458d-b59a-4142af233aea</string>
+     <string>2aefe4c8-a309-4a88-bd18-2112e93d2a24</string>
     </void>
    </object>
   </void>

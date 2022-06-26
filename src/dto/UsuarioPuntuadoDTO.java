@@ -61,4 +61,9 @@ public class UsuarioPuntuadoDTO {
   public void setSeleccionado(boolean seleccionado) {
     this.seleccionado = seleccionado;
   }
+
+  @Override
+  public String toString() {
+    return "| Usuario=" + username + " | Puntaje=" + puntaje +" | Seleccionado=" + seleccionado + " | Contratado=" + contratado + "|";
+  }
 }
