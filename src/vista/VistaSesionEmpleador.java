@@ -177,4 +177,10 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	public void success(String title, String message) {
 		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	@Override
+	public void failure(String title, String message) {
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
+		
+	}
 }

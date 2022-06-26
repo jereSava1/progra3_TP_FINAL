@@ -27,6 +27,10 @@ public class SuspendidoState implements IState {
     public void cancelar() {
         ticket.setEstadoTicket(new CanceladoState(ticket));
     }
+    
+    public void finalizar() {
+        System.out.println("El ticket se encuentra finalizado");
+    }
 
     @Override
     public EstadoTicket getNombre() {

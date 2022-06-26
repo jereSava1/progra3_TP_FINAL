@@ -3,9 +3,11 @@ package dto;
 import model.ticket.DatosDeEmpleo;
 import model.ticket.Ticket;
 import model.ticket.pretensionSalarial.PretensionSalarial;
+import model.usuario.UsuarioPuntuado;
 import types.Resultado;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class TicketDTO {
   public static TicketDTO of (Ticket ticket) {
@@ -101,8 +103,20 @@ public class TicketDTO {
   public void setEstado(String estado) {
     this.estado = estado;
   }
+  
+  
 
-  private LocalDate fechaDeAlta;
+  public List<UsuarioPuntuado> getListaAsignaciones() {
+	return listaAsignaciones;
+}
+
+public void setListaAsignaciones(List<UsuarioPuntuado> listaAsignaciones) {
+	this.listaAsignaciones = listaAsignaciones;
+}
+
+
+
+private LocalDate fechaDeAlta;
   private String id;
   private Resultado resultado;
   private Float comsionAPagar;
@@ -113,6 +127,7 @@ public class TicketDTO {
   private DatosDeEmpleo cargaHoraria;
   private DatosDeEmpleo estudios;
   private String estado;
+  private List<UsuarioPuntuado> listaAsignaciones;
 
   public TicketDTO (Ticket ticket) {
     this.fechaDeAlta = ticket.getFechaDeAlta();
@@ -125,6 +140,7 @@ public class TicketDTO {
     this.cargaHoraria = ticket.getFormularioDeBusqueda().getRangoEtario();
     this.tipoDePuesto = ticket.getFormularioDeBusqueda().getTipoDePuesto();
     this.estudios = ticket.getFormularioDeBusqueda().getEstudios();
+    this.listaAsignaciones = ticket.getListaDeAsignaciones();
   }
 
 	@Override
