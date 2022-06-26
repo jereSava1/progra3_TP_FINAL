@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="059bd4ef-a099-496a-a98e-d06f2d64d164" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dto/OutputListaDeAsignacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/bauti.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TpProgra3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TpProgra3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controlador/ControladorInicioEmpleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/ControladorInicioEmpleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controlador/ControladorListaDeAsignacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/ControladorListaDeAsignacion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Agencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Agencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ticket/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ticket/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ticket/TicketBusquedaDeEmpleo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ticket/TicketBusquedaDeEmpleo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/usuario/UsuarioPuntuado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/usuario/UsuarioPuntuado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/negocio/RondaDeEncuentro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/RondaDeEncuentro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/IListaEmpleadosPretensos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/IListaDeAsignaciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/VistaListaDeAsignaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/VistaListaDeAsignaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/RondaDeElecciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/RondaDeElecciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/TicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +48,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/Gamer/Desktop/TP_P3/progra3_TP_FINAL",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -89,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656252225456</updated>
       <workItem from="1656252226994" duration="55000" />
-      <workItem from="1656252298633" duration="3090000" />
+      <workItem from="1656252298633" duration="6009000" />
     </task>
     <servers />
   </component>
@@ -112,7 +100,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controlador/ControladorInicioEmpleado.java</url>
-          <line>111</line>
+          <line>110</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
