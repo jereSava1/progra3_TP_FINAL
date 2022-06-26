@@ -10,10 +10,7 @@ import javax.swing.DefaultListModel;
 import dto.TicketEmpleadorDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
-import model.usuario.UsuarioPuntuado;
-import negocio.RondaDeContrataciones;
 import negocio.TicketService;
-import types.Resultado;
 import vista.IVistaIEmpleador;
 import vista.VistaSesionEmpleador;
 

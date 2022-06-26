@@ -19,6 +19,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -56,6 +58,8 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 	private float v1,v2;
 	private JRadioButton rdbtnHastav1,rdbtnEntreV1yV2,rdbtnMasDeV2;
 	private JTextField textFieldCantEmpleados;
+	private int empleados=-1;
+	private int peso=0;
 
 	
 	public float getV1() {
@@ -553,28 +557,87 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		this.pesoRangoEtario.setText("");
 		this.pesoRemuneracion.setText("");
 		this.pesoTipoDePuesto.setText("");
+		this.textFieldCantEmpleados.setText("");
+		
+		this.btnFinalizar.setEnabled(false);
 	}
 	
 	@Override
 	public TicketDeEmpleadorRequest getFormulario(){
 		
 		TicketDeEmpleadorRequest ticketDeEmpleadorRequest=null;
+		int pesos = -1; //Esta variable se usa para corroborar que anden los parseos
 		try {
-		ticketDeEmpleadorRequest = new TicketDeEmpleadorRequest(this.Locacion, this.pesoLocacion.getText(), 
-																					  this.Estudios, this.pesoEstudios.getText(),
-																					  this.Experiencia, this.pesoExperiencia.getText(), 
-																					  this.Horario,this.pesocargaHoraria.getText(), 
-																					  this.REtario, this.pesoRangoEtario.getText(),
-																					  this.Remuneracion, this.pesoRemuneracion.getText(), 
-																					  this.Puesto, this.pesoTipoDePuesto.getText(),
-																					  Integer.parseInt(this.textFieldCantEmpleados.getText()));
+		  this.empleados = Integer.parseInt(this.textFieldCantEmpleados.getText());
+		  
+		  pesos = Integer.parseInt(this.pesoLocacion.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoEstudios.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoExperiencia.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesocargaHoraria.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoRangoEtario.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoRemuneracion.getText());
+		  this.peso++;
+		  pesos = Integer.parseInt(this.pesoTipoDePuesto.getText());
+		  this.peso++;
+		 
+		 ticketDeEmpleadorRequest = new TicketDeEmpleadorRequest(this.Locacion, Integer.parseInt(this.pesoLocacion.getText()), 
+																					  this.Estudios, Integer.parseInt(this.pesoEstudios.getText()),
+																					  this.Experiencia, Integer.parseInt(this.pesoExperiencia.getText()), 
+																					  this.Horario,Integer.parseInt(this.pesocargaHoraria.getText()), 
+																					  this.REtario, Integer.parseInt(this.pesoRangoEtario.getText()),
+																					  this.Remuneracion, Integer.parseInt(this.pesoRemuneracion.getText()), 
+																					  this.Puesto, Integer.parseInt(this.pesoTipoDePuesto.getText()),
+																					  this.empleados);
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			if(this.empleados==-1) {
+				JOptionPane.showMessageDialog(null, "No ingreso correctamente la cantidad de empleados", "Error", JOptionPane.ERROR_MESSAGE);
+				this.textFieldCantEmpleados.setText("");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "No ingreso correctamente uno o mas pesos", "Error", JOptionPane.ERROR_MESSAGE);
+				this.pesoLocacion.setText("");
+				this.pesoEstudios.setText("");
+				this.pesoExperiencia.setText("");
+				this.pesocargaHoraria.setText("");
+				this.pesoRangoEtario.setText("");
+				this.pesoRemuneracion.setText("");
+				this.pesoTipoDePuesto.setText("");
+			}
+				
 		}
 		
 		return ticketDeEmpleadorRequest;
 		
+	}
+
+	@Override
+	public int getEmpleados() {
+		// TODO Auto-generated method stub
+		return this.empleados;
+	}
+
+	@Override
+	public void setEmpleados(int empleados) {
+		// TODO Auto-generated method stub
+		this.empleados=empleados;
+	}
+
+	@Override
+	public int getPeso() {
+		// TODO Auto-generated method stub
+		return this.peso;
+	}
+
+	@Override
+	public void setPeso(int peso) {
+		// TODO Auto-generated method stub
+		this.peso = peso;
 	}
 }
 

@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,16 +16,10 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 	private JButton btnVolver;
 	private DefaultListModel<UsuarioPuntuadoDTO> listaAsignacion;
 	private JList<UsuarioPuntuadoDTO> list;
-	private JButton btnConfirmar;
 	
 	@Override
 	public void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista) {
 		this.listaAsignacion = lista;
-	}
-
-	@Override
-	public List<UsuarioPuntuadoDTO> getSeleccion() {
-		return list.getSelectedValuesList();
 	}
 
 	/**
@@ -71,11 +64,6 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 		list.setBounds(10, 10, 416, 211);
 		list.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		contentPane.add(list);
-		
-		btnConfirmar = new JButton("Confirmar elecci\u00F3n");
-		btnConfirmar.setActionCommand("CONFIRMAR");
-		btnConfirmar.setBounds(298, 228, 128, 21);
-		contentPane.add(btnConfirmar);
 	}
 
 	@Override

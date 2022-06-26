@@ -3,10 +3,8 @@ package negocio;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
-import dto.OutputListaDeAsignacion;
 import exception.ListaVaciaException;
 import model.Agencia;
 import model.ticket.FormularioBusqueda;
@@ -76,30 +74,25 @@ public class RondaDeEncuentro {
 	 * @param agencia
 	 */
 	public static void ejecutarRondaDeEncuentros(Agencia agencia) {
-
-		List<OutputListaDeAsignacion> salida1 = new LinkedList<>();
+		
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
-			salida1.add(new OutputListaDeAsignacion(busqueda.getListaDeAsignaciones(), busqueda.getId()));
 		}
-
 		Ipersistencia persistencia = new PersistenciaXML();
 		try {
 			persistencia.abrirOutput("lista-de-asignaciones-empleados.xml");
-			persistencia.escribir(salida1);
+			persistencia.escribir(agencia.getBusquedas());
 			persistencia.cerrarOutput();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		List<OutputListaDeAsignacion> salida2 = new LinkedList<>();
 		for (Ticket solicitud : agencia.getSolicitudes()) { // TICKETS DE EMPLEADORES
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getBusquedas(), solicitud);
-			salida2.add(new OutputListaDeAsignacion(solicitud.getListaDeAsignaciones(), solicitud.getId()));
 		}
 		try {
 			persistencia.abrirOutput("lista-de-asignaciones-empleador.xml");
-			persistencia.escribir(salida2);
+			persistencia.escribir(agencia.getBusquedas());
 			persistencia.cerrarOutput();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -30,11 +30,15 @@ public class ControladorRegistroEmpleado implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 			String comando = e.getActionCommand();
 			if (comando.equalsIgnoreCase("REGISTRARSE")) {
-				agencia.registrarEmpleado(vista.getFormulario());
-				this.vista.success();
-				this.vista.esconder();
-				this.vista.limpiaCampos();
-				ControladorLogin controladorReg = ControladorLogin.getControladorLogin(true);
+				if(vista.getFormulario()!=null) {
+				  agencia.registrarEmpleado(vista.getFormulario());
+				  this.vista.success();
+				  this.vista.esconder();
+				  this.vista.limpiaCampos();
+				  ControladorLogin controladorReg = ControladorLogin.getControladorLogin(true);
+				}else {
+					ControladorRegistroEmpleado controladorRegistroEmpleado = ControladorRegistroEmpleado.getControladorRegistroEmpleado(true);
+				}
 			}else if (comando.equalsIgnoreCase("VOLVER")){
 				ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); //Controlador para la vista del registro
 				this.vista.limpiaCampos();

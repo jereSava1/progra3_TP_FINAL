@@ -20,10 +20,4 @@ public class TicketBusquedaDeEmpleo extends Ticket {
 		return super.toString() + "Remuneracion pretendida: "
 				+ this.getFormularioDeBusqueda().getPretensionSalarial() + "\n";
 	}
-
-	public TicketBusquedaDeEmpleo() {
-		super();
-	}
-
-
 }

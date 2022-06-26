@@ -21,17 +21,17 @@ public class TicketDeEmpleadoRequest {
 	private DatosDeEmpleo estudios;
 	private DatosDeEmpleo horario;
 	
-	public TicketDeEmpleadoRequest(String locacion, String pesoLocacion, String estudio, String pesoEstudio, String experiencia,
-								String pesoExperiencia, String horario, String pesoHorario, String rangoEtario, String pesoRangoEtario,
-								String remuneracion, String pesoRemuneracion ,	String tipoDePuesto, String pesoTipoDePuesto) throws ConstructorInvalidoException {
+	public TicketDeEmpleadoRequest(String locacion, int pesoLocacion, String estudio, int pesoEstudio, String experiencia,
+								int pesoExperiencia, String horario, int pesoHorario, String rangoEtario, int pesoRangoEtario,
+								String remuneracion, int pesoRemuneracion ,	String tipoDePuesto, int pesoTipoDePuesto) throws ConstructorInvalidoException {
 		
-			this.locacion = LocacionFactory.getLocacion(locacion, Integer.parseInt(pesoLocacion));
-			this.remuneracion = PretensionSalarialFactory.getPretensionSalarial(Integer.parseInt(pesoRemuneracion), remuneracion);
-			this.experiencia = ExperienciaFactory.getExperiencia(experiencia, Integer.parseInt(pesoExperiencia));
-			this.estudios = EstudiosFactory.getEstudios(estudio, Integer.parseInt(pesoEstudio));
-			this.horario = CargaHorariaFactory.getCargaHoraria(horario, Integer.parseInt(pesoHorario));
-			this.rEtario = RangoEtarioFactory.getRangoEtario(rangoEtario, Integer.parseInt(pesoRangoEtario));
-			this.puesto = TipoDePuestoFactory.getTipoDePuesto(tipoDePuesto, Integer.parseInt(pesoTipoDePuesto));
+			this.locacion = LocacionFactory.getLocacion(locacion, pesoLocacion);
+			this.remuneracion = PretensionSalarialFactory.getPretensionSalarial(pesoRemuneracion, remuneracion);
+			this.experiencia = ExperienciaFactory.getExperiencia(experiencia, pesoExperiencia);
+			this.estudios = EstudiosFactory.getEstudios(estudio, pesoEstudio);
+			this.horario = CargaHorariaFactory.getCargaHoraria(horario,pesoHorario);
+			this.rEtario = RangoEtarioFactory.getRangoEtario(rangoEtario, pesoRangoEtario);
+			this.puesto = TipoDePuestoFactory.getTipoDePuesto(tipoDePuesto, pesoTipoDePuesto);
 
 	}
 

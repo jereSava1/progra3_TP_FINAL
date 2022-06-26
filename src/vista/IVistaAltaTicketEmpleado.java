@@ -16,4 +16,6 @@ public interface IVistaAltaTicketEmpleado {
      float getV2();
      void setV1(Float v1);
      void setV2(Float v2);
+     int getPeso();
+     void setPeso(int peso);
 }

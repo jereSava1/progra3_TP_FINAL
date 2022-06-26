@@ -4,16 +4,12 @@ import model.ticket.Locacion.Locacion;
 import types.Rubro;
 
 public class TicketSimplificadoRequest {
-	private String nombreUsuario;
 	private Locacion locacion;
 	private Rubro tipoDeEmpleo;
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
-
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public TicketSimplificadoRequest(String locacion, String tipoDeTrabajo) {
+		this.locacion = locacion;
+		this.tipoDeEmpleo = tipoDeTrabajo;
 	}
 
 	public Locacion getLocacion() {

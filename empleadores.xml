@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.HashSet">
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>awe</string>
+    </void>
+    <void property="name">
+     <string>Thread-9</string>
+    </void>
+    <void property="nombre">
+     <string>awe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>awe</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="rubro">
+     <object class="java.lang.Enum" id="Rubro0" method="valueOf">
+      <class>types.Rubro</class>
+      <string>COMERCIO_LOCAL</string>
+     </object>
+    </void>
+    <void property="tipoPersona">
+     <object class="java.lang.Enum" id="TipoPersona0" method="valueOf">
+      <class>types.TipoPersona</class>
+      <string>JURIDICA</string>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-10</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-8</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-16</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>welo</string>
+    </void>
+    <void property="name">
+     <string>Thread-5</string>
+    </void>
+    <void property="nombre">
+     <string>welo</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>welo</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="rubro">
+     <object idref="Rubro0"/>
+    </void>
+    <void property="tipoPersona">
+     <object idref="TipoPersona0"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>awe</string>
+    </void>
+    <void property="name">
+     <string>Thread-11</string>
+    </void>
+    <void property="nombre">
+     <string>awe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>awe</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="rubro">
+     <object idref="Rubro0"/>
+    </void>
+    <void property="tipoPersona">
+     <object idref="TipoPersona0"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-12</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-4</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>awe</string>
+    </void>
+    <void property="name">
+     <string>Thread-17</string>
+    </void>
+    <void property="nombre">
+     <string>awe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>awe</string>
+    </void>
+    <void property="rubro">
+     <object idref="Rubro0"/>
+    </void>
+    <void property="tipoPersona">
+     <object idref="TipoPersona0"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>awe</string>
+    </void>
+    <void property="name">
+     <string>Thread-7</string>
+    </void>
+    <void property="nombre">
+     <string>awe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>awe</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="rubro">
+     <object idref="Rubro0"/>
+    </void>
+    <void property="tipoPersona">
+     <object idref="TipoPersona0"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>awe</string>
+    </void>
+    <void property="name">
+     <string>Thread-13</string>
+    </void>
+    <void property="nombre">
+     <string>awe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>awe</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="rubro">
+     <object class="java.lang.Enum" id="Rubro1" method="valueOf">
+      <class>types.Rubro</class>
+      <string>SALUD</string>
+     </object>
+    </void>
+    <void property="tipoPersona">
+     <object idref="TipoPersona0"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>awe</string>
+    </void>
+    <void property="name">
+     <string>Thread-15</string>
+    </void>
+    <void property="nombre">
+     <string>awe</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>awe</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+    <void property="rubro">
+     <object idref="Rubro1"/>
+    </void>
+    <void property="tipoPersona">
+     <object idref="TipoPersona0"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-14</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleador">
+    <void property="contrasena">
+     <string>facu</string>
+    </void>
+    <void property="name">
+     <string>Thread-6</string>
+    </void>
+    <void property="nombre">
+     <string>Empresa</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Empleador</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

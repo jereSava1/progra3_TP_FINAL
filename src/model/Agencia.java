@@ -3,7 +3,10 @@ package model;
 import dto.*;
 import exception.ContrasenaIncorrectaException;
 import exception.UsuarioIncorrectoException;
-import model.ticket.*;
+import model.ticket.FormularioBusqueda;
+import model.ticket.TicketBusquedaDeEmpleado;
+import model.ticket.TicketBusquedaDeEmpleo;
+import model.ticket.TicketSimplificado;
 import model.usuario.*;
 import persistencia.Ipersistencia;
 import persistencia.PersistenciaXML;
@@ -298,7 +301,7 @@ public class Agencia extends Observable {
 	public List<EmpleadorDTO> listarEmpleadores() {
 		return empleadores.stream().map(EmpleadorDTO::of).collect(Collectors.toList());
 	}
-	
+
 	public void setRemuneracionV1(Float remuneracionV1) {
 		this.remuneracionV1 = remuneracionV1;
 	}
@@ -393,20 +396,11 @@ public class Agencia extends Observable {
 		System.out.println("Se registro el empleador: " + newEmpleador.getNombre());
 	}
 
-	public void registrarEmpleado(RegistroRequestEmpleado req) {
-		Empleado newEmpleado = new Empleado(req.getNombreUsuario(), req.getContrasena(), req.getNombre(), req.getEdad(), req.getEmail(), req.getTelefono());
+	public void registrarEmpleado(RegistroRequestEmpleado req){
+		Empleado newEmpleado = new Empleado(req.getNombreUsuario(),req.getContrasena(),req.getNombre(),req.getEdad(),req.getEmail(),req.getTelefono());
 		this.empleados.add(newEmpleado);
-
-		try {
-			Ipersistencia persistencia = new PersistenciaXML();
-			persistencia.abrirOutput("empleados.xml");
-			persistencia.escribir(this.empleados);
-			persistencia.cerrarOutput();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
+
 	}
 	
 	public void addTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
@@ -470,16 +464,6 @@ public class Agencia extends Observable {
 
 		return solicitudes.stream().filter( b -> b.getId().equals(ticketId) ).findFirst().orElse(null);
 
-	}
-
-	public Ticket encuentraTicket (String ticketId) {
-		Optional<? extends Ticket> result =  this.solicitudes.stream().filter(t -> t.getId().equals(ticketId)).findFirst();
-		if (result.isPresent()) {
-			return result.get();
-		} else {
-			result = this.busquedas.stream().filter(t -> t.getId().equals(ticketId)).findFirst();
-			return result.orElse(null);
-		}
 	}
 
 	public void cancelaTicket (TicketDTO request) {
