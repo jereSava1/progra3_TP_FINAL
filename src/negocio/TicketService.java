@@ -75,6 +75,10 @@ public class TicketService {
   public Ticket encuentraTicket(String id) {
     return agencia.encuentraTicket(id);
   }
+  
+  public TicketBusquedaDeEmpleo encuentraTicketEmpleado(Usuario usuario) {
+	  return agencia.encuentraTicketDeEmpleo(usuario);
+  }
 
   public void seleccionarUsuariosPuntuados(List<UsuarioPuntuadoDTO> usuarioPuntuadoDTO, TicketDTO ticketDTO) {
     List<String> usuariosSeleccionados = usuarioPuntuadoDTO.stream().map(UsuarioPuntuadoDTO::getUsername).collect(Collectors.toList());
