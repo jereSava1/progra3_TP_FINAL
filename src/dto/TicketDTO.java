@@ -6,6 +6,8 @@ import model.ticket.pretensionSalarial.PretensionSalarial;
 import types.Resultado;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TicketDTO {
   public LocalDate getFechaDeAlta() {
@@ -108,6 +110,16 @@ public class TicketDTO {
   private DatosDeEmpleo estudios;
   private String estado;
 
+  public List<UsuarioPuntuadoDTO> getListaDeAsignaciones() {
+    return listaDeAsignaciones;
+  }
+
+  public void setListaDeAsignaciones(List<UsuarioPuntuadoDTO> listaDeAsignaciones) {
+    this.listaDeAsignaciones = listaDeAsignaciones;
+  }
+
+  private List<UsuarioPuntuadoDTO> listaDeAsignaciones;
+
   public TicketDTO (Ticket ticket) {
     this.fechaDeAlta = ticket.getFechaDeAlta();
     this.id = ticket.getId();
@@ -119,6 +131,7 @@ public class TicketDTO {
     this.cargaHoraria = ticket.getFormularioDeBusqueda().getRangoEtario();
     this.tipoDePuesto = ticket.getFormularioDeBusqueda().getTipoDePuesto();
     this.estudios = ticket.getFormularioDeBusqueda().getEstudios();
+    this.listaDeAsignaciones = ticket.getListaDeAsignaciones().stream().map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
   }
 
 	@Override

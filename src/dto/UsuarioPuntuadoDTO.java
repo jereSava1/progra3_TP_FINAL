@@ -10,12 +10,23 @@ public class UsuarioPuntuadoDTO {
   private Float puntaje;
   private boolean seleccionado;
 
+  public boolean isContratado() {
+    return contratado;
+  }
+
+  public void setContratado(boolean contratado) {
+    this.contratado = contratado;
+  }
+
+  private boolean contratado;
+
   public static UsuarioPuntuadoDTO of(UsuarioPuntuado usuarioPuntuado) {
     UsuarioPuntuadoDTO dto = new UsuarioPuntuadoDTO();
     dto.setFechaDeGeneracion(usuarioPuntuado.getFechaDeGeneracion());
     dto.setUsername(usuarioPuntuado.getUsuario().getNombreUsuario());
     dto.setPuntaje(usuarioPuntuado.getPuntaje());
     dto.setSeleccionado(usuarioPuntuado.isSeleccionado());
+    dto.setContratado(usuarioPuntuado.isContratado());
     return dto;
   }
 

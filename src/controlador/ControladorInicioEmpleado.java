@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import dto.TicketDTO;
+import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
 import model.usuario.Usuario;
@@ -96,12 +97,12 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("INGRESAR")) {
 	    	
-	    	if( (ticket!=null) && (RondaDeEncuentro.isActivada() == true)) {
+	    	if( (ticket != null) && (RondaDeEncuentro.isActivada())) {
 	    		this.vista.esconder();
 		    	//ControladorEleccionEmpleadores ControladorEleccionEmpleadores = ControladorEleccionEmpleadores.getControladorEleccionEmpleadores();
 		    	//Llenar lista con lista de asignaciones del ticket 
 	    	}else {
-	    		if( ticket==null )
+	    		if( ticket == null )
 	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
 	    		else
 	    			JOptionPane.showMessageDialog(null, "No se ha ejecutado la ronda de encuentros", "Error", JOptionPane.ERROR_MESSAGE);
@@ -109,9 +110,9 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	
 	    }else if(comando.equalsIgnoreCase("VER RESULTADO")) {
 	    	if( RondaDeContrataciones.isActivada() ) {
-	    		UsuarioPuntuado contratado = ticket.getListaAsignaciones().stream().filter(t -> t.isContratado() == true).findAny().orElse(null);
+	    		UsuarioPuntuadoDTO contratado = ticket.getListaDeAsignaciones().stream().filter(UsuarioPuntuadoDTO::isContratado).findAny().orElse(null);
 	    		if( contratado != null ) {
-	    			this.vista.success("Has sido contratado por: " + contratado.getUsuario().getNombre(), "Resultado" );
+	    			this.vista.success("Has sido contratado por: " + contratado.getUsername(), "Resultado" );
 	    		}else {
 	    			this.vista.success("No has sido contratado", "Resultado");
 	    		}

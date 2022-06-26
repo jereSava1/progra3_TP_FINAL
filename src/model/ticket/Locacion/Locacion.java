@@ -1,15 +1,14 @@
 package model.ticket.Locacion;
 
 import interfaces.Puntajes;
+import model.ticket.DatosDeEmpleo;
 
-public abstract class Locacion implements Puntajes {
-	private final String valor;
-	private int peso;
+public abstract class Locacion extends DatosDeEmpleo implements Puntajes {
+
 
 	public abstract float calculaPuntaje(Locacion locacion);
 
 	public Locacion(String valor, int peso) {
-		this.valor = valor;
-		this.peso = peso;
+		super(valor, peso);
 	}
 }

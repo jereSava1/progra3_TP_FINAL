@@ -33,7 +33,7 @@ public class BolsaDeTrabajoService {
 	public synchronized void verificaEmpleado(TicketSimplificado ticket, Empleado empleado, Locacion locacion,
 			Agencia agencia) throws TicketFinalizadoException, EmpleadoSinIntentosException {
 
-		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) { // si el ticket está tomado, espero que se
+		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) { // si el ticket estï¿½ tomado, espero que se
 																			// desocupe
 			try {
 				wait();
@@ -48,7 +48,7 @@ public class BolsaDeTrabajoService {
 																						// esperaba
 			ticket.setAsignacion(empleado);
 
-			if (locacion.calculaPuntaje(ticket.getLocacion()) != 1F) {
+			if (locacion.calculaPuntaje((Locacion) ticket.getLocacion()) != 1F) {
 				ticket.setAsignacion(null); // si no hay coincidencia, libero el ticket
 				empleado.setIntentosBolsaDeTrabajo(empleado.getIntentosBolsaDeTrabajo() + 1);
 			} else {

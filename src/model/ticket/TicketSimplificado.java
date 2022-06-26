@@ -8,11 +8,11 @@ import types.Rubro;
 public class TicketSimplificado {
 	private final Empleador dueno;
 	private Empleado asignacion;
-	private final Rubro tipoDeEmpleo;
-	private final Locacion locacion;
+	private final DatosDeEmpleo tipoDeEmpleo;
+	private final DatosDeEmpleo locacion;
 	private boolean esPermanente;
 
-	public TicketSimplificado(Empleador dueno, Rubro tipoDeEmpleo, Locacion locacion) {
+	public TicketSimplificado(Empleador dueno, DatosDeEmpleo tipoDeEmpleo, DatosDeEmpleo locacion) {
 		this.dueno = dueno;
 		this.tipoDeEmpleo = tipoDeEmpleo;
 		this.locacion = locacion;
@@ -31,11 +31,11 @@ public class TicketSimplificado {
 		return dueno;
 	}
 
-	public Rubro getTipoDeEmpleo() {
+	public DatosDeEmpleo getTipoDeEmpleo() {
 		return tipoDeEmpleo;
 	}
 
-	public Locacion getLocacion() {
+	public DatosDeEmpleo getLocacion() {
 		return locacion;
 	}
 

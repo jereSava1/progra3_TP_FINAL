@@ -4,9 +4,12 @@ import model.Agencia;
 import vista.IVistaAltaTicketSimplificado;
 import vista.VistaAltaTicketSimplificado;
 
-public class ControladorEleccionTicketSimplificado {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	private IVista vista;
+public class ControladorEleccionTicketSimplificado implements ActionListener {
+
+	private IVistaAltaTicketSimplificado vista;
 	private static ControladorEleccionTicketSimplificado controladorEleccionTicketSimplificado=null;
 	private Agencia agencia;
 	
@@ -23,4 +26,8 @@ public class ControladorEleccionTicketSimplificado {
 		return controladorEleccionTicketSimplificado;
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
 }
