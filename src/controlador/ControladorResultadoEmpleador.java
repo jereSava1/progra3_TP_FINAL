@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import dto.EmpleadorDTO;
 import dto.TicketEmpleadorDTO;
+import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleado;
 import model.usuario.UsuarioPuntuado;
@@ -30,13 +31,13 @@ public class ControladorResultadoEmpleador implements ActionListener {
 			controladorResultadoEmpleador = new ControladorResultadoEmpleador();
 		}
 		
-    	List<UsuarioPuntuado> listaAsignacionTicket = ticket.getListaAsignaciones();
-    	List<UsuarioPuntuado> contratados = listaAsignacionTicket.stream().filter(s -> s.isContratado()). collect(Collectors.toList());
+    	List<UsuarioPuntuadoDTO> listaAsignacionTicket = ticket.getListaDeAsignaciones();
+    	List<UsuarioPuntuadoDTO> contratados = listaAsignacionTicket.stream().filter(s -> s.isContratado()). collect(Collectors.toList());
 		
 		controladorResultadoEmpleador.vista.getModel().setRowCount(0);
 		contratados.forEach( contratado -> {
 			Object[] fila = {
-				contratado.getUsuario().getNombre()
+				contratado.getUsername()
 			};
 			controladorResultadoEmpleador.vista.getModel().addRow(fila);
 		});

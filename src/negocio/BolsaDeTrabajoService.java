@@ -11,7 +11,7 @@ import model.usuario.Empleador;
 
 public class BolsaDeTrabajoService {
 	private static Agencia agencia = Agencia.getAgencia();
-	public static synchronized void agregarTicketSimplificado(TicketSimplificadoRequest request) {
+	public synchronized void agregarTicketSimplificado(TicketSimplificadoRequest request) {
 		Empleador posibleDueno = agencia.getEmpleadores().stream()
 				.filter(e -> e.getNombreUsuario().equals(request.getNombreUsuario())).findFirst().get();
 

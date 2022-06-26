@@ -16,11 +16,13 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 	private IVistaAltaTicketSimplificado vista;
 	private static ControladorAltaTicketSimplificado controladorAltaTicket = null;
 	private Agencia agencia;
+	private BolsaDeTrabajoService service;
 	
 	private ControladorAltaTicketSimplificado() {
 		this.vista = new VistaAltaTicketSimplificado();
 		this.agencia = Agencia.getAgencia();
 		this.vista.setActionListener(this);
+		this.service = new BolsaDeTrabajoService();
 	};
 	
 	public static ControladorAltaTicketSimplificado get(){
@@ -44,7 +46,8 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 		if(comando.equalsIgnoreCase("FINALIZAR")) {
 			TicketSimplificadoRequest request = this.vista.getFormulario();
 			request.setNombreUsuario(ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername());
-			BolsaDeTrabajoService.agregarTicketSimplificado(request);
+			this.service.agregarTicketSimplificado(request);
+
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
