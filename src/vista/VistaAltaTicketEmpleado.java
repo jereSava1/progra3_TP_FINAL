@@ -145,29 +145,31 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
-		
-		rdbtnHastav1 = new JRadioButton("Hasta");
-		rdbtnHastav1.setActionCommand("MENOS_V1");
-		rdbtnHastav1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_4.add(rdbtnHastav1);
+		panel_4.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		rdbtnEntreV1yV2 = new JRadioButton("Entre");
 		rdbtnEntreV1yV2.setActionCommand("ENTRE_V1_Y_V2");
 		rdbtnEntreV1yV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnEntreV1yV2);
+		GrupoRemuneracion = new ButtonGroup();
+		GrupoRemuneracion.add(rdbtnEntreV1yV2);
+		rdbtnEntreV1yV2.addMouseListener(this);
+		
+		rdbtnHastav1 = new JRadioButton("Hasta");
+		rdbtnHastav1.setActionCommand("MENOS_V1");
+		rdbtnHastav1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_4.add(rdbtnHastav1);
+		GrupoRemuneracion.add(rdbtnHastav1);
+		rdbtnHastav1.addMouseListener(this);
 		
 		rdbtnMasDeV2 = new JRadioButton("Mas de");
 		rdbtnMasDeV2.setActionCommand("MAS_DE_V2");
 		rdbtnMasDeV2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnMasDeV2);
+		GrupoRemuneracion.add(rdbtnMasDeV2);
+		rdbtnMasDeV2.addMouseListener(this);
 		
 		GrupoRemuneracion = new ButtonGroup();
-		GrupoRemuneracion.add(rdbtnMasDeV2);
-		GrupoRemuneracion.add(rdbtnEntreV1yV2);
-		GrupoRemuneracion.add(rdbtnHastav1);
-		rdbtnMasDeV2.addMouseListener(this);
-		rdbtnEntreV1yV2.addMouseListener(this);
-		rdbtnHastav1.addMouseListener(this);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -323,7 +325,6 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		panel_14.add(rdbtnSecundario);
 		
 		JRadioButton rdbtnTerciario = new JRadioButton("Terciario");
-		rdbtnTerciario.setActionCommand("TERCIARIO");
 		rdbtnTerciario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_14.add(rdbtnTerciario);
 		

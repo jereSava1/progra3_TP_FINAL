@@ -32,6 +32,9 @@ public class ControladorModificarTicketEmpleado implements ActionListener {
 		if (controladorModificarTicketEmpleado == null) {
 			controladorModificarTicketEmpleado = new ControladorModificarTicketEmpleado();
 		}
+		controladorModificarTicketEmpleado.vista.setV1(Agencia.getAgencia().getRemuneracionV1());
+		controladorModificarTicketEmpleado.vista.setV2(Agencia.getAgencia().getRemuneracionV2());
+
 		controladorModificarTicketEmpleado.vista.mostrar();
 		return controladorModificarTicketEmpleado;
 	}
