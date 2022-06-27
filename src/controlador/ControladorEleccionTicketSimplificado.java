@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.DefaultListModel;
 
@@ -64,6 +66,7 @@ public class ControladorEleccionTicketSimplificado implements ActionListener{
 					this.vista.failure(exception.getMessage(), "ERROR");
 				}
 			}
+			this.vista.success("Se guardo su ticket con exito!", "Asignacion de Tickets Simplificados");
 			this.vista.esconder();
 			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 			this.vista.limpiaCampos();
@@ -73,6 +76,10 @@ public class ControladorEleccionTicketSimplificado implements ActionListener{
 			this.vista.limpiaCampos();
 		}
 		
+	}
+
+	public void falla() {
+		  this.vista.failure("El ticket que intenta aceder esta tomado", "Error");
 	}
 
 }

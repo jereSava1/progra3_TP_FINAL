@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import controlador.ControladorAltaTicketEmpleador;
 import controlador.ControladorInicioEmpleado;
@@ -46,12 +48,20 @@ public class ControladorAltaTicketSimplificado implements ActionListener{
 			//Guardo el ticket en la "Bolsa de empleo", aca pasa la concurrencia
 			TicketSimplificadoRequest req = this.vista.getTicketSimplificado();
 			Empleador empleador = (Empleador) ControladorLogin.getControladorLogin(false).getLogueado();
+			req.setNombreUsuario(empleador.getNombreUsuario());
 			BolsaDeTrabajoService.getBolsaDeTrabajoService().agregarTicketSimplificado(req,empleador);
+			this.vista.esconder();
+			this.vista.limpiaCampos();
+			ControladorInicioEmpleador CEmpleado = ControladorInicioEmpleador.get(true);
 		}else if(comando.equalsIgnoreCase("VOLVER")) {
 			this.vista.esconder();
 			this.vista.limpiaCampos();
 			ControladorInicioEmpleador CEmpleado = ControladorInicioEmpleador.get(true);
 		}
+	}
+
+	public void falla() {
+		  this.vista.failure("Error", "Llego al limite de Tickets Simplificados");
 	}
 
 }
