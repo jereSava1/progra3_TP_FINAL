@@ -19,6 +19,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import java.awt.Color;
@@ -197,6 +199,12 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 			e.printStackTrace();
 		}
 		return req;
+	}
+
+	@Override
+	public void failure(String title, String error) {
+		JOptionPane.showMessageDialog(this, error, title, JOptionPane.ERROR_MESSAGE);
+		
 	}
 	
 	

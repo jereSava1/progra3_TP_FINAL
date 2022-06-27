@@ -50,7 +50,7 @@ public class ControladorSesionAdmin implements ActionListener {
 			
 		}else if(comando.equalsIgnoreCase("Activar Encuentros")) {
 			
-			if( !RondaDeEncuentro.isActivada() ) {
+			if( RondaDeEncuentro.isActivada() == false ) {
 				RondaDeEncuentro.ejecutarRondaDeEncuentros(Agencia.getAgencia());
 				this.vista.success("Ronda de encuentros activada con exito", "Ronda de encuentros");
 			}else

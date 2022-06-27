@@ -115,6 +115,7 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		panel.add(panel_2_2);
 		
 		btnRondaEleccion = new JButton("Ingresar");
+		btnRondaEleccion.setActionCommand("Ingresar");
 		btnRondaEleccion.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2_2.add(btnRondaEleccion);
 		
@@ -178,16 +179,17 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificaTicket.addActionListener(actionListener);
 		this.btnVerTicket.addActionListener(actionListener);
+		this.btnRondaEleccion.addActionListener(actionListener);
 	}
 
 	@Override
 	public void failure(String error, String titulo) {
-		JOptionPane.showMessageDialog(null, error, titulo, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, titulo, error, JOptionPane.ERROR_MESSAGE);
 	}
 
 	@Override
 	public void success(String ok, String titulo) {
-		JOptionPane.showMessageDialog(null, ok, titulo, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, titulo, ok, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }

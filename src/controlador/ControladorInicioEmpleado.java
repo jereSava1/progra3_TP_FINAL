@@ -59,28 +59,30 @@ public class ControladorInicioEmpleado implements ActionListener {
 			
 			if( ticket!=null ) {
 				agencia.cancelaTicket(ticketDTO);
-				JOptionPane.showMessageDialog(null, "Ticket dado de baja con exito", "Ticket", JOptionPane.INFORMATION_MESSAGE);
+				this.vista.success("Ticket", "Ticket dado de baja con exito");
 			}
 			else
-				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
+				this.vista.failure("Error", "Usted no tiene creado un ticket de busqueda de empleo");
 			
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
 	    	
 	    	if( ticket!=null ) {
 	    		this.vista.esconder();
 	    		ControladorModificarTicketEmpleado controladorModificarTicketEmpleado = ControladorModificarTicketEmpleado.getControladorModificarTicketEmpleado();
+	    		this.vista.success("Ticket", "Ticket modificado con exito");
 	    	}
 			else
-				JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
+				this.vista.failure("Error", "Usted no tiene creado un ticket de busqueda de empleo");
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
 	    	
 	    	if( ticket == null) {
 	    		this.vista.esconder();
 		    	ControladorAltaTicketEmpleado controladorAltaTicketEmpleado = ControladorAltaTicketEmpleado.get();
+		    	this.vista.success("Ticket", "Ticket generado con exito");
 	    	}
 	    	else{
-	    		JOptionPane.showMessageDialog(null, "Usted ya tiene un ticket de busqueda de empleo activo", "Error", JOptionPane.ERROR_MESSAGE);
+	    		this.vista.failure("Error", "Usted ya tiene un ticket de busqueda de empleo activo");
 	    	}
 	    	
 		
@@ -92,23 +94,22 @@ public class ControladorInicioEmpleado implements ActionListener {
 					this.vista.esconder();
 	    	}else {
 	    		if( ticket == null )
-	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
+	    			this.vista.failure("Error", "Usted no tiene creado un ticket de busqueda de empleo");
 	    		else
-	    			JOptionPane.showMessageDialog(null, "No se ha ejecutado la ronda de encuentros", "Error", JOptionPane.ERROR_MESSAGE);
+	    			this.vista.failure("Error", "No se ha ejecutado la ronda de encuentros");
 	    	}
 	    	
 	    	
 	    }else if(comando.equalsIgnoreCase("INGRESAR")) {
 	    	
-	    	if( (ticket != null) && (RondaDeEncuentro.isActivada())) {
+	    	if( ( ticket != null ) && ( RondaDeEncuentro.isActivada() == true) ) {
 	    		this.vista.esconder();
-		    	//ControladorEleccionEmpleadores ControladorEleccionEmpleadores = ControladorEleccionEmpleadores.getControladorEleccionEmpleadores();
-		    	//Llenar lista con lista de asignaciones del ticket 
+	    			ControladorListaDeAsignacion controladorListaDeAsignacion = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, ticketDTO);
 	    	}else {
 	    		if( ticket == null )
-	    			JOptionPane.showMessageDialog(null, "Usted no tiene creado un ticket de busqueda de empleo", "Error", JOptionPane.ERROR_MESSAGE);
+	    			this.vista.failure("Error", "Usted no tiene creado un ticket de busqueda de empleo");
 	    		else
-	    			JOptionPane.showMessageDialog(null, "No se ha ejecutado la ronda de encuentros", "Error", JOptionPane.ERROR_MESSAGE);
+	    			this.vista.failure("Error", "No se ha ejecutado la ronda de encuentros");
 	    	}
 	    	
 	    }else if(comando.equalsIgnoreCase("VER RESULTADO")) {

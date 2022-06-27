@@ -100,6 +100,8 @@ public class RondaDeEncuentro {
 			e.printStackTrace();
 		}
 		
+		System.out.println("Ronda ejecutada");
+		
 		RondaDeEncuentro.activada = true;
 	}
 
