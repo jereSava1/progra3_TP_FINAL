@@ -40,10 +40,7 @@ public class ControladorListaDeAsignacion implements ActionListener {
 		List<UsuarioPuntuadoDTO> usuariosPuntuados = null;
 		ControladorListaDeAsignacion.ticketSeleccionado = ticketSeleccionado;
 		try {
-			usuariosPuntuados = agencia.encuentraTicketsDeEmpleador(ticketSeleccionado.getId())
-							.getListaDeAsignaciones()
-							.stream()
-							.map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
+			usuariosPuntuados = ticketSeleccionado.getListaDeAsignaciones();
 			DefaultListModel<UsuarioPuntuadoDTO> model = new DefaultListModel<>();
 			usuariosPuntuados.forEach(model::addElement);
 			controladorListaDeAsignacion.vistaLista.setListaDeAsignacion(model);
