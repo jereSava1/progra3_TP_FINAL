@@ -5,8 +5,7 @@ import vista.IVistaAltaTicketSimplificado;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import dto.TicketSimplificadoRequest;
@@ -16,11 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JRadioButton;
 import java.awt.Color;
 
 public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTicketSimplificado,MouseListener{
@@ -151,6 +146,11 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		// TODO Auto-generated method stub
 		this.grupoLocacion.clearSelection();
 		this.grupoTipo.clearSelection();
+	}
+
+	@Override
+	public void failure(String titulo, String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje	, titulo, JOptionPane.ERROR_MESSAGE);
 	}
 
 	@Override
