@@ -2,6 +2,7 @@ package negocio;
 
 import dto.TicketDTO;
 import dto.TicketDeEmpleadoRequest;
+import dto.TicketDeEmpleadorRequest;
 import dto.TicketSimplificadoDTO;
 import dto.UsuarioPuntuadoDTO;
 import exception.ConstructorInvalidoException;
@@ -57,6 +58,29 @@ public class TicketService {
       }
     }
   }
+  
+  public void modificarTicketDeEmpleador(TicketDeEmpleadorRequest request, String id) {
+	    List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();
+
+	    TicketBusquedaDeEmpleado ticketSel = solicitudes.stream().filter(ticket -> ticket.getId().equals(id) ).findFirst().orElse(null);
+
+	    if (  ticketSel != null  ) {
+	      
+	    	Empleador empleador = (Empleador) ticketSel.getDueno();
+
+	        FormularioBusqueda formulario = new FormularioBusqueda(
+	        		  request.getrEtario(), request.getLocacion(),
+		              request.getExperiencia(), request.getHorario(),
+		              request.getPuesto(), request.getEstudios(),
+		              request.getRemuneracion(), request.getCantEmpleados()
+		              );
+	      try {
+	        empleador.modificaTicket(ticketSel, formulario);
+	        System.out.println("Ticket modificado: " + ticketSel.getId());
+	      } catch (NoDuenoDeTicketException e1) {}
+	    
+	    }
+	  }
 
   public void bajaTicketEmpleador(TicketDTO ticketDTO) throws NoDuenoDeTicketException {
     List<TicketBusquedaDeEmpleado> solicitudes = Agencia.getAgencia().getSolicitudes();

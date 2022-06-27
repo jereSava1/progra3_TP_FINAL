@@ -639,5 +639,16 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		// TODO Auto-generated method stub
 		this.peso = peso;
 	}
+
+	@Override
+	public void failure(String error, String titulo) {
+		JOptionPane.showMessageDialog(null, error, titulo, JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void success(String ok, String titulo) {
+		JOptionPane.showMessageDialog(null, ok, titulo, JOptionPane.INFORMATION_MESSAGE);
+	}
+
 }
 

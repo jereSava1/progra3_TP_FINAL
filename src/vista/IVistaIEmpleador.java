@@ -23,4 +23,5 @@ public interface IVistaIEmpleador {
      TicketEmpleadorDTO getTicketSeleccionado();
      void success(String titulo, String mensaje);
      void failure(String title, String message);
+     TicketEmpleadorDTO getSeleccionado();
 } 

@@ -157,7 +157,6 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.btnCerrarSesion.addActionListener(actionListener);
 		this.btnBajaTicket.addActionListener(actionListener);
 		this.btnModificarTicket.addActionListener(actionListener);
-		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
 		this.btnGenerarTicketSimplificado.addActionListener(actionListener);
 		this.btnVerTicketsSimplificados.addActionListener(actionListener);
 		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
@@ -178,6 +177,11 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 
 	@Override
 	public void failure(String title, String message) {
+		JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+	}
 
+	@Override
+	public TicketEmpleadorDTO getSeleccionado() {
+		return this.listaTickets.getSelectedValue();
 	}
 }
