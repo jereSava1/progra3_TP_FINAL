@@ -7,6 +7,31 @@
      <string>12345</string>
     </void>
     <void property="edad">
+     <int>23</int>
+    </void>
+    <void property="email">
+     <string>juanito@gmail.com</string>
+    </void>
+    <void property="name">
+     <string>Thread-10</string>
+    </void>
+    <void property="nombre">
+     <string>Juanse</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Juanito</string>
+    </void>
+    <void property="telefono">
+     <string>155</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.usuario.Empleado">
+    <void property="contrasena">
+     <string>12345</string>
+    </void>
+    <void property="edad">
      <int>21</int>
     </void>
     <void property="email">
@@ -20,6 +45,9 @@
     </void>
     <void property="nombreUsuario">
      <string>Tibau</string>
+    </void>
+    <void property="priority">
+     <int>5</int>
     </void>
     <void property="telefono">
      <string>2235712000</string>

@@ -61,7 +61,7 @@ public class ControladorAltaTicketEmpleado implements ActionListener {
 			}else {
 			    try {
 				    request = this.vista.getFormulario();
-				    String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
+				    String usuario = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
 				    agencia.crearTicketBusquedaDeEmpleo(request, usuario);
 				    this.vista.success("Ticket creado", "Ticket creado con exito");
 				    ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);

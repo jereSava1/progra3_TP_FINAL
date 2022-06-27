@@ -24,7 +24,7 @@ public class ControladorListaTicketSimplificado implements ActionListener {
 		if (instancia == null){
 			instancia = new ControladorListaTicketSimplificado();
 		}
-		String username = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
+		String username = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
 		List<TicketSimplificadoDTO> list =  TicketService.getTicketService().encuentraTicketSimplificado(username);
 		DefaultListModel<TicketSimplificadoDTO> model = new DefaultListModel<>();
 		list.forEach(model::addElement);
