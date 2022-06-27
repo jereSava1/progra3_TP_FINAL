@@ -1,4 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
- <object class="java.util.ArrayList"/>
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="model.ticket.TicketBusquedaDeEmpleo" id="TicketBusquedaDeEmpleo0">
+    <void property="comisionAPagar">
+     <float>0.0</float>
+    </void>
+    <void property="dueno">
+     <object class="model.usuario.Empleado">
+      <void property="contrasena">
+       <string>12345</string>
+      </void>
+      <void property="edad">
+       <int>21</int>
+      </void>
+      <void property="email">
+       <string>bautipriano@gmail.com</string>
+      </void>
+      <void property="name">
+       <string>Thread-0</string>
+      </void>
+      <void property="nombre">
+       <string>Bautista</string>
+      </void>
+      <void property="nombreUsuario">
+       <string>Tibau</string>
+      </void>
+      <void property="priority">
+       <int>5</int>
+      </void>
+      <void property="telefono">
+       <string>2235712000</string>
+      </void>
+     </object>
+    </void>
+    <void property="estadoTicket">
+     <object class="state.ActivoState">
+      <void property="nombre">
+       <object class="java.lang.Enum" id="EstadoTicket0" method="valueOf">
+        <class>types.EstadoTicket</class>
+        <string>ACTIVO</string>
+       </object>
+      </void>
+      <void property="ticket">
+       <object idref="TicketBusquedaDeEmpleo0"/>
+      </void>
+     </object>
+    </void>
+    <void property="fechaDeAlta">
+     <string>2022-06-27</string>
+    </void>
+    <void property="formularioDeBusqueda">
+     <object class="model.ticket.FormularioBusqueda">
+      <void property="cargaHoraria">
+       <object class="model.ticket.cargaHoraria.Extendida">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>EXTENDIDA</string>
+        </void>
+       </object>
+      </void>
+      <void property="estudios">
+       <object class="model.ticket.estudios.Secundario">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>SECUNDARIO</string>
+        </void>
+       </object>
+      </void>
+      <void property="experienciaPrevia">
+       <object class="model.ticket.experiencia.Media">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MEDIA</string>
+        </void>
+       </object>
+      </void>
+      <void property="locacion">
+       <object class="model.ticket.Locacion.HomeOfiice">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>HOME_OFFICE</string>
+        </void>
+       </object>
+      </void>
+      <void property="pretensionSalarial">
+       <object class="model.ticket.pretensionSalarial.EntreV1YV2">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>ENTRE_V1_Y_V2</string>
+        </void>
+       </object>
+      </void>
+      <void property="rangoEtario">
+       <object class="model.ticket.rangoEtario.Mas50">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MAS_50</string>
+        </void>
+       </object>
+      </void>
+      <void property="tipoDePuesto">
+       <object class="model.ticket.tipoDePuesto.Sr">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>SR</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <string>104bce44-f03f-4c9c-b89b-3fcc9fec0300</string>
+    </void>
+    <void property="resultado">
+     <object class="java.lang.Enum" id="Resultado0" method="valueOf">
+      <class>types.Resultado</class>
+      <string>INCONCLUSO</string>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.ticket.TicketBusquedaDeEmpleo" id="TicketBusquedaDeEmpleo1">
+    <void property="comisionAPagar">
+     <float>0.0</float>
+    </void>
+    <void property="dueno">
+     <object class="model.usuario.Empleado">
+      <void property="contrasena">
+       <string>12345</string>
+      </void>
+      <void property="edad">
+       <int>23</int>
+      </void>
+      <void property="email">
+       <string>juanito@gmail.com</string>
+      </void>
+      <void property="name">
+       <string>Thread-10</string>
+      </void>
+      <void property="nombre">
+       <string>Juanse</string>
+      </void>
+      <void property="nombreUsuario">
+       <string>Juanito</string>
+      </void>
+      <void property="priority">
+       <int>5</int>
+      </void>
+      <void property="telefono">
+       <string>155</string>
+      </void>
+     </object>
+    </void>
+    <void property="estadoTicket">
+     <object class="state.ActivoState">
+      <void property="nombre">
+       <object idref="EstadoTicket0"/>
+      </void>
+      <void property="ticket">
+       <object idref="TicketBusquedaDeEmpleo1"/>
+      </void>
+     </object>
+    </void>
+    <void property="fechaDeAlta">
+     <string>2022-06-27</string>
+    </void>
+    <void property="formularioDeBusqueda">
+     <object class="model.ticket.FormularioBusqueda">
+      <void property="cargaHoraria">
+       <object class="model.ticket.cargaHoraria.Extendida">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>EXTENDIDA</string>
+        </void>
+       </object>
+      </void>
+      <void property="estudios">
+       <object class="model.ticket.estudios.Secundario">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>SECUNDARIO</string>
+        </void>
+       </object>
+      </void>
+      <void property="experienciaPrevia">
+       <object class="model.ticket.experiencia.Media">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MEDIA</string>
+        </void>
+       </object>
+      </void>
+      <void property="locacion">
+       <object class="model.ticket.Locacion.Indistinto">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>INDISTINTO</string>
+        </void>
+       </object>
+      </void>
+      <void property="pretensionSalarial">
+       <object class="model.ticket.pretensionSalarial.MenosV1">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MENOS_V1</string>
+        </void>
+       </object>
+      </void>
+      <void property="rangoEtario">
+       <object class="model.ticket.rangoEtario.Menos40">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MENOS_40</string>
+        </void>
+       </object>
+      </void>
+      <void property="tipoDePuesto">
+       <object class="model.ticket.tipoDePuesto.Jr">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>JR</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <string>af71f695-6419-4802-99ff-c775c38fbfda</string>
+    </void>
+    <void property="resultado">
+     <object idref="Resultado0"/>
+    </void>
+   </object>
+  </void>
+ </object>
 </java>

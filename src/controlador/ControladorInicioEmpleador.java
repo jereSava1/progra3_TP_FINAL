@@ -90,6 +90,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    }else if(comando.equalsIgnoreCase("Alta ticket")) {
 	    	this.vista.esconder();
 	    	ControladorAltaTicketEmpleador controladorAltaTicket = ControladorAltaTicketEmpleador.get();
+	    	
 	    }else if(comando.equalsIgnoreCase("Lista de Asignacion")) {
 				if (this.vista.getTicketSeleccionado() != null) {
 					ControladorListaDeAsignacion controladorListaAsignacion = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, this.vista.getTicketSeleccionado());

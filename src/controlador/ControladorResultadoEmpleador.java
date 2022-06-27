@@ -33,7 +33,8 @@ public class ControladorResultadoEmpleador implements ActionListener {
 		
     	List<UsuarioPuntuadoDTO> listaAsignacionTicket = ticket.getListaDeAsignaciones();
     	List<UsuarioPuntuadoDTO> contratados = listaAsignacionTicket.stream().filter(s -> s.isContratado()). collect(Collectors.toList());
-		
+		System.out.println(contratados);
+    	
 		controladorResultadoEmpleador.vista.getModel().setRowCount(0);
 		contratados.forEach( contratado -> {
 			Object[] fila = {

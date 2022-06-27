@@ -9,6 +9,7 @@ public class UsuarioPuntuadoDTO {
   private String username;
   private Float puntaje;
   private boolean seleccionado;
+  private boolean contratado;
 
   public boolean isContratado() {
     return contratado;
@@ -18,7 +19,6 @@ public class UsuarioPuntuadoDTO {
     this.contratado = contratado;
   }
 
-  private boolean contratado;
 
   public static UsuarioPuntuadoDTO of(UsuarioPuntuado usuarioPuntuado) {
     UsuarioPuntuadoDTO dto = new UsuarioPuntuadoDTO();

@@ -10,6 +10,7 @@ import persistencia.Ipersistencia;
 import persistencia.PersistenciaXML;
 import state.FinalizadoState;
 import types.EstadoTicket;
+import types.Resultado;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -91,9 +92,14 @@ public class RondaDeContrataciones {
 						busqueda.setEstadoTicket(new FinalizadoState(busqueda)); // Si se contrata, finalizamos el
 																					// ticket
 						busqueda.getDueno().aumentarPuntaje(10); // aumentamos el puntaje del usuario
+						
+						
 
 						/* actualizamos los atributos del ticket de empleador */
 						solicitud.aumentarEmpleadosObtenidos();
+						
+						
+						
 						if (solicitud.getEmpleadosObtenidos() == solicitud.getEmpleadosNecesitados()) { // si alcanza el
 																										// tope, cierro
 																										// el ticket

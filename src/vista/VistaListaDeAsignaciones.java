@@ -18,7 +18,7 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 	private DefaultListModel<UsuarioPuntuadoDTO> listaAsignacion;
 	private JButton btnConfirmar;
 	private JScrollPane scrollPane;
-	private JList list;
+	private JList<UsuarioPuntuadoDTO> list;
 	
 	@Override
 	public void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista) {

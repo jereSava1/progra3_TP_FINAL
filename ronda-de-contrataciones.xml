@@ -4,13 +4,13 @@
   <void method="add">
    <object class="dto.PersistenciaContrataciones">
     <void property="comisionEmpleado">
-     <float>1800.0</float>
+     <float>2025.0</float>
     </void>
     <void property="comisionEmpleador">
      <float>2025.0</float>
     </void>
     <void property="idTicket">
-     <string>69e3b787-fdda-4a05-b1f5-78ccf26d9fb6</string>
+     <string>104bce44-f03f-4c9c-b89b-3fcc9fec0300</string>
     </void>
     <void property="nombreEmpleado">
      <string>Bautista</string>

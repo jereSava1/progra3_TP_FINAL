@@ -41,7 +41,7 @@ public class RondaDeEncuentro {
 	private static void ejecutarRondaDeEncuentrosParaTicket(List<? extends Ticket> busquedas, Ticket solicitud) {
 		List<UsuarioPuntuado> ranking = new ArrayList<>();
 		FormularioBusqueda solicitudForm = solicitud.getFormularioDeBusqueda();
-
+		
 		for (Ticket busqueda : busquedas) {
 			FormularioBusqueda formulario = busqueda.getFormularioDeBusqueda();
 			float puntaje = 0F;
@@ -53,7 +53,7 @@ public class RondaDeEncuentro {
 			puntaje += formulario.getCargaHoraria().calculaPuntaje(solicitudForm.getCargaHoraria());
 			puntaje += formulario.getLocacion().calculaPuntaje(solicitudForm.getLocacion());
 			puntaje += formulario.getExperienciaPrevia().calculaPuntaje(solicitudForm.getExperienciaPrevia());
-
+			
 			ranking.add(new UsuarioPuntuado(busqueda.getDueno(), puntaje));
 		}
 		Collections.sort(ranking);
@@ -76,7 +76,7 @@ public class RondaDeEncuentro {
 	 * @param agencia
 	 */
 	public static void ejecutarRondaDeEncuentros(Agencia agencia) {
-		
+				
 		for (Ticket busqueda : agencia.getBusquedas()) { // TICKETS DE EMPLEADOS
 			RondaDeEncuentro.ejecutarRondaDeEncuentrosParaTicket(agencia.getSolicitudes(), busqueda);
 		}
