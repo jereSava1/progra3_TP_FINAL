@@ -38,6 +38,8 @@ public class FormularioBusqueda {
 	 * - Estudios - Primario - Secundario - Terciario
 	 */
 	private DatosDeEmpleo estudios;
+	
+	private int cantEmpleadosSolicitados;
 
 	public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia,
 			DatosDeEmpleo cargaHoraria, DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios,
@@ -49,6 +51,19 @@ public class FormularioBusqueda {
 		this.tipoDePuesto = tipoDePuesto;
 		this.estudios = estudios;
 		this.pretensionSalarial = remuneracion;
+	}
+	
+	public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia,
+			DatosDeEmpleo cargaHoraria, DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios,
+			DatosDeEmpleo remuneracion, int cantEmpleadosSolicitados) {
+		this.rangoEtario = rangoEtario;
+		this.locacion = locacion;
+		this.experienciaPrevia = experienciaPrevia;
+		this.cargaHoraria = cargaHoraria;
+		this.tipoDePuesto = tipoDePuesto;
+		this.estudios = estudios;
+		this.pretensionSalarial = remuneracion;
+		this.cantEmpleadosSolicitados = cantEmpleadosSolicitados;
 	}
 
 	@Override
@@ -87,5 +102,15 @@ public class FormularioBusqueda {
 	public DatosDeEmpleo getEstudios() {
 		return estudios;
 	}
+
+	public int getCantEmpleadosSolicitados() {
+		return cantEmpleadosSolicitados;
+	}
+
+	public void setCantEmpleadosSolicitados(int cantEmpleadosSolicitados) {
+		this.cantEmpleadosSolicitados = cantEmpleadosSolicitados;
+	}
+	
+	
 
 }

@@ -51,7 +51,9 @@ public class ControladorInicioEmpleado implements ActionListener {
 		Usuario usuario = ControladorLogin.getControladorLogin(false).getLogueado();
 			
 		TicketBusquedaDeEmpleo ticket = TicketService.getTicketService().encuentraTicketEmpleado(usuario);
-		TicketDTO ticketDTO = new TicketDTO( ticket );
+		TicketDTO ticketDTO = null;
+		if( ticket != null )
+			ticketDTO = new TicketDTO( ticket );
         
 		if(comando.equalsIgnoreCase("Dar de baja mi ticket")) {
 			

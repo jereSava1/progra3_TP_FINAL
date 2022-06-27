@@ -131,7 +131,7 @@ public class TicketDTO {
     this.cargaHoraria = ticket.getFormularioDeBusqueda().getRangoEtario();
     this.tipoDePuesto = ticket.getFormularioDeBusqueda().getTipoDePuesto();
     this.estudios = ticket.getFormularioDeBusqueda().getEstudios();
-    this.listaDeAsignaciones = ticket.getListaDeAsignaciones().stream().map(UsuarioPuntuadoDTO::of).collect(Collectors.toList());
+    this.listaDeAsignaciones = (ticket.getListaDeAsignaciones() != null) ? ticket.getListaDeAsignaciones().stream().map(UsuarioPuntuadoDTO::of).collect(Collectors.toList()) : null;
   }
 
 	@Override

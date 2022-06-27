@@ -18,4 +18,6 @@ public interface IVistaAltaTicketEmpleador {
      void setEmpleados(int empleados);
      int getPeso();
      void setPeso(int peso);
+ 	 void success(String message,String title);
+ 	 void failure(String message,String title);
 }

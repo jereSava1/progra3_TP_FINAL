@@ -75,6 +75,15 @@ public class ControladorInicioEmpleador implements ActionListener{
 				this.vista.setModel(updatedList);
 			}
 	    }else if(comando.equalsIgnoreCase("Modificar ticket")) {
+	    
+	    	TicketEmpleadorDTO ticket = this.vista.getTicketSeleccionado();
+	    	
+	    	if( this.vista.getTicketSeleccionado() != null ){
+	    		this.vista.esconder();
+	    		ControladorModificarTicketEmpleador controladorModificarTicketEmpleador = ControladorModificarTicketEmpleador.getControladorModificarTicketEmpleador(ticket);
+	    	}else{
+	    		this.vista.failure("Error", "Seleccione un ticket");
+	    	}
 	    	
 	    }else if(comando.equalsIgnoreCase("Alta ticket")) {
 	    	this.vista.esconder();
