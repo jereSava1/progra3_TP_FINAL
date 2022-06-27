@@ -521,8 +521,9 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 			this.Locacion = this.GrupoLocacion.getSelection().getActionCommand();
 		if(this.GrupoEstudios.getSelection()!=null && this.GrupoRemuneracion.getSelection()!=null && this.GrupoHorario.getSelection()!=null
 				&& this.GrupoPuesto.getSelection()!=null && this.GrupoREtario.getSelection()!=null  && this.GrupoExperiencia.getSelection()!=null
-				&& this.GrupoLocacion.getSelection()!=null)
+				&& this.GrupoLocacion.getSelection()!=null) {
 			this.btnFinalizar.setEnabled(true);
+		}
 			
 		
 		

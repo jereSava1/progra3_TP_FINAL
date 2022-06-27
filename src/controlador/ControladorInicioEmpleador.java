@@ -59,12 +59,12 @@ public class ControladorInicioEmpleador implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		
-		if(comando.equalsIgnoreCase("BAJA")) {
+		if(comando.equalsIgnoreCase("Baja")) {
 			TicketEmpleadorDTO ticket = this.vista.getTicketSeleccionado();
 			if(ticket!=null) {
 				try {
 					ticketService.bajaTicketEmpleador(ticket);
-					this.vista.success("Baja de ticket", "Ticket borrado con �xito");
+					this.vista.success("Baja de ticket", "Ticket borrado con exito");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -74,7 +74,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 				solicitudes.forEach(updatedList::addElement);
 				this.vista.setModel(updatedList);
 			} else {
-				this.vista.success("Error", "Seleccione un ticket");
+				this.vista.failure("Error", "Seleccione un ticket");
 			}
 	    }else if(comando.equalsIgnoreCase("Modificar ticket")) {
 	    
@@ -95,7 +95,7 @@ public class ControladorInicioEmpleador implements ActionListener{
 					ControladorListaDeAsignacion controladorListaAsignacion = ControladorListaDeAsignacion.getControladorListaDeAsignacion(true, this.vista.getTicketSeleccionado());
 					this.vista.esconder();
 				} else {
-					this.vista.success("Error", "Seleccione un ticket");
+					this.vista.failure("Error", "Seleccione un ticket");
 				}
 	    }else if(comando.equalsIgnoreCase("Ronda de Elecciones")) {
 	    	

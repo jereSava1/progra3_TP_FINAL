@@ -159,7 +159,6 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 		this.btnModificarTicket.addActionListener(actionListener);
 		this.btnGenerarTicketSimplificado.addActionListener(actionListener);
 		this.btnVerTicketsSimplificados.addActionListener(actionListener);
-		//this.listaTickets.addListSelectionListener((ListSelectionListener) actionListener);
 	}
 
 	@Override
