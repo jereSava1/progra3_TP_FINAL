@@ -106,11 +106,11 @@ public class TicketService {
   }
 
   public void seleccionarUsuariosPuntuados(List<UsuarioPuntuadoDTO> usuarioPuntuadoDTO, TicketDTO ticketDTO) {
-    List<String> usuariosSeleccionados = usuarioPuntuadoDTO.stream().map(UsuarioPuntuadoDTO::getUsername).collect(Collectors.toList());
+    List<String> usuariosSeleccionados = usuarioPuntuadoDTO.stream().map(u -> u.getUsername().toLowerCase()).collect(Collectors.toList());
     Ticket ticket = agencia.encuentraTicket(ticketDTO.getId());
     List<Usuario> usuarios = ticket.getListaDeAsignaciones().stream()
             .map(UsuarioPuntuado::getUsuario)
-            .filter(usuario -> usuariosSeleccionados.contains(usuario.getNombreUsuario())).collect(Collectors.toList());
+            .filter(usuario -> usuariosSeleccionados.contains(usuario.getNombreUsuario().toLowerCase())).collect(Collectors.toList());
 
     RondaDeElecciones.seleccionaMultiplesCandidatos(ticket, usuarios);
   }

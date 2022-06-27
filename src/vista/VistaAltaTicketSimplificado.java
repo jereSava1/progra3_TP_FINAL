@@ -155,7 +155,7 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 
 	@Override
 	public void failure(String titulo, String mensaje) {
-		JOptionPane.showMessageDialog(this, mensaje	, titulo, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, titulo	, mensaje, JOptionPane.ERROR_MESSAGE);
 	}
 
 	@Override
@@ -204,11 +204,6 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		return req;
 	}
 
-	@Override
-	public void failure(String title, String error) {
-		JOptionPane.showMessageDialog(this, error, title, JOptionPane.ERROR_MESSAGE);
-		
-	}
 	
 	
 
