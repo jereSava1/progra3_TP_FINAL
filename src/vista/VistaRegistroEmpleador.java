@@ -34,25 +34,6 @@ public class VistaRegistroEmpleador extends JFrame implements IRegistroEmpleador
     private String TipoPersona;
     private String Rubro;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaRegistroEmpleador frame = new VistaRegistroEmpleador();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaRegistroEmpleador() {
 		setTitle("Registro de Empleador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

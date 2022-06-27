@@ -348,9 +348,9 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		panel_15.add(btnVolver);
 		
 		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setEnabled(false);
 		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnFinalizar);
-		btnFinalizar.setEnabled(false);
 		
 		JPanel panel_16 = new JPanel();
 		panel_16.setBounds(433, 5, 192, 587);
@@ -479,11 +479,10 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 			this.Locacion = this.GrupoLocacion.getSelection().getActionCommand();
 		if(this.GrupoEstudios.getSelection()!=null && this.GrupoRemuneracion.getSelection()!=null && this.GrupoHorario.getSelection()!=null
 				&& this.GrupoPuesto.getSelection()!=null && this.GrupoREtario.getSelection()!=null  && this.GrupoExperiencia.getSelection()!=null
-				&& this.GrupoLocacion.getSelection()!=null)
-			this.btnFinalizar.setEnabled(true);
+				&& this.GrupoLocacion.getSelection()!=null) {
+			this.btnFinalizar.setEnabled(true);			
+		}
 			
-		
-		
 	}
 
 	@Override
@@ -515,8 +514,6 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		this.pesoRangoEtario.setText("");
 		this.pesoRemuneracion.setText("");
 		this.pesoTipoDePuesto.setText("");
-		
-		this.btnFinalizar.setEnabled(false);
 	}
 
 	@Override

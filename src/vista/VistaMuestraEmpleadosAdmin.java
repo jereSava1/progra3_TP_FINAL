@@ -26,34 +26,6 @@ public class VistaMuestraEmpleadosAdmin extends JFrame implements IVistaMuestraL
 	
 	DefaultTableModel model = new DefaultTableModel();	
 	
-	public void setModel(DefaultTableModel model) {
-		this.model = model;
-	}
-	
-	public DefaultTableModel getModel() {
-		return this.model;
-	}
-
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaMuestraEmpleadosAdmin frame = new VistaMuestraEmpleadosAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaMuestraEmpleadosAdmin() {
 		setTitle("Lista de empleados");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,6 +52,15 @@ public class VistaMuestraEmpleadosAdmin extends JFrame implements IVistaMuestraL
 		contentPane.add(btnVolver);
 	}
 
+	public void setModel(DefaultTableModel model) {
+		this.model = model;
+	}
+	
+	public DefaultTableModel getModel() {
+		return this.model;
+	}
+
+	
 	@Override
 	public void mostrar() {
 		this.setVisible(true);

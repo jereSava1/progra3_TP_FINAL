@@ -35,27 +35,7 @@ public class VistaSesionAdmin extends JFrame implements IVistaSesionAdmin,KeyLis
 	private JButton btnActualizaSueldos;
 	private float maximo=-1;
 	private float minimo=-1;
-	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaSesionAdmin frame = new VistaSesionAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaSesionAdmin() {
 		setTitle("Sesion Admin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

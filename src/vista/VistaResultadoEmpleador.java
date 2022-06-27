@@ -27,26 +27,7 @@ public class VistaResultadoEmpleador extends JFrame implements IVistaResultadoEm
 	private JTextArea textAreaEmpleadosObtenidosEnRonda;
 	
 	DefaultTableModel model = new DefaultTableModel();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaResultadoEmpleador frame = new VistaResultadoEmpleador();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public VistaResultadoEmpleador() {
 		setTitle("Resultado Empleador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

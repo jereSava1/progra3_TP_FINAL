@@ -36,35 +36,7 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin, KeyLis
 	private String ID;
 	private String email;
 	private String usuario;
-	
 
-	public String getContrasena() {
-		return contrasena;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaRegistroAdmin frame = new VistaRegistroAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaRegistroAdmin() {
 		setTitle("Registro Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -158,6 +130,15 @@ public class VistaRegistroAdmin extends JFrame implements IRegistroAdmin, KeyLis
 		btnRegistro.setEnabled(false);
 	}
 
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+	
 	@Override
 	public void mostrar() {
 		this.setVisible(true);

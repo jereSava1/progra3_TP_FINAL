@@ -23,35 +23,6 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	private DefaultListModel<TicketEmpleadorDTO> tickets;
 	private JList<TicketEmpleadorDTO> listaTickets;
 
-	public void addTicket(TicketEmpleadorDTO ticket) {
-		tickets.addElement(ticket);
-		this.listaTickets.setModel(tickets);
-	}
-	
-	public void removeTicket(TicketEmpleadorDTO ticket) {
-		tickets.removeElement(ticket);
-		this.listaTickets.setModel(tickets);
-	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaSesionEmpleador frame = new VistaSesionEmpleador();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaSesionEmpleador() {
 		setTitle("Sesion Empleador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -119,6 +90,16 @@ public class VistaSesionEmpleador extends JFrame implements IVistaIEmpleador{
 	}
 	
 
+	public void addTicket(TicketEmpleadorDTO ticket) {
+		tickets.addElement(ticket);
+		this.listaTickets.setModel(tickets);
+	}
+	
+	public void removeTicket(TicketEmpleadorDTO ticket) {
+		tickets.removeElement(ticket);
+		this.listaTickets.setModel(tickets);
+	}
+	
 	public JList getListaTickets() {
 		return listaTickets;
 	}

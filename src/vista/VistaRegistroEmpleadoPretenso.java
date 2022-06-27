@@ -43,26 +43,6 @@ public class VistaRegistroEmpleadoPretenso extends JFrame implements IRegistroEm
 	private ActionListener actionListener; 
 	private JTextField textFieldEdad;
 	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaRegistroEmpleadoPretenso frame = new VistaRegistroEmpleadoPretenso();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaRegistroEmpleadoPretenso() {
 		setTitle("Registro Empleado Pretenso");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

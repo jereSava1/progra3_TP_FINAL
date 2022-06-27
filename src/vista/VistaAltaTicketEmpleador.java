@@ -82,25 +82,6 @@ public class VistaAltaTicketEmpleador extends JFrame implements IVistaAltaTicket
 		rdbtnMasDeV2.setText("Mas de "+v2);
 	}
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaAltaTicketEmpleado frame = new VistaAltaTicketEmpleado();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaAltaTicketEmpleador() {
 		
 		setTitle("Alta de su Ticket");

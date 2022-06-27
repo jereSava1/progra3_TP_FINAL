@@ -25,25 +25,6 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 		this.list.setModel(lista);
 	}
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaListaDeAsignaciones frame = new VistaListaDeAsignaciones();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaListaDeAsignaciones() {
 		
 		//List<UsuarioPuntuado> listaEmpleados = ticket.getListaDeAsignaciones();

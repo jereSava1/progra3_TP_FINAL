@@ -23,25 +23,6 @@ public class VistaComisionesAdmin extends JFrame implements IVistaComisionesAdmi
 	
 	DefaultTableModel model = new DefaultTableModel();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaComisionesAdmin frame = new VistaComisionesAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaComisionesAdmin() {
 		setTitle("Comisiones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

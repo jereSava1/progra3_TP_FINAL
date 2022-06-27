@@ -40,25 +40,6 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaEle
 	private DefaultListModel<TicketSimplificado> tickets;
 	private JList<TicketSimplificado> listaTickets;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaEleccionTicketSimplificado frame = new VistaEleccionTicketSimplificado();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaEleccionTicketSimplificado() {
 		setTitle("Eleccion Ticket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

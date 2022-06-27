@@ -32,25 +32,6 @@ public class VistaSesionEmpleado extends JFrame implements IVistaIEmpleado{
 	private JButton btnModificaTicket;
 	private JButton btnVerTicket;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaSesionEmpleado frame = new VistaSesionEmpleado();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaSesionEmpleado() {
 		setTitle("Sesion Empleado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
