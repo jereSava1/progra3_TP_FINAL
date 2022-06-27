@@ -17,6 +17,7 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 	private JButton btnVolver;
 	private DefaultListModel<UsuarioPuntuadoDTO> listaAsignacion;
 	private JList<UsuarioPuntuadoDTO> list;
+	private JButton btnConfirmar;
 	
 	@Override
 	public void setListaDeAsignacion(DefaultListModel<UsuarioPuntuadoDTO> lista) {
@@ -66,6 +67,11 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 		list.setBounds(10, 10, 416, 211);
 		list.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		contentPane.add(list);
+		
+		btnConfirmar = new JButton("Confirmar elecciones");
+		btnConfirmar.setActionCommand("CONFIRMAR");
+		btnConfirmar.setBounds(285, 228, 141, 21);
+		contentPane.add(btnConfirmar);
 	}
 
 	@Override
@@ -81,7 +87,7 @@ public class VistaListaDeAsignaciones extends JFrame implements IListaDeAsignaci
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.btnVolver.addActionListener(actionListener);
-		
+		this.btnConfirmar.addActionListener(actionListener);
 	}
 	public void success(String title, String message){
 		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
