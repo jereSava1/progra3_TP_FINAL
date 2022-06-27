@@ -57,7 +57,7 @@ public class ControladorAltaTicketEmpleador implements ActionListener{
 			}else {
 			    try {
 				    request = this.vista.getFormulario();
-				    String usuario = ControladorLogin.getControladorLogin(false).getVistaLogin().getUsername();
+				    String usuario = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
 				    TicketBusquedaDeEmpleado ticket = agencia.crearTicketBusquedaDeEmpleado(request, usuario);
 				    agencia.addTicketBusquedaDeEmpleado(ticket);
 				    ControladorInicioEmpleador controladorInicioEmpleador = ControladorInicioEmpleador.get(true);

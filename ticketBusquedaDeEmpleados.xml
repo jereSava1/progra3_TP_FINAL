@@ -269,5 +269,133 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="model.ticket.TicketBusquedaDeEmpleado" id="TicketBusquedaDeEmpleado2">
+    <void property="comisionAPagar">
+     <float>0.0</float>
+    </void>
+    <void property="dueno">
+     <object class="model.usuario.Empleador">
+      <void property="contrasena">
+       <string>12345</string>
+      </void>
+      <void property="name">
+       <string>Thread-1</string>
+      </void>
+      <void property="nombre">
+       <string>Camuzzi</string>
+      </void>
+      <void property="nombreUsuario">
+       <string>Camuzzi</string>
+      </void>
+      <void property="priority">
+       <int>5</int>
+      </void>
+      <void property="rubro">
+       <object idref="Rubro0"/>
+      </void>
+      <void property="tipoPersona">
+       <object idref="TipoPersona0"/>
+      </void>
+     </object>
+    </void>
+    <void property="empleadosNecesitados">
+     <int>123</int>
+    </void>
+    <void property="estadoTicket">
+     <object class="state.ActivoState">
+      <void property="nombre">
+       <object idref="EstadoTicket0"/>
+      </void>
+      <void property="ticket">
+       <object idref="TicketBusquedaDeEmpleado2"/>
+      </void>
+     </object>
+    </void>
+    <void property="fechaDeAlta">
+     <string>2022-06-27</string>
+    </void>
+    <void property="formularioDeBusqueda">
+     <object class="model.ticket.FormularioBusqueda">
+      <void property="cargaHoraria">
+       <object class="model.ticket.cargaHoraria.Media">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MEDIA</string>
+        </void>
+       </object>
+      </void>
+      <void property="estudios">
+       <object class="model.ticket.estudios.Primario">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>PRIMARIO</string>
+        </void>
+       </object>
+      </void>
+      <void property="experienciaPrevia">
+       <object class="model.ticket.experiencia.Nada">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>NADA</string>
+        </void>
+       </object>
+      </void>
+      <void property="locacion">
+       <object class="model.ticket.Locacion.Presencial">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>PRESENCIAL</string>
+        </void>
+       </object>
+      </void>
+      <void property="pretensionSalarial">
+       <object class="model.ticket.pretensionSalarial.EntreV1YV2">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>ENTRE_V1_Y_V2</string>
+        </void>
+       </object>
+      </void>
+      <void property="rangoEtario">
+       <object class="model.ticket.rangoEtario.Menos40">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>MENOS_40</string>
+        </void>
+       </object>
+      </void>
+      <void property="tipoDePuesto">
+       <object class="model.ticket.tipoDePuesto.Sr">
+        <void property="peso">
+         <int>1</int>
+        </void>
+        <void property="valor">
+         <string>SR</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <string>628f6945-5f86-44ff-beba-d1812d96b617</string>
+    </void>
+    <void property="resultado">
+     <object idref="Resultado0"/>
+    </void>
+   </object>
+  </void>
  </object>
 </java>
