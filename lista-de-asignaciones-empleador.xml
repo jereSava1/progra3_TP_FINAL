@@ -7,25 +7,42 @@
      <object class="java.util.ArrayList">
       <void method="add">
        <object class="model.usuario.UsuarioPuntuado">
+        <void property="fechaDeGeneracion">
+         <object class="java.util.Date">
+          <long>1656310119218</long>
+         </object>
+        </void>
         <void property="puntaje">
-         <float>140.0</float>
+         <float>-19.0</float>
         </void>
         <void property="usuario">
-         <object class="model.usuario.Empleador" id="Empleador0">
+         <object class="model.usuario.Empleador">
           <void property="contrasena">
-           <string>facu</string>
+           <string>12345</string>
           </void>
           <void property="name">
-           <string>Thread-18</string>
+           <string>Thread-1</string>
           </void>
           <void property="nombre">
-           <string>Empresa</string>
+           <string>Camuzzi</string>
           </void>
           <void property="nombreUsuario">
-           <string>Empleador</string>
+           <string>Camuzzi</string>
           </void>
           <void property="priority">
            <int>5</int>
+          </void>
+          <void property="rubro">
+           <object class="java.lang.Enum" id="Rubro0" method="valueOf">
+            <class>types.Rubro</class>
+            <string>COMERCIO_LOCAL</string>
+           </object>
+          </void>
+          <void property="tipoPersona">
+           <object class="java.lang.Enum" id="TipoPersona0" method="valueOf">
+            <class>types.TipoPersona</class>
+            <string>JURIDICA</string>
+           </object>
           </void>
          </object>
         </void>
@@ -33,18 +50,45 @@
       </void>
       <void method="add">
        <object class="model.usuario.UsuarioPuntuado">
+        <void property="fechaDeGeneracion">
+         <object class="java.util.Date">
+          <long>1656310119218</long>
+         </object>
+        </void>
         <void property="puntaje">
-         <float>140.0</float>
+         <float>4.0</float>
         </void>
         <void property="usuario">
-         <object idref="Empleador0"/>
+         <object class="model.usuario.Empleador">
+          <void property="contrasena">
+           <string>12345</string>
+          </void>
+          <void property="name">
+           <string>Thread-1</string>
+          </void>
+          <void property="nombre">
+           <string>Camuzzi</string>
+          </void>
+          <void property="nombreUsuario">
+           <string>Camuzzi</string>
+          </void>
+          <void property="priority">
+           <int>5</int>
+          </void>
+          <void property="rubro">
+           <object idref="Rubro0"/>
+          </void>
+          <void property="tipoPersona">
+           <object idref="TipoPersona0"/>
+          </void>
+         </object>
         </void>
        </object>
       </void>
      </object>
     </void>
     <void property="ticketId">
-     <string>beb7257b-6ec0-4f8c-b33c-d37be458c4aa</string>
+     <string>69e3b787-fdda-4a05-b1f5-78ccf26d9fb6</string>
     </void>
    </object>
   </void>

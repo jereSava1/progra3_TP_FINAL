@@ -3,6 +3,11 @@ package model.ticket.Locacion;
 import model.ticket.DatosDeEmpleo;
 
 public class Indistinto extends DatosDeEmpleo {
+	
+	public Indistinto() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Indistinto(int peso) {
 		super("INDISTINTO", peso);
 	}

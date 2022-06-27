@@ -6,17 +6,35 @@ import model.usuario.Empleador;
 import types.Rubro;
 
 public class TicketSimplificado {
-	private final Empleador dueno;
-	private Empleado asignacion;
-	private final DatosDeEmpleo tipoDeEmpleo;
-	private final DatosDeEmpleo locacion;
+	private Empleador dueno;
+	private Empleado asignacion = null;
+	private Rubro tipoDeEmpleo;
+	private DatosDeEmpleo locacion;
 	private boolean esPermanente;
 
-	public TicketSimplificado(Empleador dueno, DatosDeEmpleo tipoDeEmpleo, DatosDeEmpleo locacion) {
+	public TicketSimplificado() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public TicketSimplificado(Empleador dueno, Rubro tipoDeEmpleo, DatosDeEmpleo locacion) {
 		this.dueno = dueno;
 		this.tipoDeEmpleo = tipoDeEmpleo;
 		this.locacion = locacion;
-		this.esPermanente = false;
+		this.esPermanente = false; // No esta tomado
+	}
+	
+	
+
+	public void setDueno(Empleador dueno) {
+		this.dueno = dueno;
+	}
+
+	public void setTipoDeEmpleo(Rubro tipoDeEmpleo) {
+		this.tipoDeEmpleo = tipoDeEmpleo;
+	}
+
+	public void setLocacion(DatosDeEmpleo locacion) {
+		this.locacion = locacion;
 	}
 
 	public Empleado getAsignacion() {
@@ -31,7 +49,7 @@ public class TicketSimplificado {
 		return dueno;
 	}
 
-	public DatosDeEmpleo getTipoDeEmpleo() {
+	public Rubro getTipoDeEmpleo() {
 		return tipoDeEmpleo;
 	}
 
@@ -45,6 +63,12 @@ public class TicketSimplificado {
 
 	public void setEsPermanente(boolean esPermanente) {
 		this.esPermanente = esPermanente;
+	}
+
+	@Override
+	public String toString() {
+		return "TicketSimplificado de " + dueno.getNombre() + " del rubro " + tipoDeEmpleo + " con la locacion "
+				+ locacion.getValor() + ".";
 	}
 
 }

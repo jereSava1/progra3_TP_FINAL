@@ -3,6 +3,11 @@ package model.ticket.Locacion;
 import model.ticket.DatosDeEmpleo;
 
 public class Presencial extends DatosDeEmpleo {
+	
+	public Presencial() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Presencial(int peso) {
 		super("PRESENCIAL", peso);
 	}

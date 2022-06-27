@@ -19,7 +19,7 @@ public class FormularioBusqueda {
 	 */
 	private DatosDeEmpleo rangoEtario;
 	/**
-	 * - Locación - Remoto - Presencial - Cualquiera
+	 * - Locacion - Remoto - Presencial - Cualquiera
 	 */
 	private DatosDeEmpleo locacion;
 	/**
@@ -40,6 +40,10 @@ public class FormularioBusqueda {
 	private DatosDeEmpleo estudios;
 	
 	private int cantEmpleadosSolicitados;
+	
+	public FormularioBusqueda() {
+		
+	}
 
 	public FormularioBusqueda(DatosDeEmpleo rangoEtario, DatosDeEmpleo locacion, DatosDeEmpleo experienciaPrevia,
 			DatosDeEmpleo cargaHoraria, DatosDeEmpleo tipoDePuesto, DatosDeEmpleo estudios,
@@ -77,6 +81,34 @@ public class FormularioBusqueda {
 	// GETTERS
 	public DatosDeEmpleo getPretensionSalarial() {
 		return pretensionSalarial;
+	}
+
+	public void setPretensionSalarial(DatosDeEmpleo pretensionSalarial) {
+		this.pretensionSalarial = pretensionSalarial;
+	}
+
+	public void setRangoEtario(DatosDeEmpleo rangoEtario) {
+		this.rangoEtario = rangoEtario;
+	}
+
+	public void setLocacion(DatosDeEmpleo locacion) {
+		this.locacion = locacion;
+	}
+
+	public void setExperienciaPrevia(DatosDeEmpleo experienciaPrevia) {
+		this.experienciaPrevia = experienciaPrevia;
+	}
+
+	public void setCargaHoraria(DatosDeEmpleo cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+
+	public void setTipoDePuesto(DatosDeEmpleo tipoDePuesto) {
+		this.tipoDePuesto = tipoDePuesto;
+	}
+
+	public void setEstudios(DatosDeEmpleo estudios) {
+		this.estudios = estudios;
 	}
 
 	public DatosDeEmpleo getRangoEtario() {

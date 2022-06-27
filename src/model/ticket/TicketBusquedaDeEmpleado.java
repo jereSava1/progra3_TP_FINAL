@@ -17,6 +17,9 @@ public class TicketBusquedaDeEmpleado extends Ticket {
 	 * Empleados que se obtienen luego de las rondas de contrataciones.
 	 */
 	private int empleadosObtenidos = 0;
+	
+	
+	
 
 	public TicketBusquedaDeEmpleado(FormularioBusqueda formularioDeBusqueda, int empleadosNecesitados,
 			Empleador empleador) {
@@ -24,13 +27,23 @@ public class TicketBusquedaDeEmpleado extends Ticket {
 		this.empleadosNecesitados = empleadosNecesitados;
 	}
 
-	// TODO: completar
+
+
 	@Override
 	public String toString() {
 		return super.toString() + " \nCantidad de empleados: " + this.empleadosNecesitados + "\n"
 				+ "Empleados obtenidos: " + this.empleadosObtenidos + "\n";
 	}
 
+	public void setEmpleadosObtenidos(int empleadosObtenidos) {
+		this.empleadosObtenidos = empleadosObtenidos;
+	}
+	
+	public TicketBusquedaDeEmpleado() {
+		
+	}
+	
+	
 	/**
 	 * Al producirse una contratacion, se incrementa en 1 la cantidad de empleados
 	 * obtenidos

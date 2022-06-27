@@ -170,9 +170,7 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		panel_4.add(rdbtnMasDeV2);
 		GrupoRemuneracion.add(rdbtnMasDeV2);
 		rdbtnMasDeV2.addMouseListener(this);
-		
-		GrupoRemuneracion = new ButtonGroup();
-		
+				
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
 		
@@ -342,13 +340,11 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		panel_15.setBounds(5, 592, 620, 29);
 		General.add(panel_15);
 		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
-		
 		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnVolver);
 		
 		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setEnabled(false);
 		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_15.add(btnFinalizar);
 		
@@ -425,6 +421,9 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		pesoEstudios.setBounds(59, 30, 86, 20);
 		panel_17_1_1.add(pesoEstudios);
 		pesoEstudios.setColumns(10);
+		
+		this.btnFinalizar.setEnabled(false);
+		
 	}
 
 	@Override
@@ -459,7 +458,6 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -479,10 +477,8 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 			this.Locacion = this.GrupoLocacion.getSelection().getActionCommand();
 		if(this.GrupoEstudios.getSelection()!=null && this.GrupoRemuneracion.getSelection()!=null && this.GrupoHorario.getSelection()!=null
 				&& this.GrupoPuesto.getSelection()!=null && this.GrupoREtario.getSelection()!=null  && this.GrupoExperiencia.getSelection()!=null
-				&& this.GrupoLocacion.getSelection()!=null) {
-			this.btnFinalizar.setEnabled(true);			
-		}
-			
+				&& this.GrupoLocacion.getSelection()!=null)
+			this.btnFinalizar.setEnabled(true);
 	}
 
 	@Override
@@ -526,23 +522,9 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 		
 		TicketDeEmpleadoRequest ticketDeEmpleadoRequest=null;
 		int pesos = -1; //Esta variable se usa para corroborar que anden los parseos
+		
 		try {
-		  
-		  pesos = Integer.parseInt(this.pesoLocacion.getText());
-		  this.peso++;
-		  pesos = Integer.parseInt(this.pesoEstudios.getText());
-		  this.peso++;
-		  pesos = Integer.parseInt(this.pesoExperiencia.getText());
-		  this.peso++;
-		  pesos = Integer.parseInt(this.pesocargaHoraria.getText());
-		  this.peso++;
-		  pesos = Integer.parseInt(this.pesoRangoEtario.getText());
-		  this.peso++;
-		  pesos = Integer.parseInt(this.pesoRemuneracion.getText());
-		  this.peso++;
-		  pesos = Integer.parseInt(this.pesoTipoDePuesto.getText());
-		  this.peso++;
-		 
+			
 		 ticketDeEmpleadoRequest = new TicketDeEmpleadoRequest(this.Locacion, Integer.parseInt(this.pesoLocacion.getText()), 
 																					  this.Estudios, Integer.parseInt(this.pesoEstudios.getText()),
 																					  this.Experiencia, Integer.parseInt(this.pesoExperiencia.getText()), 
@@ -570,13 +552,11 @@ public class VistaAltaTicketEmpleado extends JFrame implements IVistaAltaTicketE
 
 	@Override
 	public int getPeso() {
-		// TODO Auto-generated method stub
 		return this.peso;
 	}
 
 	@Override
 	public void setPeso(int peso) {
-		// TODO Auto-generated method stub
 		this.peso = peso;
 	}
 }

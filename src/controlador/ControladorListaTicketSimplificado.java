@@ -28,8 +28,10 @@ public class ControladorListaTicketSimplificado implements ActionListener {
 		List<TicketSimplificadoDTO> list =  TicketService.getTicketService().encuentraTicketSimplificado(username);
 		DefaultListModel<TicketSimplificadoDTO> model = new DefaultListModel<>();
 		list.forEach(model::addElement);
+		
 		instancia.vista.setModel(model);
 		instancia.vista.mostrar();
+		
 		return instancia;
 	}
 

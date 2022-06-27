@@ -50,6 +50,8 @@ public class ControladorLogin implements ActionListener {
 		String comando = e.getActionCommand();
 		if (comando.equalsIgnoreCase("LOGIN")) {
 			try {
+				if( logueado != null )
+					logueado = null;
 				logueado = this.agencia.login(vistaLogin.getUsername(), vistaLogin.getContrasena());
 			} catch (UsuarioIncorrectoException err) {
 				this.vistaLogin.usuarioNoEncontrado();
@@ -59,6 +61,7 @@ public class ControladorLogin implements ActionListener {
 
 			if (logueado != null) {
 				this.vistaLogin.esconder();
+				this.vistaLogin.limpiaCampos();
 				if (logueado instanceof Empleador) {
 					ControladorInicioEmpleador CEmpleador = ControladorInicioEmpleador.get(true);
 				} else if (logueado instanceof Empleado) {
@@ -67,7 +70,6 @@ public class ControladorLogin implements ActionListener {
 					ControladorSesionAdmin CAdmin = ControladorSesionAdmin.get();
 				}
 			}
-			this.vistaLogin.limpiaCampos();
 		} else if (comando.equalsIgnoreCase("REGISTRAR")) {
 			ControladorRegistro controladorReg = ControladorRegistro.getControladorRegistro(); // Contraolador para la vista del registro
 			this.vistaLogin.esconder();

@@ -35,15 +35,14 @@ public class BolsaDeTrabajoService extends Observable{
 				}catch(Exception e) {}
 		}
 		 TicketSimplificado nuevo = new TicketSimplificado(dueno, request.getTipoDeEmpleo(),request.getLocacion());
-		 agencia.getBolsaDeTrabajo().add(nuevo);
+		 agencia.addTicketSimplificado(nuevo);
 		 dueno.setTicketsSimplificadosSinAsignar(dueno.getTicketsSimplificadosSinAsignar() + 1);
 		 notifyAll();
 		}
 
 	public synchronized void verificaEmpleado(TicketSimplificado ticket, Empleado empleado, DatosDeEmpleo locacion) throws TicketFinalizadoException, EmpleadoSinIntentosException {
 
-		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) { // si el ticket está tomado, espero que se
-			// desocupe
+		while (ticket.getAsignacion() != null && ticket.isEsPermanente()) {
 			try {
 				ControladorEleccionTicketSimplificado.getControladorEleccionTicketSimplificado().falla();
 				wait();
@@ -58,13 +57,16 @@ public class BolsaDeTrabajoService extends Observable{
 			// esperaba
 			ticket.setAsignacion(empleado);
 
-			if ((locacion.getValor().equalsIgnoreCase("HomeOffice") && ticket.getLocacion().getValor().equalsIgnoreCase("Presencial")) || ((locacion.getValor().equalsIgnoreCase("Presencial") && ticket.getLocacion().getValor().equalsIgnoreCase("HomeOffice")))) {
+			//ELECCION
+
+			if ((locacion.getValor().equalsIgnoreCase("Home_Office") && ticket.getLocacion().getValor().equalsIgnoreCase("Presencial")) || ((locacion.getValor().equalsIgnoreCase("Presencial") && ticket.getLocacion().getValor().equalsIgnoreCase("Home_Office")))) {
 				ticket.setAsignacion(null); // si no hay coincidencia, libero el ticket
 				empleado.setIntentosBolsaDeTrabajo(empleado.getIntentosBolsaDeTrabajo() + 1);
 			} else {
 				ticket.setEsPermanente(true); // confirmo que el empleado se queda el ticket
+				ticket.setAsignacion(empleado);
+				agencia.removeTicketSimplificado(ticket);
 			}
-			agencia.getAgencia().getBolsaDeTrabajo().remove(ticket);
 			notifyAll();
 		} else if (ticket.isEsPermanente()) {
 			throw new TicketFinalizadoException("El ticket finalizo mientras se realizaba la operacion",

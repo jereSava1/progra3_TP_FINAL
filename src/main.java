@@ -29,59 +29,11 @@ public class main {
 
 		Agencia agencia = Agencia.getAgencia();
 		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-		Empleado e1 = new Empleado("Tibau", "12345", "Bautista Priano", 20, "tibau@gmail.com", "12323143");
-		Empleado e2 = new Empleado("Tibau2", "12345", "Bautista Sobenko", 21, "tibau2@gmail.com", "121233");
-		Empleado e3 = new Empleado("Tibau3", "12345", "Bauti tibau", 22, "tibau3@gmail.com", "12333");
-		agencia.registrarAdmin(new RegistroRequestAdmin("w", "w", "w", "w",""));
-		CargaHorariaFactory cargaH = new CargaHorariaFactory();
-		EstudiosFactory estudios = new EstudiosFactory();
-		ExperienciaFactory experiencia = new ExperienciaFactory();
-		LocacionFactory locacion = new LocacionFactory();
-		PretensionSalarialFactory pretension = new PretensionSalarialFactory();
-		RangoEtarioFactory rangoEtario = new RangoEtarioFactory();
-		TipoDePuestoFactory tipoDePuesto = new TipoDePuestoFactory();
-		Empleador empleador3 = new Empleador("Empleador", "facu");
-
-		empleador3.setNombre("Empresa");
-		agencia.getEmpleados().add(e1);
-		agencia.getEmpleados().add(e2);
-		agencia.getEmpleados().add(e3);
-		agencia.getEmpleadores().add(empleador3);
-
-		FormularioBusqueda formularioEmpleado = null;
-		FormularioBusqueda formularioEmpleador = null;
 		
 		Agencia.getAgencia().setRemuneracionV1(1500F);
 		Agencia.getAgencia().setRemuneracionV2(3000F);
 	
-		try {
-			formularioEmpleado = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
-					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
-					cargaH.getCargaHoraria("media", 30), tipoDePuesto.getTipoDePuesto("jr", 10),
-					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, "MENOS_V1"));
-
-			formularioEmpleador = new FormularioBusqueda(rangoEtario.getRangoEtario("MENOR_40", 10),
-					locacion.getLocacion("HOMEOFFICE", 20), experiencia.getExperiencia("nada", 40),
-					cargaH.getCargaHoraria("media", 30), tipoDePuesto.getTipoDePuesto("jr", 10),
-					estudios.getEstudios("secundario", 20), PretensionSalarialFactory.getPretensionSalarial(10, "ENTRE_V1_Y_V2"));
-
-			TicketBusquedaDeEmpleo ticketEmpleado1 = e1.altaTicket(formularioEmpleado);
-			
-			TicketBusquedaDeEmpleado ticketEmpleador1 = empleador3.altaTicket(formularioEmpleador, 1);
-			TicketBusquedaDeEmpleado ticketEmpleador2 = empleador3.altaTicket(formularioEmpleado, 1);
-			
-			agencia.getBusquedas().add(ticketEmpleado1);
-			agencia.getSolicitudes().add(ticketEmpleador1);
-			agencia.getSolicitudes().add(ticketEmpleador2);
-			
-			ControladorLogin controlador = ControladorLogin.getControladorLogin(true);
-
-			//agencia.mostrarTicketBusqueda();
-			//agencia.mostrarTicketSolicitud();
-			
-		} catch (Exception e) {
-			
-		}
+		ControladorLogin controlador = ControladorLogin.getControladorLogin(true);
 	
 	}
 

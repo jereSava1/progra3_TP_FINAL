@@ -10,5 +10,9 @@ public abstract class TipoDePuesto extends DatosDeEmpleo implements Puntajes {
 	public TipoDePuesto(String valor, int peso) {
 		super(valor, peso);
 	}
+	
+	//Persistencia
+	
+	public TipoDePuesto() {}
 
 }

@@ -117,6 +117,9 @@ public class ControladorInicioEmpleador implements ActionListener{
 	    } else if (comando.equalsIgnoreCase("VER_TICKETS_SIMPLIFICADOS")){
 				this.vista.esconder();
 				ControladorListaTicketSimplificado controladorListaTicketSimplificado = ControladorListaTicketSimplificado.get();
-		}
+		}else if(comando.equalsIgnoreCase("Generar Ticket Simplificado")) {
+            this.vista.esconder();
+            ControladorAltaTicketSimplificado controladorTSimplificado = ControladorAltaTicketSimplificado.get();
+        }
 	}
 }

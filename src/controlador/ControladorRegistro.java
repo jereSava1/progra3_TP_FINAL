@@ -30,7 +30,7 @@ public class ControladorRegistro implements ActionListener {
 		if (e.getActionCommand().equalsIgnoreCase("SIGUIENTE")) {
 			String comando = this.vistaRegistro.getG().getSelection().getActionCommand();
 			if (comando.equalsIgnoreCase("admin")) {
-				if(Agencia.getAgencia().getAdministrador()!=null)
+				if(Agencia.getAgencia().getAdministrador() != null)
 				  JOptionPane.showMessageDialog(null, "Ya existe un administrador", "Error", JOptionPane.ERROR_MESSAGE);
 				else {
 				  this.vistaRegistro.esconder();

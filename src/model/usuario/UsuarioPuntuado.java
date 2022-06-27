@@ -24,7 +24,7 @@ public class UsuarioPuntuado implements Comparable<UsuarioPuntuado>, Serializabl
 	 * contrataciones
 	 */
 	private boolean contratado;
-
+	
 	public UsuarioPuntuado(Usuario usuario, float puntaje) {
 		this.usuario = usuario;
 		this.puntaje = puntaje;
@@ -34,6 +34,13 @@ public class UsuarioPuntuado implements Comparable<UsuarioPuntuado>, Serializabl
 	}
 	public UsuarioPuntuado(){}
 
+	
+	public void setFechaDeGeneracion(Date fechaDeGeneracion) {
+		this.fechaDeGeneracion = fechaDeGeneracion;
+	}
+	public void setContratado(boolean contratado) {
+		this.contratado = contratado;
+	}
 	@Override
 	public String toString() {
 		return "usuario=" + usuario + ", puntaje=" + puntaje;

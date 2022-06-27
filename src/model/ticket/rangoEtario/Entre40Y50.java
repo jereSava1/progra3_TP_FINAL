@@ -23,4 +23,7 @@ public class Entre40Y50 extends DatosDeEmpleo {
 	public float calculaPuntaje(DatosDeEmpleo rango) {
 		return rango.match2() * this.getPeso();
 	}
+	//Persistencia
+	public Entre40Y50() {}
+	
 }

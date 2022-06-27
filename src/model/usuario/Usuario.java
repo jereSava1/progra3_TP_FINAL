@@ -1,8 +1,11 @@
 package model.usuario;
 
+import model.Agencia;
 import model.ticket.FormularioBusqueda;
 import model.ticket.Ticket;
 import model.ticket.TicketBusquedaDeEmpleado;
+import persistencia.Ipersistencia;
+import persistencia.PersistenciaXML;
 import state.CanceladoState;
 import state.IState;
 import types.*;
@@ -47,20 +50,13 @@ public abstract class Usuario extends Thread {
 		}
 	}
 
-	/**
-	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en
-	 * el.
-	 * 
-	 * @param ticket             ticket al que se le desea aplicar la modificacion
-	 * @param formularioBusqueda nuevo formulario, reemplaza al anterior
-	 * @throws NoDuenoDeTicketException
-	 */
+	
 	public void modificaTicket(Ticket ticket, FormularioBusqueda formularioBusqueda) throws NoDuenoDeTicketException {
 		if (ticket.getDueno().equals(this)) {
 			ticket.setFormularioDeBusqueda(formularioBusqueda);
 			if( ticket instanceof TicketBusquedaDeEmpleado ) {
-				((TicketBusquedaDeEmpleado) ticket).setEmpleadosNecesitados(formularioBusqueda.getCantEmpleadosSolicitados());
-			}
+				((TicketBusquedaDeEmpleado) ticket).setEmpleadosNecesitados(formularioBusqueda.getCantEmpleadosSolicitados());			
+			}	
 		} else { 
 			throw new NoDuenoDeTicketException(ticket, "ticket " + ticket.getDueno() + " no es dueno de este ticket");
 		}

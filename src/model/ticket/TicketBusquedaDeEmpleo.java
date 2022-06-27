@@ -10,6 +10,10 @@ import types.Resultado;
  */
 public class TicketBusquedaDeEmpleo extends Ticket {
 
+	public TicketBusquedaDeEmpleo() {
+		
+	}
+	
 	public TicketBusquedaDeEmpleo(FormularioBusqueda formularioBusqueda, Empleado empleado) {
 		super(formularioBusqueda, empleado);
 	}
@@ -20,4 +24,5 @@ public class TicketBusquedaDeEmpleo extends Ticket {
 		return super.toString() + "Remuneracion pretendida: "
 				+ this.getFormularioDeBusqueda().getPretensionSalarial() + "\n";
 	}
+	
 }

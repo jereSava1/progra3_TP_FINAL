@@ -8,15 +8,33 @@ public class ActivoState implements IState{
     private Ticket ticket;
     private EstadoTicket nombre;
 
+    public ActivoState() {
+    	
+    }
+    
     public ActivoState(Ticket ticket) {
         this.ticket = ticket;
         nombre = EstadoTicket.ACTIVO;
     }
 
-    @Override
+    
+    public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+	public void setNombre(EstadoTicket nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
     public void activar() {
         System.out.println("El ticket ya se encuentra activo");
     }
+   
 
     @Override
     public void suspender() {

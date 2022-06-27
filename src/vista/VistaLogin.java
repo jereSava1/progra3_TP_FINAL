@@ -152,6 +152,9 @@ public class VistaLogin extends JFrame implements KeyListener, ILogin {
 
 	@Override
 	public void limpiaCampos() {
+		this.usernameField.setText("");
 		this.contrasenaField.setText("");
+		this.username = null;
+		this.contrasena = null;
 	}
 }

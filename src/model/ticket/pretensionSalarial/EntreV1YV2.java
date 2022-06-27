@@ -4,6 +4,10 @@ import model.ticket.DatosDeEmpleo;
 
 public class EntreV1YV2 extends PretensionSalarial {
 	
+	public EntreV1YV2() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public EntreV1YV2(int peso) {
 		super("ENTRE_V1_Y_V2", peso);
 

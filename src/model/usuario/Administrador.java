@@ -4,6 +4,10 @@ public class Administrador extends Usuario {
 	private String ID;
 	private String email;
 
+	public Administrador() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Administrador(String nombreUsuario, String contrasena, String ID, String email) {
 		super(nombreUsuario, contrasena);
 		this.email = email;

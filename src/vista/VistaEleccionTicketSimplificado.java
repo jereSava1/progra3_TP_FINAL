@@ -40,6 +40,25 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaEle
 	private DefaultListModel<TicketSimplificado> tickets;
 	private JList<TicketSimplificado> listaTickets;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VistaEleccionTicketSimplificado frame = new VistaEleccionTicketSimplificado();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
 	public VistaEleccionTicketSimplificado() {
 		setTitle("Eleccion Ticket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,9 +72,9 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaEle
 		scrollPane.setBounds(10, 66, 414, 147);
 		contentPane.add(scrollPane);
 		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
-		list.addMouseListener(this);
+		this.listaTickets = new JList();
+		scrollPane.setViewportView(listaTickets);
+		listaTickets.addMouseListener(this);
 		
 		JLabel lblNewLabel = new JLabel("Ingrese Locacion: ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -63,23 +82,27 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaEle
 		contentPane.add(lblNewLabel);
 		
 		rdbtnHomeOffice = new JRadioButton("Home Office");
+		rdbtnHomeOffice.setActionCommand("HomeOffice");
 		rdbtnHomeOffice.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnHomeOffice.setBounds(10, 32, 109, 23);
 		contentPane.add(rdbtnHomeOffice);
 		rdbtnHomeOffice.addMouseListener(this);
 		
 		rdbtnPresencial = new JRadioButton("Presencial");
+		rdbtnPresencial.setActionCommand("Presencial");
 		rdbtnPresencial.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnPresencial.setBounds(166, 32, 109, 23);
 		contentPane.add(rdbtnPresencial);
 		rdbtnPresencial.addMouseListener(this);
 		
 		rdbtnAmbas = new JRadioButton("Ambas");
+		rdbtnAmbas.setActionCommand("Indistinto");
 		rdbtnAmbas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnAmbas.setBounds(319, 32, 109, 23);
 		contentPane.add(rdbtnAmbas);
 		rdbtnAmbas.addMouseListener(this);
 		
+		grupoLocacion = new ButtonGroup();
 		grupoLocacion.add(rdbtnAmbas);
 		grupoLocacion.add(rdbtnHomeOffice);
 		grupoLocacion.add(rdbtnPresencial);
@@ -112,7 +135,7 @@ public class VistaEleccionTicketSimplificado extends JFrame implements IVistaEle
 	public void setActionListener(ActionListener actionListener) {
 		this.btnSeleccionar.addActionListener(actionListener);
 		this.btnVolver.addActionListener(actionListener);
-		this.setActionListener(actionListener);
+		this.actionListener = actionListener;
 	}
 
 	@Override

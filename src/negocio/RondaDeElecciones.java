@@ -26,7 +26,7 @@ public class RondaDeElecciones {
 	 */
 	public static void seleccionaCandidato(Ticket ticket, Usuario usuario) {
 		UsuarioPuntuado seleccionado = ticket.getListaDeAsignaciones().stream()
-				.filter(r -> r.getUsuario().equals(usuario)).findFirst().orElse(null); // Busco el usuario a seleccionar
+				.filter(r -> r.getUsuario().getNombreUsuario().equalsIgnoreCase(usuario.getNombreUsuario())).findFirst().orElse(null); // Busco el usuario a seleccionar
 
 		if (seleccionado != null) {
 			seleccionado.setSeleccionado(true);

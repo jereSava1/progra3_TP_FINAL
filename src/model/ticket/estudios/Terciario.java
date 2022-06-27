@@ -3,6 +3,11 @@ package model.ticket.estudios;
 import model.ticket.DatosDeEmpleo;
 
 public class Terciario extends DatosDeEmpleo {
+	
+	public Terciario() {
+		
+	}
+	
 	public Terciario(int peso) {
 		super("TERCIARIO", peso);
 	}

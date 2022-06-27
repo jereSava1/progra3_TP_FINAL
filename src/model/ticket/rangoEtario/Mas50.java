@@ -22,4 +22,7 @@ public class Mas50 extends DatosDeEmpleo {
 	public float calculaPuntaje(DatosDeEmpleo rango) {
 		return rango.match3() * this.getPeso();
 	}
+	//Persistencia
+	public Mas50() {
+	}
 }

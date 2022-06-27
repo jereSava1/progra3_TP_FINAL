@@ -23,4 +23,10 @@ public class Jr extends DatosDeEmpleo {
 	public float calculaPuntaje(DatosDeEmpleo puesto) {
 		return puesto.match1() * this.getPeso();
 	}
+	
+	//Persistencia
+	
+	public Jr() {}
+	
+	
 }

@@ -10,6 +10,7 @@ import dto.TicketDTO;
 import dto.UsuarioPuntuadoDTO;
 import model.Agencia;
 import model.ticket.TicketBusquedaDeEmpleo;
+import model.ticket.TicketSimplificado;
 import model.usuario.Usuario;
 import model.usuario.UsuarioPuntuado;
 import negocio.RondaDeContrataciones;
@@ -66,20 +67,18 @@ public class ControladorInicioEmpleado implements ActionListener {
 			
 	    }else if(comando.equalsIgnoreCase("Modifica mi ticket")) {
 	    	
-	    	if( ticket!=null ) {
+	    	if( ticket != null ) {
 	    		this.vista.esconder();
 	    		ControladorModificarTicketEmpleado controladorModificarTicketEmpleado = ControladorModificarTicketEmpleado.getControladorModificarTicketEmpleado();
-	    		this.vista.success("Ticket", "Ticket modificado con exito");
 	    	}
 			else
 				this.vista.failure("Error", "Usted no tiene creado un ticket de busqueda de empleo");
 	    	
 	    }else if(comando.equalsIgnoreCase("Generar mi ticket")) {
 	    	
-	    	if( ticket == null) {
+	    	if( ticket == null ) {
 	    		this.vista.esconder();
 		    	ControladorAltaTicketEmpleado controladorAltaTicketEmpleado = ControladorAltaTicketEmpleado.get();
-		    	this.vista.success("Ticket", "Ticket generado con exito");
 	    	}
 	    	else{
 	    		this.vista.failure("Error", "Usted ya tiene un ticket de busqueda de empleo activo");
@@ -113,21 +112,32 @@ public class ControladorInicioEmpleado implements ActionListener {
 	    	}
 	    	
 	    }else if(comando.equalsIgnoreCase("VER RESULTADO")) {
-	    	if( RondaDeContrataciones.isActivada() ) {
+	    	if(  RondaDeContrataciones.isActivada() ) {
 	    		UsuarioPuntuadoDTO contratado = ticketDTO.getListaDeAsignaciones().stream().filter(UsuarioPuntuadoDTO::isContratado).findAny().orElse(null);
 	    		if( contratado != null ) {
-	    			this.vista.success("Has sido contratado por: " + contratado.getUsername(), "Resultado" );
+	    			this.vista.success( "Resultado", "Has sido contratado por: " + contratado.getUsername());
 	    		}else {
-	    			this.vista.success("No has sido contratado", "Resultado");
+	    			this.vista.success("Resultado", "No has sido contratado" );
 	    		}
 	    	}else{
-	    		this.vista.failure("Ronda de contrataciones inactiva", "Resultado");
+	    		this.vista.failure("Resultado", "Ronda de contrataciones inactiva" );
 	    	}
 	    	
 	    	
 	    }else if(comando.equalsIgnoreCase("CERRAR SESION")) {
 	    	this.vista.esconder();
 			ControladorLogin controladorLogin = ControladorLogin.getControladorLogin(true);
-	    }
+	    }else if(comando.equalsIgnoreCase("VER TICKETS")) {
+            
+            String userName = ControladorLogin.getControladorLogin(false).getLogueado().getNombreUsuario();
+
+            if( Agencia.getAgencia().estaAsignado(userName) ) {
+            	this.vista.failure( "Error", "Usted ya posee un Ticket Simplificado");
+            }else {
+            	this.vista.esconder();
+            	ControladorEleccionTicketSimplificado controladorEleccion = ControladorEleccionTicketSimplificado.getControladorEleccionTicketSimplificado();            	
+            }
+            
+        }
   }
 }	

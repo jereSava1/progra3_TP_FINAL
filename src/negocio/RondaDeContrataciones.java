@@ -56,7 +56,7 @@ public class RondaDeContrataciones {
 				}
 
 				if (busqueda.getEstadoTicket().getNombre() == EstadoTicket.ACTIVO
-						&& candidatosSeleccionados.stream().anyMatch(c -> c.getUsuario().equals(busqueda.getDueno()))) { // validamos
+						&& candidatosSeleccionados.stream().anyMatch(c -> c.getUsuario().getNombreUsuario().equalsIgnoreCase(busqueda.getDueno().getNombreUsuario()))) { // validamos
 																															// que
 																															// el
 																															// ticket
@@ -73,7 +73,7 @@ public class RondaDeContrataciones {
 					List<UsuarioPuntuado> empleadoresSeleccionados = busqueda.getListaDeAsignaciones().stream()
 							.filter(UsuarioPuntuado::isSeleccionado).collect(Collectors.toList());
 
-					if (empleadoresSeleccionados.stream().anyMatch(c -> c.getUsuario().equals(solicitud.getDueno()))) { // si
+					if (empleadoresSeleccionados.stream().anyMatch(c -> c.getUsuario().getNombreUsuario().equalsIgnoreCase(solicitud.getDueno().getNombreUsuario()))) { // si
 																														// el
 																														// empleado
 																														// tambien

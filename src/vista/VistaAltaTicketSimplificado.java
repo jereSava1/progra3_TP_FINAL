@@ -5,7 +5,8 @@ import vista.IVistaAltaTicketSimplificado;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dto.TicketSimplificadoRequest;
@@ -21,19 +22,38 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import javax.swing.JRadioButton;
 import java.awt.Color;
 
 public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTicketSimplificado,MouseListener{
 
 	private JPanel contentPane;
-	private ButtonGroup grupoTipo;
-	private ButtonGroup grupoLocacion;
+	private ButtonGroup grupoLocacion,grupoRubro;
 	private JButton btnVolver;
 	private JButton btnFinalizar;
 	private ActionListener actionListener;
 	private String tipoDeTrabajo;
 	private String locacion;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VistaAltaTicketSimplificado frame = new VistaAltaTicketSimplificado();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
 	public VistaAltaTicketSimplificado() {
 		setBackground(Color.WHITE);
 		setTitle("Ticket Simplificado");
@@ -63,22 +83,27 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		JRadioButton rdbtnSalud = new JRadioButton("Salud");
 		rdbtnSalud.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnSalud);
-		rdbtnSalud.addMouseListener(this);
+		rdbtnSalud.setActionCommand("Salud");
 		
 		JRadioButton rdbtnComercioLocal = new JRadioButton("Comercio Local");
+		rdbtnComercioLocal.setActionCommand("Comercio_Local");
 		rdbtnComercioLocal.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnComercioLocal);
-		rdbtnComercioLocal.addMouseListener(this);
 		
-		JRadioButton rdbtnComercioInternacional = new JRadioButton("ComercioInternacional");
+		JRadioButton rdbtnComercioInternacional = new JRadioButton("Comercio Internacional");
+		rdbtnComercioInternacional.setActionCommand("Comercio_Internacional");
 		rdbtnComercioInternacional.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_2.add(rdbtnComercioInternacional);
+		
+		this.grupoRubro = new ButtonGroup();
+		this.grupoRubro.add(rdbtnComercioInternacional);
+		this.grupoRubro.add(rdbtnComercioLocal);
+		this.grupoRubro.add(rdbtnSalud);
 		rdbtnComercioInternacional.addMouseListener(this);
+		rdbtnComercioLocal.addMouseListener(this);
+		rdbtnSalud.addMouseListener(this);
 		
-		this.grupoTipo.add(rdbtnComercioInternacional);
-		this.grupoTipo.add(rdbtnComercioLocal);
-		this.grupoTipo.add(rdbtnSalud);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
@@ -92,23 +117,27 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 		panel_4.setLayout(new GridLayout(3, 0, 0, 0));
 		
 		JRadioButton rdbtnHomeOffice = new JRadioButton("Home Office");
+		rdbtnHomeOffice.setActionCommand("HomeOffice");
 		rdbtnHomeOffice.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnHomeOffice);
-		rdbtnHomeOffice.addMouseListener(this);
 		
 		JRadioButton rdbtnPresencial = new JRadioButton("Presencial");
+		rdbtnPresencial.setActionCommand("Presencial");
 		rdbtnPresencial.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnPresencial);
-		rdbtnPresencial.addMouseListener(this);
 		
 		JRadioButton rdbtnAmbas = new JRadioButton("Ambas");
+		rdbtnAmbas.setActionCommand("indistinto");
 		rdbtnAmbas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_4.add(rdbtnAmbas);
-		rdbtnAmbas.addMouseListener(this);
 		
+		this.grupoLocacion = new ButtonGroup();
 		this.grupoLocacion.add(rdbtnAmbas);
 		this.grupoLocacion.add(rdbtnPresencial);
 		this.grupoLocacion.add(rdbtnHomeOffice);
+		rdbtnHomeOffice.addMouseListener(this);
+		rdbtnPresencial.addMouseListener(this);
+		rdbtnAmbas.addMouseListener(this);
 		
 		
 		JPanel panel_5 = new JPanel();
@@ -150,12 +179,7 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	public void limpiaCampos() {
 		// TODO Auto-generated method stub
 		this.grupoLocacion.clearSelection();
-		this.grupoTipo.clearSelection();
-	}
-
-	@Override
-	public void failure(String titulo, String mensaje) {
-		JOptionPane.showMessageDialog(this, titulo	, mensaje, JOptionPane.ERROR_MESSAGE);
+		this.grupoRubro.clearSelection();
 	}
 
 	@Override
@@ -173,11 +197,11 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-	if(this.grupoTipo.getSelection() != null)
-		this.tipoDeTrabajo = this.grupoTipo.getSelection().getActionCommand();
+	if(this.grupoRubro.getSelection() != null)
+		this.tipoDeTrabajo = this.grupoRubro.getSelection().getActionCommand();
 	if(this.grupoLocacion.getSelection()!=null)
 		this.locacion = this.grupoLocacion.getSelection().getActionCommand();
-	if(this.grupoTipo.getSelection() != null && this.grupoLocacion.getSelection()!=null);
+	if(this.grupoRubro.getSelection()!=null && this.grupoLocacion.getSelection()!=null)
 		 this.btnFinalizar.setEnabled(true);
 	}
 
@@ -196,14 +220,25 @@ public class VistaAltaTicketSimplificado extends JFrame implements IVistaAltaTic
 	public TicketSimplificadoRequest getTicketSimplificado() {
 		
 		TicketSimplificadoRequest req=null;
+		System.out.println(this.grupoRubro.getSelection().getActionCommand());
+		System.out.println(this.grupoLocacion.getSelection().getActionCommand());
 		try {
-			req = new TicketSimplificadoRequest(this.locacion,this.tipoDeTrabajo);
+			req = new TicketSimplificadoRequest(this.grupoLocacion.getSelection().getActionCommand(),this.grupoRubro.getSelection().getActionCommand());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return req;
 	}
 
+	@Override
+	public void failure(String title, String message) {
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void success(String title, String message) {
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
+	}
 	
 	
 

@@ -19,12 +19,12 @@ public class TicketSimplificadoRequest {
 
 	private String nombreUsuario;
 	private DatosDeEmpleo locacion;
-	private DatosDeEmpleo tipoDeEmpleo;
+	private Rubro tipoDeEmpleo;
 
 	public TicketSimplificadoRequest(String locacion, String tipoDeTrabajo) {
 		try {
 			this.locacion = LocacionFactory.getLocacion(locacion, 1);
-			this.tipoDeEmpleo = TipoDePuestoFactory.getTipoDePuesto(tipoDeTrabajo, 1);
+			this.tipoDeEmpleo = Rubro.valueOf(tipoDeTrabajo.toUpperCase());
 		} catch (Exception e){}
 	}
 
@@ -36,11 +36,11 @@ public class TicketSimplificadoRequest {
 		this.locacion = locacion;
 	}
 
-	public DatosDeEmpleo getTipoDeEmpleo() {
+	public Rubro getTipoDeEmpleo() {
 		return tipoDeEmpleo;
 	}
 
-	public void setTipoDeEmpleo(DatosDeEmpleo tipoDeEmpleo) {
+	public void setTipoDeEmpleo(Rubro tipoDeEmpleo) {
 		this.tipoDeEmpleo = tipoDeEmpleo;
 	}
 }

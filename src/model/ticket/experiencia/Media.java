@@ -3,6 +3,11 @@ package model.ticket.experiencia;
 import model.ticket.DatosDeEmpleo;
 
 public class Media extends DatosDeEmpleo {
+	
+	public Media() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Media(int peso) {
 		super("MEDIA", peso);
 	}

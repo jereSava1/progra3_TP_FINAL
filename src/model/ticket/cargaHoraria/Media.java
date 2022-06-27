@@ -3,6 +3,11 @@ package model.ticket.cargaHoraria;
 import model.ticket.DatosDeEmpleo;
 
 public class Media extends DatosDeEmpleo {
+	
+	public Media() {
+		
+	}
+	
 	public Media(int peso) {
 		super("MEDIA", peso);
 	}

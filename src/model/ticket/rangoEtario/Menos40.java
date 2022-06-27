@@ -22,4 +22,6 @@ public class Menos40 extends DatosDeEmpleo {
 	public float calculaPuntaje(DatosDeEmpleo rango) {
 		return rango.match1() * this.getPeso();
 	}
+	//Persistencia
+	public Menos40() {}
 }

@@ -23,4 +23,7 @@ public class Sr extends DatosDeEmpleo {
 	public float calculaPuntaje(DatosDeEmpleo puesto) {
 		return puesto.match2() * this.getPeso();
 	}
+	//Persistencia
+	public Sr() {}
+	
 }

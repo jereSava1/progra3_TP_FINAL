@@ -8,13 +8,15 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 public class VistaListaTicketSimplificado extends JFrame implements KeyListener, IListaTicketSimplificado {
 	private JButton btnVolver;
 	private DefaultListModel<TicketSimplificadoDTO> modelLista;
-	private JList<TicketSimplificadoDTO> list;
+	private JList list;
 
 	public VistaListaTicketSimplificado() {
+		setTitle("Lista Tickets Simplificados");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 442, 467);
 
@@ -22,14 +24,17 @@ public class VistaListaTicketSimplificado extends JFrame implements KeyListener,
 		getContentPane().setLayout(null);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(10, 409, 61, 21);
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnVolver.setBounds(10, 374, 98, 43);
 		btnVolver.setActionCommand("VOLVER");
 		getContentPane().add(btnVolver);
 		
-		list = new JList<TicketSimplificadoDTO>();
-		list.setModel(modelLista);
-		list.setBounds(10, 10, 408, 389);
-		getContentPane().add(list);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 10, 406, 353);
+		getContentPane().add(scrollPane);
+		
+		list = new JList();
+		scrollPane.setViewportView(list);
 		
 	}
 

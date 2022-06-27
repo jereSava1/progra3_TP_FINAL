@@ -19,25 +19,9 @@ import types.Resultado;
 public class Ticket {
 	private Usuario dueno;
 	private FormularioBusqueda formularioDeBusqueda;
-	private LocalDate fechaDeAlta; // LocalDate -> Represents a date (year, month, day)
-
-	public void setDueno(Usuario dueno) {
-		this.dueno = dueno;
-	}
-
-	public void setFechaDeAlta(LocalDate fechaDeAlta) {
-		this.fechaDeAlta = fechaDeAlta;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	private String fechaDeAlta; // LocalDate -> Represents a date (year, month, day)
 	private String id;
+	
 
 	/**
 	 * - Activo - Al momento del alta - Suspendido - Se puede volver a reactivar -
@@ -68,16 +52,21 @@ public class Ticket {
 	private Resultado resultado;
 	private Float comisionAPagar;
 
+	
 	public Ticket(FormularioBusqueda formularioDeBusqueda, Usuario usuario) {
 		this.formularioDeBusqueda = formularioDeBusqueda;
-		this.fechaDeAlta = LocalDate.now();
+		this.fechaDeAlta = LocalDate.now().toString();
 		this.estadoTicket = new ActivoState(this);
 		this.dueno = usuario;
 		this.resultado = Resultado.INCONCLUSO;
 		this.comisionAPagar = 0F;
 		this.id	= UUID.randomUUID().toString();
 	}
-
+	
+	public Ticket() {
+			
+	}
+	
 	@Override
 	public String toString() {
 		return "Ticket [dueno= " + dueno.getNombre() + ", formularioDeBusqueda= " + formularioDeBusqueda.toString()
@@ -85,6 +74,22 @@ public class Ticket {
 	}
 
 	// GETTERS Y SETTERS
+	
+	public void setDueno(Usuario dueno) {
+		this.dueno = dueno;
+	}
+
+	public void setFechaDeAlta(String fechaDeAlta) {
+		this.fechaDeAlta = fechaDeAlta;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public void setFormularioDeBusqueda(FormularioBusqueda formularioDeBusqueda) {
 		this.formularioDeBusqueda = formularioDeBusqueda;
 	}
@@ -121,7 +126,7 @@ public class Ticket {
 		return formularioDeBusqueda;
 	}
 
-	public LocalDate getFechaDeAlta() {
+	public String getFechaDeAlta() {
 		return fechaDeAlta;
 	}
 

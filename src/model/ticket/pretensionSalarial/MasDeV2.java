@@ -4,6 +4,10 @@ import model.ticket.DatosDeEmpleo;
 
 public class MasDeV2 extends PretensionSalarial {
 	
+	public MasDeV2() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public MasDeV2(int peso) {
 		super("MAS_DE_V2", peso);
 

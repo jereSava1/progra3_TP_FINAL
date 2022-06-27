@@ -2,6 +2,7 @@ package model;
 
 import dto.*;
 import exception.ContrasenaIncorrectaException;
+import exception.NoDuenoDeTicketException;
 import exception.UsuarioIncorrectoException;
 import model.ticket.*;
 import model.usuario.*;
@@ -51,11 +52,10 @@ public class Agencia extends Observable {
 	 * Suma total de comisiones adquirida por la Agencia
 	 */
 	private Float comisiones;
-	private final List<TicketSimplificado> bolsaDeTrabajo;
-
-	public void setComisiones(Float comisiones) {
-		this.comisiones = comisiones;
-	}
+	
+	private List<TicketSimplificado> bolsaDeTrabajo;
+	
+	private Set<TicketSimplificado> ticketSimplificadosAsignados;
 
 	static private Agencia singleton = null;
 	
@@ -93,11 +93,51 @@ public class Agencia extends Observable {
 			this.administrador = (Administrador) persistencia.lee();
 			persistencia.cerrarInput();
 		} catch (Exception err) {
+			this.administrador = null;
 		}
-		this.busquedas = new ArrayList<>();
-		this.solicitudes = new ArrayList<>();
-		this.bolsaDeTrabajo = new ArrayList<>();
-		this.administrador = null;
+		
+		try { // cargar los datos de la agencia desde el archivo XML
+			persistencia.abrirInput("ticketBusquedaDeEmpleo.xml");
+			this.busquedas = (List<TicketBusquedaDeEmpleo>) persistencia.lee();
+			if (busquedas == null) {
+				busquedas = new ArrayList<>();
+			}
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+			err.printStackTrace();
+			this.busquedas = new ArrayList<>();
+		}
+		
+		try { // cargar los datos de la agencia desde el archivo XML
+			persistencia.abrirInput("ticketBusquedaDeEmpleados.xml");
+			this.solicitudes = (List<TicketBusquedaDeEmpleado>) persistencia.lee();
+			if (solicitudes == null) {
+				solicitudes = new ArrayList<>();
+			}
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+			this.solicitudes = new ArrayList<>();
+		}
+		
+		try {
+			persistencia.abrirInput("ticketSimplificadosAsignados.xml");
+			this.ticketSimplificadosAsignados = (HashSet<TicketSimplificado>) persistencia.lee();
+			if (ticketSimplificadosAsignados == null) {
+				ticketSimplificadosAsignados = new HashSet<>();
+			}
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+			this.ticketSimplificadosAsignados = new HashSet<>();
+		}
+		
+		try {
+			persistencia.abrirInput("bolsaDeTrabajo.xml");
+			this.bolsaDeTrabajo = (List<TicketSimplificado>) persistencia.lee();
+			persistencia.cerrarInput();
+		} catch (Exception err) {
+			this.bolsaDeTrabajo = new ArrayList<>();
+		}
+		
 		this.comisiones = 0f;
 	}
 	public static Agencia getAgencia() {
@@ -372,6 +412,14 @@ public class Agencia extends Observable {
 		Administrador newAdmin = new Administrador(req.getNombreUsuario(), req.getContrasena(), req.getID(), req.getEmail());
 		this.administrador = newAdmin;
 		System.out.println("Se registro el admin: " + newAdmin.getNombreUsuario());
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("administrador.xml");
+			persistencia.escribir(this.administrador);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+		}
 	}
 
 	public void registrarEmpleador(RegistroRequestEmpleador req) {
@@ -387,7 +435,6 @@ public class Agencia extends Observable {
 			persistencia.escribir(this.empleadores);
 			persistencia.cerrarOutput();
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 		System.out.println("Se registro el empleador: " + newEmpleador.getNombre());
@@ -396,12 +443,33 @@ public class Agencia extends Observable {
 	public void registrarEmpleado(RegistroRequestEmpleado req){
 		Empleado newEmpleado = new Empleado(req.getNombreUsuario(),req.getContrasena(),req.getNombre(),req.getEdad(),req.getEmail(),req.getTelefono());
 		this.empleados.add(newEmpleado);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("empleados.xml");
+			persistencia.escribir(this.empleados);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println("Se registro el empleado: " + newEmpleado.getNombre());
 
 	}
 	
 	public void addTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
 		this.busquedas.add(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("ticketBusquedaDeEmpleo.xml");
+			persistencia.escribir(this.busquedas);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
 	}
 
 	public void crearTicketBusquedaDeEmpleo(TicketDeEmpleadoRequest request, String username) {
@@ -418,11 +486,21 @@ public class Agencia extends Observable {
 		//Dimos de alta el ticket del empleado en la agencia
 	 	TicketBusquedaDeEmpleo ticket =	dueno.altaTicket(formulario);
 
-		this.busquedas.add(ticket);
+		this.addTicketBusquedaDeEmpleo(ticket);
+	 	
 	}
 
 	public void addTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
 		this.solicitudes.add(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("ticketBusquedaDeEmpleados.xml");
+			persistencia.escribir(this.solicitudes);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -441,17 +519,73 @@ public class Agencia extends Observable {
 	
 	public void removeTicketBusquedaDeEmpleo(TicketBusquedaDeEmpleo ticket) {
 		this.busquedas.remove(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("ticketBusquedaDeEmpleo.xml");
+			persistencia.escribir(this.busquedas);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void removeTicketBusquedaDeEmpleado(TicketBusquedaDeEmpleado ticket) {
 		this.solicitudes.remove(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("ticketBusquedaDeEmpleados.xml");
+			persistencia.escribir(this.solicitudes);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * Modifica el ticket de un usurio, permite cambiar el formulario contenido en el.
+	 * 
+	 * @param ticket        ticket al que se le desea aplicar la modificacion
+	 * @param formulario    nuevo formulario, reemplaza al anterior
+	 */
+	public void modificaTicket(Ticket ticketSel,FormularioBusqueda formulario) {
+		ticketSel.setFormularioDeBusqueda(formulario);
+		if( ticketSel instanceof TicketBusquedaDeEmpleado ) {
+			((TicketBusquedaDeEmpleado) ticketSel).setEmpleadosNecesitados(formulario.getCantEmpleadosSolicitados());	
+			
+			try {
+				Ipersistencia persistencia = new PersistenciaXML();
+				persistencia.abrirOutput("ticketBusquedaDeEmpleados.xml");
+				persistencia.escribir(this.solicitudes);
+				persistencia.cerrarOutput();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else {
+			
+			try {
+				Ipersistencia persistencia = new PersistenciaXML();
+				persistencia.abrirOutput("ticketBusquedaDeEmpleo.xml");
+				persistencia.escribir(this.busquedas);
+				persistencia.cerrarOutput();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
 	}
 	
 	public TicketBusquedaDeEmpleo encuentraTicketDeEmpleo(Usuario usuario) {
 		
 		List <TicketBusquedaDeEmpleo> busquedas = this.busquedas;
 		
-		return busquedas.stream().filter( b -> b.getDueno().equals(usuario) ).findFirst().orElse(null);
+		return busquedas.stream().filter( b -> b.getDueno().getNombreUsuario().equalsIgnoreCase(usuario.getNombreUsuario()) ).findFirst().orElse(null);
 
 	}
 
@@ -479,6 +613,72 @@ public class Agencia extends Observable {
 			result = this.solicitudes.stream().filter(t -> t.getId().equals(ticketId)).findFirst();
 			return result.orElse(null);
 		}
+	}
+	
+	public Set<TicketSimplificado> getTicketSimplificadosAsignadosAEmpleados() {
+		return getTicketSimplificadosAsignadosAEmpleados();
+	}
+
+	public void setTicketSimplificadosAsignadosAEmpleados(Set<TicketSimplificado> ticketSimplificadosAsignadosAEmpleados) {
+		this.ticketSimplificadosAsignados = ticketSimplificadosAsignadosAEmpleados;
+	}
+
+	public void setComisiones(Float comisiones) {
+		this.comisiones = comisiones;
+	}
+
+	public void addTicketSimplificadoAsignado(TicketSimplificado ticket) {
+		this.ticketSimplificadosAsignados.add(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("ticketSimplificadosAsignados.xml");
+			persistencia.escribir(this.ticketSimplificadosAsignados);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void addTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeTrabajo.add(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("bolsaDeTrabajo.xml");
+			persistencia.escribir(this.bolsaDeTrabajo);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void removeTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeTrabajo.remove(ticket);
+		
+		try {
+			Ipersistencia persistencia = new PersistenciaXML();
+			persistencia.abrirOutput("bolsaDeTrabajo.xml");
+			persistencia.escribir(this.bolsaDeTrabajo);
+			persistencia.cerrarOutput();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public boolean estaAsignado(String username) {
+		
+		TicketSimplificado ticket = this.ticketSimplificadosAsignados.stream().filter(t -> t.getAsignacion().getNombreUsuario().equalsIgnoreCase(username)).findAny().orElse(null);
+			
+		if( ticket == null )
+			return false;
+		else
+			return true;
+		
+		
 	}
 
 }

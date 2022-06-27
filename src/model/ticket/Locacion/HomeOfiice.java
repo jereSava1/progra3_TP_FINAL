@@ -3,6 +3,11 @@ package model.ticket.Locacion;
 import model.ticket.DatosDeEmpleo;
 
 public class HomeOfiice extends DatosDeEmpleo {
+	
+	public HomeOfiice() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public HomeOfiice(int peso) {
 		super("HOME_OFFICE", peso);
 	}

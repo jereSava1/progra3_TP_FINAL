@@ -4,6 +4,10 @@ import model.ticket.DatosDeEmpleo;
 
 public class MenosV1 extends PretensionSalarial {
 	
+	public MenosV1() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public MenosV1(int peso) {
 		super("MENOS_V1", peso);
 

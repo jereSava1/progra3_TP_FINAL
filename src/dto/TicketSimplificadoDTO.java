@@ -2,10 +2,11 @@ package dto;
 
 import model.ticket.DatosDeEmpleo;
 import model.ticket.TicketSimplificado;
+import types.Rubro;
 
 public class TicketSimplificadoDTO {
   private DatosDeEmpleo locacion;
-  private DatosDeEmpleo rubro;
+  private Rubro rubro;
   private String empleadoAsignado;
 
   public TicketSimplificadoDTO(){}
@@ -26,11 +27,11 @@ public class TicketSimplificadoDTO {
     this.locacion = locacion;
   }
 
-  public DatosDeEmpleo getRubro() {
+  public Rubro getRubro() {
     return rubro;
   }
 
-  public void setRubro(DatosDeEmpleo rubro) {
+  public void setRubro(Rubro rubro) {
     this.rubro = rubro;
   }
 
@@ -41,4 +42,14 @@ public class TicketSimplificadoDTO {
   public void setEmpleadoAsignado(String empleadoAsignado) {
     this.empleadoAsignado = empleadoAsignado;
   }
+
+@Override
+public String toString() {
+	return "Locacion= " + locacion.getValor() + 
+		   "| Rubro =" + rubro + 
+		   "| EmpleadoAsignado =" + empleadoAsignado;
+}
+  
+  
+  
 }

@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
- <object class="java.util.LinkedList"/>
+ <object class="java.util.LinkedList">
+  <void method="add">
+   <object class="dto.PersistenciaContrataciones">
+    <void property="comisionEmpleado">
+     <float>1800.0</float>
+    </void>
+    <void property="comisionEmpleador">
+     <float>2025.0</float>
+    </void>
+    <void property="idTicket">
+     <string>69e3b787-fdda-4a05-b1f5-78ccf26d9fb6</string>
+    </void>
+    <void property="nombreEmpleado">
+     <string>Bautista</string>
+    </void>
+    <void property="nombreEmpleador">
+     <string>Camuzzi</string>
+    </void>
+   </object>
+  </void>
+ </object>
 </java>

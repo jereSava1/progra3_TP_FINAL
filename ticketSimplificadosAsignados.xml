@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="16.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.HashSet">
+  <void method="add">
+   <object class="model.ticket.TicketSimplificado">
+    <void property="asignacion">
+     <object class="model.usuario.Empleado">
+      <void property="contrasena">
+       <string>12345</string>
+      </void>
+      <void property="edad">
+       <int>21</int>
+      </void>
+      <void property="email">
+       <string>bautipriano@gmail.com</string>
+      </void>
+      <void property="name">
+       <string>Thread-0</string>
+      </void>
+      <void property="nombre">
+       <string>Bautista</string>
+      </void>
+      <void property="nombreUsuario">
+       <string>Tibau</string>
+      </void>
+      <void property="priority">
+       <int>5</int>
+      </void>
+      <void property="telefono">
+       <string>2235712000</string>
+      </void>
+     </object>
+    </void>
+    <void property="dueno">
+     <object class="model.usuario.Empleador">
+      <void property="contrasena">
+       <string>12345</string>
+      </void>
+      <void property="name">
+       <string>Thread-1</string>
+      </void>
+      <void property="nombre">
+       <string>Camuzzi</string>
+      </void>
+      <void property="nombreUsuario">
+       <string>Camuzzi</string>
+      </void>
+      <void property="priority">
+       <int>5</int>
+      </void>
+      <void property="rubro">
+       <object class="java.lang.Enum" method="valueOf">
+        <class>types.Rubro</class>
+        <string>COMERCIO_LOCAL</string>
+       </object>
+      </void>
+      <void property="ticketsSimplificadosSinAsignar">
+       <int>2</int>
+      </void>
+      <void property="tipoPersona">
+       <object class="java.lang.Enum" method="valueOf">
+        <class>types.TipoPersona</class>
+        <string>JURIDICA</string>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="esPermanente">
+     <boolean>true</boolean>
+    </void>
+    <void property="locacion">
+     <object class="model.ticket.Locacion.Indistinto">
+      <void property="peso">
+       <int>1</int>
+      </void>
+      <void property="valor">
+       <string>INDISTINTO</string>
+      </void>
+     </object>
+    </void>
+    <void property="tipoDeEmpleo">
+     <object class="java.lang.Enum" method="valueOf">
+      <class>types.Rubro</class>
+      <string>SALUD</string>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

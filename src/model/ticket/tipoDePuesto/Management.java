@@ -23,4 +23,8 @@ public class Management extends DatosDeEmpleo {
 	public float calculaPuntaje(DatosDeEmpleo puesto) {
 		return puesto.match3() * this.getPeso();
 	}
+	
+	//Persistencia 
+	
+	public Management() {}
 }

@@ -8,12 +8,28 @@ public class SuspendidoState implements IState {
     private Ticket ticket;
     private EstadoTicket nombre;
 
+    public SuspendidoState() {
+    	
+    }
+    
     public SuspendidoState(Ticket ticket) {
         this.ticket = ticket;
         nombre = EstadoTicket.SUSPENDIDO;
     }
 
-    @Override
+    public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+	public void setNombre(EstadoTicket nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
     public void activar() {
         ticket.setEstadoTicket(new ActivoState(ticket));
     }

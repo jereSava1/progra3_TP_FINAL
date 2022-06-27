@@ -10,95 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TicketDTO {
-  public LocalDate getFechaDeAlta() {
-    return fechaDeAlta;
-  }
-
-  public void setFechaDeAlta(LocalDate fechaDeAlta) {
-    this.fechaDeAlta = fechaDeAlta;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Resultado getResultado() {
-    return resultado;
-  }
-
-  public void setResultado(Resultado resultado) {
-    this.resultado = resultado;
-  }
-
-  public Float getComsionAPagar() {
-    return comsionAPagar;
-  }
-
-  public void setComsionAPagar(Float comsionAPagar) {
-    this.comsionAPagar = comsionAPagar;
-  }
-
-  public DatosDeEmpleo getPretensionSalarial() {
-    return pretensionSalarial;
-  }
-
-  public void setPretensionSalarial(DatosDeEmpleo pretensionSalarial) {
-    this.pretensionSalarial = pretensionSalarial;
-  }
-
-  public DatosDeEmpleo getExperiencia() {
-    return experiencia;
-  }
-
-  public void setExperiencia(DatosDeEmpleo experiencia) {
-    this.experiencia = experiencia;
-  }
-
-  public DatosDeEmpleo getTipoDePuesto() {
-    return tipoDePuesto;
-  }
-
-  public void setTipoDePuesto(DatosDeEmpleo tipoDePuesto) {
-    this.tipoDePuesto = tipoDePuesto;
-  }
-
-  public DatosDeEmpleo getRangoEtario() {
-    return rangoEtario;
-  }
-
-  public void setRangoEtario(DatosDeEmpleo rangoEtario) {
-    this.rangoEtario = rangoEtario;
-  }
-
-  public DatosDeEmpleo getCargaHoraria() {
-    return cargaHoraria;
-  }
-
-  public void setCargaHoraria(DatosDeEmpleo cargaHoraria) {
-    this.cargaHoraria = cargaHoraria;
-  }
-
-  public DatosDeEmpleo getEstudios() {
-    return estudios;
-  }
-
-  public void setEstudios(DatosDeEmpleo estudios) {
-    this.estudios = estudios;
-  }
-
-  public String getEstado() {
-    return estado;
-  }
-
-  public void setEstado(String estado) {
-    this.estado = estado;
-  }
-
-  private LocalDate fechaDeAlta;
+  
+  private String fechaDeAlta;
   private String id;
   private Resultado resultado;
   private Float comsionAPagar;
@@ -134,6 +47,95 @@ public class TicketDTO {
     this.listaDeAsignaciones = (ticket.getListaDeAsignaciones() != null) ? ticket.getListaDeAsignaciones().stream().map(UsuarioPuntuadoDTO::of).collect(Collectors.toList()) : null;
   }
 
+	
+	public String getFechaDeAlta() {
+  return fechaDeAlta;
+}
+
+public void setFechaDeAlta(String fechaDeAlta) {
+  this.fechaDeAlta = fechaDeAlta;
+}
+
+public String getId() {
+  return id;
+}
+
+public void setId(String id) {
+  this.id = id;
+}
+
+public Resultado getResultado() {
+  return resultado;
+}
+
+public void setResultado(Resultado resultado) {
+  this.resultado = resultado;
+}
+
+public Float getComsionAPagar() {
+  return comsionAPagar;
+}
+
+public void setComsionAPagar(Float comsionAPagar) {
+  this.comsionAPagar = comsionAPagar;
+}
+
+public DatosDeEmpleo getPretensionSalarial() {
+  return pretensionSalarial;
+}
+
+public void setPretensionSalarial(DatosDeEmpleo pretensionSalarial) {
+  this.pretensionSalarial = pretensionSalarial;
+}
+
+public DatosDeEmpleo getExperiencia() {
+  return experiencia;
+}
+
+public void setExperiencia(DatosDeEmpleo experiencia) {
+  this.experiencia = experiencia;
+}
+
+public DatosDeEmpleo getTipoDePuesto() {
+  return tipoDePuesto;
+}
+
+public void setTipoDePuesto(DatosDeEmpleo tipoDePuesto) {
+  this.tipoDePuesto = tipoDePuesto;
+}
+
+public DatosDeEmpleo getRangoEtario() {
+  return rangoEtario;
+}
+
+public void setRangoEtario(DatosDeEmpleo rangoEtario) {
+  this.rangoEtario = rangoEtario;
+}
+
+public DatosDeEmpleo getCargaHoraria() {
+  return cargaHoraria;
+}
+
+public void setCargaHoraria(DatosDeEmpleo cargaHoraria) {
+  this.cargaHoraria = cargaHoraria;
+}
+
+public DatosDeEmpleo getEstudios() {
+  return estudios;
+}
+
+public void setEstudios(DatosDeEmpleo estudios) {
+  this.estudios = estudios;
+}
+
+public String getEstado() {
+  return estado;
+}
+
+public void setEstado(String estado) {
+  this.estado = estado;
+}
+  
 	@Override
 	public String toString() {
 		return "|  FechaDeAlta = " + fechaDeAlta +

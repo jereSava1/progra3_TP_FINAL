@@ -4,6 +4,10 @@ import model.ticket.DatosDeEmpleo;
 
 public class Primario extends DatosDeEmpleo {
 
+	public Primario() {
+		
+	}
+	
 	public Primario(int peso) {
 		super("PRIMARIO", peso);
 	}

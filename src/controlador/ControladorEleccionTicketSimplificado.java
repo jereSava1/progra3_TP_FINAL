@@ -66,7 +66,12 @@ public class ControladorEleccionTicketSimplificado implements ActionListener{
 					this.vista.failure(exception.getMessage(), "ERROR");
 				}
 			}
-			this.vista.success("Se guardo su ticket con exito!", "Asignacion de Tickets Simplificados");
+			if( ticket.getAsignacion() != null) {
+				Agencia.getAgencia().addTicketSimplificadoAsignado(ticket);
+				this.vista.success("Se guardo su ticket con exito!", "Asignacion de Tickets Simplificados");
+			}
+			else
+				this.vista.failure("No coincidio la locacion", "Error");
 			this.vista.esconder();
 			ControladorInicioEmpleado CEmpleado = ControladorInicioEmpleado.getControladorInicioEmpleado(true);
 			this.vista.limpiaCampos();

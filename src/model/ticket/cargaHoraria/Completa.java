@@ -3,6 +3,11 @@ package model.ticket.cargaHoraria;
 import model.ticket.DatosDeEmpleo;
 
 public class Completa extends DatosDeEmpleo {
+	
+	public Completa() {
+		
+	}
+	
 	public Completa(int peso) {
 		super("COMPLETA", peso);
 	}

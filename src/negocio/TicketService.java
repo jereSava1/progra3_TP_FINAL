@@ -16,6 +16,8 @@ import model.usuario.Empleado;
 import model.usuario.Empleador;
 import model.usuario.Usuario;
 import model.usuario.UsuarioPuntuado;
+import persistencia.Ipersistencia;
+import persistencia.PersistenciaXML;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,12 +52,10 @@ public class TicketService {
               request.getExperiencia(), request.getHorario(),
               request.getPuesto(), request.getEstudios(),
               request.getRemuneracion());
-      try {
-        empleado.modificaTicket(ticket, formulario);
+
+        Agencia.getAgencia().modificaTicket(ticket, formulario);
         System.out.println("Ticket modificado: " + ticket.getId());
-      } catch (NoDuenoDeTicketException e1) {
-        //No se ejecuta nunca
-      }
+
     }
   }
   
@@ -74,11 +74,8 @@ public class TicketService {
 		              request.getPuesto(), request.getEstudios(),
 		              request.getRemuneracion(), request.getCantEmpleados()
 		              );
-	      try {
-	        empleador.modificaTicket(ticketSel, formulario);
+	    	Agencia.getAgencia().modificaTicket(ticketSel, formulario);
 	        System.out.println("Ticket modificado: " + ticketSel.getId());
-	      } catch (NoDuenoDeTicketException e1) {}
-	    
 	    }
 	  }
 
@@ -92,7 +89,7 @@ public class TicketService {
       Empleador empleador = (Empleador) ticket.getDueno();
 
       empleador.bajaTicket(ticket);
-      agencia.getSolicitudes().remove(ticket);
+      agencia.removeTicketBusquedaDeEmpleado(ticket);
       System.out.println("Ticket borrado: " + ticket.getId());
     }
   }
