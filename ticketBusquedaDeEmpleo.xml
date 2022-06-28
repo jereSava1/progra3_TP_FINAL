@@ -12,25 +12,22 @@
        <string>12345</string>
       </void>
       <void property="edad">
-       <int>21</int>
+       <int>20</int>
       </void>
       <void property="email">
-       <string>bautipriano@gmail.com</string>
-      </void>
-      <void property="name">
-       <string>Thread-0</string>
+       <string>empleado1@gmail.com</string>
       </void>
       <void property="nombre">
-       <string>Bautista</string>
+       <string>Empleado1</string>
       </void>
       <void property="nombreUsuario">
-       <string>Tibau</string>
+       <string>Empleado1</string>
       </void>
       <void property="priority">
        <int>5</int>
       </void>
       <void property="telefono">
-       <string>2235712000</string>
+       <string>42231</string>
       </void>
      </object>
     </void>
@@ -53,29 +50,29 @@
     <void property="formularioDeBusqueda">
      <object class="model.ticket.FormularioBusqueda">
       <void property="cargaHoraria">
-       <object class="model.ticket.cargaHoraria.Extendida">
+       <object class="model.ticket.cargaHoraria.Completa">
         <void property="peso">
-         <int>1</int>
+         <int>8</int>
         </void>
         <void property="valor">
-         <string>EXTENDIDA</string>
+         <string>COMPLETA</string>
         </void>
        </object>
       </void>
       <void property="estudios">
-       <object class="model.ticket.estudios.Secundario">
+       <object class="model.ticket.estudios.Primario">
         <void property="peso">
-         <int>1</int>
+         <int>2</int>
         </void>
         <void property="valor">
-         <string>SECUNDARIO</string>
+         <string>PRIMARIO</string>
         </void>
        </object>
       </void>
       <void property="experienciaPrevia">
        <object class="model.ticket.experiencia.Media">
         <void property="peso">
-         <int>1</int>
+         <int>4</int>
         </void>
         <void property="valor">
          <string>MEDIA</string>
@@ -93,29 +90,29 @@
        </object>
       </void>
       <void property="pretensionSalarial">
-       <object class="model.ticket.pretensionSalarial.EntreV1YV2">
+       <object class="model.ticket.pretensionSalarial.MasDeV2">
         <void property="peso">
-         <int>1</int>
+         <int>10</int>
         </void>
         <void property="valor">
-         <string>ENTRE_V1_Y_V2</string>
+         <string>MAS_DE_V2</string>
         </void>
        </object>
       </void>
       <void property="rangoEtario">
-       <object class="model.ticket.rangoEtario.Mas50">
+       <object class="model.ticket.rangoEtario.Menos40">
         <void property="peso">
-         <int>1</int>
+         <int>5</int>
         </void>
         <void property="valor">
-         <string>MAS_50</string>
+         <string>MENOS_40</string>
         </void>
        </object>
       </void>
       <void property="tipoDePuesto">
        <object class="model.ticket.tipoDePuesto.Sr">
         <void property="peso">
-         <int>1</int>
+         <int>7</int>
         </void>
         <void property="valor">
          <string>SR</string>
@@ -125,7 +122,7 @@
      </object>
     </void>
     <void property="id">
-     <string>104bce44-f03f-4c9c-b89b-3fcc9fec0300</string>
+     <string>0e83ba59-c88e-4720-abb4-afbbb9d49f73</string>
     </void>
     <void property="resultado">
      <object class="java.lang.Enum" id="Resultado0" method="valueOf">
@@ -146,25 +143,25 @@
        <string>12345</string>
       </void>
       <void property="edad">
-       <int>23</int>
+       <int>21</int>
       </void>
       <void property="email">
-       <string>juanito@gmail.com</string>
+       <string>empleado2@gmail.com</string>
       </void>
       <void property="name">
-       <string>Thread-10</string>
+       <string>Thread-8</string>
       </void>
       <void property="nombre">
-       <string>Juanse</string>
+       <string>Empleado2</string>
       </void>
       <void property="nombreUsuario">
-       <string>Juanito</string>
+       <string>Empleado2</string>
       </void>
       <void property="priority">
        <int>5</int>
       </void>
       <void property="telefono">
-       <string>155</string>
+       <string>12342131</string>
       </void>
      </object>
     </void>
@@ -186,7 +183,7 @@
       <void property="cargaHoraria">
        <object class="model.ticket.cargaHoraria.Extendida">
         <void property="peso">
-         <int>1</int>
+         <int>2</int>
         </void>
         <void property="valor">
          <string>EXTENDIDA</string>
@@ -194,19 +191,19 @@
        </object>
       </void>
       <void property="estudios">
-       <object class="model.ticket.estudios.Secundario">
+       <object class="model.ticket.estudios.Primario">
         <void property="peso">
-         <int>1</int>
+         <int>4</int>
         </void>
         <void property="valor">
-         <string>SECUNDARIO</string>
+         <string>PRIMARIO</string>
         </void>
        </object>
       </void>
       <void property="experienciaPrevia">
        <object class="model.ticket.experiencia.Media">
         <void property="peso">
-         <int>1</int>
+         <int>6</int>
         </void>
         <void property="valor">
          <string>MEDIA</string>
@@ -214,19 +211,19 @@
        </object>
       </void>
       <void property="locacion">
-       <object class="model.ticket.Locacion.Indistinto">
+       <object class="model.ticket.Locacion.Presencial">
         <void property="peso">
-         <int>1</int>
+         <int>5</int>
         </void>
         <void property="valor">
-         <string>INDISTINTO</string>
+         <string>PRESENCIAL</string>
         </void>
        </object>
       </void>
       <void property="pretensionSalarial">
        <object class="model.ticket.pretensionSalarial.MenosV1">
         <void property="peso">
-         <int>1</int>
+         <int>10</int>
         </void>
         <void property="valor">
          <string>MENOS_V1</string>
@@ -234,19 +231,19 @@
        </object>
       </void>
       <void property="rangoEtario">
-       <object class="model.ticket.rangoEtario.Menos40">
+       <object class="model.ticket.rangoEtario.Mas50">
         <void property="peso">
-         <int>1</int>
+         <int>9</int>
         </void>
         <void property="valor">
-         <string>MENOS_40</string>
+         <string>MAS_50</string>
         </void>
        </object>
       </void>
       <void property="tipoDePuesto">
        <object class="model.ticket.tipoDePuesto.Jr">
         <void property="peso">
-         <int>1</int>
+         <int>5</int>
         </void>
         <void property="valor">
          <string>JR</string>
@@ -256,7 +253,7 @@
      </object>
     </void>
     <void property="id">
-     <string>af71f695-6419-4802-99ff-c775c38fbfda</string>
+     <string>97248f8c-3a1d-44ac-a4f1-baa10516e51f</string>
     </void>
     <void property="resultado">
      <object idref="Resultado0"/>

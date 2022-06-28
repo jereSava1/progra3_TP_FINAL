@@ -7,22 +7,22 @@
      <string>12345</string>
     </void>
     <void property="edad">
-     <int>23</int>
+     <int>21</int>
     </void>
     <void property="email">
-     <string>juanito@gmail.com</string>
+     <string>empleado2@gmail.com</string>
     </void>
     <void property="name">
-     <string>Thread-10</string>
+     <string>Thread-8</string>
     </void>
     <void property="nombre">
-     <string>Juanse</string>
+     <string>Empleado2</string>
     </void>
     <void property="nombreUsuario">
-     <string>Juanito</string>
+     <string>Empleado2</string>
     </void>
     <void property="telefono">
-     <string>155</string>
+     <string>12342131</string>
     </void>
    </object>
   </void>
@@ -32,25 +32,22 @@
      <string>12345</string>
     </void>
     <void property="edad">
-     <int>21</int>
+     <int>20</int>
     </void>
     <void property="email">
-     <string>bautipriano@gmail.com</string>
+     <string>empleado1@gmail.com</string>
     </void>
     <void property="name">
-     <string>Thread-0</string>
+     <string>Thread-6</string>
     </void>
     <void property="nombre">
-     <string>Bautista</string>
+     <string>Empleado1</string>
     </void>
     <void property="nombreUsuario">
-     <string>Tibau</string>
-    </void>
-    <void property="priority">
-     <int>5</int>
+     <string>Empleado1</string>
     </void>
     <void property="telefono">
-     <string>2235712000</string>
+     <string>42231</string>
     </void>
    </object>
   </void>

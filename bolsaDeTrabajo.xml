@@ -4,7 +4,7 @@
   <void method="add">
    <object class="model.ticket.TicketSimplificado">
     <void property="dueno">
-     <object class="model.usuario.Empleador">
+     <object class="model.usuario.Empleador" id="Empleador0">
       <void property="contrasena">
        <string>12345</string>
       </void>
@@ -12,10 +12,10 @@
        <string>Thread-1</string>
       </void>
       <void property="nombre">
-       <string>Camuzzi</string>
+       <string>Empleador1</string>
       </void>
       <void property="nombreUsuario">
-       <string>Camuzzi</string>
+       <string>Empleador1</string>
       </void>
       <void property="priority">
        <int>5</int>
@@ -27,10 +27,10 @@
        </object>
       </void>
       <void property="ticketsSimplificadosSinAsignar">
-       <int>2</int>
+       <int>3</int>
       </void>
       <void property="tipoPersona">
-       <object class="java.lang.Enum" id="TipoPersona0" method="valueOf">
+       <object class="java.lang.Enum" method="valueOf">
         <class>types.TipoPersona</class>
         <string>JURIDICA</string>
        </object>
@@ -55,119 +55,30 @@
   <void method="add">
    <object class="model.ticket.TicketSimplificado">
     <void property="dueno">
-     <object class="model.usuario.Empleador">
-      <void property="contrasena">
-       <string>12345</string>
-      </void>
-      <void property="name">
-       <string>Thread-11</string>
-      </void>
-      <void property="nombre">
-       <string>Juanse</string>
-      </void>
-      <void property="nombreUsuario">
-       <string>Juanito1</string>
-      </void>
-      <void property="priority">
-       <int>5</int>
-      </void>
-      <void property="rubro">
-       <object class="java.lang.Enum" id="Rubro1" method="valueOf">
-        <class>types.Rubro</class>
-        <string>SALUD</string>
-       </object>
-      </void>
-      <void property="tipoPersona">
-       <object class="java.lang.Enum" id="TipoPersona1" method="valueOf">
-        <class>types.TipoPersona</class>
-        <string>FISICA</string>
-       </object>
-      </void>
-     </object>
+     <object idref="Empleador0"/>
     </void>
     <void property="locacion">
-     <object class="model.ticket.Locacion.HomeOfiice">
+     <object class="model.ticket.Locacion.Presencial">
       <void property="peso">
        <int>1</int>
       </void>
       <void property="valor">
-       <string>HOME_OFFICE</string>
+       <string>PRESENCIAL</string>
       </void>
      </object>
     </void>
     <void property="tipoDeEmpleo">
-     <object idref="Rubro0"/>
+     <object class="java.lang.Enum" id="Rubro1" method="valueOf">
+      <class>types.Rubro</class>
+      <string>COMERCIO_INTERNACIONAL</string>
+     </object>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="model.ticket.TicketSimplificado">
     <void property="dueno">
-     <object class="model.usuario.Empleador">
-      <void property="contrasena">
-       <string>12345</string>
-      </void>
-      <void property="name">
-       <string>Thread-11</string>
-      </void>
-      <void property="nombre">
-       <string>Juanse</string>
-      </void>
-      <void property="nombreUsuario">
-       <string>Juanito1</string>
-      </void>
-      <void property="priority">
-       <int>5</int>
-      </void>
-      <void property="rubro">
-       <object idref="Rubro1"/>
-      </void>
-      <void property="tipoPersona">
-       <object idref="TipoPersona1"/>
-      </void>
-     </object>
-    </void>
-    <void property="locacion">
-     <object class="model.ticket.Locacion.HomeOfiice">
-      <void property="peso">
-       <int>1</int>
-      </void>
-      <void property="valor">
-       <string>HOME_OFFICE</string>
-      </void>
-     </object>
-    </void>
-    <void property="tipoDeEmpleo">
-     <object idref="Rubro0"/>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="model.ticket.TicketSimplificado">
-    <void property="dueno">
-     <object class="model.usuario.Empleador">
-      <void property="contrasena">
-       <string>12345</string>
-      </void>
-      <void property="name">
-       <string>Thread-1</string>
-      </void>
-      <void property="nombre">
-       <string>Camuzzi</string>
-      </void>
-      <void property="nombreUsuario">
-       <string>Camuzzi</string>
-      </void>
-      <void property="priority">
-       <int>5</int>
-      </void>
-      <void property="rubro">
-       <object idref="Rubro0"/>
-      </void>
-      <void property="tipoPersona">
-       <object idref="TipoPersona0"/>
-      </void>
-     </object>
+     <object idref="Empleador0"/>
     </void>
     <void property="locacion">
      <object class="model.ticket.Locacion.Indistinto">
@@ -180,10 +91,78 @@
      </object>
     </void>
     <void property="tipoDeEmpleo">
-     <object class="java.lang.Enum" method="valueOf">
+     <object class="java.lang.Enum" id="Rubro2" method="valueOf">
       <class>types.Rubro</class>
-      <string>COMERCIO_INTERNACIONAL</string>
+      <string>SALUD</string>
      </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.ticket.TicketSimplificado">
+    <void property="dueno">
+     <object class="model.usuario.Empleador" id="Empleador1">
+      <void property="contrasena">
+       <string>12345</string>
+      </void>
+      <void property="name">
+       <string>Thread-3</string>
+      </void>
+      <void property="nombre">
+       <string>Empleador2</string>
+      </void>
+      <void property="nombreUsuario">
+       <string>Empleador2</string>
+      </void>
+      <void property="priority">
+       <int>5</int>
+      </void>
+      <void property="rubro">
+       <object idref="Rubro0"/>
+      </void>
+      <void property="ticketsSimplificadosSinAsignar">
+       <int>1</int>
+      </void>
+      <void property="tipoPersona">
+       <object class="java.lang.Enum" method="valueOf">
+        <class>types.TipoPersona</class>
+        <string>FISICA</string>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="locacion">
+     <object class="model.ticket.Locacion.Presencial">
+      <void property="peso">
+       <int>1</int>
+      </void>
+      <void property="valor">
+       <string>PRESENCIAL</string>
+      </void>
+     </object>
+    </void>
+    <void property="tipoDeEmpleo">
+     <object idref="Rubro1"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.ticket.TicketSimplificado">
+    <void property="dueno">
+     <object idref="Empleador1"/>
+    </void>
+    <void property="locacion">
+     <object class="model.ticket.Locacion.HomeOfiice">
+      <void property="peso">
+       <int>1</int>
+      </void>
+      <void property="valor">
+       <string>HOME_OFFICE</string>
+      </void>
+     </object>
+    </void>
+    <void property="tipoDeEmpleo">
+     <object idref="Rubro2"/>
     </void>
    </object>
   </void>

@@ -104,7 +104,6 @@ public class Agencia extends Observable {
 			}
 			persistencia.cerrarInput();
 		} catch (Exception err) {
-			err.printStackTrace();
 			this.busquedas = new ArrayList<>();
 		}
 		
