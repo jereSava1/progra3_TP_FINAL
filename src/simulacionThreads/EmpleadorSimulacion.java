@@ -32,6 +32,8 @@ public class EmpleadorSimulacion extends Thread {
 		while( i < 3 && !BolsaDeTrabajoServiceSimulacion.getBolsaDeTrabajoService().isFinalizado() ) {
 						
 			opcion = (int)(Math.random()*3+1);
+			Util.espera();
+			System.out.println("El empleador "+ this.getNombre()+" esta yendo a poner un ticket");
 			
 			switch (opcion) {
 			case 1:
@@ -50,7 +52,7 @@ public class EmpleadorSimulacion extends Thread {
 				break;
 			case 3:
 				try {
-					locacion = LocacionFactory.getLocacion("INDISTINTA", 1);
+					locacion = LocacionFactory.getLocacion("INDISTINTO", 1);
 				} catch (ConstructorInvalidoException e) {
 					e.printStackTrace();
 				}
@@ -78,9 +80,12 @@ public class EmpleadorSimulacion extends Thread {
 			
 			ticketSimplificado = new TicketSimplificado(this, rubro, locacion);
 
+		    i++;
+		    this.bolsaDeTrabajo.getBolsaDeTrabajoService().agregarTicketSimplificado(ticketSimplificado);
 		}
 	
-	}
+	 }
+	
 
 	public String getNombre() {
 		return nombre;

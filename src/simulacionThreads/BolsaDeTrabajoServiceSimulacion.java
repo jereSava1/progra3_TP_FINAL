@@ -20,19 +20,21 @@ public class BolsaDeTrabajoServiceSimulacion extends Observable{
 	}
 	public synchronized void agregarTicketSimplificado(TicketSimplificado ticket) {
 		 bolsa.add(ticket);
+		 System.out.println("El empleador "+ ticket.getDueno().getNombre()+ " GENERO un nuevo ticket ");
 		 notifyAll();
 	}
 	
 	public synchronized void sacaTicketSimplificado(EmpleadoSimulacion empleado) {
 		
 		int i = 0;
-		boolean verifica = false;
 		
-		while( i < bolsa.size() && !verifica && !finalizado ) {
+		
+		while( i < bolsa.size() && !empleado.isTengoTicket() && !finalizado ) {
 			if( verificaTicket(bolsa.get(i), empleado) ) {
-				verifica = true;
+				empleado.setTengoTicket(false);
 				bolsa.get(i).setEmpleadoAsignado(empleado);
 				bolsa.remove(i);
+				System.out.println("El empleado   "+ empleado.getNombre()+ " SACO el ticket ");
 			}else {
 				if( i == bolsa.size()-1  ) {
 					try{
