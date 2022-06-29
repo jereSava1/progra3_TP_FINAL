@@ -47,13 +47,6 @@ public class Empleador extends Usuario implements Serializable {
 		}
 	}
 
-	
-	
-	@Override
-	public void run() {
-
-	}
-
 	// GETTERS Y SETTERS
 	public TipoPersona getTipoPersona() {
 		return tipoPersona;

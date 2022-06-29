@@ -16,7 +16,7 @@ import exception.ContrasenaIncorrectaException;
 import exception.NoDuenoDeTicketException;
 import exception.UsuarioIncorrectoException;
 
-public abstract class Usuario extends Thread {
+public abstract class Usuario  {
 	private String nombre;
 	private String nombreUsuario;
 	private String contrasena;

@@ -97,11 +97,7 @@ public class Empleado extends Usuario implements Serializable {
 				+ this.getEmail() + "\n" + "Edad: " + this.getEdad() + "\n";
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		super.run();
-	}
+	
 
 	public int getIntentosBolsaDeTrabajo() {
 		return intentosBolsaDeTrabajo;
