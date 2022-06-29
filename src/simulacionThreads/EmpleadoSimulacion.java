@@ -1,7 +1,6 @@
 package simulacionThreads;
 
 import model.ticket.DatosDeEmpleo;
-import model.ticket.TicketSimplificado;
 import types.Rubro;
 
 public class EmpleadoSimulacion extends Thread {

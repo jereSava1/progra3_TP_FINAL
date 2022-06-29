@@ -31,12 +31,12 @@ public class BolsaDeTrabajoServiceSimulacion extends Observable{
 		
 		while( i < bolsa.size() && !empleado.isTengoTicket() && !finalizado ) {
 			if( verificaTicket(bolsa.get(i), empleado) ) {
-				empleado.setTengoTicket(false);
-				bolsa.get(i).setEmpleadoAsignado(empleado);
+				empleado.setTengoTicket(true);
+				empleado.setTicketSimplificado(bolsa.get(i));
 				bolsa.remove(i);
 				System.out.println("El empleado   "+ empleado.getNombre()+ " SACO el ticket ");
 			}else {
-				if( i == bolsa.size()-1  ) {
+				if( i == bolsa.size()-1  ) { //Si estoy parado en el ultimo elemento y no coincide, espero
 					try{
 						wait();
 					}catch( Exception e ) {

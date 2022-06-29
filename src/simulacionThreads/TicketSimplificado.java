@@ -6,7 +6,6 @@ import types.Rubro;
 public class TicketSimplificado {
 	
 	private EmpleadorSimulacion dueno;
-	private EmpleadoSimulacion empleadoAsignado;
 	private Rubro tipoDeEmpleo;
 	private DatosDeEmpleo locacion;
 
@@ -18,7 +17,6 @@ public class TicketSimplificado {
 		this.dueno = dueno;
 		this.tipoDeEmpleo = tipoDeEmpleo;
 		this.locacion = locacion;
-		this.empleadoAsignado = null;
 	}
 	
 

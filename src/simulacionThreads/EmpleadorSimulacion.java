@@ -31,54 +31,10 @@ public class EmpleadorSimulacion extends Thread {
 		 
 		while( i < 3 && !BolsaDeTrabajoServiceSimulacion.getBolsaDeTrabajoService().isFinalizado() ) {
 						
-			opcion = (int)(Math.random()*3+1);
 			Util.espera();
 			System.out.println("El empleador "+ this.getNombre()+" esta yendo a poner un ticket");
 			
-			switch (opcion) {
-			case 1:
-				try {
-					locacion = LocacionFactory.getLocacion("HOMEOFFICE", 1);
-				} catch (ConstructorInvalidoException e) {
-					e.printStackTrace();
-				}
-				break;
-			case 2:
-				try {
-					locacion = LocacionFactory.getLocacion("PRESENCIAL", 1);
-				} catch (ConstructorInvalidoException e) {
-					e.printStackTrace();
-				}
-				break;
-			case 3:
-				try {
-					locacion = LocacionFactory.getLocacion("INDISTINTO", 1);
-				} catch (ConstructorInvalidoException e) {
-					e.printStackTrace();
-				}
-				break;
-			default:
-				break;
-			}
-			
-			
-			opcion = (int)(Math.random()*3+1);
-			
-			switch (opcion) {
-			case 1:
-				rubro = Rubro.SALUD;
-				break;
-			case 2:
-				rubro = Rubro.COMERCIO_INTERNACIONAL;		
-				break;
-			case 3:
-				rubro = Rubro.COMERCIO_LOCAL;	
-				break;
-			default:
-				break;
-			}
-			
-			ticketSimplificado = new TicketSimplificado(this, rubro, locacion);
+			ticketSimplificado = getTicket();
 
 		    i++;
 		    this.bolsaDeTrabajo.getBolsaDeTrabajoService().agregarTicketSimplificado(ticketSimplificado);
@@ -86,7 +42,57 @@ public class EmpleadorSimulacion extends Thread {
 	
 	 }
 	
+	public TicketSimplificado getTicket() {
+	
+	int opcion = (int)(Math.random()*3+1);
+		
+	switch (opcion) {
+	case 1:
+		try {
+			locacion = LocacionFactory.getLocacion("HOMEOFFICE", 1);
+		} catch (ConstructorInvalidoException e) {
+			e.printStackTrace();
+		}
+		break;
+	case 2:
+		try {
+			locacion = LocacionFactory.getLocacion("PRESENCIAL", 1);
+		} catch (ConstructorInvalidoException e) {
+			e.printStackTrace();
+		}
+		break;
+	case 3:
+		try {
+			locacion = LocacionFactory.getLocacion("INDISTINTO", 1);
+		} catch (ConstructorInvalidoException e) {
+			e.printStackTrace();
+		}
+		break;
+	default:
+		break;
+	}
+	
+	
+	opcion = (int)(Math.random()*3+1);
+	
+	switch (opcion) {
+	case 1:
+		rubro = Rubro.SALUD;
+		break;
+	case 2:
+		rubro = Rubro.COMERCIO_INTERNACIONAL;		
+		break;
+	case 3:
+		rubro = Rubro.COMERCIO_LOCAL;	
+		break;
+	default:
+		break;
+	}
+	
+	return new TicketSimplificado(this, rubro, locacion);
+}
 
+	
 	public String getNombre() {
 		return nombre;
 	}
